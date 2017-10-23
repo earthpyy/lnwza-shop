@@ -15,12 +15,12 @@
     </Menu>
     <Menu mnemonicParsing="false" text="Orders">
       <items>
-        <MenuItem mnemonicParsing="false" text="View Status" />
+        <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#showOrderView" text="View Status" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="History">
       <items>
-            <MenuItem mnemonicParsing="false" text="Show History" />
+            <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#showHistoryView" text="Show History" />
             <Menu mnemonicParsing="false" text="Filter...">
               <items>
                   <MenuItem disable="true" mnemonicParsing="false" text="by Date" />
@@ -32,21 +32,21 @@
     </Menu>
       <Menu mnemonicParsing="false" text="Transactions">
         <items>
-          <MenuItem mnemonicParsing="false" text="Show Transactions" />
+          <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#showTransactionView" text="Show Transactions" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
         </items>
       </Menu>
       <Menu mnemonicParsing="false" text="Agents">
         <items>
-          <MenuItem mnemonicParsing="false" text="Show Agents" />
+          <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#showAgentView" text="Show Agents" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
         </items>
       </Menu>
       <Menu mnemonicParsing="false" text="User">
         <items>
-          <MenuItem disable="true" mnemonicParsing="false" text="Firstname Lastname" />
-            <MenuItem disable="true" mnemonicParsing="false" text="Logged in" />
-            <MenuItem mnemonicParsing="false" text="Log out..." />
+          <MenuItem fx:id="menuLoggedName" disable="true" mnemonicParsing="false" text="Firstname Lastname" />
+            <MenuItem fx:id="menuLoggedStatus" disable="true" mnemonicParsing="false" text="Logged in" />
+            <MenuItem fx:id="menuLogOut" mnemonicParsing="false" onAction="#logOut" text="Log out..." />
         </items>
       </Menu>
   </menus>

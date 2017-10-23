@@ -7,3 +7,4 @@
 
 /client/lnwza/*
 !/client/lnwza/src
+client/lnwza/src/application/resources/config.properties

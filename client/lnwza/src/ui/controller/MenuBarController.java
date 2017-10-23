@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.controller;
 
 import application.Main;
@@ -16,7 +11,7 @@ import javafx.scene.layout.BorderPane;
 
 /**
  *
- * @author EARTHPYY
+ * @author SE-lnwza
  */
 public class MenuBarController {
     
@@ -93,5 +88,10 @@ public class MenuBarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    @FXML
+    void logOut(ActionEvent event) {
+        
     }
 }

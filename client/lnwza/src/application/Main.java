@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package application;
+
+import java.sql.Connection;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 
 /**
  *
- * @author EARTHPYY
+ * @author SE-lnwza
  */
 public class Main extends Application {
     
@@ -23,6 +20,8 @@ public class Main extends Application {
     
     @Override
     public void start(Stage mainStage) throws Exception {
+        AppProperties.load();
+        
         MenuBar menubar = FXMLLoader.load(getClass().getResource("/ui/fxml/MenuBar.fxml"));
         Parent page1 = FXMLLoader.load(getClass().getResource("/ui/fxml/StockView.fxml"));
         
