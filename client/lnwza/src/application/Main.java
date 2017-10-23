@@ -16,17 +16,17 @@ import javafx.scene.layout.BorderPane;
  */
 public class Main extends Application {
     
-    private static BorderPane root = new BorderPane();
+    private static final BorderPane root = new BorderPane();
     
     @Override
     public void start(Stage mainStage) throws Exception {
         AppProperties.load();
         
-        MenuBar menubar = FXMLLoader.load(getClass().getResource("/ui/fxml/MenuBar.fxml"));
-        Parent page1 = FXMLLoader.load(getClass().getResource("/ui/fxml/StockView.fxml"));
+        MenuBar bar = FXMLLoader.load(getClass().getResource("/ui/fxml/MenuBar.fxml"));
+        Parent startPage = FXMLLoader.load(getClass().getResource("/ui/fxml/StockView.fxml"));
         
-        root.setTop(menubar);
-        root.setCenter(page1);
+        root.setTop(bar);
+        root.setCenter(startPage);
         
         Scene scene = new Scene(root, 1024, 768);
         mainStage.setScene(scene);
