@@ -1,2 +1,9 @@
 
 .DS_Store
+#/client/lnwza/nbproject/private/
+#/client/lnwza-Preloader/nbproject/private/
+#/client/lnwza/build/
+#/client/lnwza/dist/
+
+/client/lnwza/*
+!/client/lnwza/src
