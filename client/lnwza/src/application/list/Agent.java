@@ -1,4 +1,4 @@
-package ui.list;
+package application.list;
 
 import javafx.beans.property.*;
 
@@ -6,7 +6,7 @@ import javafx.beans.property.*;
  *
  * @author SE-lnwza
  */
-public class AgentList {
+public class Agent {
     
     private final SimpleIntegerProperty agentId;
     private final SimpleStringProperty firstName;
@@ -14,7 +14,7 @@ public class AgentList {
     private final SimpleStringProperty address;
     private final SimpleStringProperty tel;
     
-    public AgentList(int agentId, String firstName, String lastName, String address, String tel) {
+    public Agent(int agentId, String firstName, String lastName, String address, String tel) {
         this.agentId = new SimpleIntegerProperty(agentId);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
