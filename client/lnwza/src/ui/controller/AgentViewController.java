@@ -34,8 +34,6 @@ public class AgentViewController {
     @FXML
     private TableColumn<Agent, String> tb_tel;
     
-    private ObservableList<Agent> data;
-    
     @FXML
     protected void initialize() {
         tb_id.setCellValueFactory(new PropertyValueFactory<>("agentId"));
@@ -45,7 +43,7 @@ public class AgentViewController {
         tb_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         
         AgentHandler.load();
-        data = FXCollections.observableArrayList(AgentHandler.getData());
+        ObservableList<Agent> data = FXCollections.observableArrayList(AgentHandler.getData());
         tableview.setItems(data);
     }
 
