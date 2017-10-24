@@ -4,10 +4,10 @@ import application.DatabaseConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
-import application.list.Agent;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import application.list.Agent;
 
 /**
  *
