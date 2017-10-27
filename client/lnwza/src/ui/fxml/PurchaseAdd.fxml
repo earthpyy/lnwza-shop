@@ -34,8 +34,8 @@
                            <children>
                               <VBox layoutX="93.0" layoutY="68.0">
                                  <children>
-                                    <Label graphicTextGap="5.0" text="Name :" />
-                                    <Label text="Price :" />
+                                    <Label graphicTextGap="5.0" text="CARTER STREET SHAWNA" />
+                                    <Label text="\$448.00" />
                                     <VBox spacing="10.0">
                                        <children>
                                           <Label text="Color :" />

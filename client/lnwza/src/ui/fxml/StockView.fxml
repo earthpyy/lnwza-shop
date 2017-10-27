@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" prefHeight="27.0" prefWidth="1052.0" text="VIEW STOCK">
@@ -34,7 +33,7 @@
          </padding>
       </ButtonBar>
       <Separator prefWidth="200.0" />
-      <TableView prefHeight="595.0" prefWidth="1024.0">
+      <TableView prefHeight="665.0" prefWidth="1024.0">
         <columns>
           <TableColumn prefWidth="37.666656494140625" />
           <TableColumn prefWidth="116.66665649414062" text="ID" />
@@ -47,10 +46,13 @@
         </columns>
       </TableView>
       <Separator prefWidth="200.0" />
-      <Label alignment="CENTER" prefHeight="27.0" prefWidth="133.0" text="SUMMARY:">
+      <Label prefHeight="27.0" prefWidth="1030.0" text="SUMMARY:">
          <font>
             <Font size="16.0" />
          </font>
+         <VBox.margin>
+            <Insets left="5.0" />
+         </VBox.margin>
       </Label>
    </children>
 </VBox>
