@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.StockViewController">
    <children>
       <Label alignment="CENTER" prefHeight="27.0" prefWidth="1052.0" text="VIEW STOCK">
          <font>
@@ -20,10 +20,10 @@
       <Separator prefHeight="0.0" prefWidth="1024.0" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
-            <Button mnemonicParsing="false" text="Add" />
-            <Button mnemonicParsing="false" text="Edit" />
-          <Button mnemonicParsing="false" text="Update" />
-            <Button mnemonicParsing="false" text="Delete" />
+            <Button fx:id="bt_add" mnemonicParsing="false" text="Add" />
+            <Button fx:id="bt_edit" mnemonicParsing="false" text="Edit" />
+          <Button fx:id="bt_update" mnemonicParsing="false" text="Update" />
+            <Button fx:id="bt_delete" mnemonicParsing="false" text="Delete" />
         </buttons>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -35,14 +35,14 @@
       <Separator prefWidth="200.0" />
       <TableView prefHeight="665.0" prefWidth="1024.0">
         <columns>
-          <TableColumn prefWidth="37.666656494140625" />
-          <TableColumn prefWidth="116.66665649414062" text="ID" />
-            <TableColumn prefWidth="174.3333740234375" text="Photo" />
-            <TableColumn prefWidth="240.6666259765625" text="Product Name" />
-            <TableColumn minWidth="0.33331298828125" prefWidth="93.66668701171875" text="Color" />
-            <TableColumn minWidth="5.0" prefWidth="155.66668701171875" text="Type" />
-            <TableColumn prefWidth="98.0" text="Qty" />
-            <TableColumn minWidth="7.66668701171875" prefWidth="113.0" text="Price" />
+          <TableColumn fx:id="tb_checkbox" prefWidth="37.666656494140625" />
+          <TableColumn fx:id="tb_id" prefWidth="116.66665649414062" text="ID" />
+            <TableColumn fx:id="tb_photo" prefWidth="174.3333740234375" text="Photo" />
+            <TableColumn fx:id="tb_name" prefWidth="240.6666259765625" text="Product Name" />
+            <TableColumn fx:id="tb_color" minWidth="0.33331298828125" prefWidth="93.66668701171875" text="Color" />
+            <TableColumn fx:id="tb_type" minWidth="5.0" prefWidth="155.66668701171875" text="Type" />
+            <TableColumn fx:id="tb_qty" prefWidth="98.0" text="Qty" />
+            <TableColumn fx:id="tb_price" minWidth="7.66668701171875" prefWidth="113.0" text="Price" />
         </columns>
       </TableView>
       <Separator prefWidth="200.0" />

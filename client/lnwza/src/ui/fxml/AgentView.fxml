@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AgentViewController">
    <children>
       <Label alignment="CENTER" prefHeight="32.0" prefWidth="1024.0" text="Agents">
@@ -25,7 +24,7 @@
       </Separator>
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Button" />
+          <Button fx:id="bt_hello" mnemonicParsing="false" onAction="#hello" text="Hello!" />
         </buttons>
          <padding>
             <Insets right="10.0" />

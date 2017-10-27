@@ -46,5 +46,9 @@ public class AgentViewController {
         ObservableList<Agent> data = FXCollections.observableArrayList(AgentHandler.getData());
         tableview.setItems(data);
     }
+    
+    public void hello() {
+        System.out.println("Hello world!");
+    }
 
 }

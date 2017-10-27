@@ -40,16 +40,16 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="555.0" layoutY="137.0" />
-            <TextField layoutX="555.0" layoutY="189.0" />
-            <TextField layoutX="555.0" layoutY="241.0" />
-            <MenuButton layoutX="555.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Status">
+            <TextField fx:id="tf_orderno" layoutX="555.0" layoutY="137.0" />
+            <TextField fx:id="tf_trackno" layoutX="555.0" layoutY="189.0" />
+            <TextField fx:id="tf_date" layoutX="555.0" layoutY="241.0" />
+            <MenuButton fx:id="cb_status" layoutX="555.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Status">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
-            <Button layoutX="785.0" layoutY="412.0" mnemonicParsing="false" text="Confirm">
+            <Button fx:id="bt_confirm" layoutX="785.0" layoutY="412.0" mnemonicParsing="false" text="Confirm">
                <font>
                   <Font size="14.0" />
                </font>
