@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" />
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <ScrollPane prefHeight="778.0" prefWidth="1026.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="767.0" prefWidth="1022.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="317.0" layoutY="14.0" text="lnwza Shop" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutY="94.0" prefHeight="289.0" prefWidth="1022.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="219.0" fitWidth="919.0" layoutX="52.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="51.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutY="383.0" text="RECOMMEND" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutY="410.0" spacing="2.0">
+                     <children>
+                        <AnchorPane prefHeight="342.0" prefWidth="348.0">
+                           <children>
+                              <ImageView fitHeight="224.0" fitWidth="264.0" layoutX="42.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox layoutX="39.0" layoutY="255.0" prefHeight="93.0" prefWidth="264.0" spacing="7.0">
+                                 <children>
+                                    <Label text="Name :" />
+                                    <Label text="Price :" />
+                                    <Button mnemonicParsing="false" text="Add to cart" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="342.0" prefWidth="348.0">
+                           <children>
+                              <ImageView fitHeight="224.0" fitWidth="264.0" layoutX="42.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox layoutX="39.0" layoutY="255.0" prefHeight="93.0" prefWidth="264.0" spacing="7.0">
+                                 <children>
+                                    <Label text="Name :" />
+                                    <Label text="Price :" />
+                                    <Button mnemonicParsing="false" text="Add to cart" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="342.0" prefWidth="348.0">
+                           <children>
+                              <ImageView fitHeight="224.0" fitWidth="264.0" layoutX="42.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox layoutX="39.0" layoutY="255.0" prefHeight="93.0" prefWidth="264.0" spacing="7.0">
+                                 <children>
+                                    <Label text="Name :" />
+                                    <Label text="Price :" />
+                                    <Button mnemonicParsing="false" text="Add to cart" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </content>
+</ScrollPane>
