@@ -2,6 +2,7 @@ package ui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 
 /**
@@ -46,4 +47,6 @@ public class StockViewController {
     @FXML
     private TableColumn<?, Double> tb_price;
     
+     @FXML
+    private Label lb_summary;
 }
