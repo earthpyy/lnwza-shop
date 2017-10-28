@@ -31,22 +31,27 @@
                   </AnchorPane>
                   <HBox prefHeight="690.0" prefWidth="313.0">
                      <children>
-                        <VBox prefHeight="690.0" prefWidth="80.0" spacing="5.0">
+                        <VBox prefHeight="690.0" prefWidth="80.0" spacing="10.0">
                            <children>
+                              <Label text="ID:" />
                               <Label text="Name:" />
+                              <Label text="Price:" />
+                              <Label text="Size:" />
+                              <Label text="Color:" />
                               <Label text="Description:" />
-                              <Label text="Label" />
-                              <Label text="Label" />
                            </children>
                            <padding>
                               <Insets top="20.0" />
                            </padding>
                         </VBox>
-                        <VBox prefHeight="690.0" prefWidth="233.0" spacing="5.0">
+                        <VBox prefHeight="662.0" prefWidth="233.0" spacing="10.0">
                            <children>
-                              <Label text="HAHAHA" />
-                              <Label text="Test Test Test" />
-                              <Label text="Label" />
+                              <Label text="SH00004" />
+                              <Label text="TESTNAME" />
+                              <Label text="baht" />
+                              <Label text="cm" />
+                              <Label text="cm" />
+                              <Label text="TSET" />
                            </children>
                            <padding>
                               <Insets top="20.0" />
