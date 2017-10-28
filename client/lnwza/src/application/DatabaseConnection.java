@@ -11,11 +11,22 @@ public class DatabaseConnection {
     private static EntityManagerFactory emf;
     
     public static void load() {
-        emf = Persistence.createEntityManagerFactory("objectdb://" + AppProperties.getDBIP() + ":" + AppProperties.getDBPort() + "/" + AppProperties.getDBName() + ".odb;user=" + AppProperties.getDBUser() + ";password=" + AppProperties.getDBPass() + "");
-        System.out.println(emf.isOpen());
+        try {
+            emf = Persistence.createEntityManagerFactory("objectdb://" + AppProperties.getDBIP() + ":" + AppProperties.getDBPort() + "/" + AppProperties.getDBName() + ".odb;user=" + AppProperties.getDBUser() + ";password=" + AppProperties.getDBPass());
+        } finally {
+            System.out.println("Database connected!");
+        }
     }
     
     public static EntityManagerFactory getConnection() {
         return emf;
+    }
+    
+    public static boolean isConnected() {
+        return emf.isOpen();
+    }
+    
+    public static void close() {
+        emf.close();
     }
 }
