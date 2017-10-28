@@ -11,9 +11,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HistoryViewController">
    <children>
       <Label alignment="CENTER" prefHeight="27.0" prefWidth="1055.0" text="History">
          <font>
@@ -23,46 +22,39 @@
       <Separator prefWidth="200.0" />
       <AnchorPane prefHeight="51.0" prefWidth="1024.0">
          <children>
-            <ComboBox layoutX="380.0" layoutY="13.0" prefHeight="25.0" prefWidth="121.0" promptText="Month" />
-            <ComboBox layoutX="531.0" layoutY="13.0" prefHeight="25.0" prefWidth="82.0" promptText="Year" />
+            <ComboBox fx:id="cb_month" layoutX="380.0" layoutY="13.0" prefHeight="25.0" prefWidth="121.0" promptText="Month" />
+            <ComboBox fx:id="cb_year" layoutX="531.0" layoutY="13.0" prefHeight="25.0" prefWidth="82.0" promptText="Year" />
          </children>
       </AnchorPane>
-  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="659.0" prefWidth="1024.0">
+  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="1024.0">
          <children>
-            <Label layoutX="424.0" layoutY="67.0" text="Income :">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="411.0" layoutY="97.0" text="Outcome :">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="402.0" layoutY="129.0" text="Profit/Loss :">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField layoutX="500.0" layoutY="67.0" prefHeight="25.0" prefWidth="73.0" />
-            <TextField layoutX="500.0" layoutY="97.0" prefHeight="25.0" prefWidth="73.0" />
-            <TextField layoutX="500.0" layoutY="129.0" prefHeight="25.0" prefWidth="73.0" />
-            <Text layoutX="589.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baht">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="589.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baht">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="589.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Baht">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <LineChart layoutX="287.0" layoutY="197.0">
+            <VBox layoutX="408.0" layoutY="67.0" spacing="10.0">
+               <children>
+                  <Label text="Income :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Outcome :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Profit/Loss :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="506.0" layoutY="67.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="tf_income" prefHeight="25.0" prefWidth="73.0" />
+                  <TextField fx:id="tf_outcome" prefHeight="25.0" prefWidth="73.0" />
+                  <TextField fx:id="tf_profit" prefHeight="25.0" prefWidth="73.0" />
+               </children>
+            </VBox>
+            <LineChart fx:id="lc_graph" layoutX="268.0" layoutY="197.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -71,6 +63,25 @@
               </yAxis>
             </LineChart>
             <Separator layoutX="6.0" layoutY="-1.0" prefHeight="0.0" prefWidth="1024.0" />
+            <VBox layoutX="597.0" layoutY="67.0" spacing="10.0">
+               <children>
+                  <Label text="Bath">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Bath">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Bath">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <Accordion />
