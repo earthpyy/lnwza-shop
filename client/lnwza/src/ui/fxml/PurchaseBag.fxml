@@ -46,9 +46,9 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="22.0" layoutY="145.0" text="Summary">
+                  <Label layoutX="46.0" layoutY="146.0" text="Summary">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
                   <Label layoutX="109.0" layoutY="193.0" text="Subtotal">
