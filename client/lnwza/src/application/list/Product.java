@@ -6,6 +6,7 @@ import javafx.beans.property.*;
  *
  * @author SE-lnwza
  */
+// TODO: change this list to entity of objectdb
 public class Product {
     
     private final SimpleIntegerProperty productId;

@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
  *
  * @author SE-lnwza
  */
-public class PurchaseAdd {
+public class PurchaseAddController {
     
     @FXML
     private ImageView im_product;
