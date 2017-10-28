@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseViewController">
    <children>
       <ScrollPane prefHeight="768.0" prefWidth="1024.0">
         <content>
@@ -25,8 +25,8 @@
                   <Image url="@SE/BGPCV.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutY="20.0" prefHeight="68.0" prefWidth="1024.0" style="-fx-background-color: #98d1e1;" />
-            <Label alignment="CENTER" layoutY="14.0" prefHeight="17.0" prefWidth="1024.0" text="PRODUCT VIEW" textFill="#140144">
+            <AnchorPane layoutY="20.0" prefHeight="68.0" prefWidth="1024.0" style="-fx-background-color: #140144;" />
+            <Label alignment="CENTER" layoutY="14.0" prefHeight="17.0" prefWidth="1024.0" text="PRODUCT VIEW" textFill="WHITE">
                <font>
                   <Font name="Paradox" size="72.0" />
                </font>
@@ -37,18 +37,18 @@
                      <children>
                         <VBox alignment="CENTER" layoutY="7.0" prefHeight="315.0" prefWidth="285.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="NAME">
+                              <ImageView fx:id="im_product" fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="lb_name" text="NAME">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Price">
+                              <Label fx:id="lb_price" text="Price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" text="Add to cart" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to cart" />
                            </children>
                         </VBox>
                      </children>
@@ -57,18 +57,18 @@
                      <children>
                         <VBox alignment="CENTER" layoutY="7.0" prefHeight="315.0" prefWidth="285.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="NAME">
+                              <ImageView fx:id="im_product" fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="lb_name" text="NAME">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Price">
+                              <Label fx:id="lb_price" text="Price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" text="Add to cart" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to cart" />
                            </children>
                         </VBox>
                      </children>
@@ -77,18 +77,18 @@
                      <children>
                         <VBox alignment="CENTER" layoutY="7.0" prefHeight="315.0" prefWidth="285.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="NAME">
+                              <ImageView fx:id="im_product" fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="lb_name" text="NAME">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Price">
+                              <Label fx:id="lb_price" text="Price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" text="Add to cart" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to cart" />
                            </children>
                         </VBox>
                      </children>
@@ -101,18 +101,18 @@
                      <children>
                         <VBox alignment="CENTER" layoutY="7.0" prefHeight="315.0" prefWidth="285.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="NAME">
+                              <ImageView fx:id="im_product" fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="lb_name" text="NAME">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Price">
+                              <Label fx:id="lb_price" text="Price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" text="Add to cart" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to cart" />
                            </children>
                         </VBox>
                      </children>
@@ -121,18 +121,18 @@
                      <children>
                         <VBox alignment="CENTER" layoutY="7.0" prefHeight="315.0" prefWidth="285.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="NAME">
+                              <ImageView fx:id="im_product" fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="lb_name" text="NAME">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Price">
+                              <Label fx:id="lb_price" text="Price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" text="Add to cart" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to cart" />
                            </children>
                         </VBox>
                      </children>
@@ -141,18 +141,18 @@
                      <children>
                         <VBox alignment="CENTER" layoutY="7.0" prefHeight="315.0" prefWidth="285.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label text="NAME">
+                              <ImageView fx:id="im_product" fitHeight="189.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="lb_name" text="NAME">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Price">
+                              <Label fx:id="lb_price" text="Price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" text="Add to cart" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to cart" />
                            </children>
                         </VBox>
                      </children>
