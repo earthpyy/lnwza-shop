@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.StockDetailController">
    <children>
       <Label alignment="CENTER" prefHeight="17.0" prefWidth="637.0" text="PRODUCT DETAIL">
          <font>
@@ -26,19 +26,37 @@
                <children>
                   <AnchorPane prefHeight="690.0" prefWidth="270.0">
                      <children>
-                        <ImageView fitHeight="177.0" fitWidth="225.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="im_product" fitHeight="177.0" fitWidth="225.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
                   <HBox prefHeight="690.0" prefWidth="313.0">
                      <children>
                         <VBox prefHeight="690.0" prefWidth="80.0" spacing="10.0">
                            <children>
-                              <Label text="ID:" />
-                              <Label text="Name:" />
-                              <Label text="Price:" />
-                              <Label text="Size:" />
-                              <Label text="Color:" />
-                              <Label text="Description:" />
+                              <Label text="ID:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></Label>
+                              <Label text="Name:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></Label>
+                              <Label text="Price:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></Label>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></Label>
+                              <Label text="Color:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></Label>
+                              <Label text="Description:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></Label>
                            </children>
                            <padding>
                               <Insets top="20.0" />
@@ -46,12 +64,30 @@
                         </VBox>
                         <VBox prefHeight="662.0" prefWidth="233.0" spacing="10.0">
                            <children>
-                              <Label text="SH00004" />
-                              <Label text="TESTNAME" />
-                              <Label text="baht" />
-                              <Label text="cm" />
-                              <Label text="cm" />
-                              <Label text="TSET" />
+                              <Label fx:id="lb_id" text="SH00004">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="lb_name" text="TESTNAME">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="lb_price" text="baht">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="lb_size" text="cm">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="lb_color" text="cm">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Label fx:id="lb_descript" text="TSET">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                            </children>
                            <padding>
                               <Insets top="20.0" />
@@ -65,7 +101,7 @@
       </ScrollPane>
       <ButtonBar prefHeight="47.0" prefWidth="600.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Update">
+          <Button fx:id="bt_update" mnemonicParsing="false" text="Update">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
