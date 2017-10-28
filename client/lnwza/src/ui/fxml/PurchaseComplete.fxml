@@ -1,30 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="778.0" prefWidth="1024.0">
-         <children>
-            <Label layoutX="358.0" layoutY="294.0" text="Complete !!">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="358.0" layoutY="369.0" text="Your Order Number is">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="420.0" layoutY="423.0" text="00000000">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+      <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@SE/BGPCCP.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="238.0" layoutY="226.0" text="COMPLETE" textFill="#140144">
+         <font>
+            <Font name="Paradox" size="72.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="441.0" fitWidth="629.0" layoutX="209.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@SE/CO.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="172.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@SE/CO2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="308.0" layoutY="369.0" text="Your Order Number is" textFill="#140144">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="339.0" layoutY="430.0" text="0000000000000000">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="457.0" layoutY="483.0" text="Thank you" textFill="#294264">
+         <font>
+            <Font name="Mega Fresh" size="64.0" />
+         </font>
+      </Label>
    </children>
-</VBox>
+</AnchorPane>
