@@ -36,8 +36,8 @@ public class OrderDetailController {
     private TableColumn<?, Double> tb_price;
 
     @FXML
-    private TableColumn<?, ?> tb_date;
+    private TableColumn<?, String> tb_date;
 
     @FXML
-    private TableColumn<?, ?> tb_status;
+    private TableColumn<?, Integer> tb_status;
 }
