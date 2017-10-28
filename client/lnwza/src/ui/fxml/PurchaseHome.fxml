@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseHomeController">
    <children>
       <ScrollPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -112,44 +112,44 @@
                            <children>
                               <HBox layoutX="54.0" layoutY="7.0" spacing="90.0">
                                  <children>
-                                    <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="im_product" fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="im_product" fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="im_product" fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </HBox>
-                              <Label layoutX="151.0" layoutY="194.0" text="NAME">
+                              <Label fx:id="lb_name" layoutX="151.0" layoutY="194.0" text="NAME">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="153.0" layoutY="221.0" text="PRICE">
+                              <Label fx:id="lb_price" layoutX="153.0" layoutY="221.0" text="PRICE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="492.0" layoutY="194.0" text="NAME">
+                              <Label fx:id="lb_name" layoutX="492.0" layoutY="194.0" text="NAME">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="492.0" layoutY="221.0" text="PRICE">
+                              <Label fx:id="lb_price" layoutX="492.0" layoutY="221.0" text="PRICE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="829.0" layoutY="194.0" text="NAME">
+                              <Label fx:id="lb_name" layoutX="829.0" layoutY="194.0" text="NAME">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="829.0" layoutY="221.0" text="PRICE">
+                              <Label fx:id="lb_price" layoutX="829.0" layoutY="221.0" text="PRICE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="138.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
-                              <Button layoutX="816.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
-                              <Button layoutX="479.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                              <Button fx:id="bt_AddtoCart" layoutX="138.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                              <Button fx:id="bt_AddtoCart" layoutX="816.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                              <Button fx:id="bt_AddtoCart" layoutX="479.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutY="52.0" prefHeight="255.0" prefWidth="1024.0">
