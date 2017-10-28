@@ -1,12 +1,15 @@
 package application.handler;
 
-import application.DatabaseConnection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.sql.SQLException;
 
+import application.DatabaseConnection;
+import application.DatabaseConnectionMySQL;
 import application.list.Agent;
 
 /**
@@ -16,7 +19,7 @@ import application.list.Agent;
 public class AgentHandler {
     
     private static ArrayList<Agent> agents;
-    private static final Connection con = DatabaseConnection.getConnection();
+    private static final Connection con = DatabaseConnectionMySQL.getConnection();
     
     public static ArrayList<Agent> getData() {
         return agents;
@@ -40,6 +43,9 @@ public class AgentHandler {
             e.printStackTrace();
         }
     }
+    
+//    public static void load() {
+//    }
     
     public static void add(String firstName, String lastName, String address, String tel) {
         // TODO: next sprint

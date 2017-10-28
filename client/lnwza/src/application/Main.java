@@ -1,7 +1,5 @@
 package application;
 
-import java.sql.Connection;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage mainStage) throws Exception {
         AppProperties.load();
+        DatabaseConnection.load();
         
         MenuBar bar = FXMLLoader.load(getClass().getResource("/ui/fxml/MenuBar.fxml"));
         Parent startPage = FXMLLoader.load(getClass().getResource("/ui/fxml/StockView.fxml"));
@@ -31,6 +30,8 @@ public class Main extends Application {
         Scene scene = new Scene(root, 1024, 768);
         mainStage.setScene(scene);
         mainStage.show();
+        
+        DatabaseConnection.getConnection().close();
     }
     
     public static BorderPane getRoot() {

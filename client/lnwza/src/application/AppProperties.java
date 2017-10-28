@@ -12,6 +12,7 @@ import java.util.Properties;
 public class AppProperties {
 
     private static String dbIP;
+    private static String dbPort;
     private static String dbName;
     private static String dbUser;
     private static String dbPass;
@@ -25,6 +26,7 @@ public class AppProperties {
             prop.load(input);
 
             dbIP = prop.getProperty("dbIP");
+            dbPort = prop.getProperty("dbPort");
             dbName = prop.getProperty("dbName");
             dbUser = prop.getProperty("dbUser");
             dbPass = prop.getProperty("dbPass");
@@ -44,6 +46,10 @@ public class AppProperties {
 
     public static String getDBIP() {
         return dbIP;
+    }
+
+    public static String getDBPort() {
+        return dbPort;
     }
 
     public static String getDBName() {
