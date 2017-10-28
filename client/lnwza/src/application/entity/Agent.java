@@ -18,7 +18,13 @@ public class Agent {
     private String lastName;
     private String address;
     private String tel;
-    
+
+    public Agent(String firstName, String lastName, String address, String tel) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.tel = tel;
+    }
 
     public Long getId() {
         return id;

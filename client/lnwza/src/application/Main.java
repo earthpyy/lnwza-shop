@@ -1,6 +1,5 @@
 package application;
 
-import application.list.Agent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -37,17 +34,6 @@ public class Main extends Application {
         mainStage.setScene(scene);
         System.out.println("GUI loaded!");
         mainStage.show();
-        
-        // TEST UNIT
-        EntityManager em = DatabaseConnection.getConnection().createEntityManager();
-        try {
-            TypedQuery<Agent> q1 = em.createQuery("SELECT c FROM Agent c", Agent.class);
-            for (Agent ag : q1.getResultList()) {
-                System.out.println(ag);
-            }
-        } finally {
-            em.close();
-        }
     }
     
     @Override

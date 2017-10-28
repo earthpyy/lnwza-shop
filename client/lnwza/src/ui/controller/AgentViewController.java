@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import application.list.Agent;
+import application.entity.Agent;
 
 /**
  *
@@ -20,7 +20,7 @@ public class AgentViewController {
     private TableView<Agent> tableview;
 
     @FXML
-    private TableColumn<Agent, Integer> tb_id;
+    private TableColumn<Agent, Long> tb_id;
 
     @FXML
     private TableColumn<Agent, String> tb_first;
@@ -36,7 +36,7 @@ public class AgentViewController {
     
     @FXML
     protected void initialize() {
-        tb_id.setCellValueFactory(new PropertyValueFactory<>("agentId"));
+        tb_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         tb_first.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         tb_last.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         tb_address.setCellValueFactory(new PropertyValueFactory<>("address"));
