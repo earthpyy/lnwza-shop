@@ -9,3 +9,4 @@
 !/client/lnwza/src
 !/client/lnwza/lib
 client/lnwza/src/application/resources/config.properties
+client/lnwza/src/ui/fxml/PurchaseBag.fxml

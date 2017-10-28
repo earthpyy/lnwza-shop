@@ -3,76 +3,179 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <ScrollPane prefHeight="778.0" prefWidth="1026.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="767.0" prefWidth="1022.0">
+          <AnchorPane>
                <children>
-                  <Label alignment="CENTER" layoutX="317.0" layoutY="14.0" text="lnwza Shop" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@BGBR.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" text="LNWZA SHOP" textFill="#140144" AnchorPane.bottomAnchor="751.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Paradox" size="64.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutY="94.0" prefHeight="289.0" prefWidth="1022.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane layoutY="480.0" prefHeight="272.0" prefWidth="1011.0">
                      <children>
-                        <ImageView fitHeight="219.0" fitWidth="919.0" layoutX="52.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="51.0" />
+                        <HBox layoutX="54.0" layoutY="7.0" spacing="90.0">
+                           <children>
+                              <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
+                        <Label layoutX="151.0" layoutY="194.0" text="NAME">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="153.0" layoutY="221.0" text="PRICE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="492.0" layoutY="194.0" text="NAME">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="492.0" layoutY="221.0" text="PRICE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="829.0" layoutY="194.0" text="NAME">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="829.0" layoutY="221.0" text="PRICE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="139.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                        <Button layoutX="816.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                        <Button layoutX="479.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
                      </children>
                   </AnchorPane>
-                  <Label layoutY="383.0" text="RECOMMEND" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <HBox layoutY="410.0" spacing="2.0">
+                  <AnchorPane layoutY="52.0" prefHeight="255.0" prefWidth="1024.0">
                      <children>
-                        <AnchorPane prefHeight="342.0" prefWidth="348.0">
+                        <AnchorPane layoutY="68.0" prefHeight="348.0" prefWidth="1017.0" style="-fx-background-color: #140144;">
                            <children>
-                              <ImageView fitHeight="224.0" fitWidth="264.0" layoutX="42.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox layoutX="39.0" layoutY="255.0" prefHeight="93.0" prefWidth="264.0" spacing="7.0">
-                                 <children>
-                                    <Label text="Name :" />
-                                    <Label text="Price :" />
-                                    <Button mnemonicParsing="false" text="Add to cart" />
-                                 </children>
-                              </VBox>
+                              <ImageView fitHeight="305.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@THE.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="18.0" layoutY="318.0" text="RECOMMEND" textFill="WHITE">
+                                 <font>
+                                    <Font name="Paradox" size="48.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="342.0" prefWidth="348.0">
-                           <children>
-                              <ImageView fitHeight="224.0" fitWidth="264.0" layoutX="42.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox layoutX="39.0" layoutY="255.0" prefHeight="93.0" prefWidth="264.0" spacing="7.0">
-                                 <children>
-                                    <Label text="Name :" />
-                                    <Label text="Price :" />
-                                    <Button mnemonicParsing="false" text="Add to cart" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="342.0" prefWidth="348.0">
-                           <children>
-                              <ImageView fitHeight="224.0" fitWidth="264.0" layoutX="42.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox layoutX="39.0" layoutY="255.0" prefHeight="93.0" prefWidth="264.0" spacing="7.0">
-                                 <children>
-                                    <Label text="Name :" />
-                                    <Label text="Price :" />
-                                    <Button mnemonicParsing="false" text="Add to cart" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane layoutY="38.0" prefHeight="30.0" prefWidth="1010.0" style="-fx-background-color: #140144;" />
                      </children>
-                  </HBox>
+                  </AnchorPane>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-   </content>
-</ScrollPane>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0">
+         <children>
+            <ScrollPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane>
+                     <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@BGBR.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" text="LNWZA SHOP" textFill="#140144" AnchorPane.bottomAnchor="751.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Paradox" size="64.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutY="480.0" prefHeight="272.0" prefWidth="1011.0">
+                           <children>
+                              <HBox layoutX="54.0" layoutY="7.0" spacing="90.0">
+                                 <children>
+                                    <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="187.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                              <Label layoutX="151.0" layoutY="194.0" text="NAME">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="153.0" layoutY="221.0" text="PRICE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="492.0" layoutY="194.0" text="NAME">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="492.0" layoutY="221.0" text="PRICE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="829.0" layoutY="194.0" text="NAME">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="829.0" layoutY="221.0" text="PRICE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="138.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                              <Button layoutX="816.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                              <Button layoutX="479.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="52.0" prefHeight="255.0" prefWidth="1024.0">
+                           <children>
+                              <AnchorPane layoutY="68.0" prefHeight="348.0" prefWidth="1017.0" style="-fx-background-color: #140144;">
+                                 <children>
+                                    <ImageView fitHeight="305.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@THE.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="18.0" layoutY="318.0" text="RECOMMEND" textFill="WHITE">
+                                       <font>
+                                          <Font name="Paradox" size="48.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutY="38.0" prefHeight="30.0" prefWidth="1010.0" style="-fx-background-color: #140144;" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
