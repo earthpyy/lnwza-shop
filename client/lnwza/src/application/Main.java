@@ -32,6 +32,7 @@ public class Main extends Application {
         
         Scene scene = new Scene(root, 1024, 768);
         mainStage.setScene(scene);
+        mainStage.setTitle("lnwza SHOP");
         System.out.println("GUI loaded!");
         mainStage.show();
     }

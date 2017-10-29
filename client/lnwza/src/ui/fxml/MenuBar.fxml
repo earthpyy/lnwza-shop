@@ -8,19 +8,19 @@
   <menus>
     <Menu mnemonicParsing="false" text="Stock">
       <items>
-        <MenuItem fx:id="menuStockView" mnemonicParsing="false" onAction="#showStockView" text="View Stock" />
+        <MenuItem fx:id="menuStockView" mnemonicParsing="false" onAction="#show" text="View Stock" userData="StockView" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter by..." />
-            <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStockUpdate" text="Update" />
+            <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStage" userData="StockUpdate" text="Update" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="Orders">
       <items>
-        <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#showOrderView" text="View Status" />
+        <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" userData="OrderViewOwner" text="View Status" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="History">
       <items>
-            <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#showHistoryView" text="Show History" />
+            <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#show" userData="HistoryView" text="Show History" />
             <Menu mnemonicParsing="false" text="Filter...">
               <items>
                   <MenuItem disable="true" mnemonicParsing="false" text="by Date" />
@@ -32,13 +32,13 @@
     </Menu>
       <Menu mnemonicParsing="false" text="Transactions">
         <items>
-          <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#showTransactionView" text="Show Transactions" />
+          <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#show" userData="TransactionView" text="Show Transactions" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
         </items>
       </Menu>
       <Menu mnemonicParsing="false" text="Agents">
         <items>
-          <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#showAgentView" text="Show Agents" />
+          <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#show" userData="AgentView" text="Show Agents" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
         </items>
       </Menu>
