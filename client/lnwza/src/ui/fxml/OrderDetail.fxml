@@ -47,10 +47,10 @@
                      <children>
                         <TableView prefHeight="200.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="tb_id" prefWidth="139.0" text="ID" />
-                            <TableColumn fx:id="tb_name" prefWidth="268.0" text="Name" />
-                              <TableColumn fx:id="tb_qty" minWidth="0.0" text="Qty" />
-                              <TableColumn fx:id="tb_price" minWidth="0.0" prefWidth="113.0" text="Price" />
+                            <TableColumn fx:id="tb_id" prefWidth="139.0" style="-fx-background-color: #4699b7;" text="ID" />
+                            <TableColumn fx:id="tb_name" prefWidth="268.0" style="-fx-background-color: #cee9f4;" text="Name" />
+                              <TableColumn fx:id="tb_qty" minWidth="0.0" style="-fx-background-color: #4699b7;" text="Qty" />
+                              <TableColumn fx:id="tb_price" minWidth="0.0" prefWidth="113.0" style="-fx-background-color: #cee9f4;" text="Price" />
                           </columns>
                         </TableView>
                      </children>
@@ -63,8 +63,8 @@
                      <children>
                         <TableView prefHeight="200.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="tb_date" prefWidth="150.0" text="Date" />
-                            <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="449.0" text="Status" />
+                            <TableColumn fx:id="tb_date" prefWidth="150.0" style="-fx-background-color: #cee9f4;" text="Date" />
+                            <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="449.0" style="-fx-background-color: #4699b7;" text="Status" />
                           </columns>
                         </TableView>
                      </children>
