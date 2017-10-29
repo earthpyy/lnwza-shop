@@ -39,7 +39,11 @@ public class AgentHandler {
         // TODO: next sprint
     }
     
-    public static void delete(int agentId) {
+    public static void update(Long id, String firstName, String lastName, String address, String tel) {
+        // TODO: next sprint
+    }
+    
+    public static void delete(Long id) {
         // TODO: next sprint
     }
     

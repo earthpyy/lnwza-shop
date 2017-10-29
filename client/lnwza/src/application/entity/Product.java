@@ -1,6 +1,7 @@
 package application.entity;
 
-import java.awt.Color;
+import application.ImageConverter;
+import javafx.scene.image.ImageView;
 import javax.persistence.*;
 
 /**
@@ -18,7 +19,6 @@ public class Product {
     private String photo;
     @ManyToOne
     private ProductType type;
-//    @OneToMany
     private ProductDetail[] detail;
     private String size;
     private Double price;
@@ -27,7 +27,7 @@ public class Product {
         this.productId = productId;
         this.name = name;
         this.description = description;
-        this.photo = photo;
+        this.photo = ImageConverter.toByte(photo);
         this.type = type;
         this.detail = detail;
         this.size = size;
@@ -62,12 +62,15 @@ public class Product {
         return description;
     }
 
-    public String getPhoto() {
-        return photo;
+    public ImageView getPhoto() {
+        ImageView img = new ImageView(ImageConverter.toImage(photo));
+        img.setPreserveRatio(true);
+        img.setFitWidth(283);
+        return img;
     }
 
-    public ProductType getType() {
-        return type;
+    public String getType() {
+        return type.getName();
     }
 
     public ProductDetail[] getDetail() {
@@ -107,11 +110,11 @@ public class Product {
     }
 
     public void setPhoto(String photo) {
-        this.photo = photo;
+        this.photo = ImageConverter.toByte(photo);
     }
 
-    public void setType(ProductType type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type.setName(type);
     }
 
     public void setDetail(ProductDetail[] detail) {

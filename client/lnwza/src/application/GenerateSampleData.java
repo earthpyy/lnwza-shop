@@ -38,7 +38,7 @@ public class GenerateSampleData {
 
             // Agents
             Agent ag;
-            em.getMetamodel().entity(application.entity.Agent.class);
+            em.getMetamodel().entity(Agent.class);
             em.createQuery("DELETE FROM Agent").executeUpdate();
             f = new FileReader("sample_data/sample_agent.txt");
             buff = new BufferedReader(f);
@@ -51,7 +51,7 @@ public class GenerateSampleData {
             
             // Product Types
             ArrayList<ProductType> pdt = new ArrayList<>();
-            em.getMetamodel().entity(application.entity.ProductType.class);
+            em.getMetamodel().entity(ProductType.class);
             em.createQuery("DELETE FROM ProductType").executeUpdate();
             f = new FileReader("sample_data/sample_producttype.txt");
             buff = new BufferedReader(f);
@@ -66,9 +66,9 @@ public class GenerateSampleData {
             
             // Products
             Product pd;
-            em.getMetamodel().entity(application.entity.Product.class);
+            em.getMetamodel().entity(Product.class);
             em.createQuery("DELETE FROM Product").executeUpdate();
-            em.getMetamodel().entity(application.entity.ProductDetail.class);
+            em.getMetamodel().entity(ProductDetail.class);
             em.createQuery("DELETE FROM ProductDetail").executeUpdate();
             
             f = new FileReader("sample_data/sample_product.txt");
@@ -85,7 +85,7 @@ public class GenerateSampleData {
                     em.persist(pdd[i]);
                 }
                 
-                pd = new Product(arr[0], arr[1], arr[2], arr[3], pdt.get(Integer.parseInt(arr[4])), pdd, arr[6], Double.parseDouble(arr[7]));
+                pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt.get(Integer.parseInt(arr[4])), pdd, arr[6], Double.parseDouble(arr[7]));
                 em.persist(pd);
             }
             
