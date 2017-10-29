@@ -1,9 +1,10 @@
 package application;
 
-import application.entity.Agent;
+import application.entity.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -27,26 +28,65 @@ public class GenerateSampleData {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.getMetamodel().entity(application.entity.Agent.class);
             
-            System.out.println("Clearing database...");
-            em.createQuery("DELETE FROM Agent").executeUpdate();
-        
             System.out.println("Inserting new sample data...");
             FileReader f;
             BufferedReader buff;
             String line = "";
-            String[] arr = null;
-            
-            // Agent
+            String[] arr = null, arrd = null;
+            int count;
+
+            // Agents
             Agent ag;
-            f = new FileReader("sample_agent.txt");
+            em.getMetamodel().entity(application.entity.Agent.class);
+            em.createQuery("DELETE FROM Agent").executeUpdate();
+            f = new FileReader("sample_data/sample_agent.txt");
             buff = new BufferedReader(f);
             
             while ((line = buff.readLine()) != null) {
                 arr = line.split(",");
                 ag = new Agent(arr[0], arr[1], arr[2], arr[3]);
                 em.persist(ag);
+            }
+            
+            // Product Types
+            ArrayList<ProductType> pdt = new ArrayList<>();
+            em.getMetamodel().entity(application.entity.ProductType.class);
+            em.createQuery("DELETE FROM ProductType").executeUpdate();
+            f = new FileReader("sample_data/sample_producttype.txt");
+            buff = new BufferedReader(f);
+            
+            line = buff.readLine();
+            arr = line.split(",");
+            for (String arri : arr) {
+                ProductType temp = new ProductType(arri);
+                pdt.add(temp);
+                em.persist(temp);
+            }
+            
+            // Products
+            Product pd;
+            em.getMetamodel().entity(application.entity.Product.class);
+            em.createQuery("DELETE FROM Product").executeUpdate();
+            em.getMetamodel().entity(application.entity.ProductDetail.class);
+            em.createQuery("DELETE FROM ProductDetail").executeUpdate();
+            
+            f = new FileReader("sample_data/sample_product.txt");
+            buff = new BufferedReader(f);
+            
+            while ((line = buff.readLine()) != null) {
+                arr = line.split(",");
+                count = Integer.parseInt(arr[5]);
+                ProductDetail[] pdd = new ProductDetail[count];
+                
+                for (int i = 0; i < count; i++) {
+                    arrd = buff.readLine().split(",");
+                    pdd[i] = new ProductDetail(arrd[0], arrd[1], Integer.parseInt(arrd[2]));
+                    em.persist(pdd[i]);
+                }
+                
+                pd = new Product(arr[0], arr[1], arr[2], arr[3], pdt.get(Integer.parseInt(arr[4])), pdd, arr[6], Double.parseDouble(arr[7]));
+                em.persist(pd);
             }
             
             em.getTransaction().commit();
