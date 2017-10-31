@@ -31,6 +31,7 @@ public class Main extends Application {
         root.setCenter(startPage);
         
         Scene scene = new Scene(root, 1024, 768);
+        scene.getStylesheets().add("ui/jbootx/bootstrap3.css");
         mainStage.setScene(scene);
         mainStage.setTitle("lnwza SHOP");
         System.out.println("GUI loaded!");

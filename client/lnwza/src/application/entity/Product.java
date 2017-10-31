@@ -1,6 +1,7 @@
 package application.entity;
 
 import application.ImageConverter;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.persistence.*;
 
@@ -18,7 +19,7 @@ public class Product {
     private String description;
     private String photo;
     @ManyToOne
-    private ProductType type;
+    public ProductType type;
     private ProductDetail[] detail;
     private String size;
     private Double price;
@@ -62,7 +63,11 @@ public class Product {
         return description;
     }
 
-    public ImageView getPhoto() {
+    public Image getPhoto() {
+        return ImageConverter.toImage(photo);
+    }
+    
+    public ImageView getPhotoView() {
         ImageView img = new ImageView(ImageConverter.toImage(photo));
         img.setPreserveRatio(true);
         img.setFitWidth(283);
