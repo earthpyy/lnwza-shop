@@ -35,13 +35,13 @@
       <Separator prefHeight="0.0" prefWidth="1024.0" />
       <TableView fx:id="tableView" prefHeight="665.0" prefWidth="1024.0">
         <columns>
-          <TableColumn fx:id="tb_checkbox" prefWidth="37.666656494140625" style="-fx-background-color: #4699b7;" />
-          <TableColumn fx:id="tb_photo" prefWidth="288.0" style="-fx-background-color: #cee9f4;" text="Photo" />
-            <TableColumn fx:id="tb_id" prefWidth="92.0" style="-fx-background-color: #4699b7;" styleClass="column-header-background" text="ID" />
-            <TableColumn fx:id="tb_name" prefWidth="309.0" style="-fx-background-color: #cee9f4;" styleClass="column-header-background" text="Product Name" />
-            <TableColumn fx:id="tb_type" minWidth="5.0" prefWidth="109.0" style="-fx-background-color: #4699b7;" styleClass="column-header-background" text="Type" />
-            <TableColumn fx:id="tb_size" prefWidth="104.0" style="-fx-background-color: #cee9f4;" styleClass="column-header-background" text="Size" />
-            <TableColumn fx:id="tb_price" minWidth="7.66668701171875" prefWidth="83.0" style="-fx-background-color: #4699b7;" styleClass="column-header-background" text="Price" />
+          <TableColumn fx:id="tb_checkbox" prefWidth="37.666656494140625" />
+          <TableColumn fx:id="tb_photo" prefWidth="288.0" text="Photo" />
+            <TableColumn fx:id="tb_id" prefWidth="92.0" text="ID" />
+            <TableColumn fx:id="tb_name" prefWidth="309.0" text="Product Name" />
+            <TableColumn fx:id="tb_type" minWidth="5.0" prefWidth="109.0" text="Type" />
+            <TableColumn fx:id="tb_size" prefWidth="104.0" text="Size" />
+            <TableColumn fx:id="tb_price" minWidth="7.66668701171875" prefWidth="83.0" text="Price" />
         </columns>
       </TableView>
       <Separator prefWidth="200.0" />

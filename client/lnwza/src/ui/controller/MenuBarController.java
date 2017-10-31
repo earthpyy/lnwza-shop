@@ -28,7 +28,7 @@ public class MenuBarController {
         
         try {
             Parent pane = FXMLLoader.load(getClass().getResource("/ui/fxml/" + scene + ".fxml"));
-            
+            pane.setStyle("/ui/resources/table.css");
             BorderPane border = Main.getRoot();
             border.setCenter(pane);
         } catch (IOException e) {
