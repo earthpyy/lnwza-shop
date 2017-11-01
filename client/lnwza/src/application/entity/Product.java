@@ -24,28 +24,20 @@ public class Product {
     private String photo;
     @ManyToOne
     public ProductType type;
-    @OneToMany(cascade=CascadeType.ALL)
-    private ArrayList<ProductDetail> detail;
     private String size;
     private Double price;
+    
+    @OneToMany(mappedBy="product")
+    private List<ProductDetail> detail;
 
-    public Product(String productId, String name, String description, String photo, ProductType type, ArrayList<ProductDetail> detail, String size, Double price) {
+    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.photo = ImageConverter.toByte(photo);
         this.type = type;
-        this.detail = detail;
         this.size = size;
         this.price = price;
-    }
-    
-    public Product(String productId, String name, String description, String photo, ProductType type, String colorName, String color, Integer quantity, String size, Double price) {
-        this(productId, name, description, photo, type, new ArrayList<>(Arrays.asList(new ProductDetail(colorName, color, quantity))), size, price);
-    }
-    
-    public Product(String productId, String name, String description, String photo, ProductType type, String colorName, String color, String size, Double price) {
-        this(productId, name, description, photo, type, new ArrayList<>(Arrays.asList(new ProductDetail(colorName, color, 0))), size, price);
     }
 
     public Long getId() {
@@ -84,7 +76,7 @@ public class Product {
     }
 
     public ArrayList<ProductDetail> getDetail() {
-        return detail;
+        return (ArrayList) detail;
     }
     
     public String getColorName(int index) {

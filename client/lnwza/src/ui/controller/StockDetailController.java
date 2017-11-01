@@ -1,7 +1,6 @@
 
 package ui.controller;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +16,7 @@ import javafx.collections.ObservableList;
 import application.entity.Product;
 import application.entity.ProductDetail;
 import application.handler.ProductDetailHandler;
+import java.util.ArrayList;
 
 /**
  *
@@ -101,9 +101,9 @@ public class StockDetailController {
         lb_type.setText(pd.getType());
         lb_description.setText(pd.getDescription());
         
-//        ProductDetailHandler.load(pd.getDetail());
-//        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
-        ObservableList<ProductDetail> data = FXCollections.observableArrayList(pd.getDetail());
+        ProductDetailHandler.load(pd.getDetail());
+        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
+//        ObservableList<ProductDetail> data = FXCollections.observableArrayList(pd.getDetail());
         tableView.setItems(data);
         
         updateTableView();

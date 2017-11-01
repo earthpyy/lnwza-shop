@@ -41,7 +41,7 @@ public class GenerateSampleData {
             Agent ag;
             em.getMetamodel().entity(Agent.class);
             em.createQuery("DELETE FROM Agent").executeUpdate();
-            f = new FileReader("../sample_data/sample_agent.txt");
+            f = new FileReader("sample_data/sample_agent.txt");
             buff = new BufferedReader(f);
             
             while ((line = buff.readLine()) != null) {
@@ -49,22 +49,7 @@ public class GenerateSampleData {
                 ag = new Agent(arr[0], arr[1], arr[2], arr[3]);
                 em.persist(ag);
             }
-            
-            // Product Types
-//            ArrayList<ProductType> pdt = new ArrayList<>();
-//            em.getMetamodel().entity(ProductType.class);
-//            em.createQuery("DELETE FROM ProductType").executeUpdate();
-//            f = new FileReader("../sample_data/sample_producttype.txt");
-//            buff = new BufferedReader(f);
-//            
-//            line = buff.readLine();
-//            arr = line.split(",");
-//            for (String arri : arr) {
-//                ProductType temp = new ProductType(arri);
-//                pdt.add(temp);
-//                em.persist(temp);
-//            }
-            
+                        
             // Products
             Product pd;
             ProductType pdt;
@@ -75,7 +60,7 @@ public class GenerateSampleData {
             em.getMetamodel().entity(ProductType.class);
             em.createQuery("DELETE FROM ProductType").executeUpdate();
             
-            f = new FileReader("../sample_data/sample_product.txt");
+            f = new FileReader("sample_data/sample_product.txt");
             buff = new BufferedReader(f);
             
             while ((line = buff.readLine()) != null) {
@@ -87,16 +72,14 @@ public class GenerateSampleData {
                 for (int i = 0; i < countT; i++) {
                     arr = buff.readLine().split(",");
                     countD = Integer.parseInt(arr[4]);
-                    ArrayList<ProductDetail> pdd = new ArrayList<>();
+                    
+                    pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, arr[5], Double.parseDouble(arr[6]));
+                    em.persist(pd);
                     
                     for (int j = 0; j < countD; j++) {
                         arrd = buff.readLine().split(",");
-                        pdd.add(new ProductDetail(arrd[0], arrd[1], Integer.parseInt(arrd[2])));
-//                        em.persist(pdd);
+                        em.persist(new ProductDetail(pd, arrd[0], arrd[1], Integer.parseInt(arrd[2])));
                     }
-                
-                    pd = new Product(arr[0], arr[1], arr[2], "../sample_data/" + arr[3], pdt, pdd, arr[5], Double.parseDouble(arr[6]));
-                    em.persist(pd);
                 }
             }
             

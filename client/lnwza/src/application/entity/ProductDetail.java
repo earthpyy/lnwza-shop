@@ -11,22 +11,21 @@ public class ProductDetail {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne(cascade=CascadeType.ALL)
+    private Product product;
     private String colorName;
     private String color;
     private Integer quantity;
-    
-    public ProductDetail() {
-        
-    }
 
-    public ProductDetail(String colorName, String color, Integer quantity) {
+    public ProductDetail(Product product, String colorName, String color, Integer quantity) {
+        this.product = product;
         this.colorName = colorName;
         this.color = color;
         this.quantity = quantity;
     }
     
-    public ProductDetail(String colorName, String color) {
-        this(colorName, color, 0);
+    public ProductDetail(Product product, String colorName, String color) {
+        this(product, colorName, color, 0);
     }
 
     public Long getId() {
@@ -35,6 +34,10 @@ public class ProductDetail {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 
     public String getColorName() {
@@ -47,6 +50,10 @@ public class ProductDetail {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public void setColorName(String colorName) {
