@@ -3,6 +3,7 @@ package application.handler;
 import application.DatabaseConnection;
 import application.entity.ProductDetail;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
@@ -20,7 +21,7 @@ public class ProductDetailHandler {
         return pds;
     }
 
-    public static void load(ProductDetail[] pdArr) {
+    public static void load(ArrayList<ProductDetail> pdArr) {
         pds = new ArrayList<>();
         
         EntityManager em = emf.createEntityManager();

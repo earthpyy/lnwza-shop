@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -33,14 +34,14 @@ public class GenerateSampleData {
             FileReader f;
             BufferedReader buff;
             String line = "";
-            String[] arr = null, arrd = null;
-            int count;
+            String[] arr = null, arrt = null, arrd = null;
+            int countT, countD;
 
             // Agents
             Agent ag;
             em.getMetamodel().entity(Agent.class);
             em.createQuery("DELETE FROM Agent").executeUpdate();
-            f = new FileReader("sample_data/sample_agent.txt");
+            f = new FileReader("../sample_data/sample_agent.txt");
             buff = new BufferedReader(f);
             
             while ((line = buff.readLine()) != null) {
@@ -50,43 +51,53 @@ public class GenerateSampleData {
             }
             
             // Product Types
-            ArrayList<ProductType> pdt = new ArrayList<>();
-            em.getMetamodel().entity(ProductType.class);
-            em.createQuery("DELETE FROM ProductType").executeUpdate();
-            f = new FileReader("sample_data/sample_producttype.txt");
-            buff = new BufferedReader(f);
-            
-            line = buff.readLine();
-            arr = line.split(",");
-            for (String arri : arr) {
-                ProductType temp = new ProductType(arri);
-                pdt.add(temp);
-                em.persist(temp);
-            }
+//            ArrayList<ProductType> pdt = new ArrayList<>();
+//            em.getMetamodel().entity(ProductType.class);
+//            em.createQuery("DELETE FROM ProductType").executeUpdate();
+//            f = new FileReader("../sample_data/sample_producttype.txt");
+//            buff = new BufferedReader(f);
+//            
+//            line = buff.readLine();
+//            arr = line.split(",");
+//            for (String arri : arr) {
+//                ProductType temp = new ProductType(arri);
+//                pdt.add(temp);
+//                em.persist(temp);
+//            }
             
             // Products
             Product pd;
+            ProductType pdt;
             em.getMetamodel().entity(Product.class);
             em.createQuery("DELETE FROM Product").executeUpdate();
             em.getMetamodel().entity(ProductDetail.class);
             em.createQuery("DELETE FROM ProductDetail").executeUpdate();
+            em.getMetamodel().entity(ProductType.class);
+            em.createQuery("DELETE FROM ProductType").executeUpdate();
             
-            f = new FileReader("sample_data/sample_product.txt");
+            f = new FileReader("../sample_data/sample_product.txt");
             buff = new BufferedReader(f);
             
             while ((line = buff.readLine()) != null) {
                 arr = line.split(",");
-                count = Integer.parseInt(arr[5]);
-                ProductDetail[] pdd = new ProductDetail[count];
+                countT = Integer.parseInt(arr[1]);
+                pdt = new ProductType(arr[0]);
+                em.persist(pdt);
                 
-                for (int i = 0; i < count; i++) {
-                    arrd = buff.readLine().split(",");
-                    pdd[i] = new ProductDetail(arrd[0], arrd[1], Integer.parseInt(arrd[2]));
-                    em.persist(pdd[i]);
+                for (int i = 0; i < countT; i++) {
+                    arr = buff.readLine().split(",");
+                    countD = Integer.parseInt(arr[4]);
+                    ArrayList<ProductDetail> pdd = new ArrayList<>();
+                    
+                    for (int j = 0; j < countD; j++) {
+                        arrd = buff.readLine().split(",");
+                        pdd.add(new ProductDetail(arrd[0], arrd[1], Integer.parseInt(arrd[2])));
+//                        em.persist(pdd);
+                    }
+                
+                    pd = new Product(arr[0], arr[1], arr[2], "../sample_data/" + arr[3], pdt, pdd, arr[5], Double.parseDouble(arr[6]));
+                    em.persist(pd);
                 }
-                
-                pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt.get(Integer.parseInt(arr[4])), pdd, arr[6], Double.parseDouble(arr[7]));
-                em.persist(pd);
             }
             
             em.getTransaction().commit();

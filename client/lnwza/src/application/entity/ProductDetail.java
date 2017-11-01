@@ -1,6 +1,5 @@
 package application.entity;
 
-import java.awt.Color;
 import javax.persistence.*;
 
 /**

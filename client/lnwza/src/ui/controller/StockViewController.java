@@ -13,14 +13,12 @@ import javafx.scene.image.ImageView;
 import application.entity.Product;
 import application.handler.ProductHandler;
 import java.io.IOException;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableRow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 /**
  *

@@ -1,9 +1,13 @@
 package application.entity;
 
-import application.ImageConverter;
+import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.persistence.*;
+
+import application.ImageConverter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -20,11 +24,12 @@ public class Product {
     private String photo;
     @ManyToOne
     public ProductType type;
-    private ProductDetail[] detail;
+    @OneToMany(cascade=CascadeType.ALL)
+    private ArrayList<ProductDetail> detail;
     private String size;
     private Double price;
 
-    public Product(String productId, String name, String description, String photo, ProductType type, ProductDetail[] detail, String size, Double price) {
+    public Product(String productId, String name, String description, String photo, ProductType type, ArrayList<ProductDetail> detail, String size, Double price) {
         this.productId = productId;
         this.name = name;
         this.description = description;
@@ -36,11 +41,11 @@ public class Product {
     }
     
     public Product(String productId, String name, String description, String photo, ProductType type, String colorName, String color, Integer quantity, String size, Double price) {
-        this(productId, name, description, photo, type, new ProductDetail[]{new ProductDetail(colorName, color, quantity)}, size, price);
+        this(productId, name, description, photo, type, new ArrayList<>(Arrays.asList(new ProductDetail(colorName, color, quantity))), size, price);
     }
     
     public Product(String productId, String name, String description, String photo, ProductType type, String colorName, String color, String size, Double price) {
-        this(productId, name, description, photo, type, new ProductDetail[]{new ProductDetail(colorName, color, 0)}, size, price);
+        this(productId, name, description, photo, type, new ArrayList<>(Arrays.asList(new ProductDetail(colorName, color, 0))), size, price);
     }
 
     public Long getId() {
@@ -78,20 +83,20 @@ public class Product {
         return type.getName();
     }
 
-    public ProductDetail[] getDetail() {
+    public ArrayList<ProductDetail> getDetail() {
         return detail;
     }
     
     public String getColorName(int index) {
-        return detail[index].getColorName();
+        return detail.get(index).getColorName();
     }
 
     public String getColor(int index) {
-        return detail[index].getColor();
+        return detail.get(index).getColor();
     }
 
     public Integer getQuantity(int index) {
-        return detail[index].getQuantity();
+        return detail.get(index).getQuantity();
     }
 
     public String getSize() {
@@ -122,20 +127,20 @@ public class Product {
         this.type.setName(type);
     }
 
-    public void setDetail(ProductDetail[] detail) {
+    public void setDetail(ArrayList<ProductDetail> detail) {
         this.detail = detail;
     }
     
     public void setColorName(int index, String colorName) {
-        this.detail[index].setColorName(colorName);
+        this.detail.get(index).setColorName(colorName);
     }
 
     public void setColor(int index, String color) {
-        this.detail[index].setColor(color);
+        this.detail.get(index).setColor(color);
     }
 
     public void setQuantity(int index, Integer quantity) {
-        this.detail[index].setQuantity(quantity);
+        this.detail.get(index).setQuantity(quantity);
     }
 
     public void setSize(String size) {

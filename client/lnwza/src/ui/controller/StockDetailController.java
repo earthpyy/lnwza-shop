@@ -101,8 +101,9 @@ public class StockDetailController {
         lb_type.setText(pd.getType());
         lb_description.setText(pd.getDescription());
         
-        ProductDetailHandler.load(pd.getDetail());
-        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
+//        ProductDetailHandler.load(pd.getDetail());
+//        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
+        ObservableList<ProductDetail> data = FXCollections.observableArrayList(pd.getDetail());
         tableView.setItems(data);
         
         updateTableView();
