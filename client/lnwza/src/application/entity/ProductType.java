@@ -14,7 +14,7 @@ public class ProductType {
     private Long id;
     private String name;
     
-    @OneToMany(mappedBy="type")
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="type")
     private List<Product> products;
 
     public ProductType(String name) {

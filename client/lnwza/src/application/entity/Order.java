@@ -17,7 +17,7 @@ public class Order {
     private Long id;
     @ManyToOne
     private Agent agent;
-//    @OneToMany
+    @OneToMany
     private List<ProductDetail> products;
     private List<Integer> quantity;
     @Temporal(TemporalType.TIMESTAMP)
