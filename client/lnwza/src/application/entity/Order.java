@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import application.Constant;
+
 /**
  *
  * @author SE-lnwza
@@ -15,12 +17,24 @@ public class Order {
     private Long id;
     @ManyToOne
     private Agent agent;
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="order")
+//    @OneToMany
     private List<ProductDetail> products;
     private List<Integer> quantity;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
     private int status;
+
+    public Order(Agent agent, List<ProductDetail> products, List<Integer> quantity, Date orderDate, int status) {
+        this.agent = agent;
+        this.products = products;
+        this.quantity = quantity;
+        this.orderDate = orderDate;
+        this.status = status;
+    }
+    
+    public Order(Agent agent) {
+        this(agent, new ArrayList<>(), new ArrayList<>(), new Date(), Constant.STATUS_NOTPAY);
+    }
 
     public Long getId() {
         return id;
@@ -56,6 +70,11 @@ public class Order {
 
     public void setProducts(List<ProductDetail> products) {
         this.products = products;
+    }
+    
+    public void addProduct(ProductDetail products, Integer quantity) {
+        this.products.add(products);
+        this.quantity.add(quantity);
     }
 
     public void setOrderDate(Date orderDate) {

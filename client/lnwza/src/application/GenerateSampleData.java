@@ -4,10 +4,9 @@ import application.entity.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -78,10 +77,31 @@ public class GenerateSampleData {
                     
                     for (int j = 0; j < countD; j++) {
                         arrd = buff.readLine().split(",");
-                        em.persist(new ProductDetail(pd, arrd[0], arrd[1], Integer.parseInt(arrd[2])));
+                        ProductDetail pdd = new ProductDetail(pd, arrd[0], arrd[1], Integer.parseInt(arrd[2]));
+                        em.persist(pdd);
                     }
                 }
             }
+            
+            // Orders (Agent #1 brought Product #1-#2)
+            Order od;
+            em.getMetamodel().entity(Order.class);
+            em.createQuery("DELETE FROM Order").executeUpdate();
+            
+            em.flush();
+            TypedQuery<Agent> query = em.createQuery("SELECT ag FROM Agent ag ORDER BY ag.id", Agent.class);
+            query.setMaxResults(1);
+            ag = query.getSingleResult();
+
+            od = new Order(ag);
+            
+            TypedQuery<ProductDetail> query2 = em.createQuery("SELECT pd FROM ProductDetail pd ORDER BY pd.id", ProductDetail.class);
+            query2.setMaxResults(2);
+            for (ProductDetail pdd : query2.getResultList()) {
+                od.addProduct(pdd, (int)(Math.random() * 10) + 1);
+            }
+            
+            em.persist(od);
             
             em.getTransaction().commit();
         } finally {

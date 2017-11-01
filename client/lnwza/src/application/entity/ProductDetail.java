@@ -17,8 +17,8 @@ public class ProductDetail {
     private String color;
     private Integer quantity;
     
-    @ManyToOne
-    private Order order;
+//    @ManyToOne
+//    private Order order;
 
     public ProductDetail(Product product, String colorName, String color, Integer quantity) {
         this.product = product;
@@ -55,9 +55,9 @@ public class ProductDetail {
         return quantity;
     }
 
-    public Order getOrder() {
-        return order;
-    }
+//    public Order getOrder() {
+//        return order;
+//    }
 
     public void setProduct(Product product) {
         this.product = product;
@@ -75,9 +75,9 @@ public class ProductDetail {
         this.quantity = quantity;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     @Override
     public int hashCode() {
