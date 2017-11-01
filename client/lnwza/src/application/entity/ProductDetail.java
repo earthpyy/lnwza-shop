@@ -11,11 +11,14 @@ public class ProductDetail {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private Product product;
     private String colorName;
     private String color;
     private Integer quantity;
+    
+    @ManyToOne
+    private Order order;
 
     public ProductDetail(Product product, String colorName, String color, Integer quantity) {
         this.product = product;
@@ -52,6 +55,10 @@ public class ProductDetail {
         return quantity;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
     public void setProduct(Product product) {
         this.product = product;
     }
@@ -66,6 +73,10 @@ public class ProductDetail {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override

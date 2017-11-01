@@ -24,11 +24,11 @@ public class Product {
     private String photo;
     @ManyToOne
     public ProductType type;
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
+    private List<ProductDetail> detail;
     private String size;
     private Double price;
     
-    @OneToMany(mappedBy="product")
-    private List<ProductDetail> detail;
 
     public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price) {
         this.productId = productId;
