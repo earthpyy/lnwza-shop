@@ -74,10 +74,6 @@ public class StockDetailController {
         tb_no.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableView.getItems().indexOf(column.getValue())));
         tb_color.setCellValueFactory(new PropertyValueFactory<>("colorName"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        
-//        ProductHandler.load();
-//        ObservableList<Product> data = FXCollections.observableArrayList(ProductHandler.getData());
-//        tableview.setItems(data);
     }
     
     void updateTableView() {
@@ -101,9 +97,9 @@ public class StockDetailController {
         lb_type.setText(pd.getType());
         lb_description.setText(pd.getDescription());
         
-        ProductDetailHandler.load(pd.getDetail());
-        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
-//        ObservableList<ProductDetail> data = FXCollections.observableArrayList(pd.getDetail());
+//        ProductDetailHandler.load(pd.getDetail());
+//        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
+        ObservableList<ProductDetail> data = FXCollections.observableArrayList(pd.getDetail());
         tableView.setItems(data);
         
         updateTableView();
