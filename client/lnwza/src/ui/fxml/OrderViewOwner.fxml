@@ -26,19 +26,11 @@
             <TextField fx:id="tf_search" layoutX="834.0" layoutY="6.0" prefHeight="25.0" prefWidth="163.0" />
          </children>
       </AnchorPane>
-<<<<<<< HEAD
       <Separator layoutY="120.0" prefHeight="8.0" prefWidth="1024.0" />
-      <TableView layoutX="-1.0" layoutY="128.0" prefHeight="715.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
+      <TableView fx:id="tableView" layoutX="-1.0" layoutY="128.0" prefHeight="715.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
          <columns>
             <TableColumn fx:id="tb_date" prefWidth="143.33334350585938" style="-fx-background-color: #cee9f4;" text="Date" />
             <TableColumn fx:id="tb_orderno" prefWidth="230.3333740234375" style="-fx-background-color: #4699b7;" text="Order Number" />
-=======
-      <Separator prefWidth="200.0" />
-      <TableView fx:id="tableView" prefHeight="715.0" prefWidth="1024.0">
-        <columns>
-          <TableColumn fx:id="tb_date" prefWidth="143.33334350585938" style="-fx-background-color: #cee9f4;" text="Date" />
-          <TableColumn fx:id="tb_orderno" prefWidth="230.3333740234375" style="-fx-background-color: #4699b7;" text="Order Number" />
->>>>>>> ef6a50049c23e6766387baf2de97ad3398334871
             <TableColumn fx:id="tb_name" minWidth="0.0" prefWidth="351.6666259765625" style="-fx-background-color: #cee9f4;" text="Agent Name" />
             <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="300.66668701171875" style="-fx-background-color: #4699b7;" text="Status" />
          </columns>
