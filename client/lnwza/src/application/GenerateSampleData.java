@@ -83,10 +83,12 @@ public class GenerateSampleData {
                 }
             }
             
-            // Orders (Agent #1 brought Product #1-#2)
+            // Orders (Agent #1 brought Product #1-#2) & Transaction
             Order od;
             em.getMetamodel().entity(Order.class);
             em.createQuery("DELETE FROM Order").executeUpdate();
+            em.getMetamodel().entity(Transaction.class);
+            em.createQuery("DELETE FROM Transaction").executeUpdate();
             
             em.flush();
             TypedQuery<Agent> query = em.createQuery("SELECT ag FROM Agent ag ORDER BY ag.id", Agent.class);

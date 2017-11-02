@@ -20,21 +20,36 @@ public class Order {
     @ManyToMany
     private List<ProductDetail> products;
     private List<Integer> quantity;
+    private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
     private int status;
+    
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="order")
+    private Transaction transaction;
 
-    public Order(Agent agent, List<ProductDetail> products, List<Integer> quantity, Date orderDate, int status) {
+    public Order(Agent agent, List<ProductDetail> products, List<Integer> quantity, Double amount, Date orderDate, int status) {
         this.agent = agent;
         this.products = products;
         this.quantity = quantity;
+        this.amount = amount;
         this.orderDate = orderDate;
         this.status = status;
+        this.transaction = new Transaction(null, Constant.TRAN_ORDER, null, this, amount, new Date());
     }
     
     public Order(Agent agent) {
-        this(agent, new ArrayList<>(), new ArrayList<>(), new Date(), Constant.STATUS_NOTPAY);
+        this(agent, new ArrayList<>(), new ArrayList<>(), new Double(0), new Date(), Constant.STATUS_NOTPAY);
     }
+    
+//    public Double calculateAmount() {
+//        double sum = 0;
+//        for (int i = 0; i < products.size(); i++) {
+//            sum += products.get(i).getProduct().getPrice() * quantity.get(i);
+//            System.out.println(sum);
+//        }
+//        return sum;
+//    }
 
     public Long getId() {
         return id;
@@ -64,6 +79,14 @@ public class Order {
         return quantity;
     }
 
+    public Double getAmount() {
+        return amount;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
     public void setAgent(Agent agent) {
         this.agent = agent;
     }
@@ -75,6 +98,8 @@ public class Order {
     public void addProduct(ProductDetail products, Integer quantity) {
         this.products.add(products);
         this.quantity.add(quantity);
+        amount += products.getProduct().getPrice() * quantity;
+        transaction.setAmount(amount);
     }
 
     public void setOrderDate(Date orderDate) {
@@ -87,6 +112,14 @@ public class Order {
 
     public void setQuantity(List<Integer> quantity) {
         this.quantity = quantity;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
     }
 
     @Override
