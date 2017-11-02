@@ -3,7 +3,6 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -12,21 +11,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HistoryViewController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" prefHeight="27.0" prefWidth="1055.0" style="-fx-background-color: #6db3bf;" text="History">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Separator prefWidth="200.0" />
-      <AnchorPane prefHeight="51.0" prefWidth="1024.0">
+      <AnchorPane prefHeight="82.0" prefWidth="1024.0" style="-fx-background-color: #140144;">
+         <children>
+            <Label layoutX="410.0" layoutY="13.0" text="HIISTORY" textFill="WHITE">
+               <font>
+                  <Font name="Paradox" size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Separator layoutY="81.0" prefHeight="3.0" prefWidth="1024.0" />
+      <AnchorPane layoutY="84.0" prefHeight="51.0" prefWidth="1024.0">
          <children>
             <ComboBox fx:id="cb_month" layoutX="380.0" layoutY="13.0" prefHeight="25.0" prefWidth="121.0" promptText="Month" />
             <ComboBox fx:id="cb_year" layoutX="531.0" layoutY="13.0" prefHeight="25.0" prefWidth="82.0" promptText="Year" />
          </children>
       </AnchorPane>
-  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="1024.0">
+      <AnchorPane layoutY="135.0" minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="1024.0">
          <children>
             <VBox layoutX="408.0" layoutY="67.0" spacing="10.0">
                <children>
@@ -55,12 +59,12 @@
                </children>
             </VBox>
             <LineChart fx:id="lc_graph" layoutX="268.0" layoutY="197.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
             </LineChart>
             <Separator layoutX="6.0" layoutY="-1.0" prefHeight="0.0" prefWidth="1024.0" />
             <VBox layoutX="597.0" layoutY="67.0" spacing="10.0">
@@ -84,6 +88,5 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Accordion />
    </children>
-</VBox>
+</AnchorPane>
