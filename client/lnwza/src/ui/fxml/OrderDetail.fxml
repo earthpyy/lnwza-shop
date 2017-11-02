@@ -13,7 +13,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.OrderDetailController">
    <children>
-      <AnchorPane prefHeight="155.0" prefWidth="600.0">
+      <AnchorPane prefHeight="155.0" prefWidth="600.0" style="-fx-background-color: #94cfc9;">
          <children>
             <VBox layoutX="144.0" layoutY="59.0" spacing="20.0">
                <children>

@@ -4,23 +4,23 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuBarController">
+<MenuBar style="-fx-background-color: #94cfc9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuBarController">
   <menus>
     <Menu mnemonicParsing="false" text="Stock">
       <items>
         <MenuItem fx:id="menuStockView" mnemonicParsing="false" onAction="#show" text="View Stock" userData="StockView" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter by..." />
-            <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStage" userData="StockUpdate" text="Update" />
+            <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStage" text="Update" userData="StockUpdate" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="Orders">
       <items>
-        <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" userData="OrderViewOwner" text="View Status" />
+        <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" text="View Status" userData="OrderViewOwner" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="History">
       <items>
-            <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#show" userData="HistoryView" text="Show History" />
+            <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#show" text="Show History" userData="HistoryView" />
             <Menu mnemonicParsing="false" text="Filter...">
               <items>
                   <MenuItem disable="true" mnemonicParsing="false" text="by Date" />
@@ -32,13 +32,13 @@
     </Menu>
       <Menu mnemonicParsing="false" text="Transactions">
         <items>
-          <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#show" userData="TransactionView" text="Show Transactions" />
+          <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#show" text="Show Transactions" userData="TransactionView" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
         </items>
       </Menu>
       <Menu mnemonicParsing="false" text="Agents">
         <items>
-          <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#show" userData="AgentView" text="Show Agents" />
+          <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#show" text="Show Agents" userData="AgentView" />
             <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
         </items>
       </Menu>

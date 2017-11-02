@@ -7,51 +7,50 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.StockViewController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" prefHeight="27.0" prefWidth="1052.0" style="-fx-background-color: #6db3bf;" text="VIEW STOCK">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Separator prefHeight="0.0" prefWidth="1024.0" />
-      <ButtonBar prefHeight="40.0" prefWidth="200.0">
-        <buttons>
+      <AnchorPane prefHeight="82.0" prefWidth="1024.0" style="-fx-background-color: #140144;">
+         <children>
+            <Label layoutX="388.0" layoutY="13.0" text="V IEW STOCK" textFill="WHITE">
+               <font>
+                  <Font name="Paradox" size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Separator layoutY="82.0" prefHeight="12.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
+      <ButtonBar layoutX="7.0" layoutY="94.0" prefHeight="40.0" prefWidth="1016.0" style="-fx-background-color: #E8EAF6;">
+         <buttons>
             <Button fx:id="bt_add" mnemonicParsing="false" styleClass="success" text="Add" />
             <Button fx:id="bt_edit" mnemonicParsing="false" styleClass="warning" text="Edit" />
-          <Button fx:id="bt_update" mnemonicParsing="false" styleClass="info" text="Update" />
+            <Button fx:id="bt_update" mnemonicParsing="false" styleClass="info" text="Update" />
             <Button fx:id="bt_delete" mnemonicParsing="false" styleClass="danger" text="Delete" />
-        </buttons>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
+         </buttons>
          <padding>
             <Insets right="10.0" />
          </padding>
       </ButtonBar>
-      <Separator prefHeight="0.0" prefWidth="1024.0" />
-      <TableView fx:id="tableView" prefHeight="665.0" prefWidth="1024.0">
-        <columns>
-          <TableColumn fx:id="tb_checkbox" prefWidth="37.666656494140625" />
-          <TableColumn fx:id="tb_photo" prefWidth="288.0" text="Photo" />
-            <TableColumn fx:id="tb_id" prefWidth="92.0" text="ID" />
-            <TableColumn fx:id="tb_name" prefWidth="309.0" text="Product Name" />
-            <TableColumn fx:id="tb_type" minWidth="5.0" prefWidth="109.0" text="Type" />
-            <TableColumn fx:id="tb_size" prefWidth="104.0" text="Size" />
-            <TableColumn fx:id="tb_price" minWidth="7.66668701171875" prefWidth="83.0" text="Price" />
-        </columns>
+      <Separator layoutY="134.0" prefHeight="12.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
+      <Separator layoutY="729.0" prefHeight="12.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
+      <TableView fx:id="tableView" layoutY="146.0" prefHeight="622.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
+         <columns>
+            <TableColumn fx:id="tb_checkbox" prefWidth="37.666656494140625" style="-fx-background-color: #94cfc9;" />
+            <TableColumn fx:id="tb_photo" prefWidth="288.0" style="-fx-background-color: #4699b7;" text="Photo" />
+            <TableColumn fx:id="tb_id" prefWidth="92.0" style="-fx-background-color: #94cfc9;" text="ID" />
+            <TableColumn fx:id="tb_name" prefWidth="309.0" style="-fx-background-color: #4699b7;" text="Product Name" />
+            <TableColumn fx:id="tb_type" minWidth="5.0" prefWidth="109.0" style="-fx-background-color: #94cfc9;" text="Type" />
+            <TableColumn fx:id="tb_size" prefWidth="104.0" style="-fx-background-color: #4699b7;" text="Size" />
+            <TableColumn fx:id="tb_price" minWidth="7.66668701171875" prefWidth="83.0" style="-fx-background-color: #94cfc9;" text="Price" />
+         </columns>
       </TableView>
-      <Separator prefWidth="200.0" />
-      <Label fx:id="lb_summary" prefHeight="27.0" prefWidth="1030.0" style="-fx-background-color: pink;" text="SUMMARY:">
+      <Label fx:id="lb_summary" layoutY="741.0" prefHeight="27.0" prefWidth="1030.0" style="-fx-background-color: #4699b7;" text="SUMMARY:">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
-         <VBox.margin>
-            <Insets left="5.0" />
-         </VBox.margin>
       </Label>
    </children>
-</VBox>
+</AnchorPane>
