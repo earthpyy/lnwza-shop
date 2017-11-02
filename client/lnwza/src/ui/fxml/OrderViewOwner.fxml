@@ -23,7 +23,7 @@
          </children>
       </AnchorPane>
       <Separator prefWidth="200.0" />
-      <TableView prefHeight="715.0" prefWidth="1024.0">
+      <TableView fx:id="tableView" prefHeight="715.0" prefWidth="1024.0">
         <columns>
           <TableColumn fx:id="tb_date" prefWidth="143.33334350585938" style="-fx-background-color: #cee9f4;" text="Date" />
           <TableColumn fx:id="tb_orderno" prefWidth="230.3333740234375" style="-fx-background-color: #4699b7;" text="Order Number" />

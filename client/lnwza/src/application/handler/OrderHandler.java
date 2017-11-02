@@ -26,9 +26,9 @@ public class OrderHandler {
         
         EntityManager em = emf.createEntityManager();
         try {
-            TypedQuery<Order> q = em.createQuery("SELECT FROM Agent", Order.class);
-            for (Order ag : q.getResultList()) {
-                orders.add(ag);
+            TypedQuery<Order> q = em.createQuery("SELECT FROM Order", Order.class);
+            for (Order od : q.getResultList()) {
+                orders.add(od);
             }
         } finally {
             em.close();
