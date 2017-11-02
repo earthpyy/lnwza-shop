@@ -11,19 +11,19 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="414.0" prefWidth="600.0">
+      <AnchorPane prefHeight="414.0" prefWidth="600.0" style="-fx-background-color: #140144;">
          <children>
-            <Label layoutX="45.0" layoutY="111.0" prefHeight="37.0" prefWidth="128.0" text="Welcome to  ">
+            <Label layoutX="45.0" layoutY="111.0" prefHeight="37.0" prefWidth="128.0" text="Welcome to  " textFill="WHITE">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="142.0" text="lnwza-Shop">
+            <Label layoutX="45.0" layoutY="142.0" text="lnwza-Shop" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="298.0" layoutY="31.0" prefHeight="338.0" prefWidth="277.0">
+            <AnchorPane layoutX="298.0" layoutY="31.0" prefHeight="338.0" prefWidth="277.0" style="-fx-background-color: #E8EAF6;">
                <children>
                   <Label layoutX="103.0" layoutY="28.0" text="SIGN IN">
                      <font>
