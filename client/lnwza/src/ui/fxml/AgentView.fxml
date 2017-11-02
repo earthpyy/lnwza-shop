@@ -7,37 +7,38 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AgentViewController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" prefHeight="32.0" prefWidth="1024.0" text="Agents">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Separator prefWidth="200.0">
-         <VBox.margin>
-            <Insets bottom="5.0" top="5.0" />
-         </VBox.margin>
-      </Separator>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button fx:id="bt_hello" mnemonicParsing="false" onAction="#hello" text="Hello!" />
-        </buttons>
+      <AnchorPane prefHeight="82.0" prefWidth="1024.0" style="-fx-background-color: #140144;">
+         <children>
+            <Label alignment="CENTER" layoutX="480.0" layoutY="16.0" text="AGENTS" textFill="WHITE">
+               <font>
+                  <Font name="Paradox" size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Separator layoutY="84.0" prefHeight="0.0" prefWidth="1024.0" />
+      <ButtonBar layoutX="6.0" layoutY="87.0" prefHeight="40.0" prefWidth="1024.0">
+         <buttons>
+            <Button fx:id="bt_hello" mnemonicParsing="false" onAction="#hello" text="Hello!" />
+         </buttons>
          <padding>
             <Insets right="10.0" />
          </padding>
       </ButtonBar>
-      <TableView fx:id="tableview" prefHeight="684.0" prefWidth="1024.0">
-        <columns>
-          <TableColumn fx:id="tb_id" prefWidth="51.0" text="ID" />
-          <TableColumn fx:id="tb_first" prefWidth="113.0" text="First Name" />
-            <TableColumn fx:id="tb_last" prefWidth="176.0" text="Last Name" />
-            <TableColumn fx:id="tb_address" prefWidth="539.0" text="Address" />
-            <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" text="Telephone" />
-        </columns>
+      <TableView fx:id="tableview" layoutY="127.0" prefHeight="684.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
+         <columns>
+            <TableColumn fx:id="tb_id" prefWidth="51.0" style="-fx-background-color: #4699b7;" text="ID" />
+            <TableColumn fx:id="tb_first" prefWidth="113.0" style="-fx-background-color: #94cfc9;" text="First Name" />
+            <TableColumn fx:id="tb_last" prefWidth="176.0" style="-fx-background-color: #4699b7;" text="Last Name" />
+            <TableColumn fx:id="tb_address" prefWidth="539.0" style="-fx-background-color: #94cfc9;" text="Address" />
+            <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" style="-fx-background-color: #4699b7;" text="Telephone" />
+         </columns>
       </TableView>
    </children>
-</VBox>
+</AnchorPane>
