@@ -71,7 +71,7 @@ public class StockDetailController {
     protected void initialize() {
         updateTableView();
         
-        tb_no.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableView.getItems().indexOf(column.getValue())));
+        tb_no.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableView.getItems().indexOf(column.getValue()) + 1));
         tb_color.setCellValueFactory(new PropertyValueFactory<>("colorName"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
     }

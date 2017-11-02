@@ -9,6 +9,10 @@ import javax.persistence.*;
  */
 @Entity
 public class Transaction {
+    
+    public static final int ERROR = 0;
+    public static final int ORDER = 1;
+    public static final int STOCK = 2;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,13 +26,13 @@ public class Transaction {
     @Temporal(TemporalType.TIMESTAMP)
     private Date transactionDate;
 
-    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount, Date transactionDate) {
+    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
         this.description = description;
         this.type = type;
         this.product = product;
         this.order = order;
         this.amount = amount;
-        this.transactionDate = transactionDate;
+        this.transactionDate = new Date();
     }
 
     public Long getId() {

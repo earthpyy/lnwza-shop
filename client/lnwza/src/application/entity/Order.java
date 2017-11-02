@@ -1,11 +1,10 @@
 package application.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
-
-import application.Constant;
 
 /**
  *
@@ -23,23 +22,24 @@ public class Order {
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
-    private int status;
+    @ManyToMany
+    private List<Status> status;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="order")
     private Transaction transaction;
 
-    public Order(Agent agent, List<ProductDetail> products, List<Integer> quantity, Double amount, Date orderDate, int status) {
+    public Order(Agent agent, List<ProductDetail> products, List<Integer> quantity, Double amount) {
         this.agent = agent;
         this.products = products;
         this.quantity = quantity;
         this.amount = amount;
-        this.orderDate = orderDate;
-        this.status = status;
-        this.transaction = new Transaction(null, Constant.TRAN_ORDER, null, this, amount, new Date());
+        this.orderDate = new Date();
+        this.status = new ArrayList<>(Arrays.asList(new Status()));
+        this.transaction = new Transaction(null, Transaction.ORDER, null, this, amount);
     }
     
     public Order(Agent agent) {
-        this(agent, new ArrayList<>(), new ArrayList<>(), new Double(0), new Date(), Constant.STATUS_NOTPAY);
+        this(agent, new ArrayList<>(), new ArrayList<>(), new Double(0));
     }
     
 //    public Double calculateAmount() {
@@ -71,8 +71,12 @@ public class Order {
         return orderDate;
     }
 
-    public int getStatus() {
-        return status;
+    public ArrayList<Status> getStatus() {
+        return (ArrayList) status;
+    }
+    
+    public Status getLastStatus() {
+        return status.get(status.size() - 1);
     }
 
     public List<Integer> getQuantity() {
@@ -106,8 +110,25 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(List<Status> status) {
         this.status = status;
+    }
+    
+    public void addStatus(Status status) {
+        this.status.add(status);
+    }
+    
+    public void addStatus(Integer status) {
+        this.status.add(new Status(status));
+    }
+    
+    public void addNextStatus() {
+        addStatus(getLastStatus().getNextStatus());
+    }
+    
+    public void addCancelledStatus() {
+        if (getLastStatus().getStatus() != Status.ERROR && getLastStatus().getStatus() != Status.CANCELLED)
+            addStatus(Status.CANCELLED);
     }
 
     public void setQuantity(List<Integer> quantity) {
