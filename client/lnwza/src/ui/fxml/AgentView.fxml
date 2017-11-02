@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AgentViewController">
    <children>
       <AnchorPane prefHeight="82.0" prefWidth="1024.0" style="-fx-background-color: #140144;">
          <children>
@@ -32,30 +32,16 @@
             <Insets right="10.0" />
          </padding>
       </ButtonBar>
-<<<<<<< HEAD
-      <TableView fx:id="tableview" layoutY="127.0" prefHeight="684.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
-         <columns>
-            <TableColumn fx:id="tb_id" prefWidth="51.0" style="-fx-background-color: #4699b7;" text="ID" />
-            <TableColumn fx:id="tb_first" prefWidth="113.0" style="-fx-background-color: #94cfc9;" text="First Name" />
-            <TableColumn fx:id="tb_last" prefWidth="176.0" style="-fx-background-color: #4699b7;" text="Last Name" />
-            <TableColumn fx:id="tb_address" prefWidth="539.0" style="-fx-background-color: #94cfc9;" text="Address" />
-            <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" style="-fx-background-color: #4699b7;" text="Telephone" />
-         </columns>
-      </TableView>
-=======
       <ScrollPane hbarPolicy="NEVER">
-         <content>
-            <TableView fx:id="tableview" prefWidth="1024.0">
+          <TableView fx:id="tableview" layoutY="127.0" prefHeight="684.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
               <columns>
-                <TableColumn fx:id="tb_id" prefWidth="51.0" text="ID" />
-                <TableColumn fx:id="tb_first" prefWidth="113.0" text="First Name" />
-                  <TableColumn fx:id="tb_last" prefWidth="176.0" text="Last Name" />
-                  <TableColumn fx:id="tb_address" prefWidth="539.0" text="Address" />
-                  <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" text="Telephone" />
+                  <TableColumn fx:id="tb_id" prefWidth="51.0" style="-fx-background-color: #4699b7;" text="ID" />
+                  <TableColumn fx:id="tb_first" prefWidth="113.0" style="-fx-background-color: #94cfc9;" text="First Name" />
+                  <TableColumn fx:id="tb_last" prefWidth="176.0" style="-fx-background-color: #4699b7;" text="Last Name" />
+                  <TableColumn fx:id="tb_address" prefWidth="539.0" style="-fx-background-color: #94cfc9;" text="Address" />
+                  <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" style="-fx-background-color: #4699b7;" text="Telephone" />
               </columns>
-            </TableView>
-         </content>
+          </TableView>
       </ScrollPane>
->>>>>>> 7606228b32478b91e4923662ca88f2ec8a260d38
    </children>
 </AnchorPane>
