@@ -1,5 +1,6 @@
 package application.entity;
 
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -12,6 +13,9 @@ public class ProductType {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="type")
+    private List<Product> products;
 
     public ProductType(String name) {
         this.name = name;
@@ -25,12 +29,20 @@ public class ProductType {
         this.id = id;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override

@@ -8,4 +8,5 @@
 /client/lnwza/*
 !/client/lnwza/src
 !/client/lnwza/lib
+!/client/lnwza/sample_data
 client/lnwza/src/application/resources/config.properties

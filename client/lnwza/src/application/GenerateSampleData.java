@@ -4,9 +4,9 @@ import application.entity.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -33,8 +33,8 @@ public class GenerateSampleData {
             FileReader f;
             BufferedReader buff;
             String line = "";
-            String[] arr = null, arrd = null;
-            int count;
+            String[] arr = null, arrt = null, arrd = null;
+            int countT, countD;
 
             // Agents
             Agent ag;
@@ -48,46 +48,60 @@ public class GenerateSampleData {
                 ag = new Agent(arr[0], arr[1], arr[2], arr[3]);
                 em.persist(ag);
             }
-            
-            // Product Types
-            ArrayList<ProductType> pdt = new ArrayList<>();
-            em.getMetamodel().entity(ProductType.class);
-            em.createQuery("DELETE FROM ProductType").executeUpdate();
-            f = new FileReader("sample_data/sample_producttype.txt");
-            buff = new BufferedReader(f);
-            
-            line = buff.readLine();
-            arr = line.split(",");
-            for (String arri : arr) {
-                ProductType temp = new ProductType(arri);
-                pdt.add(temp);
-                em.persist(temp);
-            }
-            
+                        
             // Products
             Product pd;
+            ProductType pdt;
             em.getMetamodel().entity(Product.class);
             em.createQuery("DELETE FROM Product").executeUpdate();
             em.getMetamodel().entity(ProductDetail.class);
             em.createQuery("DELETE FROM ProductDetail").executeUpdate();
+            em.getMetamodel().entity(ProductType.class);
+            em.createQuery("DELETE FROM ProductType").executeUpdate();
             
             f = new FileReader("sample_data/sample_product.txt");
             buff = new BufferedReader(f);
             
             while ((line = buff.readLine()) != null) {
                 arr = line.split(",");
-                count = Integer.parseInt(arr[5]);
-                ProductDetail[] pdd = new ProductDetail[count];
+                countT = Integer.parseInt(arr[1]);
+                pdt = new ProductType(arr[0]);
+                em.persist(pdt);
                 
-                for (int i = 0; i < count; i++) {
-                    arrd = buff.readLine().split(",");
-                    pdd[i] = new ProductDetail(arrd[0], arrd[1], Integer.parseInt(arrd[2]));
-                    em.persist(pdd[i]);
+                for (int i = 0; i < countT; i++) {
+                    arr = buff.readLine().split(",");
+                    countD = Integer.parseInt(arr[4]);
+                    
+                    pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, arr[5], Double.parseDouble(arr[6]));
+                    em.persist(pd);
+                    
+                    for (int j = 0; j < countD; j++) {
+                        arrd = buff.readLine().split(",");
+                        ProductDetail pdd = new ProductDetail(pd, arrd[0], arrd[1], Integer.parseInt(arrd[2]));
+                        em.persist(pdd);
+                    }
                 }
-                
-                pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt.get(Integer.parseInt(arr[4])), pdd, arr[6], Double.parseDouble(arr[7]));
-                em.persist(pd);
             }
+            
+            // Orders (Agent #1 brought Product #1-#2)
+            Order od;
+            em.getMetamodel().entity(Order.class);
+            em.createQuery("DELETE FROM Order").executeUpdate();
+            
+            em.flush();
+            TypedQuery<Agent> query = em.createQuery("SELECT ag FROM Agent ag ORDER BY ag.id", Agent.class);
+            query.setMaxResults(1);
+            ag = query.getSingleResult();
+
+            od = new Order(ag);
+            
+            TypedQuery<ProductDetail> query2 = em.createQuery("SELECT pd FROM ProductDetail pd ORDER BY pd.id", ProductDetail.class);
+            query2.setMaxResults(2);
+            for (ProductDetail pdd : query2.getResultList()) {
+                od.addProduct(pdd, (int)(Math.random() * 10) + 1);
+            }
+            
+            em.persist(od);
             
             em.getTransaction().commit();
         } finally {

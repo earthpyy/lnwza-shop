@@ -1,8 +1,13 @@
 package application.entity;
 
-import application.ImageConverter;
+import java.util.List;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.persistence.*;
+
+import application.ImageConverter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -18,28 +23,21 @@ public class Product {
     private String description;
     private String photo;
     @ManyToOne
-    private ProductType type;
-    private ProductDetail[] detail;
+    public ProductType type;
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
+    private List<ProductDetail> detail;
     private String size;
     private Double price;
+    
 
-    public Product(String productId, String name, String description, String photo, ProductType type, ProductDetail[] detail, String size, Double price) {
+    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.photo = ImageConverter.toByte(photo);
         this.type = type;
-        this.detail = detail;
         this.size = size;
         this.price = price;
-    }
-    
-    public Product(String productId, String name, String description, String photo, ProductType type, String colorName, String color, Integer quantity, String size, Double price) {
-        this(productId, name, description, photo, type, new ProductDetail[]{new ProductDetail(colorName, color, quantity)}, size, price);
-    }
-    
-    public Product(String productId, String name, String description, String photo, ProductType type, String colorName, String color, String size, Double price) {
-        this(productId, name, description, photo, type, new ProductDetail[]{new ProductDetail(colorName, color, 0)}, size, price);
     }
 
     public Long getId() {
@@ -62,7 +60,11 @@ public class Product {
         return description;
     }
 
-    public ImageView getPhoto() {
+    public Image getPhoto() {
+        return ImageConverter.toImage(photo);
+    }
+    
+    public ImageView getPhotoView() {
         ImageView img = new ImageView(ImageConverter.toImage(photo));
         img.setPreserveRatio(true);
         img.setFitWidth(283);
@@ -73,20 +75,20 @@ public class Product {
         return type.getName();
     }
 
-    public ProductDetail[] getDetail() {
-        return detail;
+    public ArrayList<ProductDetail> getDetail() {
+        return (ArrayList) detail;
     }
     
     public String getColorName(int index) {
-        return detail[index].getColorName();
+        return detail.get(index).getColorName();
     }
 
     public String getColor(int index) {
-        return detail[index].getColor();
+        return detail.get(index).getColor();
     }
 
     public Integer getQuantity(int index) {
-        return detail[index].getQuantity();
+        return detail.get(index).getQuantity();
     }
 
     public String getSize() {
@@ -117,20 +119,20 @@ public class Product {
         this.type.setName(type);
     }
 
-    public void setDetail(ProductDetail[] detail) {
+    public void setDetail(ArrayList<ProductDetail> detail) {
         this.detail = detail;
     }
     
     public void setColorName(int index, String colorName) {
-        this.detail[index].setColorName(colorName);
+        this.detail.get(index).setColorName(colorName);
     }
 
     public void setColor(int index, String color) {
-        this.detail[index].setColor(color);
+        this.detail.get(index).setColor(color);
     }
 
     public void setQuantity(int index, Integer quantity) {
-        this.detail[index].setQuantity(quantity);
+        this.detail.get(index).setQuantity(quantity);
     }
 
     public void setSize(String size) {
