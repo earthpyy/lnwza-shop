@@ -45,7 +45,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="600.0">
+                        <TableView fx:id="tableViewItem" prefHeight="200.0" prefWidth="600.0">
                           <columns>
                             <TableColumn fx:id="tb_id" prefWidth="139.0" style="-fx-background-color: #4699b7;" text="ID" />
                             <TableColumn fx:id="tb_name" prefWidth="268.0" style="-fx-background-color: #cee9f4;" text="Name" />
@@ -61,7 +61,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="600.0">
+                        <TableView fx:id="tableViewStatus" prefHeight="200.0" prefWidth="600.0">
                           <columns>
                             <TableColumn fx:id="tb_date" prefWidth="150.0" style="-fx-background-color: #cee9f4;" text="Date" />
                             <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="449.0" style="-fx-background-color: #4699b7;" text="Status" />
