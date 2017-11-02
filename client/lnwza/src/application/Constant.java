@@ -13,4 +13,8 @@ public class Constant {
     public static final int STATUS_RECEIVED = 5;
     public static final int STATUS_RETURN = 6;
     public static final int STATUS_CANCELLED = 9;
+    
+    public static final int TRAN_ERROR = 0;
+    public static final int TRAN_ORDER = 1;
+    public static final int TRAN_STOCK = 2;
 }
