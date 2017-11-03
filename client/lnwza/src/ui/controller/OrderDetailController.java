@@ -1,6 +1,7 @@
 
 package ui.controller;
 
+import application.entity.BagProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,19 +35,19 @@ public class OrderDetailController {
     private Button bt_cancle;
     
     @FXML
-    private TableView<ProductDetail> tableview_item;
+    private TableView<BagProduct> tableview_item;
 
     @FXML
-    private TableColumn<ProductDetail, Number> tb_id;
+    private TableColumn<BagProduct, Number> tb_id;
 
     @FXML
-    private TableColumn<ProductDetail, String> tb_name;
+    private TableColumn<BagProduct, String> tb_name;
 
     @FXML
-    private TableColumn<ProductDetail, Integer> tb_qty;
+    private TableColumn<BagProduct, Integer> tb_qty;
 
     @FXML
-    private TableColumn<ProductDetail, Double> tb_price;
+    private TableColumn<BagProduct, Double> tb_price;
     
     @FXML
     private TableView<Status> tableview_status;
@@ -62,9 +63,9 @@ public class OrderDetailController {
         updateTableView();
         
         tb_id.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableview_item.getItems().indexOf(column.getValue()) + 1));
-        tb_name.setCellValueFactory(new PropertyValueFactory<>("products"));
+        tb_name.setCellValueFactory(new PropertyValueFactory<>("productName"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        tb_price.setCellValueFactory(new PropertyValueFactory<>("status"));
+        tb_price.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         
 //        ProductHandler.load();
 //        ObservableList<Product> data = FXCollections.observableArrayList(ProductHandler.getData());
@@ -83,9 +84,11 @@ public class OrderDetailController {
         tableview_status.setPlaceholder(new Label("No status found!"));
     }
     
-    void fill(Order pd) {
-        ObservableList<ProductDetail> dataItem = FXCollections.observableArrayList(pd.getProducts());
-        ObservableList<Status> dataStatus = FXCollections.observableArrayList(pd.getStatus());
+    void fill(Order od) {
+        tf_orderno.setText(od.getId().toString());
+        
+        ObservableList<BagProduct> dataItem = FXCollections.observableArrayList(od.getProducts());
+        ObservableList<Status> dataStatus = FXCollections.observableArrayList(od.getStatus());
         
         tableview_item.setItems(dataItem);
         tableview_status.setItems(dataStatus);

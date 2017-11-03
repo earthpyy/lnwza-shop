@@ -83,12 +83,18 @@ public class GenerateSampleData {
                 }
             }
             
-            // Orders (Agent #1 brought Product #1-#2) & Transaction
+            // Status & Transaction
+            em.getMetamodel().entity(Status.class);
+            em.createQuery("DELETE FROM Status").executeUpdate();
+            em.getMetamodel().entity(Transaction.class);
+            em.createQuery("DELETE FROM Transaction").executeUpdate();
+            
+            // Orders (Agent #1 brought Product #1-#2)
             Order od;
             em.getMetamodel().entity(Order.class);
             em.createQuery("DELETE FROM Order").executeUpdate();
-            em.getMetamodel().entity(Transaction.class);
-            em.createQuery("DELETE FROM Transaction").executeUpdate();
+            em.getMetamodel().entity(BagProduct.class);
+            em.createQuery("DELETE FROM BagProduct").executeUpdate();
             
             em.flush();
             TypedQuery<Agent> query = em.createQuery("SELECT ag FROM Agent ag ORDER BY ag.id", Agent.class);
@@ -100,7 +106,7 @@ public class GenerateSampleData {
             TypedQuery<ProductDetail> query2 = em.createQuery("SELECT pd FROM ProductDetail pd ORDER BY pd.id", ProductDetail.class);
             query2.setMaxResults(2);
             for (ProductDetail pdd : query2.getResultList()) {
-                od.addProduct(pdd, (int)(Math.random() * 10) + 1);
+                od.addProduct(new BagProduct(od, pdd, (int)(Math.random() * 10) + 1));
             }
             
             em.persist(od);

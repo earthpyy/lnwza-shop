@@ -44,6 +44,10 @@ public class Agent {
     public String getLastName() {
         return lastName;
     }
+    
+    public String getName() {
+        return firstName + " " + lastName;
+    }
 
     public String getAddress() {
         return address;

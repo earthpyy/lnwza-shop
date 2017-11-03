@@ -85,7 +85,6 @@ public class StockViewController {
                         pane = fxmlLoader.load();
                         StockDetailController ctrl = (StockDetailController) fxmlLoader.getController();
                         ctrl.fill((Product) tableView.getSelectionModel().getSelectedItem());
-//                        System.out.println(tableView.getSelectionModel().getSelectedItem().getDetail());
                         
                         Stage stage = new Stage();
                         stage.initModality(Modality.APPLICATION_MODAL);

@@ -16,30 +16,28 @@ public class Order {
     private Long id;
     @ManyToOne
     private Agent agent;
-    @ManyToMany
-    private List<ProductDetail> products;
-    private List<Integer> quantity;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    private List<BagProduct> products;
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
-    @ManyToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<Status> status;
     
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="order")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Transaction transaction;
 
-    public Order(Agent agent, List<ProductDetail> products, List<Integer> quantity, Double amount) {
+    public Order(Agent agent, List<BagProduct> products, Double amount) {
         this.agent = agent;
         this.products = products;
-        this.quantity = quantity;
         this.amount = amount;
         this.orderDate = new Date();
-        this.status = new ArrayList<>(Arrays.asList(new Status()));
+        this.status = new ArrayList<>(Arrays.asList(new Status(this)));
         this.transaction = new Transaction(null, Transaction.ORDER, null, this, amount);
     }
     
     public Order(Agent agent) {
-        this(agent, new ArrayList<>(), new ArrayList<>(), new Double(0));
+        this(agent, new ArrayList<>(), new Double(0));
     }
     
 //    public Double calculateAmount() {
@@ -62,8 +60,12 @@ public class Order {
     public Agent getAgent() {
         return agent;
     }
+    
+    public String getAgentName() {
+        return agent.getName();
+    }
 
-    public ArrayList<ProductDetail> getProducts() {
+    public ArrayList<BagProduct> getProducts() {
         return (ArrayList) products;
     }
 
@@ -78,9 +80,9 @@ public class Order {
     public Status getLastStatus() {
         return status.get(status.size() - 1);
     }
-
-    public List<Integer> getQuantity() {
-        return quantity;
+    
+    public String getLastStatusName() {
+        return getLastStatus().getStatusName();
     }
 
     public Double getAmount() {
@@ -95,14 +97,13 @@ public class Order {
         this.agent = agent;
     }
 
-    public void setProducts(List<ProductDetail> products) {
+    public void setProducts(List<BagProduct> products) {
         this.products = products;
     }
     
-    public void addProduct(ProductDetail products, Integer quantity) {
+    public void addProduct(BagProduct products) {
         this.products.add(products);
-        this.quantity.add(quantity);
-        amount += products.getProduct().getPrice() * quantity;
+        amount += products.getTotalPrice();
         transaction.setAmount(amount);
     }
 
@@ -119,7 +120,7 @@ public class Order {
     }
     
     public void addStatus(Integer status) {
-        this.status.add(new Status(status));
+        this.status.add(new Status(this, status));
     }
     
     public void addNextStatus() {
@@ -129,10 +130,6 @@ public class Order {
     public void addCancelledStatus() {
         if (getLastStatus().getStatus() != Status.ERROR && getLastStatus().getStatus() != Status.CANCELLED)
             addStatus(Status.CANCELLED);
-    }
-
-    public void setQuantity(List<Integer> quantity) {
-        this.quantity = quantity;
     }
 
     public void setAmount(Double amount) {

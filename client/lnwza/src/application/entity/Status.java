@@ -21,17 +21,20 @@ public class Status {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    private Order order;
     private Integer status;
     @Temporal(TemporalType.TIMESTAMP)
     private Date obtainedDate;
     
-    public Status() {
-        this(NOTPAY);
-    }
-    
-    public Status(Integer status) {
+    public Status(Order order, Integer status) {
+        this.order = order;
         this.status = status;
         this.obtainedDate = new Date();
+    }
+        
+    public Status(Order order) {
+        this(order, NOTPAY);
     }
 
     public Long getId() {
@@ -40,6 +43,10 @@ public class Status {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public Order getOrder() {
+        return order;
     }
 
     public Integer getStatus() {
@@ -104,6 +111,10 @@ public class Status {
     
     public boolean isError() {
         return (status == ERROR);
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public void setStatus(Integer status) {

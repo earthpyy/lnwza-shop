@@ -20,7 +20,7 @@ public class Transaction {
     private Integer type;
     @ManyToOne
     private ProductDetail product;
-    @ManyToOne
+    @OneToOne
     private Order order;
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
