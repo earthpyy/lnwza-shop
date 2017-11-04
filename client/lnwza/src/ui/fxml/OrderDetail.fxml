@@ -35,8 +35,8 @@
                   <TextField fx:id="tf_trackingno" />
                </children>
             </VBox>
-            <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" text="Update" />
-            <Button fx:id="bt_cancle" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Update" textFill="WHITE" />
+            <Button fx:id="bt_cancle" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Cancel" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Accordion prefHeight="251.0" prefWidth="600.0">

@@ -28,7 +28,7 @@
       <Separator layoutY="58.0" prefHeight="15.0" prefWidth="600.0" />
       <ButtonBar layoutY="353.0" prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #6db3bf;">
          <buttons>
-            <Button fx:id="bt_update" mnemonicParsing="false" text="Update">
+            <Button fx:id="bt_update" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Update" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

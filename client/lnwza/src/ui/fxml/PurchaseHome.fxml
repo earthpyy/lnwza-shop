@@ -147,9 +147,9 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="bt_AddtoCart" layoutX="138.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
-                              <Button fx:id="bt_AddtoCart" layoutX="816.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
-                              <Button fx:id="bt_AddtoCart" layoutX="479.0" layoutY="246.0" mnemonicParsing="false" text="Add to Cart" />
+                              <Button fx:id="bt_AddtoCart" layoutX="138.0" layoutY="246.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Add to Cart" textFill="WHITE" />
+                              <Button fx:id="bt_AddtoCart" layoutX="816.0" layoutY="246.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Add to Cart" textFill="WHITE" />
+                              <Button fx:id="bt_AddtoCart" layoutX="479.0" layoutY="246.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Add to Cart" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutY="52.0" prefHeight="255.0" prefWidth="1024.0">

@@ -46,8 +46,8 @@
                         </VBox>
                         <HBox layoutX="86.0" layoutY="277.0" spacing="15.0">
                            <children>
-                              <Button fx:id="bt_add" mnemonicParsing="false" text="Add to Cart" />
-                              <Button fx:id="bt_cancel" mnemonicParsing="false" text="Cancel" />
+                              <Button fx:id="bt_add" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Add to Cart" textFill="WHITE" />
+                              <Button fx:id="bt_cancel" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Cancel" textFill="WHITE" />
                            </children>
                         </HBox>
                      </children>
