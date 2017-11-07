@@ -1,13 +1,18 @@
 .table-view .column-header,
 .table-view .column-header .filler,
 .table-view .column-header-background .filler {
-    -fx-background-color:  #4AC9BC;
+    -fx-background-color:   #140144;
+    
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-color: -fx-table-cell-border-color,  #a3cddc;
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-color: -fx-table-cell-border-color,  #4699b7;
 }

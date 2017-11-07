@@ -35,9 +35,9 @@
       <Separator layoutY="121.0" prefHeight="9.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
       <TableView layoutY="130.0" prefHeight="639.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
         <columns>
-          <TableColumn fx:id="tableView" prefWidth="201.0" style="-fx-background-color: #4699b7;" text="Date" />
-          <TableColumn prefWidth="370.0" style="-fx-background-color: #94cfc9;" text="Order Number" />
-            <TableColumn prefWidth="452.0" style="-fx-background-color: #4699b7;" text="Status" />
+          <TableColumn fx:id="tableView" prefWidth="201.0" text="Date" />
+          <TableColumn prefWidth="370.0" text="Order Number" />
+            <TableColumn prefWidth="452.0" text="Status" />
         </columns>
       </TableView>
    </children>

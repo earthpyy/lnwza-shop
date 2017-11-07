@@ -31,12 +31,12 @@
          </children>
       </AnchorPane>
       <Separator layoutY="127.0" prefHeight="15.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
-      <TableView layoutY="142.0" prefHeight="628.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
+      <TableView layoutY="142.0" prefHeight="628.0" prefWidth="1024.0">
          <columns>
-            <TableColumn fx:id="tb_date" prefWidth="135.66665649414062" style="-fx-background-color: #cee9f4;" text="Date" />
-            <TableColumn fx:id="tb_title" prefWidth="565.0" style="-fx-background-color: #4699b7;" text="Title" />
-            <TableColumn fx:id="tb_transac" minWidth="0.0" prefWidth="181.0" style="-fx-background-color: #cee9f4;" text="+/-" />
-            <TableColumn fx:id="tb_total" minWidth="0.0" prefWidth="144.0" style="-fx-background-color: #4699b7;" text="Total" />
+            <TableColumn fx:id="tb_date" prefWidth="135.66665649414062" text="Date" />
+            <TableColumn fx:id="tb_title" prefWidth="565.0" text="Title" />
+            <TableColumn fx:id="tb_transac" minWidth="0.0" prefWidth="181.0" text="+/-" />
+            <TableColumn fx:id="tb_total" minWidth="0.0" prefWidth="144.0" text="Total" />
          </columns>
       </TableView>
    </children>
