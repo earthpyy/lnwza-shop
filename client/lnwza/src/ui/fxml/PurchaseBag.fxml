@@ -46,7 +46,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="SUMMARY">
+                  <Label layoutX="14.0" layoutY="14.0" text="SUMMARY" textFill="#140144">
                      <font>
                         <Font name="Paradox" size="64.0" />
                      </font>
@@ -83,7 +83,7 @@
                         <TextField prefHeight="25.0" prefWidth="165.0" />
                      </children>
                   </VBox>
-                  <Button layoutX="106.0" layoutY="251.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="165.0" text="Proceed to Checkoout">
+                  <Button layoutX="106.0" layoutY="251.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="165.0" style="-fx-background-color: #140144;" text="Proceed to Checkoout" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
