@@ -19,7 +19,7 @@
                <children>
                   <ImageView fitHeight="431.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@BGPCA.png" />
+                        <Image url="@../resources/images/BGPCA.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="600.0" text="PRODUCT DETAIL" textFill="#140144">
