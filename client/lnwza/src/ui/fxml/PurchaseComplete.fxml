@@ -4,16 +4,32 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/images/PCVBG.png" />
+            <Image url="@../resources/images/PCVBG.gif" />
          </image>
       </ImageView>
-      <Label layoutX="238.0" layoutY="226.0" text="COMPLETE" textFill="#140144">
+      <Label layoutX="238.0" layoutY="226.0" text="COMPLETE">
+         <font>
+            <Font name="Paradox" size="72.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#5129ab" />
+                  <Stop color="#5129ab" offset="0.007662835249042145" />
+                  <Stop color="#ffc2c2" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="246.0" layoutY="226.0" text="COMPLETE" textFill="WHITE">
          <font>
             <Font name="Paradox" size="72.0" />
          </font>
@@ -38,9 +54,9 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="457.0" layoutY="483.0" text="Thank you" textFill="#294264">
+      <Label layoutX="359.0" layoutY="508.0" text="Thank you" textFill="#294264">
          <font>
-            <Font name="Mega Fresh" size="64.0" />
+            <Font name="Vacations in Phuket" size="64.0" />
          </font>
       </Label>
    </children>
