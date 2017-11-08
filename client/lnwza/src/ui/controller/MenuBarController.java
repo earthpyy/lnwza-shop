@@ -28,7 +28,9 @@ public class MenuBarController {
         
         try {
             Parent pane = FXMLLoader.load(getClass().getResource("/ui/fxml/" + scene + ".fxml"));
+            pane.setStyle("/ui/resources/bootstrap3.css");
             pane.setStyle("/ui/resources/table.css");
+            
             BorderPane border = Main.getRoot();
             border.setCenter(pane);
         } catch (IOException e) {
@@ -42,6 +44,8 @@ public class MenuBarController {
         
         try {
             Parent pane = FXMLLoader.load(getClass().getResource("/ui/fxml/" + scene + ".fxml"));
+            pane.setStyle("/ui/resources/bootstrap3.css");
+            pane.setStyle("/ui/resources/table.css");
             
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
