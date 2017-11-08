@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@SE/BGPCCP.png" />
+            <Image url="@../resources/images/PCVBG.png" />
          </image>
       </ImageView>
       <Label layoutX="238.0" layoutY="226.0" text="COMPLETE" textFill="#140144">
@@ -21,12 +20,12 @@
       </Label>
       <ImageView fitHeight="441.0" fitWidth="629.0" layoutX="209.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@SE/CO.png" />
+            <Image url="@../resources/images/PCCPTB.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="172.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@SE/CO2.png" />
+            <Image url="@../resources/images/PCCP.png" />
          </image>
       </ImageView>
       <Label layoutX="308.0" layoutY="369.0" text="Your Order Number is" textFill="#140144">

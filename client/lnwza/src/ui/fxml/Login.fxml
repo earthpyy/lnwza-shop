@@ -18,7 +18,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
             <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../LOGIN.gif" />
+                  <Image url="@../resources/images/LOGIN.gif" />
                </image>
             </ImageView>
             <AnchorPane layoutX="34.0" layoutY="40.0" prefHeight="338.0" prefWidth="277.0" style="-fx-background-color: #E8EAF6;">

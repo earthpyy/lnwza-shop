@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseAddController">
@@ -19,10 +21,23 @@
                <children>
                   <ImageView fitHeight="431.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/images/BGPCA.png" />
+                        <Image url="@../resources/images/PCABG.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="600.0" text="PRODUCT DETAIL" textFill="#140144">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="600.0" text="PRODUCT DETAIL">
+                     <font>
+                        <Font name="Paradox" size="37.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#5129ab" />
+                              <Stop color="#ffc2c2" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="10.0" prefHeight="17.0" prefWidth="600.0" text="PRODUCT DETAIL">
                      <font>
                         <Font name="Paradox" size="37.0" />
                      </font>

@@ -13,12 +13,12 @@
    <children>
       <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/images/BGPCCO.png" />
+            <Image url="@../resources/images/PCCOBG.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="430.0" fitWidth="609.0" layoutX="180.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/images/TBPCCO.png" />
+            <Image url="@../resources/images/PCCOTB.png" />
          </image>
       </ImageView>
       <Label layoutX="198.0" layoutY="214.0" text="SUMMARY" textFill="#140144">
