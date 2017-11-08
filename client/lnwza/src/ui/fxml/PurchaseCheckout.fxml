@@ -13,7 +13,7 @@
    <children>
       <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/images/PCCOBG.png" />
+            <Image url="@../resources/images/PCCOBG.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="430.0" fitWidth="609.0" layoutX="180.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
@@ -46,8 +46,8 @@
             <TextField prefHeight="25.0" prefWidth="224.0" />
          </children>
       </VBox>
-      <Button layoutX="695.0" layoutY="616.0" mnemonicParsing="false" text="Cancel" />
-      <Button layoutX="340.0" layoutY="472.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="147.0" text="Credit/Debit Card" />
-      <Button layoutX="512.0" layoutY="472.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="147.0" text="Internet Banking" />
+      <Button layoutX="695.0" layoutY="616.0" mnemonicParsing="false" style="-fx-background-color: #abbfde;" text="Cancel" />
+      <Button layoutX="340.0" layoutY="472.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Credit/Debit Card" />
+      <Button layoutX="512.0" layoutY="472.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Internet Banking" />
    </children>
 </AnchorPane>
