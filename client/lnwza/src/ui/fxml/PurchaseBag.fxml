@@ -34,12 +34,12 @@
                <children>
                   <TableView layoutY="-2.0" prefHeight="677.0" prefWidth="639.0">
                     <columns>
-                      <TableColumn fx:id="tb_photo" prefWidth="133.0" text="Photo" />
-                      <TableColumn fx:id="tb_detail" prefWidth="152.0" text="Detail" />
-                        <TableColumn fx:id="tb_price" prefWidth="91.0" text="Price" />
-                        <TableColumn fx:id="tb_qty" prefWidth="68.0" text="Qty" />
-                        <TableColumn fx:id="tb_subtotal" prefWidth="122.0" text="Subtotal" />
-                        <TableColumn fx:id="tb_remove" prefWidth="72.0" text="Remove" />
+                      <TableColumn fx:id="tb_photo" prefWidth="150.0" text="Photo" />
+                      <TableColumn fx:id="tb_detail" prefWidth="212.0" text="Detail" />
+                        <TableColumn fx:id="tb_price" prefWidth="82.0" text="Price" />
+                        <TableColumn fx:id="tb_qty" prefWidth="50.0" text="Qty" />
+                        <TableColumn fx:id="tb_subtotal" prefWidth="84.0" text="Subtotal" />
+                        <TableColumn fx:id="tb_remove" prefWidth="60.0" text="Remove" />
                     </columns>
                   </TableView>
                </children>
