@@ -50,7 +50,7 @@ public class GenerateSampleData {
             }
                         
             // Products
-            Product pd;
+            Product pd = null;
             ProductType pdt;
             em.getMetamodel().entity(Product.class);
             em.createQuery("DELETE FROM Product").executeUpdate();
@@ -71,8 +71,12 @@ public class GenerateSampleData {
                 for (int i = 0; i < countT; i++) {
                     arr = buff.readLine().split(",");
                     countD = Integer.parseInt(arr[4]);
-                    
+                    try {
                     pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, arr[5], Double.parseDouble(arr[6]));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println(arr[0]);
+                    }
                     em.persist(pd);
                     
                     for (int j = 0; j < countD; j++) {

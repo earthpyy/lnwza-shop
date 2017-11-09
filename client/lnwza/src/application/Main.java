@@ -25,7 +25,7 @@ public class Main extends Application {
         
         System.out.println("Loading GUI...");
         MenuBar bar = FXMLLoader.load(getClass().getResource("/ui/fxml/MenuBar.fxml"));
-        Parent startPage = FXMLLoader.load(getClass().getResource("/ui/fxml/StockView.fxml"));
+        Parent startPage = FXMLLoader.load(getClass().getResource("/ui/fxml/AgentView.fxml"));
         
         root.setTop(bar);
         root.setCenter(startPage);
