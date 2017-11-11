@@ -105,7 +105,7 @@
                               <Image url="@../resources/images/PCHBG.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" text="LNWZA SHOP" textFill="#140144" AnchorPane.bottomAnchor="751.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label alignment="CENTER" styleClass="fp" text="LNWZA SHOP" textFill="#140144" AnchorPane.bottomAnchor="751.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="Paradox" size="64.0" />
                            </font>
@@ -176,7 +176,7 @@
                                           </LinearGradient>
                                        </textFill>
                                     </Label>
-                                    <Label layoutX="18.0" layoutY="318.0" text="RECOMMEND" textFill="WHITE">
+                                    <Label layoutX="18.0" layoutY="318.0" styleClass="fp" text="RECOMMEND" textFill="WHITE">
                                        <font>
                                           <Font name="Paradox" size="48.0" />
                                        </font>

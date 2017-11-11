@@ -40,7 +40,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label alignment="CENTER" layoutX="6.0" layoutY="15.0" prefHeight="17.0" prefWidth="1024.0" text="PRODUCT VIEW" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="6.0" layoutY="15.0" prefHeight="17.0" prefWidth="1024.0" styleClass="fp" text="PRODUCT VIEW" textFill="WHITE">
                <font>
                   <Font name="Paradox" size="72.0" />
                </font>

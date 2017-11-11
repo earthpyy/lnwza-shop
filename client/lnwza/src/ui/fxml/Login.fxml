@@ -40,7 +40,7 @@
                      </font>
                   </Label>
                   <TextField layoutX="24.0" layoutY="183.0" prefHeight="25.0" prefWidth="230.0" />
-                  <Text disable="true" layoutX="83.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FORGET PASSWORD?" underline="true" />
+                  <Text disable="true" layoutX="73.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FORGET PASSWORD?" underline="true" />
                   <Button layoutX="25.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: #140144;" text="SIGN IN" textFill="WHITE" />
                </children>
             </AnchorPane>
@@ -59,7 +59,7 @@
                </textFill>
             </Label>
             <AnchorPane layoutX="360.0" layoutY="123.0" prefHeight="200.0" prefWidth="200.0" />
-            <Label layoutX="329.0" layoutY="20.0" prefHeight="53.0" prefWidth="262.0" text="Welcome to" textFill="WHITE">
+            <Label layoutX="329.0" layoutY="20.0" prefHeight="53.0" prefWidth="262.0" styleClass="fv" text="Welcome to" textFill="WHITE">
                <font>
                   <Font name="Vacations in Phuket" size="45.0" />
                </font>
@@ -78,17 +78,17 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="342.0" layoutY="73.0" text="lNWZA-SHOP" textFill="WHITE">
+            <Label layoutX="342.0" layoutY="73.0" styleClass="fp" text="lNWZA-SHOP" textFill="WHITE">
                <font>
                   <Font name="Paradox" size="52.0" />
                </font>
             </Label>
-            <Label layoutX="339.0" layoutY="130.0" text="IN A WORLD FULL OF TRENDS ," textFill="WHITE">
+            <Label layoutX="339.0" layoutY="130.0" styleClass="fp" text="IN A WORLD FULL OF TRENDS ," textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="335.0" layoutY="146.0" text=" I WANT TO REMAIN A CLASSIC" textFill="WHITE">
+            <Label layoutX="335.0" layoutY="146.0" styleClass="fp" text=" I WANT TO REMAIN A CLASSIC" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>

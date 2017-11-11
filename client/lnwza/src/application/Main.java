@@ -33,6 +33,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 1024, 768);
         scene.getStylesheets().add("ui/resources/bootstrap3.css");
         scene.getStylesheets().add("ui/resources/table.css");
+        scene.getStylesheets().add("ui/resources/font.css");
         mainStage.setScene(scene);
         mainStage.setTitle("lnwza SHOP");
         System.out.println("GUI loaded!");

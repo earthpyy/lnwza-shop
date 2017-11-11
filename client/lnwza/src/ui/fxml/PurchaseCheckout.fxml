@@ -21,7 +21,7 @@
             <Image url="@../resources/images/PCCOTB.png" />
          </image>
       </ImageView>
-      <Label layoutX="198.0" layoutY="214.0" text="SUMMARY" textFill="#140144">
+      <Label layoutX="198.0" layoutY="214.0" styleClass="fp" text="SUMMARY" textFill="#140144">
          <font>
             <Font name="Paradox" size="64.0" />
          </font>
