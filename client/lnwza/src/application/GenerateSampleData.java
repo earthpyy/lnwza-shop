@@ -35,6 +35,19 @@ public class GenerateSampleData {
             String line = "";
             String[] arr = null, arrt = null, arrd = null;
             int countT, countD;
+            
+            // Owners
+            Owner ow;
+            em.getMetamodel().entity(Owner.class);
+            em.createQuery("DELETE FROM Owner").executeUpdate();
+            f = new FileReader("sample_data/sample_owner.txt");
+            buff = new BufferedReader(f);
+            
+            while ((line = buff.readLine()) != null) {
+                arr = line.split(",");
+                ow = new Owner(arr[0], arr[1], arr[2], arr[3]);
+                em.persist(ow);
+            }
 
             // Agents
             Agent ag;
