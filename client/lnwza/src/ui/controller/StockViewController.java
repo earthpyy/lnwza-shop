@@ -83,7 +83,7 @@ public class StockViewController {
             return row;
         });
         
-        ProductHandler.load();
+//        ProductHandler.load();
         ObservableList<Product> data = FXCollections.observableArrayList(ProductHandler.getData());
         tableView.setItems(data);
     }

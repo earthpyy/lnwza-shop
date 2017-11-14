@@ -1,8 +1,8 @@
 package application;
 
+import application.handler.DataHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.scene.layout.BorderPane;
 
 /**
  *
@@ -14,10 +14,14 @@ public class Main extends Application {
     public void start(Stage mainStage) throws Exception {
         System.out.println("Loading Application's properties...");
         AppProperties.load();
-        System.out.println("Initialize Date...");
+        System.out.println("Initialize myDate...");
         MyDate.initialize();
         System.out.println("Connecting to database...");
         DatabaseConnection.load();
+        
+        System.out.println("Loading data...");
+        DataHandler.load();
+        System.out.println("Data loaded!");
         
         System.out.println("Loading GUI...");
         MenuLoader.initialize(mainStage);

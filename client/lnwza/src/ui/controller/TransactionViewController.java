@@ -74,7 +74,7 @@ public class TransactionViewController {
         tb_outcome.setCellValueFactory(new PropertyValueFactory<>("outcome"));
         tb_total.setCellValueFactory(new PropertyValueFactory<>("total"));
         
-        TransactionHandler.load();
+//        TransactionHandler.load();
         ObservableList<Transaction> data = FXCollections.observableArrayList(TransactionHandler.getDataFromCurrentMonth());
         table_view.setItems(data);
     }

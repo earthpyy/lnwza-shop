@@ -63,7 +63,7 @@ public class OrderViewOwnerController {
             return row;
         });
         
-        OrderHandler.load();
+//        OrderHandler.load();
         ObservableList<Order> data = FXCollections.observableArrayList(OrderHandler.getData());
         tableView.setItems(data);
     }
