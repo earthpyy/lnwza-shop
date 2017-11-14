@@ -11,7 +11,7 @@ import application.entity.Transaction;
 
 /**
  *
- * @author pompr_000
+ * @author SE-lnwza
  */
 public class TransactionHandler {
     
