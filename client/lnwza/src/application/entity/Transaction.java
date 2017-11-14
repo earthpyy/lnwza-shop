@@ -126,6 +126,10 @@ public class Transaction {
     public void setTranDate(Date date) {
         this.tranDate = date;
     }
+    
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
     @Override
     public int hashCode() {

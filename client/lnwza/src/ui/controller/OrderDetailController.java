@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import application.entity.Order;
-import application.entity.ProductDetail;
 import application.entity.Status;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 

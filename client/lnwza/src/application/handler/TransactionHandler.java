@@ -15,8 +15,9 @@ import application.entity.Transaction;
  */
 public class TransactionHandler {
     
-   private static ArrayList<Transaction> trans;
+    private static ArrayList<Transaction> trans;
     private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
+    private static Double total = 0.0;
     
     public static ArrayList<Transaction> getData() {
         return trans;
@@ -42,6 +43,8 @@ public class TransactionHandler {
         try {
             TypedQuery<Transaction> q = em.createQuery("SELECT FROM Transaction", Transaction.class);
             for (Transaction tran : q.getResultList()) {
+                total += tran.getAmount();
+                tran.setTotal(total);
                 trans.add(tran);
             }
         } finally {

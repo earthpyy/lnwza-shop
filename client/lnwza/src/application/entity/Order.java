@@ -33,6 +33,7 @@ public class Order {
         this.amount = amount;
         this.orderDate = new Date();
         this.status = new ArrayList<>(Arrays.asList(new Status(this)));
+        // TODO: add transaction when order is completed.
         this.transaction = new Transaction(null, Transaction.ORDER, null, this, amount);
     }
     
