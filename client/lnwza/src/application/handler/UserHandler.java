@@ -6,11 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
+import application.Session;
 import application.entity.User;
 
 /**
  *
- * @author SE_lnwza
+ * @author SE-lnwza
  */
 public class UserHandler {
     private static ArrayList<User> users;
@@ -26,12 +27,26 @@ public class UserHandler {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<User> q = em.createQuery("SELECT FROM User", User.class);
-            for (User us : q.getResultList()) {
-                users.add(us);
+            for (User user : q.getResultList()) {
+                users.add(user);
             }
         } finally {
             em.close();
         }
+    }
+    
+    public static User getUser(String username, String password) {
+        if (Session.isLoggedIn())
+            return null;
+        
+        User result = null;
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.isCorrectPassword(password)) {
+                result = user;
+                break;
+            }
+        }
+        return result;
     }
     
     public static void add(String firstName, String lastName, String username, String password) {

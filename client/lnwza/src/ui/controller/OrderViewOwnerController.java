@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import application.MenuLoader;
+import application.SceneLoader;
 import application.entity.Order;
 import application.handler.OrderHandler;
 
@@ -54,9 +54,9 @@ public class OrderViewOwnerController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Order rowData = tableView.getSelectionModel().getSelectedItem();
-                    MenuLoader.popup("OrderDetail", "Order #" + rowData.getId());
+                    SceneLoader.popup("OrderDetail", "Order #" + rowData.getId());
 
-                    OrderDetailController ctrl = MenuLoader.getPopupController(OrderDetailController.class);
+                    OrderDetailController ctrl = SceneLoader.getPopupController(OrderDetailController.class);
                     ctrl.fill(rowData);
                 }
             });

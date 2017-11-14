@@ -27,14 +27,18 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Transaction transaction;
 
-    public Order(Agent agent, List<BagProduct> products, Double amount) {
+    public Order(Agent agent, List<BagProduct> products, Double amount, Date orderDate) {
         this.agent = agent;
         this.products = products;
         this.amount = amount;
-        this.orderDate = new Date();
+        this.orderDate = orderDate;
         this.status = new ArrayList<>(Arrays.asList(new Status(this)));
         // TODO: add transaction when order is completed.
-        this.transaction = new Transaction(null, Transaction.ORDER, null, this, amount);
+        this.transaction = new Transaction(null, Transaction.ORDER, null, this, amount, orderDate);
+    }
+    
+    public Order(Agent agent, List<BagProduct> products, Double amount) {
+        this(agent, products, amount, new Date());
     }
     
     public Order(Agent agent) {

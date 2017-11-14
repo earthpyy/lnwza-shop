@@ -2,10 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,9 +14,9 @@ import javafx.stage.Stage;
  *
  * @author SE-lnwza
  */
-public class MenuLoader {
+public class SceneLoader {
     
-    private static final String HOMEPAGE = "AgentView";
+    private static final String HOMEPAGE = "StockView";
     
     private static final String CSS_PATH = "/ui/resources/";
     private static final String FXML_PATH = "/ui/fxml/";
@@ -28,25 +25,44 @@ public class MenuLoader {
     private static final int POPUP_WIDTH = 600;
     private static final int POPUP_HEIGHT = 400;
     
-    private static Stage main, pop;
+    private static Stage main, pop, login;
     private static BorderPane root;
-    private static Scene scene, popScene;
+    private static Scene scene, popScene, loginScene;
     private static MenuBar menu;
-    private static Parent body, popBody;
+    private static Parent body, popBody, loginBody;
     private static FXMLLoader popFXML;
     
     public static void initialize(Stage stage) {
-        main = stage;
-        main.setTitle("lnwza SHOP");
+        main = new Stage();
         pop = new Stage();
-        pop.hide();
+        login = stage;
         root = new BorderPane();
+        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
         
+        loadLogin();
+    }
+    
+    public static void loadLogin() {
+        main.close();
+        pop.close();
+        
+        login.setTitle("Login - lnwza SHOP");
+        loginBody = load("Login");
+        loginScene = new Scene(loginBody, POPUP_WIDTH, POPUP_HEIGHT);
+        loadCss(loginScene);
+        login.setScene(loginScene);
+        login.show();
+    }
+    
+    public static void loadMain() {
+        login.close();
+        
+        main.setTitle("lnwza SHOP");
         menu = (MenuBar) load("MenuBar");
         root.setTop(menu);
         setBody(HOMEPAGE);
 
-        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
+//        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
         loadCss(scene);
         main.setScene(scene);
         main.show();
@@ -83,7 +99,7 @@ public class MenuLoader {
     }
     
     private static FXMLLoader loadFXML(String name) {
-        FXMLLoader fxmlLoader = new FXMLLoader(MenuLoader.class.getResource(FXML_PATH + name + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneLoader.class.getResource(FXML_PATH + name + ".fxml"));
         return fxmlLoader;
     }
     

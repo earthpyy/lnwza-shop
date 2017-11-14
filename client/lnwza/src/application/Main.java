@@ -24,7 +24,7 @@ public class Main extends Application {
         System.out.println("Data loaded!");
         
         System.out.println("Loading GUI...");
-        MenuLoader.initialize(mainStage);
+        SceneLoader.initialize(mainStage);
         System.out.println("GUI loaded!");
     }
     

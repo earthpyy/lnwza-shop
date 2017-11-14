@@ -1,6 +1,6 @@
 package ui.controller;
 
-import application.MenuLoader;
+import application.SceneLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -74,9 +74,9 @@ public class StockViewController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Product rowData = tableView.getSelectionModel().getSelectedItem();
-                    MenuLoader.popup("StockDetail", "Product #" + rowData.getId());
+                    SceneLoader.popup("StockDetail", "Product #" + rowData.getId());
 
-                    StockDetailController ctrl = MenuLoader.getPopupController(StockDetailController.class);
+                    StockDetailController ctrl = SceneLoader.getPopupController(StockDetailController.class);
                     ctrl.fill(rowData);
                 }
             });

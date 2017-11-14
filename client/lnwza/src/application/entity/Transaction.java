@@ -30,15 +30,20 @@ public class Transaction {
     
     // temp field (will use when load data)
     private Double total;
-
-    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
+    
+    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount, Date tranDate) {
+        
         this.description = description;
         this.type = type;
         this.product = product;
         this.order = order;
         this.amount = amount;
-        this.tranDate = new Date();
+        this.tranDate = tranDate;
         this.total = 0.0;
+    }
+    
+    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
+        this(description, type, product, order, amount, new Date());
     }
 
     public Long getId() {
