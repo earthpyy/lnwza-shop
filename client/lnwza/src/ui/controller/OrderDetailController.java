@@ -62,7 +62,7 @@ public class OrderDetailController {
     protected void initialize() {
         updateTableView();
         
-        tb_id.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableview_item.getItems().indexOf(column.getValue()) + 1));
+        tb_id.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(tableview_item.getItems().indexOf(column.getValue()) + 1));
         tb_name.setCellValueFactory(new PropertyValueFactory<>("productName"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tb_price.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));

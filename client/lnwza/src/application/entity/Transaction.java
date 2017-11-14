@@ -1,5 +1,8 @@
 package application.entity;
 
+import application.MyDate;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -24,7 +27,10 @@ public class Transaction {
     private Order order;
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date transactionDate;
+    private Date timestamp;
+    
+    // temp field (will use when load data)
+    private Double total;
 
     public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
         this.description = description;
@@ -32,7 +38,8 @@ public class Transaction {
         this.product = product;
         this.order = order;
         this.amount = amount;
-        this.transactionDate = new Date();
+        this.timestamp = new Date();
+        this.total = 0.0;
     }
 
     public Long getId() {
@@ -63,8 +70,38 @@ public class Transaction {
         return amount;
     }
 
-    public Date getTransactionDate() {
-        return transactionDate;
+    public Date getTimestamp() {
+        return timestamp;
+    }
+    
+    public Double getTotal() {
+        return total;
+    }
+    
+    public String getDate() {
+        return MyDate.getFullDate(timestamp);
+    }
+    
+    public String getTime() {
+        return MyDate.getTime(timestamp);
+    }
+    
+    public Calendar getCalendar() {
+        return MyDate.newCalendar(timestamp);
+    }
+    
+    public Double getIncome() {
+        Double amnt = null;
+        if (getAmount() > 0)
+            amnt = getAmount();
+        return amnt;
+    }
+    
+    public Double getOutcome() {
+        Double amnt = null;
+        if (getAmount() < 0)
+            amnt = Math.abs(getAmount());
+        return amnt;
     }
 
     public void setDescription(String description) {
@@ -87,8 +124,8 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setTimestamp(Date date) {
+        this.timestamp = date;
     }
 
     @Override

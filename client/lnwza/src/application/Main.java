@@ -14,6 +14,8 @@ public class Main extends Application {
     public void start(Stage mainStage) throws Exception {
         System.out.println("Loading Application's properties...");
         AppProperties.load();
+        System.out.println("Initialize Date...");
+        MyDate.initialize();
         System.out.println("Connecting to database...");
         DatabaseConnection.load();
         

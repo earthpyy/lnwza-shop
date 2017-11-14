@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  */
 public class MenuLoader {
     
-    private static final String HOMEPAGE = "StockView";
+    private static final String HOMEPAGE = "AgentView";
     
     private static final String CSS_PATH = "/ui/resources/";
     private static final String FXML_PATH = "/ui/fxml/";
@@ -33,6 +33,7 @@ public class MenuLoader {
     private static Scene scene, popScene;
     private static MenuBar menu;
     private static Parent body, popBody;
+    private static FXMLLoader popFXML;
     
     public static void initialize(Stage stage) {
         main = stage;
@@ -57,7 +58,11 @@ public class MenuLoader {
     }
     
     public static void popup(String name, String title) {
-        popBody = load(name);
+        popFXML = loadFXML(name);
+        try {
+            popBody = popFXML.load();
+        } catch (IOException e) {
+        }
         popScene = new Scene(popBody, POPUP_WIDTH, POPUP_HEIGHT);
         loadCss(popScene);
         pop.setScene(popScene);
@@ -69,19 +74,37 @@ public class MenuLoader {
         popup(name, "lnwza SHOP");
     }
     
+    public static <T> T getPopupController(Class<T> controller) {
+        return controller.cast(popFXML.getController());
+    }
+    
+    public static <T> T getPopupController() {
+        return popFXML.getController();
+    }
+    
+    private static FXMLLoader loadFXML(String name) {
+        FXMLLoader fxmlLoader = new FXMLLoader(MenuLoader.class.getResource(FXML_PATH + name + ".fxml"));
+        return fxmlLoader;
+    }
+    
     private static Parent load(String name) {
         Parent parent = null;
+        System.out.println("[GUI] Loading " + name + "...");
         try {
-            parent = FXMLLoader.load(MenuLoader.class.getResource(FXML_PATH + name + ".fxml"));
+            parent = loadFXML(name).load();
         } catch (IOException e) {
+            System.out.println("Cannot load " + name + "!");
         }
+        System.out.println("[GUI] " + name + " loaded!");
         return parent;
     }
     
     private static void loadCss(Scene scene) {
+        System.out.println("[GUI] Adding CSS...");
         for (String fileName : getCssFileName()) {
             scene.getStylesheets().add(CSS_PATH + fileName);
         }
+        System.out.println("[GUI] CSS added!");
     }
     
     private static ArrayList<String> getCssFileName() {

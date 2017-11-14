@@ -6,8 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
-import application.entity.Order;
+import application.MyDate;
 import application.entity.Transaction;
+import java.util.Calendar;
 
 /**
  *
@@ -15,21 +16,34 @@ import application.entity.Transaction;
  */
 public class TransactionHandler {
     
-   private static ArrayList<Transaction> transaction;
+   private static ArrayList<Transaction> trans;
     private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
     
     public static ArrayList<Transaction> getData() {
-        return transaction;
+        return trans;
+    }
+    
+    public static ArrayList<Transaction> getDataFromMonth(int month, int year) {
+        ArrayList<Transaction> result = new ArrayList<>();
+        for (Transaction tran : trans) {
+            if (MyDate.getMonth(tran.getTimestamp()) == month && MyDate.getYear(tran.getTimestamp()) == year)
+                result.add(tran);
+        }
+        return result;
+    }
+    
+    public static ArrayList<Transaction> getDataFromCurrentMonth() {
+        return getDataFromMonth(MyDate.getCurrentMonth(), MyDate.getCurrentYear());
     }
 
     public static void load() {
-        transaction = new ArrayList<>();
+        trans = new ArrayList<>();
         
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Transaction> q = em.createQuery("SELECT FROM Transaction", Transaction.class);
-            for (Transaction ts : q.getResultList()) {
-                transaction.add(ts);
+            for (Transaction tran : q.getResultList()) {
+                trans.add(tran);
             }
         } finally {
             em.close();
