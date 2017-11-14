@@ -10,7 +10,7 @@ import application.entity.User;
 
 /**
  *
- * @author poon1_000
+ * @author SE_lnwza
  */
 public class UserHandler {
     private static ArrayList<User> users;

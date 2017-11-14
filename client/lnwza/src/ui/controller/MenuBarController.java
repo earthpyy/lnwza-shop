@@ -1,6 +1,7 @@
 package ui.controller;
 
 import application.Main;
+import application.MenuLoader;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,35 +26,16 @@ public class MenuBarController {
     @FXML
     void show(ActionEvent event) {
         String scene = (String) ((MenuItem) event.getSource()).getUserData();
-        
-        try {
-            Parent pane = FXMLLoader.load(getClass().getResource("/ui/fxml/" + scene + ".fxml"));
-            pane.setStyle("/ui/resources/bootstrap3.css");
-            pane.setStyle("/ui/resources/table.css");
-            
-            BorderPane border = Main.getRoot();
-            border.setCenter(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        MenuLoader.setBody(scene);
     }
     
     @FXML
     void showStage(ActionEvent event) {
         String scene = (String) ((MenuItem) event.getSource()).getUserData();
-        
-        try {
-            Parent pane = FXMLLoader.load(getClass().getResource("/ui/fxml/" + scene + ".fxml"));
-            pane.setStyle("/ui/resources/bootstrap3.css");
-            pane.setStyle("/ui/resources/table.css");
-            
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("lnwza SHOP");
-            stage.setScene(new Scene(pane));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (scene.equals("OrderUpdate")) {
+            MenuLoader.popup(scene, "Update");
+        } else {
+            MenuLoader.popup(scene);
         }
     }
     
