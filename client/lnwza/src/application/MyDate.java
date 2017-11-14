@@ -15,7 +15,7 @@ public class MyDate {
     public static final String[] MONTH = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     public static Integer[] YEAR = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     
-    private static final Locale LOCALE = new Locale("th", "TH");
+//    private static final Locale LOCALE = new Locale("th", "TH");
     private static final TimeZone TIMEZONE = TimeZone.getTimeZone("Asia/Bangkok");
     private static final String FULLDATE_FORMAT = "dd MMMM yyyy";
     private static final String DATE_FORMAT = "dd/MM/yyyy";
@@ -26,7 +26,7 @@ public class MyDate {
     public static void initialize() {
         // set default timezone and locale
         TimeZone.setDefault(TIMEZONE);
-        Locale.setDefault(LOCALE);
+//        Locale.setDefault(LOCALE);
         
         // fill year into array using current year
         int currentYear = getCurrentYear();

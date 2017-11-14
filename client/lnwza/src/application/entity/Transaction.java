@@ -1,7 +1,6 @@
 package application.entity;
 
 import application.MyDate;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
@@ -27,7 +26,7 @@ public class Transaction {
     private Order order;
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
+    private Date tranDate;
     
     // temp field (will use when load data)
     private Double total;
@@ -38,7 +37,7 @@ public class Transaction {
         this.product = product;
         this.order = order;
         this.amount = amount;
-        this.timestamp = new Date();
+        this.tranDate = new Date();
         this.total = 0.0;
     }
 
@@ -70,8 +69,8 @@ public class Transaction {
         return amount;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getTranDate() {
+        return tranDate;
     }
     
     public Double getTotal() {
@@ -79,15 +78,15 @@ public class Transaction {
     }
     
     public String getDate() {
-        return MyDate.getFullDate(timestamp);
+        return MyDate.getFullDate(tranDate);
     }
     
     public String getTime() {
-        return MyDate.getTime(timestamp);
+        return MyDate.getTime(tranDate);
     }
     
     public Calendar getCalendar() {
-        return MyDate.newCalendar(timestamp);
+        return MyDate.newCalendar(tranDate);
     }
     
     public Double getIncome() {
@@ -124,8 +123,8 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public void setTimestamp(Date date) {
-        this.timestamp = date;
+    public void setTranDate(Date date) {
+        this.tranDate = date;
     }
 
     @Override

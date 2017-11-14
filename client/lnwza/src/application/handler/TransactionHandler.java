@@ -8,7 +8,6 @@ import javax.persistence.TypedQuery;
 import application.DatabaseConnection;
 import application.MyDate;
 import application.entity.Transaction;
-import java.util.Calendar;
 
 /**
  *
@@ -26,7 +25,7 @@ public class TransactionHandler {
     public static ArrayList<Transaction> getDataFromMonth(int month, int year) {
         ArrayList<Transaction> result = new ArrayList<>();
         for (Transaction tran : trans) {
-            if (MyDate.getMonth(tran.getTimestamp()) == month && MyDate.getYear(tran.getTimestamp()) == year)
+            if (MyDate.getMonth(tran.getTranDate()) == month && MyDate.getYear(tran.getTranDate()) == year)
                 result.add(tran);
         }
         return result;
