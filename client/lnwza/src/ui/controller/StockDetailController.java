@@ -15,12 +15,10 @@ import javafx.collections.ObservableList;
 
 import application.entity.Product;
 import application.entity.ProductDetail;
-import application.handler.ProductDetailHandler;
-import java.util.ArrayList;
 
 /**
  *
- * @author pompr_000
+ * @author SE-lnwza
  */
 public class StockDetailController {
     

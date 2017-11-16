@@ -1,6 +1,5 @@
 package application;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -18,6 +17,7 @@ public class AppProperties {
     private static String dbPass;
 
     public static void load() {
+        // load from config.properties
         Properties prop = new Properties();
         InputStream input = null;
 

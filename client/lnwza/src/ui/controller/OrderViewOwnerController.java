@@ -1,8 +1,5 @@
 package ui.controller;
 
-import application.entity.Order;
-import application.entity.Product;
-import application.handler.OrderHandler;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import application.SceneLoader;
+import application.entity.Order;
+import application.handler.OrderHandler;
 
 /**
  *
@@ -52,29 +53,17 @@ public class OrderViewOwnerController {
             TableRow<Order> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    Order rowData = row.getItem();
-                    Parent pane;
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/fxml/OrderDetail.fxml"));
-                        pane = fxmlLoader.load();
-                        OrderDetailController ctrl = (OrderDetailController) fxmlLoader.getController();
-//                        System.out.println(tableView.getSelectionModel().getSelectedItem());
-                        ctrl.fill((Order) tableView.getSelectionModel().getSelectedItem());
-                        
-                        Stage stage = new Stage();
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.setTitle("lnwza SHOP");
-                        stage.setScene(new Scene(pane));
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Order rowData = tableView.getSelectionModel().getSelectedItem();
+                    SceneLoader.popup("OrderDetail", "Order #" + rowData.getId());
+
+                    OrderDetailController ctrl = SceneLoader.getPopupController(OrderDetailController.class);
+                    ctrl.fill(rowData);
                 }
             });
             return row;
         });
         
-        OrderHandler.load();
+//        OrderHandler.load();
         ObservableList<Order> data = FXCollections.observableArrayList(OrderHandler.getData());
         tableView.setItems(data);
     }

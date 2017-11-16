@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Paradox';
+    src: url('fonts/Paradox.ttf');
+}
+
+@font-face {
+    font-family: 'Vacations in Phuket';
+    src: url('fonts/Vacations_in_Phuket.ttf');
+}
+
+.fp {
+    -fx-font-family: 'Paradox';
+}
+
+.fv {
+    -fx-font-family: 'Vacations in Phuket';
+}

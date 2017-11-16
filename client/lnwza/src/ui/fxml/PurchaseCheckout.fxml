@@ -21,7 +21,7 @@
             <Image url="@../resources/images/PCCOTB.png" />
          </image>
       </ImageView>
-      <Label layoutX="198.0" layoutY="214.0" text="SUMMARY" textFill="#140144">
+      <Label layoutX="198.0" layoutY="214.0" styleClass="fp" text="SUMMARY" textFill="#140144">
          <font>
             <Font name="Paradox" size="64.0" />
          </font>
@@ -42,8 +42,8 @@
       </VBox>
       <VBox layoutX="429.0" layoutY="366.0" spacing="15.0">
          <children>
-            <TextField prefHeight="25.0" prefWidth="224.0" />
-            <TextField prefHeight="25.0" prefWidth="224.0" />
+            <TextField alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
+            <TextField alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
          </children>
       </VBox>
       <Button layoutX="695.0" layoutY="616.0" mnemonicParsing="false" style="-fx-background-color: #abbfde;" text="Cancel" />

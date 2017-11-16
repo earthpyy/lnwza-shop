@@ -29,7 +29,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="246.0" layoutY="226.0" text="COMPLETE" textFill="WHITE">
+      <Label layoutX="246.0" layoutY="226.0" styleClass="fp" text="COMPLETE" textFill="WHITE">
          <font>
             <Font name="Paradox" size="72.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="359.0" layoutY="508.0" text="Thank you" textFill="#294264">
+      <Label layoutX="359.0" layoutY="508.0" styleClass="fv" text="Thank you" textFill="#294264">
          <font>
             <Font name="Vacations in Phuket" size="64.0" />
          </font>

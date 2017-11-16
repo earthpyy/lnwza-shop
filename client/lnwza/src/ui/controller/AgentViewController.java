@@ -42,7 +42,7 @@ public class AgentViewController {
         tb_address.setCellValueFactory(new PropertyValueFactory<>("address"));
         tb_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         
-        AgentHandler.load();
+//        AgentHandler.load();
         ObservableList<Agent> data = FXCollections.observableArrayList(AgentHandler.getData());
         tableview.setItems(data);
     }

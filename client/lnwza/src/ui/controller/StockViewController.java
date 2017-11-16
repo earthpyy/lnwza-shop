@@ -1,5 +1,6 @@
 package ui.controller;
 
+import application.SceneLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,13 +13,7 @@ import javafx.scene.image.ImageView;
 
 import application.entity.Product;
 import application.handler.ProductHandler;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableRow;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  *
@@ -78,28 +73,17 @@ public class StockViewController {
             TableRow<Product> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    Product rowData = row.getItem();
-                    Parent pane;
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/fxml/StockDetail.fxml"));
-                        pane = fxmlLoader.load();
-                        StockDetailController ctrl = (StockDetailController) fxmlLoader.getController();
-                        ctrl.fill((Product) tableView.getSelectionModel().getSelectedItem());
-                        
-                        Stage stage = new Stage();
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.setTitle("lnwza SHOP");
-                        stage.setScene(new Scene(pane));
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Product rowData = tableView.getSelectionModel().getSelectedItem();
+                    SceneLoader.popup("StockDetail", "Product #" + rowData.getId());
+
+                    StockDetailController ctrl = SceneLoader.getPopupController(StockDetailController.class);
+                    ctrl.fill(rowData);
                 }
             });
             return row;
         });
         
-        ProductHandler.load();
+//        ProductHandler.load();
         ObservableList<Product> data = FXCollections.observableArrayList(ProductHandler.getData());
         tableView.setItems(data);
     }

@@ -31,8 +31,8 @@
             </VBox>
             <VBox layoutX="280.0" layoutY="57.0" spacing="15.0">
                <children>
-                  <TextField fx:id="tf_orderno" />
-                  <TextField fx:id="tf_trackingno" />
+                  <TextField fx:id="tf_orderno" alignment="CENTER" />
+                  <TextField fx:id="tf_trackingno" alignment="CENTER" />
                </children>
             </VBox>
             <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Update" textFill="WHITE" />
@@ -47,10 +47,10 @@
                      <children>
                         <TableView fx:id="tableview_item" prefHeight="200.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="tb_id" prefWidth="139.0" text="ID" />
-                            <TableColumn fx:id="tb_name" prefWidth="268.0" text="Name" />
-                              <TableColumn fx:id="tb_qty" minWidth="0.0" text="Qty" />
-                              <TableColumn fx:id="tb_price" minWidth="0.0" prefWidth="113.0" text="Price" />
+                            <TableColumn fx:id="tb_id" prefWidth="102.33331298828125" style="-fx-alignment: center;" text="ID" />
+                            <TableColumn fx:id="tb_name" prefWidth="351.66668701171875" text="Name" />
+                              <TableColumn fx:id="tb_qty" minWidth="0.0" prefWidth="53.6666259765625" style="-fx-alignment: center;" text="Qty" />
+                              <TableColumn fx:id="tb_price" minWidth="0.0" prefWidth="91.0" style="-fx-alignment: center;" text="Price" />
                           </columns>
                         </TableView>
                      </children>
@@ -63,8 +63,9 @@
                      <children>
                         <TableView fx:id="tableview_status" prefHeight="200.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="tb_date" prefWidth="150.0" text="Date" />
-                            <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="449.0" text="Status" />
+                            <TableColumn fx:id="tb_date" prefWidth="115.0" style="-fx-alignment: center;" text="Date" />
+                              <TableColumn fx:id="tb_time" prefWidth="66.6666259765625" style="-fx-alignment: center;" text="Time" />
+                            <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="418.3333740234375" text="Status" />
                           </columns>
                         </TableView>
                      </children>

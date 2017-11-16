@@ -1,12 +1,8 @@
 package application;
 
+import application.handler.DataHandler;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.control.MenuBar;
-import javafx.scene.layout.BorderPane;
 
 /**
  *
@@ -14,29 +10,22 @@ import javafx.scene.layout.BorderPane;
  */
 public class Main extends Application {
     
-    private static final BorderPane root = new BorderPane();
-    
     @Override
     public void start(Stage mainStage) throws Exception {
         System.out.println("Loading Application's properties...");
         AppProperties.load();
+        System.out.println("Initialize myDate...");
+        MyDate.initialize();
         System.out.println("Connecting to database...");
         DatabaseConnection.load();
         
+        System.out.println("Loading data...");
+        DataHandler.load();
+        System.out.println("Data loaded!");
+        
         System.out.println("Loading GUI...");
-        MenuBar bar = FXMLLoader.load(getClass().getResource("/ui/fxml/MenuBar.fxml"));
-        Parent startPage = FXMLLoader.load(getClass().getResource("/ui/fxml/AgentView.fxml"));
-        
-        root.setTop(bar);
-        root.setCenter(startPage);
-        
-        Scene scene = new Scene(root, 1024, 768);
-        scene.getStylesheets().add("ui/resources/bootstrap3.css");
-        scene.getStylesheets().add("ui/resources/table.css");
-        mainStage.setScene(scene);
-        mainStage.setTitle("lnwza SHOP");
+        SceneLoader.initialize(mainStage);
         System.out.println("GUI loaded!");
-        mainStage.show();
     }
     
     @Override
@@ -44,10 +33,6 @@ public class Main extends Application {
         System.out.println("Closing database connection...");
         DatabaseConnection.getConnection().close();
         System.out.println("Database connected is closed!");
-    }
-    
-    public static BorderPane getRoot() {
-        return root;
     }
 
     /**

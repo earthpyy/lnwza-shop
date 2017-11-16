@@ -35,9 +35,12 @@
       <Separator layoutY="121.0" prefHeight="9.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
       <TableView layoutY="130.0" prefHeight="639.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
         <columns>
-          <TableColumn fx:id="tableView" prefWidth="201.0" text="Date" />
-          <TableColumn prefWidth="370.0" text="Order Number" />
-            <TableColumn prefWidth="452.0" text="Status" />
+          <TableColumn fx:id="tableView" prefWidth="118.33334350585938" style="-fx-alignment: center;" text="Date" />
+            <TableColumn prefWidth="75.0" style="-fx-alignment: center;" text="Time" />
+          <TableColumn prefWidth="65.0" style="-fx-alignment: center;" text="Order No." />
+            <TableColumn prefWidth="425.33331298828125" text="Products" />
+            <TableColumn prefWidth="81.66668701171875" style="-fx-alignment: center;" text="Total" />
+            <TableColumn prefWidth="255.0" text="Status" />
         </columns>
       </TableView>
    </children>

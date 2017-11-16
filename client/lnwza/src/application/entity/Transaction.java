@@ -1,5 +1,7 @@
 package application.entity;
 
+import application.MyDate;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -24,15 +26,24 @@ public class Transaction {
     private Order order;
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date transactionDate;
-
-    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
+    private Date tranDate;
+    
+    // temp field (will use when load data)
+    private Double total;
+    
+    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount, Date tranDate) {
+        
         this.description = description;
         this.type = type;
         this.product = product;
         this.order = order;
         this.amount = amount;
-        this.transactionDate = new Date();
+        this.tranDate = tranDate;
+        this.total = 0.0;
+    }
+    
+    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
+        this(description, type, product, order, amount, new Date());
     }
 
     public Long getId() {
@@ -63,8 +74,38 @@ public class Transaction {
         return amount;
     }
 
-    public Date getTransactionDate() {
-        return transactionDate;
+    public Date getTranDate() {
+        return tranDate;
+    }
+    
+    public Double getTotal() {
+        return total;
+    }
+    
+    public String getDate() {
+        return MyDate.getFullDate(tranDate);
+    }
+    
+    public String getTime() {
+        return MyDate.getTime(tranDate);
+    }
+    
+    public Calendar getCalendar() {
+        return MyDate.newCalendar(tranDate);
+    }
+    
+    public Double getIncome() {
+        Double amnt = null;
+        if (getAmount() > 0)
+            amnt = getAmount();
+        return amnt;
+    }
+    
+    public Double getOutcome() {
+        Double amnt = null;
+        if (getAmount() < 0)
+            amnt = Math.abs(getAmount());
+        return amnt;
     }
 
     public void setDescription(String description) {
@@ -87,8 +128,12 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setTranDate(Date date) {
+        this.tranDate = date;
+    }
+    
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     @Override
