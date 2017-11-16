@@ -3,51 +3,58 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<MenuBar style="-fx-background-color: #94cfc9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuBarController">
-  <menus>
-    <Menu mnemonicParsing="false" text="Stock">
-      <items>
-        <MenuItem fx:id="menuStockView" mnemonicParsing="false" onAction="#show" text="View Stock" userData="StockView" />
-            <MenuItem disable="true" mnemonicParsing="false" text="Filter by..." />
-            <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStage" text="Update" userData="StockUpdate" />
-      </items>
-    </Menu>
-    <Menu mnemonicParsing="false" text="Orders">
-      <items>
-        <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" text="View Status" userData="OrderViewOwner" />
-      </items>
-    </Menu>
-    <Menu mnemonicParsing="false" text="History">
-      <items>
-            <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#show" text="Show History" userData="HistoryView" />
-            <Menu mnemonicParsing="false" text="Filter...">
-              <items>
-                  <MenuItem disable="true" mnemonicParsing="false" text="by Date" />
-              <MenuItem disable="true" mnemonicParsing="false" text="by Product" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="by Agent" />
-              </items>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" style="-fx-background-color: #94cfc9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuBarController">
+   <children>
+      <MenuBar layoutX="-1.0" prefHeight="30.0" prefWidth="352.0" style="-fx-background-color: #94cfc9;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Stock">
+            <items>
+              <MenuItem fx:id="menuStockView" mnemonicParsing="false" text="View Stock" />
+                  <MenuItem mnemonicParsing="false" text="Filter by..." />
+                  <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" text="Update" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Orders">
+            <items>
+              <MenuItem fx:id="menuOrderView" mnemonicParsing="false" text="View Status" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="History">
+            <items>
+              <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" text="Show History" />
+                  <Menu mnemonicParsing="false" text="Filter...">
+                     <items>
+                        <MenuItem disable="true" mnemonicParsing="false" text="by Date" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="by Product" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="by Agent" />
+                     </items>
+                  </Menu>
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Transactions">
+               <items>
+                  <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" text="Show Transactions" />
+                  <MenuItem mnemonicParsing="false" text="Filter..." />
+               </items>
             </Menu>
-      </items>
-    </Menu>
-      <Menu mnemonicParsing="false" text="Transactions">
-        <items>
-          <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#show" text="Show Transactions" userData="TransactionView" />
-            <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
-        </items>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Agents">
-        <items>
-          <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#show" text="Show Agents" userData="AgentView" />
-            <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
-        </items>
-      </Menu>
-      <Menu mnemonicParsing="false" text="User">
-        <items>
-          <MenuItem fx:id="menuLoggedName" disable="true" mnemonicParsing="false" text="Firstname Lastname" />
-            <MenuItem fx:id="menuLoggedStatus" disable="true" mnemonicParsing="false" text="Logged in" />
-            <MenuItem fx:id="menuLogOut" mnemonicParsing="false" onAction="#logOut" text="Log out..." />
-        </items>
-      </Menu>
-  </menus>
-</MenuBar>
+            <Menu mnemonicParsing="false" text="Agents">
+               <items>
+                  <MenuItem fx:id="menuAgentView" mnemonicParsing="false" text="Show Agents" />
+                  <MenuItem mnemonicParsing="false" text="Filter..." />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="User">
+               <items>
+                  <MenuItem fx:id="menuLoggedStatus" mnemonicParsing="false" text="Logged in" />
+                  <MenuItem fx:id="menuLogOut" mnemonicParsing="false" text="Log out..." />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Text fx:id="menuLoggedName" layoutX="475.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Firstname Lastname" wrappingWidth="124.13671875" />
+   </children>
+</AnchorPane>
