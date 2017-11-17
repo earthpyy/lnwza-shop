@@ -80,6 +80,10 @@ public class Product {
         img.setPreserveRatio(true);
         return img;
     }
+    
+    public ImageView getPhotoStockView() {
+        return getPhotoViewByWidth(283);
+    }
 
     public String getType() {
         return type.getName();

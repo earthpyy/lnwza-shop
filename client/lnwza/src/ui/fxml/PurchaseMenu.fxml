@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" prefHeight="70.0" prefWidth="1024.0" text="INWZA SHOP" textFill="#140144">
+         <font>
+            <Font name="Paradox" size="64.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #140144;" />
+   </children>
+</VBox>

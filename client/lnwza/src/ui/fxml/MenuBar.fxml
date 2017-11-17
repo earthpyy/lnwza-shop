@@ -14,21 +14,29 @@
    <children>
       <MenuBar style="-fx-background-color: #94cfc9;" HBox.hgrow="ALWAYS">
         <menus>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Stock">
+          <Menu fx:id="menuStock" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Stock">
             <items>
               <MenuItem fx:id="menuStockView" mnemonicParsing="false" onAction="#show" text="View Stock" userData="StockView" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Filter by..." />
+                  <Menu disable="true" mnemonicParsing="false" text="Filter by..." />
                   <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStage" text="Update" userData="StockUpdate" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Orders">
+            <Menu fx:id="menuStore" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Store">
+               <items>
+                  <MenuItem fx:id="menuStoreHome" mnemonicParsing="false" onAction="#showStore" text="Home" userData="PurchaseHome" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Category" />
+                  <MenuItem fx:id="menuStoreBag" mnemonicParsing="false" onAction="#showStore" text="Bag (X)" userData="PurchaseBag" />
+               </items>
+            </Menu>
+          <Menu fx:id="menuOrder" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Orders">
             <items>
               <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" text="View Status" userData="OrderViewOwner" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="History">
+          <!-- TODO: change name to statistics -->
+          <Menu fx:id="menuHistory" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Statistics">
             <items>
-                  <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#show" text="Show History" userData="HistoryView" />
+                  <MenuItem fx:id="menuHistoryView" mnemonicParsing="false" onAction="#show" text="Show Monthly" userData="HistoryView" />
                   <Menu mnemonicParsing="false" text="Filter...">
                     <items>
                         <MenuItem disable="true" mnemonicParsing="false" text="by Date" />
@@ -38,16 +46,16 @@
                   </Menu>
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Transactions">
+            <Menu fx:id="menuTransactions" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Transactions">
               <items>
                 <MenuItem fx:id="menuTransactionView" mnemonicParsing="false" onAction="#show" text="Show Transactions" userData="TransactionView" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
+                  <Menu disable="true" mnemonicParsing="false" text="Filter by..." />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Agents">
+            <Menu fx:id="menuAgents" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Agents">
               <items>
                 <MenuItem fx:id="menuAgentView" mnemonicParsing="false" onAction="#show" text="Show Agents" userData="AgentView" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Filter..." />
+                  <Menu disable="true" mnemonicParsing="false" text="Filter by..." />
               </items>
             </Menu>
         </menus>

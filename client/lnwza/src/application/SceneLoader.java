@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -26,17 +27,19 @@ public class SceneLoader {
     private static final int POPUP_HEIGHT = 400;
     
     private static Stage main, pop, login;
-    private static BorderPane root;
-    private static Scene scene, popScene, loginScene;
-    private static Parent menu, body, popBody, loginBody;
+    private static BorderPane mainRoot;
+    private static VBox pcRoot;
+    private static Scene mainScene, popScene, loginScene;
+    private static Parent mainMenu, mainBody, popBody, loginBody, pcMenu, pcBody;
     private static FXMLLoader popFXML;
     
     public static void initialize(Stage stage) {
         main = new Stage();
         pop = new Stage();
         login = stage;
-        root = new BorderPane();
-        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
+        mainRoot = new BorderPane();
+        pcRoot = new VBox();
+        mainScene = new Scene(mainRoot, MAIN_WIDTH, MAIN_HEIGHT);
         
         loadLogin();
     }
@@ -57,23 +60,37 @@ public class SceneLoader {
         login.close();
         
         main.setTitle("lnwza SHOP");
-        menu = load("MenuBar");
-        root.setTop(menu);
+        mainMenu = load("MenuBar");
+        mainRoot.setTop(mainMenu);
         if (Session.isOwner()) {
             setBody(OWNER_HOMEPAGE);
         } else {
-            setBody(AGENT_HOMEPAGE);
+            loadPurchase();
+//            setBody(AGENT_HOMEPAGE);
         }
 
 //        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
-        loadCss(scene);
-        main.setScene(scene);
+        loadCss(mainScene);
+        main.setScene(mainScene);
         main.show();
     }
     
+    public static void loadPurchase() {
+        pcMenu = load("PurchaseMenu");
+        pcBody = load(AGENT_HOMEPAGE);
+        
+        pcRoot.getChildren().addAll(pcMenu, pcBody);
+        mainRoot.setCenter(pcRoot);
+    }
+    
     public static void setBody(String name) {
-        body = load(name);
-        root.setCenter(body);
+        mainBody = load(name);
+        mainRoot.setCenter(mainBody);
+    }
+    
+    public static void setPCBody(String name) {
+        pcBody = load(name);
+        pcRoot.getChildren().set(1, pcBody); // TODO: check if its useless?
     }
     
     public static void popup(String name, String title) {
@@ -121,7 +138,6 @@ public class SceneLoader {
             parent = loadFXML(name).load();
         } catch (IOException ex) {
             System.out.println("Cannot load " + name + "!");
-            ex.printStackTrace(System.out);
             System.exit(0);
         }
         System.out.println("[GUI] " + name + " loaded!");

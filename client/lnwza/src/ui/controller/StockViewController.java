@@ -63,7 +63,7 @@ public class StockViewController {
     @FXML
     protected void initialize() {
         tb_id.setCellValueFactory(new PropertyValueFactory<>("productId"));
-        tb_photo.setCellValueFactory(new PropertyValueFactory<>("photoView"));
+        tb_photo.setCellValueFactory(new PropertyValueFactory<>("photoStockView"));
         tb_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         tb_type.setCellValueFactory(new PropertyValueFactory<>("type"));
         tb_size.setCellValueFactory(new PropertyValueFactory<>("size"));

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
 /**
@@ -15,19 +16,43 @@ import javafx.scene.control.MenuItem;
 public class MenuBarController {
     
     @FXML
+    private Menu menuStock;
+
+    @FXML
     private MenuItem menuStockView;
 
     @FXML
     private MenuItem menuStockUpdate;
 
     @FXML
+    private Menu menuStore;
+
+    @FXML
+    private MenuItem menuStoreHome;
+
+    @FXML
+    private MenuItem menuStoreBag;
+
+    @FXML
+    private Menu menuOrder;
+
+    @FXML
     private MenuItem menuOrderView;
+
+    @FXML
+    private Menu menuHistory;
 
     @FXML
     private MenuItem menuHistoryView;
 
     @FXML
+    private Menu menuTransactions;
+
+    @FXML
     private MenuItem menuTransactionView;
+
+    @FXML
+    private Menu menuAgents;
 
     @FXML
     private MenuItem menuAgentView;
@@ -47,8 +72,15 @@ public class MenuBarController {
         loggedRole.setText(Session.getRole().toUpperCase());
         if (Session.isOwner()) {
             loggedRole.setStyle("-fx-text-fill: red;");
+            
+            menuStore.setVisible(false);
         } else {
             loggedRole.setStyle("-fx-text-fill: green;");
+            
+            menuStock.setVisible(false);
+            menuHistory.setVisible(false);
+            menuTransactions.setVisible(false);
+            menuAgents.setVisible(false);
         }
     }
     
@@ -66,6 +98,12 @@ public class MenuBarController {
         } else {
             SceneLoader.popup(scene);
         }
+    }
+    
+    @FXML
+    void showStore(ActionEvent event) {
+        String scene = (String) ((MenuItem) event.getSource()).getUserData();
+        SceneLoader.setPCBody(scene);
     }
     
     @FXML
