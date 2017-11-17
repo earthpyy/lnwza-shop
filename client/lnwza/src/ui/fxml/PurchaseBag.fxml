@@ -35,11 +35,11 @@
                   <TableView layoutY="-2.0" prefHeight="677.0" prefWidth="639.0">
                     <columns>
                       <TableColumn fx:id="tb_photo" prefWidth="159.0" style="-fx-alignment: center;" text="Photo" />
-                      <TableColumn fx:id="tb_detail" prefWidth="247.66668701171875" text="Detail" />
+                      <TableColumn fx:id="tb_detail" prefWidth="247.66668701171875" style="-fx-alignment: center-left;" text="Detail" />
                         <TableColumn fx:id="tb_price" prefWidth="65.33331298828125" style="-fx-alignment: center;" text="Price" />
                         <TableColumn fx:id="tb_qty" prefWidth="36.33331298828125" style="-fx-alignment: center;" text="Qty" />
                         <TableColumn fx:id="tb_subtotal" prefWidth="74.33331298828125" style="-fx-alignment: center;" text="Subtotal" />
-                        <TableColumn fx:id="tb_remove" prefWidth="63.66668701171875" text="Remove" />
+                        <TableColumn fx:id="tb_remove" prefWidth="63.66668701171875" style="-fx-alignment: center-left;" text="Remove" />
                     </columns>
                   </TableView>
                </children>

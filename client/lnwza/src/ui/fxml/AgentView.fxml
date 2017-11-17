@@ -35,9 +35,9 @@
           <TableView fx:id="tableview" layoutY="127.0" prefHeight="684.0" prefWidth="1024.0">
               <columns>
                   <TableColumn fx:id="tb_id" prefWidth="51.0" style="-fx-alignment: center;" text="ID" />
-                  <TableColumn fx:id="tb_first" prefWidth="113.0" text="First Name" />
-                  <TableColumn fx:id="tb_last" prefWidth="176.0" text="Last Name" />
-                  <TableColumn fx:id="tb_address" prefWidth="539.0" text="Address" />
+                  <TableColumn fx:id="tb_first" prefWidth="113.0" style="-fx-alignment: center-left;" text="First Name" />
+                  <TableColumn fx:id="tb_last" prefWidth="176.0" style="-fx-alignment: center-left;" text="Last Name" />
+                  <TableColumn fx:id="tb_address" prefWidth="539.0" style="-fx-alignment: center-left;" text="Address" />
                   <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" style="-fx-alignment: center;" text="Telephone" />
               </columns>
           </TableView>
