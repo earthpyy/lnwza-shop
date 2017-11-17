@@ -37,8 +37,7 @@ public class AppProperties {
             if (input != null) {
                 try {
                     input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException ex) {
                 } finally {
                     System.out.println("Application's properties loaded!");
                 }

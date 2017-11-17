@@ -73,7 +73,7 @@ public class User {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(password.getBytes("UTF-8"));
             digest = md.digest();
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
         }
         return Base64.getEncoder().encodeToString(digest);
     }

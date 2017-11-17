@@ -25,8 +25,7 @@ public class ImageConverter {
 
             base64 = new String(Base64.getEncoder().encode(baos.toByteArray()));
             baos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
         }
         return base64;
     }
@@ -36,8 +35,7 @@ public class ImageConverter {
         try {
             byte[] byteArr = Base64.getDecoder().decode(base64);
             buffImg = ImageIO.read(new ByteArrayInputStream(byteArr));
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
         }
         return SwingFXUtils.toFXImage(buffImg, null);
     }

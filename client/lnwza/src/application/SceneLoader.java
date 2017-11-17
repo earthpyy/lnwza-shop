@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -16,7 +15,8 @@ import javafx.stage.Stage;
  */
 public class SceneLoader {
     
-    private static final String HOMEPAGE = "StockView";
+    private static final String OWNER_HOMEPAGE = "StockView";
+    private static final String AGENT_HOMEPAGE = "PurchaseHome";
     
     private static final String CSS_PATH = "/ui/resources/";
     private static final String FXML_PATH = "/ui/fxml/";
@@ -28,8 +28,7 @@ public class SceneLoader {
     private static Stage main, pop, login;
     private static BorderPane root;
     private static Scene scene, popScene, loginScene;
-    private static MenuBar menu;
-    private static Parent body, popBody, loginBody;
+    private static Parent menu, body, popBody, loginBody;
     private static FXMLLoader popFXML;
     
     public static void initialize(Stage stage) {
@@ -58,9 +57,13 @@ public class SceneLoader {
         login.close();
         
         main.setTitle("lnwza SHOP");
-        menu = (MenuBar) load("MenuBar");
+        menu = load("MenuBar");
         root.setTop(menu);
-        setBody(HOMEPAGE);
+        if (Session.isOwner()) {
+            setBody(OWNER_HOMEPAGE);
+        } else {
+            setBody(AGENT_HOMEPAGE);
+        }
 
 //        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
         loadCss(scene);
@@ -77,7 +80,7 @@ public class SceneLoader {
         popFXML = loadFXML(name);
         try {
             popBody = popFXML.load();
-        } catch (IOException e) {
+        } catch (IOException ex) {
         }
         popScene = new Scene(popBody, POPUP_WIDTH, POPUP_HEIGHT);
         loadCss(popScene);
@@ -99,17 +102,27 @@ public class SceneLoader {
     }
     
     private static FXMLLoader loadFXML(String name) {
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneLoader.class.getResource(FXML_PATH + name + ".fxml"));
+        FXMLLoader fxmlLoader = null;
+        try {
+            fxmlLoader = new FXMLLoader(SceneLoader.class.getResource(FXML_PATH + name + ".fxml"));
+        } catch (Exception ex) {       
+        }
         return fxmlLoader;
     }
     
     private static Parent load(String name) {
+        if (name.equals("OrderView")) {
+            name += Session.getRole();
+        }
+        
         Parent parent = null;
         System.out.println("[GUI] Loading " + name + "...");
         try {
             parent = loadFXML(name).load();
-        } catch (IOException e) {
+        } catch (IOException ex) {
             System.out.println("Cannot load " + name + "!");
+            ex.printStackTrace(System.out);
+            System.exit(0);
         }
         System.out.println("[GUI] " + name + " loaded!");
         return parent;
