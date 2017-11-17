@@ -86,9 +86,7 @@ public class GenerateSampleData {
                     countD = Integer.parseInt(arr[4]);
                     try {
                     pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, arr[5], Double.parseDouble(arr[6]));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        System.out.println(arr[0]);
+                    } catch (NumberFormatException ex) {
                     }
                     em.persist(pd);
                     
