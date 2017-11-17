@@ -34,7 +34,7 @@ public class LoginController {
     
     @FXML
     protected void initialize() {
-        // do something
+        bt_login.setDefaultButton(true);
     }
     
     @FXML

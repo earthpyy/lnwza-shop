@@ -4,6 +4,8 @@ import application.SceneLoader;
 import application.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 
 /**
@@ -31,18 +33,18 @@ public class MenuBarController {
     private MenuItem menuAgentView;
 
     @FXML
-    private MenuItem menuLoggedName;
+    private Label loggedName;
 
     @FXML
-    private MenuItem menuLoggedStatus;
+    private Label loggedRole;
 
     @FXML
-    private MenuItem menuLogOut;
+    private Button bt_logout;
     
     @FXML
     protected void initialize() {
-        menuLoggedName.setText(Session.getFullName());
-        menuLoggedStatus.setText("Role: " + Session.getRole());
+        loggedName.setText(Session.getFullName());
+        loggedRole.setText(Session.getRole());
     }
     
     @FXML
