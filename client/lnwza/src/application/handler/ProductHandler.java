@@ -23,6 +23,16 @@ public class ProductHandler {
     public static ArrayList<Product> getData() {
         return products;
     }
+    
+    public static ArrayList<Product> getRecommendData() {
+        ArrayList<Product> result = new ArrayList<>();
+        // TODO: check from db
+        result.add(products.get(0));
+        result.add(products.get(1));
+        result.add(products.get(2));
+        
+        return result;
+    }
 
     public static void load() {
         products = new ArrayList<>();

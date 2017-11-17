@@ -63,10 +63,21 @@ public class Product {
         return ImageConverter.toImage(photo);
     }
     
+    public ImageView getPhotoViewByWidth(double width) {
+        ImageView img = getPhotoView();
+        img.setFitWidth(width);
+        return img;
+    }
+    
+    public ImageView getPhotoViewByHeight(double height) {
+        ImageView img = getPhotoView();
+        img.setFitHeight(height);
+        return img;
+    }
+    
     public ImageView getPhotoView() {
         ImageView img = new ImageView(ImageConverter.toImage(photo));
         img.setPreserveRatio(true);
-        img.setFitWidth(283);
         return img;
     }
 

@@ -23,7 +23,7 @@
          <children>
             <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/images/PCVBG.png" />
+                  <Image url="@../resources/images/PCVBG.gif" />
                </image>
             </ImageView>
             <AnchorPane layoutY="20.0" prefHeight="68.0" prefWidth="1024.0" style="-fx-background-color: #140144;" />

@@ -44,7 +44,12 @@ public class MenuBarController {
     @FXML
     protected void initialize() {
         loggedName.setText(Session.getFullName());
-        loggedRole.setText(Session.getRole());
+        loggedRole.setText(Session.getRole().toUpperCase());
+        if (Session.isOwner()) {
+            loggedRole.setStyle("-fx-text-fill: red;");
+        } else {
+            loggedRole.setStyle("-fx-text-fill: green;");
+        }
     }
     
     @FXML

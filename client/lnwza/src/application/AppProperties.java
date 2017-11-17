@@ -32,7 +32,6 @@ public class AppProperties {
             dbPass = prop.getProperty("dbPass");
 
         } catch (IOException ex) {
-            ex.printStackTrace();
         } finally {
             if (input != null) {
                 try {
