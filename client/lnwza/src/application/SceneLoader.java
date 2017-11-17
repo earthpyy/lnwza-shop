@@ -90,7 +90,8 @@ public class SceneLoader {
     
     public static void setPCBody(String name) {
         pcBody = load(name);
-        pcRoot.getChildren().set(1, pcBody); // TODO: check if its useless?
+        pcRoot.getChildren().set(1, pcBody);
+        mainRoot.setCenter(pcRoot);
     }
     
     public static void popup(String name, String title) {

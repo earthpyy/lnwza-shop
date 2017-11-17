@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,6 +29,9 @@
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
+                     <effect>
+                        <Glow level="0.57" />
+                     </effect>
                   </Label>
                   <Label layoutX="23.0" layoutY="77.0" text="USERNAME:" textFill="#140144">
                      <font>
@@ -45,7 +49,7 @@
                   <PasswordField fx:id="tf_password" layoutX="25.0" layoutY="187.0" onKeyTyped="#checkNull" prefHeight="25.0" prefWidth="230.0" />
                </children>
             </AnchorPane>
-            <Label layoutX="324.0" layoutY="20.0" prefHeight="53.0" prefWidth="262.0" text="Welcome to">
+            <Label layoutX="324.0" layoutY="20.0" prefHeight="53.0" prefWidth="262.0" styleClass="fv" text="Welcome to">
                <font>
                   <Font name="Vacations in Phuket" size="45.0" />
                </font>
@@ -65,7 +69,7 @@
                   <Font name="Vacations in Phuket" size="45.0" />
                </font>
             </Label>
-            <Label layoutX="338.0" layoutY="73.0" text="lNWZA-SHOP">
+            <Label layoutX="338.0" layoutY="73.0" styleClass="fp" text="lNWZA-SHOP">
                <font>
                   <Font name="Paradox" size="52.0" />
                </font>

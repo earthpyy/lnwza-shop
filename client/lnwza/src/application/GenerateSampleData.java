@@ -63,6 +63,7 @@ public class GenerateSampleData {
             }
                         
             // Products
+            // TODO: ProductType: wallet has space in front of name
             Product pd = null;
             ProductType pdt;
             em.getMetamodel().entity(Product.class);

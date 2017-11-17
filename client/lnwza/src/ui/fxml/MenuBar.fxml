@@ -30,7 +30,7 @@
             </Menu>
           <Menu fx:id="menuOrder" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Orders">
             <items>
-              <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" text="View Status" userData="OrderViewOwner" />
+              <MenuItem fx:id="menuOrderView" mnemonicParsing="false" onAction="#show" text="View Status" userData="OrderView" />
             </items>
           </Menu>
           <!-- TODO: change name to statistics -->

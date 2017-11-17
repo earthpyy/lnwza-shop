@@ -7,6 +7,7 @@ package application.handler;
 public class DataHandler {
     
     public static void load() {
+        ProductTypeHandler.load();
         ProductHandler.load();
         OrderHandler.load();
         AgentHandler.load();

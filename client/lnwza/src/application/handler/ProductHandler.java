@@ -9,7 +9,6 @@ import application.DatabaseConnection;
 import application.entity.Product;
 import application.entity.ProductDetail;
 import application.entity.ProductType;
-import java.util.List;
 
 /**
  *
@@ -40,8 +39,8 @@ public class ProductHandler {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Product> q = em.createQuery("SELECT FROM Product", Product.class);
-            for (Product pd : q.getResultList()) {
-                products.add(pd);
+            for (Product product : q.getResultList()) {
+                products.add(product);
             }
         } finally {
             em.close();
