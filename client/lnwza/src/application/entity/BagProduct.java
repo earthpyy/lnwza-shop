@@ -1,5 +1,6 @@
 package application.entity;
 
+import javafx.scene.image.ImageView;
 import javax.persistence.*;
 
 /**
@@ -28,6 +29,14 @@ public class BagProduct {
     public BagProduct(Order order, ProductDetail product) {
         this(order, product, 1);
     }
+    
+    public BagProduct(ProductDetail product, Integer quantity) {
+        this(null, product, quantity);
+    }
+    
+    public BagProduct(ProductDetail product) {
+        this(null, product, 1);
+    }
 
     public Long getId() {
         return id;
@@ -47,6 +56,10 @@ public class BagProduct {
     
     public String getProductName() {
         return product.getProduct().getName();
+    }
+    
+    public ImageView getProductPhoto() {
+        return product.getProduct().getPhotoViewByWidth(100);
     }
     
     public Double getProductPrice() {

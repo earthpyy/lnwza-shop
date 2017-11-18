@@ -32,7 +32,7 @@
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView layoutY="-2.0" prefHeight="677.0" prefWidth="639.0">
+                  <TableView fx:id="tableView" layoutY="-2.0" prefHeight="677.0" prefWidth="639.0">
                     <columns>
                       <TableColumn fx:id="tb_photo" prefWidth="159.0" style="-fx-alignment: center;" text="Photo" />
                       <TableColumn fx:id="tb_detail" prefWidth="247.66668701171875" style="-fx-alignment: center-left;" text="Detail" />

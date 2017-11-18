@@ -1,5 +1,6 @@
 package application.entity;
 
+import javafx.scene.paint.Color;
 import javax.persistence.*;
 
 /**
@@ -11,24 +12,22 @@ public class ProductDetail {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Product product;
     private String colorName;
-    private String color;
+    private String colorCode;
     private Integer quantity;
     
-//    @ManyToOne
-//    private Order order;
+    @ManyToOne
+    private Product product;
 
-    public ProductDetail(Product product, String colorName, String color, Integer quantity) {
+    public ProductDetail(Product product, String colorName, String colorCode, Integer quantity) {
         this.product = product;
         this.colorName = colorName;
-        this.color = color;
+        this.colorCode = colorCode.replace("#", "");
         this.quantity = quantity;
     }
     
-    public ProductDetail(Product product, String colorName, String color) {
-        this(product, colorName, color, 0);
+    public ProductDetail(Product product, String colorName, String colorCode) {
+        this(product, colorName, colorCode, 0);
     }
 
     public Long getId() {
@@ -47,17 +46,13 @@ public class ProductDetail {
         return colorName;
     }
 
-    public String getColor() {
-        return color;
+    public Color getColor() {
+        return new Color(Integer.valueOf(colorCode.substring(0, 2), 16) / 255.0, Integer.valueOf(colorCode.substring(2, 4), 16) / 255.0, Integer.valueOf(colorCode.substring(4, 6), 16) / 255.0, 1);
     }
 
     public Integer getQuantity() {
         return quantity;
     }
-
-//    public Order getOrder() {
-//        return order;
-//    }
 
     public void setProduct(Product product) {
         this.product = product;
@@ -67,17 +62,13 @@ public class ProductDetail {
         this.colorName = colorName;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorCode(String colorCode) {
+        this.colorCode = colorCode;
     }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
 
     @Override
     public int hashCode() {

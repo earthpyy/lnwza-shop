@@ -21,6 +21,10 @@ public class ProductDetailHandler {
     public static ArrayList<ProductDetail> getData() {
         return pds;
     }
+    
+//    public static ProductDetail getDataFromColor() {
+//        
+//    }
 
 //    public static void load(ArrayList<ProductDetail> pdArr) {
 //        pds = new ArrayList<>();
@@ -61,6 +65,7 @@ public class ProductDetailHandler {
         }
     }
     
+    // recheck these methods
     public static void add(String colorName, String color, Integer quantity) {
         // TODO: next sprint
     }

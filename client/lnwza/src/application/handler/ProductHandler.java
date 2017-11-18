@@ -42,14 +42,6 @@ public class ProductHandler {
         }
         return result;
     }
-    
-    public static ArrayList<String> getColor(Product product) {
-        ArrayList<String> result = new ArrayList<>();
-        for (ProductDetail detail : product.getDetail()) {
-            result.add(detail.getColorName());
-        }
-        return result;
-    }
 
     public static void load() {
         products = new ArrayList<>();

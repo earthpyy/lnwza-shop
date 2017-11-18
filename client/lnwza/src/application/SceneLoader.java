@@ -129,6 +129,10 @@ public class SceneLoader {
         return controller.cast(pcFXML.getController());
     }
     
+    public static void closePopup() {
+        pop.close();
+    }
+    
     private static FXMLLoader loadFXML(String name) {
         FXMLLoader fxmlLoader = null;
         try {

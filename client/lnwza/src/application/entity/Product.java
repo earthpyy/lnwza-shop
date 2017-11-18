@@ -24,7 +24,7 @@ public class Product {
     @ManyToOne
     public ProductType type;
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
-    private List<ProductDetail> detail;
+    private List<ProductDetail> details;
     private String size;
     private Double price;
     
@@ -94,19 +94,15 @@ public class Product {
     }
 
     public ArrayList<ProductDetail> getDetail() {
-        return (ArrayList) detail;
+        return (ArrayList) details;
     }
     
     public String getColorName(int index) {
-        return detail.get(index).getColorName();
-    }
-
-    public String getColor(int index) {
-        return detail.get(index).getColor();
+        return details.get(index).getColorName();
     }
 
     public Integer getQuantity(int index) {
-        return detail.get(index).getQuantity();
+        return details.get(index).getQuantity();
     }
 
     public String getSize() {
@@ -138,19 +134,11 @@ public class Product {
     }
 
     public void setDetail(ArrayList<ProductDetail> detail) {
-        this.detail = detail;
-    }
-    
-    public void setColorName(int index, String colorName) {
-        this.detail.get(index).setColorName(colorName);
-    }
-
-    public void setColor(int index, String color) {
-        this.detail.get(index).setColor(color);
+        this.details = detail;
     }
 
     public void setQuantity(int index, Integer quantity) {
-        this.detail.get(index).setQuantity(quantity);
+        this.details.get(index).setQuantity(quantity);
     }
 
     public void setSize(String size) {

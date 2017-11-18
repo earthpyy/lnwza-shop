@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
  */
 public class DatabaseConnection {
     private static EntityManagerFactory emf;
+    // TODO: check with multiuser
     
     public static void load() {
         try {
