@@ -1,23 +1,92 @@
 package ui.controller;
+import application.entity.Product;
+import application.entity.ProductType;
+import application.handler.ProductHandler;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 /**
  *
- * @author Naremx
+ * @author SE-lnwza
  */
 public class PurchaseViewController {
     
     @FXML
-    private ImageView im_product;
-
+    private ScrollPane scrollPane;
+    
     @FXML
-    private Label lb_name;
-
+    private GridPane gridPane;
+    
     @FXML
-    private Label lb_price;
+    private ColumnConstraints colCon;
 
+    private static final double ROW_HEIGHT = 330;
+    private static final double IMAGE_HEIGHT = 250;
+    private ArrayList<Product> products;
+    
     @FXML
-    private Button bt_add;
+    protected void initialize() {
+        // TODO: move it to fxml
+        gridPane.getColumnConstraints().addAll(colCon, colCon);
+    }
+    
+    void fill(ProductType type) {
+        products = ProductHandler.getDataFromType(type);
+        int i = 0;
+        for (Product product : products) {
+            if (i % 3 == 0) {
+                RowConstraints rowCon = new RowConstraints();
+                rowCon.setValignment(VPos.CENTER);
+                rowCon.setPrefHeight(ROW_HEIGHT);
+                gridPane.getRowConstraints().add(rowCon);
+            }
+            GridPane container = new GridPane();
+
+            RowConstraints containerRowA = new RowConstraints();
+            RowConstraints containerRowB = new RowConstraints();
+            containerRowA.setVgrow(Priority.ALWAYS);
+            container.getRowConstraints().add(containerRowA);
+            containerRowB.setVgrow(Priority.NEVER);
+            container.getRowConstraints().addAll(containerRowB, containerRowB, containerRowB);
+            
+            ColumnConstraints containerCol = new ColumnConstraints();
+            containerCol.setHgrow(Priority.ALWAYS);
+            container.getColumnConstraints().add(containerCol);
+            
+            ImageView image = product.getPhotoViewByHeight(IMAGE_HEIGHT);
+            GridPane.setHalignment(image, HPos.CENTER);
+            
+            Text txt_name = new Text(product.getName());
+            GridPane.setHalignment(txt_name, HPos.CENTER);
+            
+            Text txt_price = new Text("$" + product.getPrice().toString());
+            txt_price.setFill(Color.RED);
+            GridPane.setHalignment(txt_price, HPos.CENTER);
+            
+            Button bt_cart = new Button("Add to cart!");
+            GridPane.setHalignment(bt_cart, HPos.CENTER);
+            bt_cart.setOnAction((event) -> {
+                // TODO: add to cart!
+            });
+            
+            container.add(image, 0, 0);
+            container.add(txt_name, 0, 1);
+            container.add(txt_price, 0, 2);
+            container.add(bt_cart, 0, 3);
+            
+            gridPane.add(container, i % 3, i / 3);
+            i++;
+        }
+    }
+    
 }

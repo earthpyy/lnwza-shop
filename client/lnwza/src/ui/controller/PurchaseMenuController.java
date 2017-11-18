@@ -32,7 +32,6 @@ public class PurchaseMenuController {
         for (ProductType type : types) {
             Menu menu = new Menu(type.getName());
             MenuItem menuItem = new MenuItem("");
-
             menuItem.setOnAction((event) -> {
                 showCategory(type);
             });
@@ -66,8 +65,10 @@ public class PurchaseMenuController {
     }
     
     void showCategory(ProductType type) {
-        // TODO: use type to query and dynamically show products
-        System.out.println(type.getName());
+        SceneLoader.setPCBodyWithLoadFXML("PurchaseView");
+
+        PurchaseViewController ctrl = SceneLoader.getPCController(PurchaseViewController.class);
+        ctrl.fill(type);
     }
     
 }

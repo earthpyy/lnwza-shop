@@ -32,6 +32,16 @@ public class ProductHandler {
         
         return result;
     }
+    
+    public static ArrayList<Product> getDataFromType(ProductType type) {
+        ArrayList<Product> result = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getType().equals(type)) {
+                result.add(product);
+            }
+        }
+        return result;
+    }
 
     public static void load() {
         products = new ArrayList<>();

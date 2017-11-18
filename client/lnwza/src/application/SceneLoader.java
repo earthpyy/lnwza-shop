@@ -31,7 +31,7 @@ public class SceneLoader {
     private static VBox pcRoot;
     private static Scene mainScene, popScene, loginScene;
     private static Parent mainMenu, mainBody, popBody, loginBody, pcMenu, pcBody;
-    private static FXMLLoader popFXML;
+    private static FXMLLoader popFXML, pcFXML;
     
     public static void initialize(Stage stage) {
         main = new Stage();
@@ -94,6 +94,16 @@ public class SceneLoader {
         mainRoot.setCenter(pcRoot);
     }
     
+    public static void setPCBodyWithLoadFXML(String name) {
+        pcFXML = loadFXML(name);
+        try {
+            pcBody = pcFXML.load();
+        } catch (IOException ex) {
+        }
+        pcRoot.getChildren().set(1, pcBody);
+        mainRoot.setCenter(pcRoot);
+    }
+    
     public static void popup(String name, String title) {
         popFXML = loadFXML(name);
         try {
@@ -115,8 +125,8 @@ public class SceneLoader {
         return controller.cast(popFXML.getController());
     }
     
-    public static <T> T getPopupController() {
-        return popFXML.getController();
+    public static <T> T getPCController(Class<T> controller) {
+        return controller.cast(pcFXML.getController());
     }
     
     private static FXMLLoader loadFXML(String name) {

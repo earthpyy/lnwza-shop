@@ -84,8 +84,12 @@ public class Product {
     public ImageView getPhotoStockView() {
         return getPhotoViewByWidth(283);
     }
+    
+    public ProductType getType() {
+        return type;
+    }
 
-    public String getType() {
+    public String getTypeName() {
         return type.getName();
     }
 

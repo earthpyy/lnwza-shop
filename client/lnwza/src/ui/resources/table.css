@@ -34,7 +34,7 @@
   -fx-font-weight: bold;
 }
 
-.button {
+/*.button {
   -fx-focus-color: transparent;
 -fx-faint-focus-color: transparent;
 }
@@ -42,4 +42,8 @@
 .button:focused {
     -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color; 
   -fx-background-insets: 0, 0, 1, 2;
+}*/
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
 }

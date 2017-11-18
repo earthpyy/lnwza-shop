@@ -20,7 +20,7 @@ public class ProductTypeHandler {
     public static ArrayList<ProductType> getData() {
         return types;
     }
-
+    
     public static void load() {
         types = new ArrayList<>();
         

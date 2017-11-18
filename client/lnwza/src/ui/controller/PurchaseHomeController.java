@@ -23,14 +23,15 @@ public class PurchaseHomeController {
     @FXML
     private GridPane gridPane;
     
+    private static final double IMAGE_HEIGHT = 195;
     private List<Product> products;
     
     @FXML
     protected void initialize() {
         products = ProductHandler.getRecommendData();
         
-        for (int i = 0; i < 3; i++) {
-            Product product = products.get(i);
+        int i = 0;
+        for (Product product : products) {
             GridPane container = new GridPane();
             
             RowConstraints containerRowA = new RowConstraints();
@@ -45,7 +46,7 @@ public class PurchaseHomeController {
             container.getColumnConstraints().add(containerCol);
             
 //            Pane imagePane = new Pane();
-            ImageView image = product.getPhotoViewByHeight(195);
+            ImageView image = product.getPhotoViewByHeight(IMAGE_HEIGHT);
             GridPane.setHalignment(image, HPos.CENTER);
 //            imagePane.getChildren().add(image);
 //            image.fitHeightProperty().bind(imagePane.heightProperty());
@@ -53,14 +54,14 @@ public class PurchaseHomeController {
             Text txt_name = new Text(product.getName());
             GridPane.setHalignment(txt_name, HPos.CENTER);
             
-            Text txt_price = new Text(product.getPrice().toString() + " Baht");
+            Text txt_price = new Text("$" + product.getPrice().toString());
             txt_price.setFill(Color.RED);
             GridPane.setHalignment(txt_price, HPos.CENTER);
             
             Button bt_cart = new Button("Add to cart!");
             GridPane.setHalignment(bt_cart, HPos.CENTER);
             bt_cart.setOnAction((event) -> {
-                // TODO: add to cart!
+                System.out.println(product.getName());
             });
             
             container.add(image, 0, 0);
@@ -68,7 +69,7 @@ public class PurchaseHomeController {
             container.add(txt_price, 0, 2);
             container.add(bt_cart, 0, 3);
             
-            gridPane.add(container, i, 0);
+            gridPane.add(container, i++, 0);
         }
     }
     

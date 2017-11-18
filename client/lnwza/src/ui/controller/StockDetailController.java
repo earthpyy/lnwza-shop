@@ -92,7 +92,7 @@ public class StockDetailController {
         lb_name.setText(pd.getName());
         lb_price.setText(pd.getPrice().toString());
         lb_size.setText(pd.getSize());
-        lb_type.setText(pd.getType());
+        lb_type.setText(pd.getType().getName());
         lb_description.setText(pd.getDescription());
         
 //        ProductDetailHandler.load(pd.getDetail());
