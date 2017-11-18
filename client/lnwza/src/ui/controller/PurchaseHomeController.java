@@ -1,5 +1,7 @@
 package ui.controller;
 
+import application.Bag;
+import application.SceneLoader;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
@@ -61,7 +63,10 @@ public class PurchaseHomeController {
             Button bt_cart = new Button("Add to cart!");
             GridPane.setHalignment(bt_cart, HPos.CENTER);
             bt_cart.setOnAction((event) -> {
-                System.out.println(product.getName());
+                SceneLoader.popup("PurchaseAdd", product.getName());
+                
+                PurchaseAddController ctrl = SceneLoader.getPopupController(PurchaseAddController.class);
+                ctrl.fill(product);
             });
             
             container.add(image, 0, 0);

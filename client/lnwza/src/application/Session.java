@@ -10,7 +10,7 @@ import application.entity.User;
 public class Session {
     
     private static User currentUser = null;
-    // TODO: bag here ArrayList<ProductDetail>
+    // TODO: move this to User
     
     public static User getCurrentUser() {
         return currentUser;

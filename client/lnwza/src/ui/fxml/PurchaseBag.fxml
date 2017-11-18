@@ -15,12 +15,12 @@
    <children>
       <AnchorPane layoutY="17.0" prefHeight="57.0" prefWidth="1024.0" style="-fx-background-color: #bacfd8;">
          <children>
-            <Label layoutX="209.0" layoutY="-8.0" text="()" textFill="#140144">
+            <Label fx:id="lb_amount" layoutX="209.0" layoutY="-8.0" text="()" textFill="#140144">
                <font>
                   <Font name="Paradox" size="58.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="-24.0" prefHeight="95.0" prefWidth="196.0" text="My Bag " textFill="#140144">
+            <Label layoutX="29.0" layoutY="-24.0" prefHeight="95.0" prefWidth="196.0" styleClass="fp" text="MY BAG" textFill="#140144">
                <font>
                   <Font name="Paradox" size="58.0" />
                </font>
