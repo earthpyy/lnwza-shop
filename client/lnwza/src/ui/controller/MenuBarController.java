@@ -1,7 +1,9 @@
 package ui.controller;
 
+import application.Bag;
 import application.SceneLoader;
 import application.Session;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -81,6 +83,8 @@ public class MenuBarController {
             menuHistory.setVisible(false);
             menuTransactions.setVisible(false);
             menuAgents.setVisible(false);
+            
+            menuStoreBag.textProperty().bind(Bindings.concat("Bag (", Bag.getAmountProperty().asString(), ")"));
         }
     }
     

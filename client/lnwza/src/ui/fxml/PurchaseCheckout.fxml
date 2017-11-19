@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseCheckoutController">
    <children>
-      <ImageView pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="638.0" fitWidth="1024.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/images/PCCOBG.gif" />
          </image>
       </ImageView>
-      <ImageView fitHeight="430.0" fitWidth="609.0" layoutX="180.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="430.0" fitWidth="609.0" layoutX="208.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/PCCOTB.png" />
          </image>
       </ImageView>
-      <Label layoutX="198.0" layoutY="214.0" styleClass="fp" text="SUMMARY" textFill="#140144">
+      <Label layoutX="226.0" layoutY="111.0" styleClass="fp" text="SUMMARY" textFill="#140144">
          <font>
             <Font name="Paradox" size="64.0" />
          </font>
       </Label>
-      <VBox layoutX="340.0" layoutY="364.0" spacing="15.0">
+      <VBox layoutX="353.0" layoutY="274.0" spacing="15.0">
          <children>
             <Label text="QTY" textFill="WHITE">
                <font>
@@ -40,14 +40,14 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="429.0" layoutY="366.0" spacing="15.0">
+      <VBox layoutX="442.0" layoutY="276.0" spacing="15.0">
          <children>
-            <TextField alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
-            <TextField alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
+            <TextField fx:id="tf_qty" alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
+            <TextField fx:id="tf_total" alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
          </children>
       </VBox>
-      <Button layoutX="695.0" layoutY="616.0" mnemonicParsing="false" style="-fx-background-color: #abbfde;" text="Cancel" />
-      <Button layoutX="340.0" layoutY="472.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Credit/Debit Card" />
-      <Button layoutX="512.0" layoutY="472.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Internet Banking" />
+      <Button fx:id="bt_cancel" layoutX="713.0" layoutY="494.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #abbfde;" text="Cancel" />
+      <Button fx:id="bt_credit" layoutX="353.0" layoutY="382.0" mnemonicParsing="false" onAction="#pay" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Credit/Debit Card" userData="credit" />
+      <Button fx:id="bt_internet" layoutX="525.0" layoutY="382.0" mnemonicParsing="false" onAction="#pay" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Internet Banking" userData="internet" />
    </children>
 </AnchorPane>

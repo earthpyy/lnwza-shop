@@ -3,7 +3,10 @@ package application;
 import application.entity.BagProduct;
 import application.entity.ProductDetail;
 import java.util.ArrayList;
-import java.util.List;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.IntegerBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -11,9 +14,10 @@ import java.util.List;
  */
 public class Bag {
     
-    private static ArrayList<BagProduct> items = new ArrayList<>();
+    private static ObservableList<BagProduct> items = FXCollections.observableArrayList();
+    private static Payment payment;
     
-    public static ArrayList<BagProduct> getItems() {
+    public static ObservableList<BagProduct> getItems() {
         return items;
     }
     
@@ -24,6 +28,22 @@ public class Bag {
             }
         }
         return null;
+    }
+    
+    public static Integer getAmount() {
+        return items.size();
+    }
+    
+    public static IntegerBinding getAmountProperty() {
+        return Bindings.size(items);
+    }
+    
+    public static Payment getPayment() {
+        return payment;
+    }
+    
+    public static void setPayment(Payment newPayment) {
+        payment = newPayment;
     }
     
     public static void add(BagProduct product) {

@@ -76,7 +76,7 @@
                      </children>
                   </VBox>
                   <VBox layoutX="195.0" layoutY="96.0" spacing="11.0" />
-                  <Button layoutX="106.0" layoutY="251.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="165.0" style="-fx-background-color: #140144;" text="Proceed to Checkoout" textFill="WHITE">
+                  <Button fx:id="bt_checkout" layoutX="106.0" layoutY="251.0" mnemonicParsing="false" onAction="#checkout" prefHeight="49.0" prefWidth="165.0" style="-fx-background-color: #140144;" text="Proceed to Checkoout" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

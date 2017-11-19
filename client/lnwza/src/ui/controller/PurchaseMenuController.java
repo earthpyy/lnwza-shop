@@ -1,5 +1,6 @@
 package ui.controller;
 
+import application.Bag;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.MenuItem;
 import application.SceneLoader;
 import application.entity.ProductType;
 import application.handler.ProductTypeHandler;
+import javafx.beans.binding.Bindings;
 
 /**
  *
@@ -55,6 +57,8 @@ public class PurchaseMenuController {
                 menuPCBag.getItems().get(0).fire();
             }
         });
+        
+        menuPCBag.textProperty().bind(Bindings.concat("Bag (", Bag.getAmountProperty().asString(), ")"));
         
     }
 

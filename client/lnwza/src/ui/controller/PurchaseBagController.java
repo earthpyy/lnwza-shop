@@ -1,7 +1,5 @@
 package ui.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -11,6 +9,14 @@ import javafx.scene.image.ImageView;
 
 import application.entity.BagProduct;
 import application.Bag;
+import application.SceneLoader;
+import java.util.stream.Collectors;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 
 /**
@@ -53,7 +59,14 @@ public class PurchaseBagController {
     private TextField tf_total;
     
     @FXML
+    private Button bt_checkout;
+    
+    private DoubleProperty subTotal;
+    
+    @FXML
     protected void initialize() {
+        subTotal = new SimpleDoubleProperty(0);
+        
         tb_photo.setCellValueFactory(new PropertyValueFactory<>("productPhoto"));
         
         tb_detail.setCellFactory((TableColumn<BagProduct, String> col) ->
@@ -73,25 +86,45 @@ public class PurchaseBagController {
         
         tb_price.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        
+
         tb_subtotal.setCellFactory((TableColumn<BagProduct, Double> col) ->
             new TableCell<BagProduct, Double>() {
                 @Override
-                public void updateItem(Double subTotal, boolean empty) {
-                    super.updateItem(subTotal, empty);
+                public void updateItem(Double data, boolean empty) {
+                    super.updateItem(data, empty);
                     if (empty) {
                         setText(null);
                     } else {
                         BagProduct item = (BagProduct) this.getTableRow().getItem();
-                        subTotal = item.getProductPrice() * item.getQuantity();
-                        setText(subTotal.toString());
+                        data = item.getProductPrice() * item.getQuantity();
+                        if (getTableRow().getIndex() == 0) {    // TODO: fix this
+                            subTotal.set(subTotal.add(data / 2.0).doubleValue());
+                        } else {
+                            subTotal.set(subTotal.add(data).doubleValue());
+                        }
+                        setText(data.toString());
                     }
                 }
             }
         );
         
-        ObservableList<BagProduct> data = FXCollections.observableArrayList(Bag.getItems());
-        tableView.setItems(data);
+        tf_subtotal.textProperty().bind(Bindings.concat("$", subTotal.asString()));
+        tf_tax.textProperty().bind(Bindings.concat("$", subTotal.multiply(7).divide(100).asString()));
+        // TODO: connect with delivery system
+        tf_shipping.setText("$2.0");
+        // TODO: update shipping rate
+        tf_total.textProperty().bind(Bindings.concat("$", subTotal.add(subTotal.multiply(7).divide(100)).add(2)));
+        
+//        ObservableList<BagProduct> data = FXCollections.observableArrayList(Bag.getItems());
+        tableView.setItems(Bag.getItems());
+    }
+    
+    @FXML
+    void checkout(ActionEvent event) {
+        SceneLoader.setPCBodyWithLoadFXML("PurchaseCheckout");
+        
+        PurchaseCheckoutController ctrl = SceneLoader.getPCController(PurchaseCheckoutController.class);
+        ctrl.fill(Bag.getAmount(), Double.parseDouble(tf_total.getText().substring(1)));
     }
     
 }
