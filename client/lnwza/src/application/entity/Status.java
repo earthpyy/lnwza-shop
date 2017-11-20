@@ -1,5 +1,6 @@
 package application.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -9,32 +10,24 @@ import javax.persistence.*;
  */
 @Entity
 public class Status {
-    
-    public static final int ERROR = 0;
-    public static final int NOTPAY = 1;
-    public static final int PAID = 2;
-    public static final int PREPARING = 3;
-    public static final int DELIVERING = 4;
-    public static final int RECEIVED = 5;
-    public static final int RETURN = 8;
-    public static final int CANCELLED = 9;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Order order;
-    private Integer status;
+    @Enumerated
+    private OrderStatus status;
     @Temporal(TemporalType.TIMESTAMP)
     private Date obtainedDate;
     
-    public Status(Order order, Integer status) {
+    public Status(Order order, OrderStatus status) {
         this.order = order;
         this.status = status;
         this.obtainedDate = new Date();
     }
         
     public Status(Order order) {
-        this(order, NOTPAY);
+        this(order, OrderStatus.NOTPAY);
     }
 
     public Long getId() {
@@ -49,7 +42,7 @@ public class Status {
         return order;
     }
 
-    public Integer getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
     
@@ -73,32 +66,7 @@ public class Status {
             default:
                 word = "Error"; break;
         }
-//        if (status == NOTPAY) {
-//            word = "Not paid yet";
-//        } else if (status == PAID) {
-//            word = "Paid";
-//        } else if (status == PREPARING) {
-//            word = "Preparing order";
-//        } else if (status == DELIVERING) {
-//            word = "Package delivering";
-//        } else if (status == RECEIVED) {
-//            word = "Package received";
-//        } else if (status == RETURN) {
-//            word = "Returning to shop";
-//        } else if (status == CANCELLED) {
-//            word = "Cancelled";
-//        } else {
-//            word = "Error";
-//        }
         return word;
-    }
-    
-    public Integer getNextStatus() {
-        if (status != ERROR && status < RECEIVED) {
-            return status + 1;
-        } else {
-            return ERROR;
-        }
     }
 
     public Date getObtainedDate() {
@@ -106,18 +74,18 @@ public class Status {
     }
     
     public boolean isCancelled() {
-        return (status == CANCELLED);
+        return (status == OrderStatus.CANCELLED);
     }
     
     public boolean isError() {
-        return (status == ERROR);
+        return (status == OrderStatus.ERROR);
     }
     
     public void setOrder(Order order) {
         this.order = order;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

@@ -11,15 +11,12 @@ import javax.persistence.*;
  */
 @Entity
 public class Transaction {
-    
-    public static final int ERROR = 0;
-    public static final int ORDER = 1;
-    public static final int STOCK = 2;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private Integer type;
+    @Enumerated
+    private TransactionType type;
     @ManyToOne
     private ProductDetail product;
     @OneToOne
@@ -31,7 +28,7 @@ public class Transaction {
     // temp field (will use when load data)
     private Double total;
     
-    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount, Date tranDate) {
+    public Transaction(String description, TransactionType type, ProductDetail product, Order order, Double amount, Date tranDate) {
         
         this.description = description;
         this.type = type;
@@ -42,7 +39,7 @@ public class Transaction {
         this.total = 0.0;
     }
     
-    public Transaction(String description, Integer type, ProductDetail product, Order order, Double amount) {
+    public Transaction(String description, TransactionType type, ProductDetail product, Order order, Double amount) {
         this(description, type, product, order, amount, new Date());
     }
 
@@ -58,7 +55,7 @@ public class Transaction {
         return description;
     }
 
-    public Integer getType() {
+    public TransactionType getType() {
         return type;
     }
 
@@ -112,7 +109,7 @@ public class Transaction {
         this.description = description;
     }
 
-    public void setType(Integer type) {
+    public void setType(TransactionType type) {
         this.type = type;
     }
 
