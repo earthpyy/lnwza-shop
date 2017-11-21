@@ -58,7 +58,7 @@ public class PurchaseAddController {
     void fill(Product product) {
         im_product.setImage(product.getPhoto());
         lb_name.setText(product.getName());
-        lb_price.setText("$" + product.getPrice());
+        lb_price.setText("฿" + product.getPrice());
         
         ObservableList<ProductDetail> colorData = FXCollections.observableArrayList(product.getDetail());
         cb_color.setItems(colorData);

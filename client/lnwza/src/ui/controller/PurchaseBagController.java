@@ -108,12 +108,12 @@ public class PurchaseBagController {
             }
         );
         
-        tf_subtotal.textProperty().bind(Bindings.concat("$", subTotal.asString()));
-        tf_tax.textProperty().bind(Bindings.concat("$", subTotal.multiply(7).divide(100).asString()));
+        tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
+        tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
         // TODO: connect with delivery system
-        tf_shipping.setText("$2.0");
+        tf_shipping.setText("฿2.0");
         // TODO: update shipping rate
-        tf_total.textProperty().bind(Bindings.concat("$", subTotal.add(subTotal.multiply(7).divide(100)).add(2)));
+        tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(2)));
         
 //        ObservableList<BagProduct> data = FXCollections.observableArrayList(Bag.getItems());
         tableView.setItems(Bag.getItems());

@@ -40,7 +40,7 @@ public class PurchaseCheckoutController {
     void fill(Integer quantity, Double total) {
         this.total = total;
         tf_qty.setText(quantity.toString());
-        tf_total.setText("$" + total.toString());
+        tf_total.setText("฿" + total.toString());
     }
 
     @FXML
