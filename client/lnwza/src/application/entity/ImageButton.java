@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
  * @author Naremx
  */
 public class ImageButton extends Button {
-        private final String STYLE_NORMAL = "-fx-background-color: transparent; -fx-padding: 5, 5, 5, 5;";
+        private final String STYLE_NORMAL = "-fx-background-color: transparent; -fx-padding: 3, 3, 3, 3;";
     private final String STYLE_PRESSED = "-fx-background-color: transparent; -fx-padding: 6 4 4 6;";
     
     public ImageButton(String imageurl) {

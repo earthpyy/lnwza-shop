@@ -1,5 +1,6 @@
 package ui.controller;
 import application.SceneLoader;
+import application.entity.ImageButton;
 import application.entity.Product;
 import application.entity.ProductType;
 import application.handler.ProductHandler;
@@ -7,7 +8,6 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
@@ -74,7 +74,7 @@ public class PurchaseViewController {
             txt_price.setFill(Color.RED);
             GridPane.setHalignment(txt_price, HPos.CENTER);
             
-            Button bt_cart = new Button("Add to cart!");
+            ImageButton bt_cart = new ImageButton("/ui/resources/images/button/Button.png");
             GridPane.setHalignment(bt_cart, HPos.CENTER);
             bt_cart.setOnAction((event) -> {
                 SceneLoader.popup("PurchaseAdd", product.getName());
