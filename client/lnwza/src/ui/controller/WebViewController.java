@@ -13,6 +13,11 @@ public class WebViewController {
     @FXML
     private WebView webView;
     
+    @FXML
+    protected void initialize() {
+        // do something
+    }
+    
     public WebView getWebView() {
         return webView;
     }

@@ -24,8 +24,8 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<Status> status;
     
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
-    private Transaction transaction;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
+//    private Transaction transaction;
 
     public Order(Agent agent, List<BagProduct> products, Double amount, Date orderDate) {
         this.agent = agent;
@@ -34,7 +34,7 @@ public class Order {
         this.orderDate = orderDate;
         this.status = new ArrayList<>(Arrays.asList(new Status(this)));
         // TODO: add transaction when order is completed.
-        this.transaction = new Transaction(null, TransactionType.ORDER, null, this, amount, orderDate);
+//        this.transaction = new Transaction(null, TransactionType.ORDER, null, this, amount, orderDate);
     }
     
     public Order(Agent agent, List<BagProduct> products, Double amount) {
@@ -94,22 +94,23 @@ public class Order {
         return amount;
     }
 
-    public Transaction getTransaction() {
-        return transaction;
-    }
+//    public Transaction getTransaction() {
+//        return transaction;
+//    }
 
     public void setAgent(Agent agent) {
         this.agent = agent;
     }
 
-    public void setProducts(List<BagProduct> products) {
-        this.products = products;
-    }
+//    public void setProducts(List<BagProduct> products) {
+//        this.products = products;
+//    }
     
     public void addProduct(BagProduct products) {
+        products.setOrder(this);
         this.products.add(products);
         amount += products.getTotalPrice();
-        transaction.setAmount(amount);
+//        transaction.setAmount(amount);
     }
 
     public void setOrderDate(Date orderDate) {
@@ -129,7 +130,7 @@ public class Order {
     }
     
     public void addNextStatus() {
-        addStatus(OrderStatus.getNext(getLastStatus().getStatus()));
+        addStatus(getLastStatus().getStatus().getNext());
     }
     
     public void addCancelledStatus() {
@@ -141,9 +142,9 @@ public class Order {
         this.amount = amount;
     }
 
-    public void setTransaction(Transaction transaction) {
-        this.transaction = transaction;
-    }
+//    public void setTransaction(Transaction transaction) {
+//        this.transaction = transaction;
+//    }
 
     @Override
     public int hashCode() {

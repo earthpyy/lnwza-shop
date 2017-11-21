@@ -13,21 +13,26 @@ public class Status {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Order order;
     @Enumerated
     private OrderStatus status;
     @Temporal(TemporalType.TIMESTAMP)
     private Date obtainedDate;
     
-    public Status(Order order, OrderStatus status) {
+    @ManyToOne
+    private Order order;
+    
+    public Status(Order order, OrderStatus status, Date obtainedDate) {
         this.order = order;
         this.status = status;
-        this.obtainedDate = new Date();
+        this.obtainedDate = obtainedDate;
+    }
+    
+    public Status(Order order, OrderStatus status) {
+        this(order, status, new Date());
     }
         
     public Status(Order order) {
-        this(order, OrderStatus.NOTPAY);
+        this(order, OrderStatus.PREPARING);
     }
 
     public Long getId() {
@@ -38,35 +43,16 @@ public class Status {
         this.id = id;
     }
     
-    public Order getOrder() {
-        return order;
-    }
+//    public Order getOrder() {
+//        return order;
+//    }
 
     public OrderStatus getStatus() {
         return status;
     }
     
     public String getStatusName() {
-        String word;
-        switch (status) {
-            case NOTPAY:
-                word = "Not paid yet"; break;
-            case PAID:
-                word = "Paid"; break;
-            case PREPARING:
-                word = "Preparing order"; break;
-            case DELIVERING:
-                word = "Package delivering"; break;
-            case RECEIVED:
-                word = "Package received"; break;
-            case RETURN:
-                word = "Returning to shop"; break;
-            case CANCELLED:
-                word = "Cancelled"; break;
-            default:
-                word = "Error"; break;
-        }
-        return word;
+        return status.getName();
     }
 
     public Date getObtainedDate() {

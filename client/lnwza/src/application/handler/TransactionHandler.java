@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 import application.DatabaseConnection;
 import application.MyDate;
 import application.entity.Transaction;
+import application.entity.TransactionType;
 
 /**
  *
@@ -50,6 +51,16 @@ public class TransactionHandler {
         } finally {
             em.close();
         }
+    }
+    
+    public static void add(Transaction tran) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        em.persist(tran);
+        
+        em.getTransaction().commit();
+        em.close();
     }
     
 }

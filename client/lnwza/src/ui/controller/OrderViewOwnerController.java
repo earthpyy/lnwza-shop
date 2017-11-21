@@ -1,19 +1,13 @@
 package ui.controller;
 
-import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import application.SceneLoader;
 import application.entity.Order;
@@ -55,7 +49,7 @@ public class OrderViewOwnerController {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Order rowData = tableView.getSelectionModel().getSelectedItem();
                     SceneLoader.popup("OrderDetail", "Order #" + rowData.getId());
-
+                    
                     OrderDetailController ctrl = SceneLoader.getPopupController(OrderDetailController.class);
                     ctrl.fill(rowData);
                 }
@@ -63,7 +57,7 @@ public class OrderViewOwnerController {
             return row;
         });
         
-//        OrderHandler.load();
+        OrderHandler.load();
         ObservableList<Order> data = FXCollections.observableArrayList(OrderHandler.getData());
         tableView.setItems(data);
     }

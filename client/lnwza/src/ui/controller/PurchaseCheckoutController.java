@@ -1,9 +1,9 @@
 package ui.controller;
 
 import application.Bag;
-import application.CreditPayment;
-import application.InternetPayment;
-import application.Payment;
+import application.entity.CreditPayment;
+import application.entity.InternetPayment;
+import application.entity.Payment;
 import application.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

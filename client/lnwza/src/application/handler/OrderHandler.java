@@ -6,7 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
+import application.entity.BagProduct;
 import application.entity.Order;
+import application.entity.Transaction;
+import application.entity.TransactionType;
 
 /**
  *
@@ -33,5 +36,15 @@ public class OrderHandler {
         } finally {
             em.close();
         }
+    }
+    
+    public static void add(Order order) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        em.persist(order);
+        
+        em.getTransaction().commit();
+        em.close();
     }
 }

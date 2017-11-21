@@ -1,5 +1,7 @@
-package application;
+package application.entity;
 
+import application.Bag;
+import application.SceneLoader;
 import netscape.javascript.JSObject;
 import ui.controller.WebViewController;
 
@@ -13,11 +15,12 @@ public abstract class Payment {
     
     private int shopId;
     private double amount;
-    private int status;
+    private PaymentStatus status;
 
     public Payment(int shopId, double amount) {
         this.shopId = shopId;
         this.amount = amount;
+        this.status = PaymentStatus.NOTPAY;
     }
 
     public int getShopId() {
@@ -28,6 +31,10 @@ public abstract class Payment {
         return amount;
     }
 
+    public PaymentStatus getStatus() {
+        return status;
+    }
+
     public void setShopId(int shopId) {
         this.shopId = shopId;
     }
@@ -35,9 +42,17 @@ public abstract class Payment {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    public void setStatus(PaymentStatus status) {
+        this.status = status;
+    }
+    
+    public void setNextStatus() {
+        status = status.getNext();
+    }
     
     // TODO: add parameter to web
-    public void open(String url) {
+    protected void open(String url) {
         SceneLoader.popup("WebView");
         
         WebViewController ctrl = SceneLoader.getPopupController(WebViewController.class);
@@ -49,15 +64,18 @@ public abstract class Payment {
 //            }
 //        });
         
-        JSObject window = (JSObject)ctrl.getWebEngine().executeScript("window");
+        JSObject window = (JSObject) ctrl.getWebEngine().executeScript("window");
         window.setMember("app", new WebApp());
     }
     
     public abstract void pay();
     
     public class WebApp {
-        public void parseResult(boolean result) {
-            System.out.println(result);
+        public void success() {
+            if (getStatus() == PaymentStatus.NOTPAY) {
+                setStatus(PaymentStatus.PAID);
+                Bag.addToOrder();
+            }
         }
     }
     

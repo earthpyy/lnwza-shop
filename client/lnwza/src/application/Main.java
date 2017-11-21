@@ -1,6 +1,5 @@
 package application;
 
-import application.handler.DataHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -20,7 +19,7 @@ public class Main extends Application {
         DatabaseConnection.load();
         
         System.out.println("Loading data...");
-        DataHandler.load();
+        DataLoader.load();
         System.out.println("Data loaded!");
         
         System.out.println("Loading GUI...");

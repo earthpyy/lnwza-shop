@@ -107,6 +107,7 @@ public class GenerateSampleData {
             
             // Orders (Agent #1 brought Product #1-#2)
             Order od;
+            Transaction ta;
             em.getMetamodel().entity(Order.class);
             em.createQuery("DELETE FROM Order").executeUpdate();
             em.getMetamodel().entity(BagProduct.class);
@@ -125,7 +126,10 @@ public class GenerateSampleData {
                 od.addProduct(new BagProduct(od, pdd, (int)(Math.random() * 10) + 1));
             }
             
+            ta = new Transaction(od);
+            
             em.persist(od);
+            em.persist(ta);
             
             em.getTransaction().commit();
         } finally {

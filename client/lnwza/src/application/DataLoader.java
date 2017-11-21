@@ -1,17 +1,19 @@
-package application.handler;
+package application;
+
+import application.handler.*;
 
 /**
  *
  * @author SE-lnwza
  */
-public class DataHandler {
+public class DataLoader {
     
     public static void load() {
         ProductTypeHandler.load();
         ProductHandler.load();
-        OrderHandler.load();
+//        OrderHandler.load();
         AgentHandler.load();
-        TransactionHandler.load();
+//        TransactionHandler.load();
         UserHandler.load();
     }
     

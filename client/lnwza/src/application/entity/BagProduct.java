@@ -13,11 +13,12 @@ public class BagProduct {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Order order;
-    @ManyToOne
     private ProductDetail product;
     private Double price;
     private Integer quantity;
+    
+    @ManyToOne
+    private Order order;
     
     public BagProduct(Order order, ProductDetail product, Integer quantity) {
         this.order = order;
@@ -46,9 +47,9 @@ public class BagProduct {
         this.id = id;
     }
     
-    public Order getOrder() {
-        return order;
-    }
+//    public Order getOrder() {
+//        return order;
+//    }
 
     public ProductDetail getDetail() {
         return product;

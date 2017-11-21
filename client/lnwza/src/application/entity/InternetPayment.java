@@ -1,4 +1,6 @@
-package application;
+package application.entity;
+
+import application.entity.Payment;
 
 /**
  *

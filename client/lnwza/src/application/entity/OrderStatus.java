@@ -7,9 +7,6 @@ package application.entity;
 public enum OrderStatus {
     
     // normal
-    NOTPAY,
-    WAITING,
-    PAID,
     PREPARING,
     DELIVERING,
     RECEIVED,
@@ -19,14 +16,25 @@ public enum OrderStatus {
     // error
     ERROR;
     
-    public static OrderStatus getNext(OrderStatus status) {
-        switch (status) {
-            case NOTPAY:
-                return WAITING;
-            case WAITING:
-                return PAID;
-            case PAID:
-                return PREPARING;
+    public String getName() {
+        switch (this) {
+            case PREPARING:
+                return "Preparing order";
+            case DELIVERING:
+                return "Package delivering";
+            case RECEIVED:
+                return "Package received";
+            case RETURN:
+                return "Returning to shop";
+            case CANCELLED:
+                return "Cancelled";
+            default:
+                return "Error";
+        }
+    }
+    
+    public OrderStatus getNext() {
+        switch (this) {
             case PREPARING:
                 return DELIVERING;
             case DELIVERING:

@@ -1,6 +1,7 @@
 
 package ui.controller;
 
+import application.DatabaseConnection;
 import application.entity.BagProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import application.entity.Order;
 import application.entity.Status;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.scene.control.TableCell;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -62,20 +65,24 @@ public class OrderDetailController {
         updateTableView();
         
         tb_id.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(tableview_item.getItems().indexOf(column.getValue()) + 1));
-        tb_name.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        tb_name.setCellFactory((TableColumn<BagProduct, String> col) ->
+            new TableCell<BagProduct, String>() {
+                @Override
+                public void updateItem(String detail, boolean empty) {
+                    super.updateItem(detail, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        BagProduct item = (BagProduct) this.getTableRow().getItem();
+                        setText(item.getProductName() + " (" + item.getColorName() + ")");
+                    }
+                }
+            }
+        );
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tb_price.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
-        
-//        ProductHandler.load();
-//        ObservableList<Product> data = FXCollections.observableArrayList(ProductHandler.getData());
-//        tableViewItem.setItems(data);
-        
         tb_date.setCellValueFactory(new PropertyValueFactory<>("obtainedDate"));
         tb_status.setCellValueFactory(new PropertyValueFactory<>("statusName"));
-        
-//        OrderHandler.load();
-//        ObservableList<Order> data2 = FXCollections.observableArrayList(OrderHandler.getData());
-//        tableViewStatus.setItems(data2);
     }
     
     void updateTableView() {

@@ -42,6 +42,18 @@ public class Transaction {
     public Transaction(String description, TransactionType type, ProductDetail product, Order order, Double amount) {
         this(description, type, product, order, amount, new Date());
     }
+    
+    public Transaction(ProductDetail product, Double amount) {
+        this(null, TransactionType.STOCK, product, null, amount);
+    }
+    
+    public Transaction(Order order, Double amount) {
+        this(null, TransactionType.ORDER, null, order, amount);
+    }
+    
+    public Transaction(Order order) {
+        this(order, order.getAmount());
+    }
 
     public Long getId() {
         return id;
