@@ -1,7 +1,7 @@
 package ui.controller;
 
-import application.Bag;
 import application.SceneLoader;
+import application.entity.ImageButton;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
@@ -60,7 +60,7 @@ public class PurchaseHomeController {
             txt_price.setFill(Color.RED);
             GridPane.setHalignment(txt_price, HPos.CENTER);
             
-            Button bt_cart = new Button("Add to cart!");
+            ImageButton bt_cart = new ImageButton("/ui/resources/images/button/Button.png");
             GridPane.setHalignment(bt_cart, HPos.CENTER);
             bt_cart.setOnAction((event) -> {
                 SceneLoader.popup("PurchaseAdd", product.getName());
