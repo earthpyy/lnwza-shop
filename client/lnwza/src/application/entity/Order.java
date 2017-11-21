@@ -34,7 +34,7 @@ public class Order {
         this.orderDate = orderDate;
         this.status = new ArrayList<>(Arrays.asList(new Status(this)));
         // TODO: add transaction when order is completed.
-        this.transaction = new Transaction(null, Transaction.ORDER, null, this, amount, orderDate);
+        this.transaction = new Transaction(null, TransactionType.ORDER, null, this, amount, orderDate);
     }
     
     public Order(Agent agent, List<BagProduct> products, Double amount) {
@@ -124,17 +124,17 @@ public class Order {
         this.status.add(status);
     }
     
-    public void addStatus(Integer status) {
+    public void addStatus(OrderStatus status) {
         this.status.add(new Status(this, status));
     }
     
     public void addNextStatus() {
-        addStatus(getLastStatus().getNextStatus());
+        addStatus(OrderStatus.getNext(getLastStatus().getStatus()));
     }
     
     public void addCancelledStatus() {
-        if (getLastStatus().getStatus() != Status.ERROR && getLastStatus().getStatus() != Status.CANCELLED)
-            addStatus(Status.CANCELLED);
+        if (getLastStatus().getStatus() != OrderStatus.ERROR && getLastStatus().getStatus() != OrderStatus.CANCELLED)
+            addStatus(OrderStatus.CANCELLED);
     }
 
     public void setAmount(Double amount) {

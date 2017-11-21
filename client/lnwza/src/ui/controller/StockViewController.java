@@ -65,7 +65,7 @@ public class StockViewController {
         tb_id.setCellValueFactory(new PropertyValueFactory<>("productId"));
         tb_photo.setCellValueFactory(new PropertyValueFactory<>("photoStockView"));
         tb_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tb_type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        tb_type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
         tb_size.setCellValueFactory(new PropertyValueFactory<>("size"));
         tb_price.setCellValueFactory(new PropertyValueFactory<>("price"));
         

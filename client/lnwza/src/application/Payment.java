@@ -1,8 +1,5 @@
 package application;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker.State;
 import netscape.javascript.JSObject;
 import ui.controller.WebViewController;
 
@@ -11,11 +8,12 @@ import ui.controller.WebViewController;
  * @author SE-lnwza
  */
 public abstract class Payment {
-    
+    // TODO: move to AppProperties
     public static final int SHOP_ID = 1;
     
     private int shopId;
     private double amount;
+    private int status;
 
     public Payment(int shopId, double amount) {
         this.shopId = shopId;
