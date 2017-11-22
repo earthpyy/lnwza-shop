@@ -9,6 +9,7 @@ public enum TransactionType {
     // normal
     ORDER,
     STOCK,
+    CUSTOM,
     // error
     ERROR;
     

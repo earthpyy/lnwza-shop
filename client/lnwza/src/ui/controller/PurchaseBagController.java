@@ -75,7 +75,7 @@ public class PurchaseBagController {
                     if (empty) {
                         setText(null);
                     } else {
-                        BagProduct item = (BagProduct) this.getTableRow().getItem();
+                        BagProduct item = getTableView().getItems().get(getIndex());
                         setText(item.getProductName() + " (" + item.getColorName() + ")");
                     }
                 }

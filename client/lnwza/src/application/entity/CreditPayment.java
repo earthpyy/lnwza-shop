@@ -6,7 +6,7 @@ package application.entity;
  */
 public class CreditPayment extends Payment {
     
-    private static final String payURL = "https://lnwzabank.earthpyy.com/test.php";
+    private static final String payURL = "https://lnwza.earthpyy.com/bank/test.php";
 
     public CreditPayment(int shopId, double amount) {
         super(shopId, amount);

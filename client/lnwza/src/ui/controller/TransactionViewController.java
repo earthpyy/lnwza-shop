@@ -12,6 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import application.entity.Transaction;
 import application.handler.TransactionHandler;
 import application.MyDate;
+import application.entity.TransactionType;
+import application.handler.OrderHandler;
+import application.handler.ProductHandler;
+import javafx.scene.control.TableCell;
 
 /**
  *
@@ -68,7 +72,33 @@ public class TransactionViewController {
         
         tb_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         tb_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        
         tb_title.setCellValueFactory(new PropertyValueFactory<>("description"));
+        tb_title.setCellFactory((TableColumn<Transaction, String> col) ->
+            new TableCell<Transaction, String>() {
+                @Override
+                public void updateItem(String des, boolean empty) {
+                    super.updateItem(des, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        Transaction tran = getTableView().getItems().get(getIndex());
+                        switch (tran.getType()) {
+                            case ORDER:
+                                setText("[AUTO] Sold order #" + des);
+                                break;
+                            case STOCK:
+                                setText("[AUTO] Update stock of product #" + des);
+                                break;
+                            default:
+                                setText(des);
+                                break;
+                        }
+                    }
+                }
+            }
+        );
+        
         tb_income.setCellValueFactory(new PropertyValueFactory<>("income"));
         tb_outcome.setCellValueFactory(new PropertyValueFactory<>("outcome"));
         tb_total.setCellValueFactory(new PropertyValueFactory<>("total"));

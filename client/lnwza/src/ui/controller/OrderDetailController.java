@@ -1,6 +1,7 @@
 
 package ui.controller;
 
+import application.SceneLoader;
 import application.entity.BagProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import application.entity.Order;
+import application.entity.OrderStatus;
 import application.entity.Status;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableCell;
 
@@ -26,13 +29,13 @@ public class OrderDetailController {
     private TextField tf_orderno;
 
     @FXML
-    private TextField tf_trackingno;
+    private TextField tf_trackno;
 
     @FXML
     private Button bt_update;
 
     @FXML
-    private Button bt_cancle;
+    private Button bt_cancel;
     
     @FXML
     private TableView<BagProduct> tableview_item;
@@ -61,6 +64,8 @@ public class OrderDetailController {
     @FXML
     private TableColumn<Status, Integer> tb_status;
     
+    private Order order;
+    
      @FXML
     protected void initialize() {
         updateTableView();
@@ -87,21 +92,41 @@ public class OrderDetailController {
         tb_status.setCellValueFactory(new PropertyValueFactory<>("statusName"));
     }
     
+    @FXML
+    void close() {
+        SceneLoader.closePopup();
+    }
+    
+    @FXML
+    void update() {
+        SceneLoader.popup("OrderUpdate", "Update Order #" + order.getId());
+        OrderUpdateController ctrl = SceneLoader.getPopupController(OrderUpdateController.class);
+        ctrl.fill(order);
+    }
+    
     void updateTableView() {
+        // TODO: format this
         tableview_item.setPlaceholder(new Label("No product found!"));
         tableview_status.setPlaceholder(new Label("No status found!"));
     }
     
     void fill(Order od) {
-        tf_orderno.setText(od.getId().toString());
+        set(od);
+        tf_orderno.setText(order.getId().toString());
         
-        ObservableList<BagProduct> dataItem = FXCollections.observableArrayList(od.getProducts());
-        ObservableList<Status> dataStatus = FXCollections.observableArrayList(od.getStatus());
+        ObservableList<BagProduct> dataItem = FXCollections.observableArrayList(order.getProducts());
+        ObservableList<Status> dataStatus = FXCollections.observableArrayList(order.getStatus());
         
         tableview_item.setItems(dataItem);
         tableview_status.setItems(dataStatus);
         
+        bt_update.setDisable(order.getLastStatus().getStatus() != OrderStatus.PREPARING);
+        
         updateTableView();
+    }
+    
+    void set(Order od) {
+        order = od;
     }
     
 }

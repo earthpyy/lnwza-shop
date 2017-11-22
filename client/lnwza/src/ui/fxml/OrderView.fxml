@@ -32,8 +32,8 @@
             <TableColumn fx:id="tb_time" prefWidth="76.66665649414062" style="-fx-alignment: center;" text="Time" />
             <TableColumn fx:id="tb_orderno" prefWidth="78.33334350585938" style="-fx-alignment: center;" text="Order No." />
             <TableColumn fx:id="tb_name" minWidth="0.0" prefWidth="154.33331298828125" style="-fx-alignment: center-left;" text="Agent Name" />
-            <TableColumn prefWidth="322.33331298828125" style="-fx-alignment: center-left;" text="Products" />
-            <TableColumn prefWidth="78.0" style="-fx-alignment: center;" text="Total" />
+            <TableColumn fx:id="tb_product" prefWidth="322.33331298828125" style="-fx-alignment: center-left;" text="Products" />
+            <TableColumn fx:id="tb_total" prefWidth="78.0" style="-fx-alignment: center;" text="Total" />
             <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="200.0" style="-fx-alignment: center-left;" text="Status" />
          </columns>
       </TableView>

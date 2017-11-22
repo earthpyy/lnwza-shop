@@ -32,11 +32,11 @@
             <VBox layoutX="280.0" layoutY="57.0" spacing="15.0">
                <children>
                   <TextField fx:id="tf_orderno" alignment="CENTER" />
-                  <TextField fx:id="tf_trackingno" alignment="CENTER" />
+                  <TextField fx:id="tf_trackno" alignment="CENTER" />
                </children>
             </VBox>
-            <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Update" textFill="WHITE" />
-            <Button fx:id="bt_cancle" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: #140144;" text="Cancel" textFill="WHITE" />
+            <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #140144;" text="Update" textFill="WHITE" />
+            <Button fx:id="bt_cancel" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #140144;" text="Cancel" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Accordion prefHeight="251.0" prefWidth="600.0">

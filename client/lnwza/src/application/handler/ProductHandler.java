@@ -33,6 +33,15 @@ public class ProductHandler {
         return result;
     }
     
+    public static Product getDataFromId(Long id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+    
     public static ArrayList<Product> getDataFromType(ProductType type) {
         ArrayList<Product> result = new ArrayList<>();
         for (Product product : products) {
@@ -57,15 +66,15 @@ public class ProductHandler {
         }
     }
     
-    public static void add(String productId, String name, String description, String photo, ProductType type, ProductDetail[] detail, String size, Double price) {
+    public static void add(Product product) {
         // TODO: next sprint
     }
     
-    public static void update(Long id, String productId, String name, String description, String photo, ProductType type, ProductDetail[] detail, String size, Double price) {
+    public static void update(Product product) {
         // TODO: next sprint
     }
     
-    public static void delete(Long id) {
+    public static void delete(Product product) {
         // TODO: next sprint
     }
     
