@@ -10,3 +10,5 @@
 !/client/lnwza/lib
 !/client/lnwza/sample_data
 client/lnwza/src/application/resources/config.properties
+client/lnwza/src/ui/controller/StatisticDisplayController.java
+client/lnwza/src/ui/fxml/StatisticDisplay.fxml

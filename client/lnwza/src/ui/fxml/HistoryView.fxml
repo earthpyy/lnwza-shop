@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HistoryViewController">
    <children>
       <AnchorPane prefHeight="82.0" prefWidth="1024.0" style="-fx-background-color: #140144;">
          <children>
@@ -25,13 +25,13 @@
       <Separator layoutY="81.0" prefHeight="3.0" prefWidth="1024.0" />
       <AnchorPane layoutY="84.0" prefHeight="51.0" prefWidth="1024.0" style="-fx-background-color: #4699b7;">
          <children>
-            <ComboBox fx:id="cb_month" layoutX="380.0" layoutY="13.0" prefHeight="25.0" prefWidth="121.0" promptText="Month" />
-            <ComboBox fx:id="cb_year" layoutX="531.0" layoutY="13.0" prefHeight="25.0" prefWidth="82.0" promptText="Year" />
+            <ComboBox fx:id="cb_month" layoutX="380.0" layoutY="13.0" onAction="#updateGraph" prefHeight="25.0" prefWidth="121.0" promptText="Month" visibleRowCount="12" />
+            <ComboBox fx:id="cb_year" layoutX="531.0" layoutY="13.0" onAction="#updateGraph" prefHeight="25.0" prefWidth="82.0" promptText="Year" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="135.0" minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
          <children>
-            <VBox layoutX="408.0" layoutY="67.0" spacing="10.0">
+            <VBox layoutX="408.0" layoutY="20.0" spacing="10.0">
                <children>
                   <Label text="Income :">
                      <font>
@@ -50,23 +50,23 @@
                   </Label>
                </children>
             </VBox>
-            <VBox layoutX="506.0" layoutY="67.0" spacing="10.0">
+            <VBox layoutX="512.0" layoutY="20.0" spacing="10.0">
                <children>
-                  <TextField fx:id="tf_income" alignment="CENTER" prefHeight="25.0" prefWidth="73.0" />
-                  <TextField fx:id="tf_outcome" alignment="CENTER" prefHeight="25.0" prefWidth="73.0" />
-                  <TextField fx:id="tf_profit" alignment="CENTER" prefHeight="25.0" prefWidth="73.0" />
+                  <TextField fx:id="tf_income" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
+                  <TextField fx:id="tf_outcome" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
+                  <TextField fx:id="tf_profit" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
                </children>
             </VBox>
-            <LineChart fx:id="lc_graph" layoutX="268.0" layoutY="197.0">
+            <LineChart fx:id="lc_graph" layoutX="208.0" layoutY="152.0" prefHeight="453.0" prefWidth="566.0">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <CategoryAxis fx:id="lc_axis_date" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis side="LEFT" />
+                  <NumberAxis fx:id="lc_axis_value" side="LEFT" />
                </yAxis>
             </LineChart>
             <Separator layoutX="6.0" layoutY="-1.0" prefHeight="0.0" prefWidth="1024.0" />
-            <VBox layoutX="597.0" layoutY="67.0" spacing="10.0">
+            <VBox layoutX="599.0" layoutY="20.0" spacing="10.0">
                <children>
                   <Label text="Bath">
                      <font>
