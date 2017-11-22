@@ -1,5 +1,6 @@
 package application.entity;
 
+import application.MyDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -74,8 +75,16 @@ public class Order {
         return (ArrayList) products;
     }
 
-    public Date getOrderDate() {
+    public Date getDate() {
         return orderDate;
+    }
+    
+    public String getOrderDate() {
+        return MyDate.getFullDate(orderDate);
+    }
+    
+    public String getOrderTime() {
+        return MyDate.getTime(orderDate);
     }
 
     public ArrayList<Status> getStatus() {

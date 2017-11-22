@@ -1,14 +1,16 @@
 package ui.controller;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
 import application.Bag;
 import application.entity.CreditPayment;
 import application.entity.InternetPayment;
 import application.entity.Payment;
 import application.SceneLoader;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+
 /**
  *
  * @author SE-lnwza
@@ -31,11 +33,6 @@ public class PurchaseCheckoutController {
     private Button bt_internet;
     
     private double total;
-    
-    @FXML
-    protected void initialize() {
-        // do something
-    }
     
     void fill(Integer quantity, Double total) {
         this.total = total;

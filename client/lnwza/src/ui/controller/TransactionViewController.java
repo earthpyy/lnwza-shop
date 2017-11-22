@@ -1,6 +1,5 @@
 package ui.controller;
 
-import application.MyDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,7 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import application.entity.Transaction;
 import application.handler.TransactionHandler;
-import java.text.SimpleDateFormat;
+import application.MyDate;
 
 /**
  *

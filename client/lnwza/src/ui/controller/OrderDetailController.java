@@ -1,7 +1,6 @@
 
 package ui.controller;
 
-import application.DatabaseConnection;
 import application.entity.BagProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +16,6 @@ import application.entity.Order;
 import application.entity.Status;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableCell;
-import javax.persistence.EntityManager;
 
 /**
  *
@@ -56,6 +54,9 @@ public class OrderDetailController {
 
     @FXML
     private TableColumn<Status, String> tb_date;
+    
+    @FXML
+    private TableColumn<Status, String> tb_time;
 
     @FXML
     private TableColumn<Status, Integer> tb_status;
@@ -82,6 +83,7 @@ public class OrderDetailController {
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tb_price.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         tb_date.setCellValueFactory(new PropertyValueFactory<>("obtainedDate"));
+        tb_time.setCellValueFactory(new PropertyValueFactory<>("obtainedTime"));
         tb_status.setCellValueFactory(new PropertyValueFactory<>("statusName"));
     }
     

@@ -17,7 +17,7 @@ import application.handler.OrderHandler;
  *
  * @author SE-lnwza
  */
-public class OrderViewOwnerController {
+public class OrderViewController {
     @FXML
     private TextField tf_search;
      
@@ -26,6 +26,9 @@ public class OrderViewOwnerController {
 
     @FXML
     private TableColumn<Order, String> tb_date;
+    
+    @FXML
+    private TableColumn<Order, String> tb_time;
 
     @FXML
     private TableColumn<Order, Integer> tb_orderno;
@@ -39,6 +42,7 @@ public class OrderViewOwnerController {
     @FXML
     protected void initialize() {
         tb_date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        tb_time.setCellValueFactory(new PropertyValueFactory<>("orderTime"));
         tb_orderno.setCellValueFactory(new PropertyValueFactory<>("id"));
         tb_name.setCellValueFactory(new PropertyValueFactory<>("agentName"));
         tb_status.setCellValueFactory(new PropertyValueFactory<>("lastStatusName"));

@@ -68,14 +68,30 @@ public abstract class Payment {
         window.setMember("app", new WebApp());
     }
     
+    protected void complete() {
+        if (getStatus() == PaymentStatus.NOTPAY) {
+            setStatus(PaymentStatus.PAID);
+            Bag.addToOrder();
+            Bag.reset();
+            SceneLoader.closePopup();
+            SceneLoader.setPCBody("PurchaseHome");
+        }
+    }
+    
+    protected void returnToBag() {
+        SceneLoader.closePopup();
+        SceneLoader.setPCBody("PurchaseBag");
+    }
+    
     public abstract void pay();
     
     public class WebApp {
         public void success() {
-            if (getStatus() == PaymentStatus.NOTPAY) {
-                setStatus(PaymentStatus.PAID);
-                Bag.addToOrder();
-            }
+            complete();
+        }
+        
+        public void fail() {
+            returnToBag();
         }
     }
     

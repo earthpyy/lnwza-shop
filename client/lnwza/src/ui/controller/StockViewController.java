@@ -69,12 +69,14 @@ public class StockViewController {
         tb_size.setCellValueFactory(new PropertyValueFactory<>("size"));
         tb_price.setCellValueFactory(new PropertyValueFactory<>("price"));
         
+        bt_update.disableProperty().bind(tableView.getSelectionModel().selectedItemProperty().isNull());
+        
         tableView.setRowFactory(tv -> {
             TableRow<Product> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Product rowData = tableView.getSelectionModel().getSelectedItem();
-                    SceneLoader.popup("StockDetail", "Product #" + rowData.getId());
+                    SceneLoader.popup("StockDetail", "Product #" + rowData.getProductId());
 
                     StockDetailController ctrl = SceneLoader.getPopupController(StockDetailController.class);
                     ctrl.fill(rowData);
@@ -86,5 +88,14 @@ public class StockViewController {
 //        ProductHandler.load();
         ObservableList<Product> data = FXCollections.observableArrayList(ProductHandler.getData());
         tableView.setItems(data);
+    }
+    
+    @FXML
+    void update() {
+        Product product = tableView.getSelectionModel().getSelectedItem();
+        
+        SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId());
+        StockUpdateController ctrl = SceneLoader.getPopupController(StockUpdateController.class);
+        ctrl.fill(product);
     }
 }

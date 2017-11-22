@@ -89,4 +89,9 @@ public class Bag {
         TransactionHandler.add(tran);
     }
     
+    public static void reset() {
+        items = FXCollections.observableArrayList();
+        payment = null;
+    }
+    
 }

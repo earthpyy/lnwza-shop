@@ -1,5 +1,6 @@
 package application.entity;
 
+import application.MyDate;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
@@ -55,8 +56,16 @@ public class Status {
         return status.getName();
     }
 
-    public Date getObtainedDate() {
+    public Date getDate() {
         return obtainedDate;
+    }
+    
+    public String getObtainedDate() {
+        return MyDate.getFullDate(obtainedDate);
+    }
+    
+    public String getObtainedTime() {
+        return MyDate.getTime(obtainedDate);
     }
     
     public boolean isCancelled() {

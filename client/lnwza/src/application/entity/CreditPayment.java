@@ -1,7 +1,5 @@
 package application.entity;
 
-import application.entity.Payment;
-
 /**
  *
  * @author SE-lnwza

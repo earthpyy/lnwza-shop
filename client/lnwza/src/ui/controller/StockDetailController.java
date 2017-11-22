@@ -1,6 +1,7 @@
 
 package ui.controller;
 
+import application.SceneLoader;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -60,10 +61,8 @@ public class StockDetailController {
 
     @FXML
     private Button bt_update;
-    
-//    TableColumn<Person, Number> indexColumn = new TableColumn<Person, Number>("#");
-//indexColumn.setSortable(false);
-//indexColumn.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(YourTable.getItems().indexOf(column.getValue())));
+
+    private Product product;
     
     @FXML
     protected void initialize() {
@@ -72,8 +71,11 @@ public class StockDetailController {
         tb_no.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableView.getItems().indexOf(column.getValue()) + 1));
         tb_color.setCellValueFactory(new PropertyValueFactory<>("colorName"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        
+        bt_update.disableProperty().bind(tableView.getSelectionModel().selectedItemProperty().isNull());
     }
     
+    // TODO: format this table
     void updateTableView() {
         tableView.setPlaceholder(new Label("No product found!"));
 //        tableView.setFixedCellSize(25);
@@ -87,19 +89,31 @@ public class StockDetailController {
     }
     
     void fill(Product pd) {
-        im_product.setImage(pd.getPhoto());
-        lb_id.setText(pd.getProductId());
-        lb_name.setText(pd.getName());
-        lb_price.setText(pd.getPrice().toString());
-        lb_size.setText(pd.getSize());
-        lb_type.setText(pd.getType().getName());
-        lb_description.setText(pd.getDescription());
-        
-//        ProductDetailHandler.load(pd.getDetail());
-//        ObservableList<ProductDetail> data = FXCollections.observableArrayList(ProductDetailHandler.getData());
-        ObservableList<ProductDetail> data = FXCollections.observableArrayList(pd.getDetail());
+        set(pd);
+        im_product.setImage(product.getPhoto());
+        lb_id.setText(product.getProductId());
+        lb_name.setText(product.getName());
+        lb_price.setText(product.getPrice().toString());
+        lb_size.setText(product.getSize());
+        lb_type.setText(product.getType().getName());
+        lb_description.setText(product.getDescription());
+
+        ObservableList<ProductDetail> data = FXCollections.observableArrayList(product.getDetail());
         tableView.setItems(data);
         
         updateTableView();
+    }
+    
+    void set(Product pd) {
+        product = pd;
+    }
+    
+    @FXML
+    void update() {
+        ProductDetail detail = tableView.getSelectionModel().getSelectedItem();
+        
+        SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId());
+        StockUpdateController ctrl = SceneLoader.getPopupController(StockUpdateController.class);
+        ctrl.fill(detail);
     }
 }
