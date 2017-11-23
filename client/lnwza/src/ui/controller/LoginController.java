@@ -5,16 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import application.SceneLoader;
 import application.Session;
-import application.entity.Owner;
 import application.entity.User;
 import application.handler.UserHandler;
-import java.util.Date;
 
 /**
  *
@@ -46,11 +43,12 @@ public class LoginController {
         if (user != null) {
             Session.setCurrentUser(user);
             if (Session.isOwner()) {
-                UserHandler.updateLoggedIn((Owner) user);
+                UserHandler.updateLoggedIn(user.toOwner());
             }
             SceneLoader.loadMain();
         } else {
             // TODO: show alert!
+            System.out.println(user + "/" + tf_username.getText().trim() + "/" + tf_password.getText().trim());
         }
     }
 

@@ -79,7 +79,7 @@ public class Bag {
     }
        
     public static void addToOrder() {
-        Order order = new Order((Agent) Session.getCurrentUser());
+        Order order = new Order(Session.getCurrentUser().toAgent());
         for (BagProduct item : items) {
             order.addProduct(item);
         }
@@ -90,7 +90,7 @@ public class Bag {
     }
     
     public static void reset() {
-        items = FXCollections.observableArrayList();
+        items.removeAll(items);
         payment = null;
     }
     

@@ -34,17 +34,20 @@ public class SceneLoader {
     private static FXMLLoader bodyFXML, popFXML, pcFXML;
     
     public static void initialize(Stage stage) {
+        login = stage;
         main = new Stage();
         pop = new Stage();
-        login = stage;
-        mainRoot = new BorderPane();
-        pcRoot = new VBox();
-        mainScene = new Scene(mainRoot, MAIN_WIDTH, MAIN_HEIGHT);
-        
         loadLogin();
     }
     
+    public static void start() {
+        mainRoot = new BorderPane();
+        pcRoot = new VBox();
+        mainScene = new Scene(mainRoot, MAIN_WIDTH, MAIN_HEIGHT);
+    }
+    
     public static void loadLogin() {
+        start();
         main.close();
         pop.close();
         

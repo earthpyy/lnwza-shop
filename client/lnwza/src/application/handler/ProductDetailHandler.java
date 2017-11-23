@@ -81,6 +81,7 @@ public class ProductDetailHandler {
         }
         
         em.getTransaction().commit();
+        em.close();
     }
     
     public static void delete(ProductDetail detail) {

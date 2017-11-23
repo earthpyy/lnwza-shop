@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import application.SceneLoader;
+import application.Session;
+import application.entity.Agent;
 import application.entity.BagProduct;
 import application.entity.Order;
 import application.handler.OrderHandler;
@@ -92,7 +94,7 @@ public class OrderViewController {
         });
         
         OrderHandler.load();
-        ObservableList<Order> data = FXCollections.observableArrayList(OrderHandler.getData());
+        ObservableList<Order> data = FXCollections.observableArrayList((Session.isOwner() ? OrderHandler.getData() : OrderHandler.getDataFromAgent(Session.getCurrentUser().toAgent())));
         tableView.setItems(data);
     }
 

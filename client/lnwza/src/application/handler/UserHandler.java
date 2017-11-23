@@ -42,7 +42,7 @@ public class UserHandler {
         ArrayList<Agent> result = new ArrayList<>();
         for (User user : users) {
             if (!isOwner(user)) {
-                result.add((Agent) user);
+                result.add(user.toAgent());
             }
         }
         return result;
@@ -52,7 +52,7 @@ public class UserHandler {
         ArrayList<Owner> result = new ArrayList<>();
         for (User user : users) {
             if (isOwner(user)) {
-                result.add((Owner) user);
+                result.add(user.toOwner());
             }
         }
         return result;
@@ -88,6 +88,7 @@ public class UserHandler {
         origin.setLastLoggedIn(new Date());
         
         em.getTransaction().commit();
+        em.close();
     }
     
     public static void delete(User user) {

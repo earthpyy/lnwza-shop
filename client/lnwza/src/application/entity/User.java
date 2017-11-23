@@ -51,6 +51,14 @@ public class User {
         return firstName + " " + lastName;
     }
     
+    public Agent toAgent() {
+        return (Agent) this;
+    }
+    
+    public Owner toOwner() {
+        return (Owner) this;
+    }
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

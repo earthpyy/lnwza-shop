@@ -1,8 +1,6 @@
 
 package ui.controller;
 
-import application.SceneLoader;
-import application.entity.BagProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,13 +10,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.scene.control.TableCell;
 
 import application.entity.Order;
 import application.entity.OrderStatus;
 import application.entity.Status;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.scene.control.TableCell;
+import application.SceneLoader;
+import application.Session;
+import application.entity.BagProduct;
 
 /**
  *
@@ -70,6 +70,10 @@ public class OrderDetailController {
     protected void initialize() {
         updateTableView();
         
+        if (!Session.isOwner()) {
+            bt_update.setVisible(false);
+        }
+        
         tb_id.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(tableview_item.getItems().indexOf(column.getValue()) + 1));
         tb_name.setCellFactory((TableColumn<BagProduct, String> col) ->
             new TableCell<BagProduct, String>() {
@@ -113,6 +117,7 @@ public class OrderDetailController {
     void fill(Order od) {
         set(od);
         tf_orderno.setText(order.getId().toString());
+        tf_trackno.setText(order.getTrackNo());
         
         ObservableList<BagProduct> dataItem = FXCollections.observableArrayList(order.getProducts());
         ObservableList<Status> dataStatus = FXCollections.observableArrayList(order.getStatus());

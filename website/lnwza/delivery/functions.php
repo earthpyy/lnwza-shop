@@ -2,6 +2,7 @@
     require_once("../connect.php");
 
     function addPackage($shopId, $postCode) {
+        global $db;
         $trackNo = getTrackNo($postCode);
         $db->insert("packages", ["shopId" => $shopId, "postCode" => $postCode, "trackNo" => $trackNo, "cost" => getCost($postCode)]);
         return $trackNo;
@@ -46,7 +47,8 @@
     }
 
     function getGeo($postCode) {
-        $amphur = $db->select("th_amphur", ["GEO_ID"], ["POSTCODE" => $postCode, "LIMIT" => 1]);
+        global $db;
+        $amphur = $db->select("th_amphur", "GEO_ID", ["POSTCODE" => $postCode, "LIMIT" => 1]);
         return $amphur[0]["GEO_ID"];
     }
 

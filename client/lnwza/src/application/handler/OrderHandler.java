@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
 import application.Delivery;
+import application.entity.Agent;
 import application.entity.Order;
 import application.entity.OrderStatus;
 
@@ -21,6 +22,16 @@ public class OrderHandler {
     
     public static ArrayList<Order> getData() {
         return orders;
+    }
+    
+    public static ArrayList<Order> getDataFromAgent(Agent agent) {
+        ArrayList<Order> result = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.getAgent().equals(agent)) {
+                result.add(order);
+            }
+        }
+        return result;
     }
     
     public static Order getDataFromId(Long id) {
@@ -62,16 +73,21 @@ public class OrderHandler {
         em.getTransaction().begin();
         
         if (order.getLastStatus() != origin.getLastStatus()) {
-            origin.addStatus(order.getLastStatus());
             // TODO: change getLastStatus() to OrderStatus.class
             if (order.getLastStatus().getStatus() == OrderStatus.PACKING) {
-                System.out.println(Delivery.gainTrackNo());
-                origin.setTrackNo(Delivery.gainTrackNo());
+                String trackNo = Delivery.gainTrackNo(order.getAgent().getPostCode());
+                if (!trackNo.isEmpty()) {
+                    origin.setTrackNo(trackNo);
+                    origin.addStatus(order.getLastStatus());
+                } else {
+                    System.out.println("Error! Cannot gain track number from Delivery Service");
+                }
             }
         } else {
             // TODO: next sprint
         }
         
         em.getTransaction().commit();
+        em.close();
     }
 }

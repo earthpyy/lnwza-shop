@@ -15,7 +15,9 @@ import javafx.scene.control.TableCell;
 
 import application.entity.BagProduct;
 import application.Bag;
+import application.Delivery;
 import application.SceneLoader;
+import application.Session;
 
 /**
  *
@@ -108,10 +110,10 @@ public class PurchaseBagController {
         
         tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
         tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
-        // TODO: connect with delivery system
-        tf_shipping.setText("฿40.0");
-        // TODO: update shipping rate
-        tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(2)));
+        
+        double shippingRate = Delivery.getCost(Session.getCurrentUser().toAgent().getPostCode());
+        tf_shipping.setText("฿" + shippingRate);
+        tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
         
         bt_checkout.disableProperty().bind(Bindings.size(Bag.getItems()).isEqualTo(0));
         
