@@ -51,7 +51,7 @@
                         <Font name="Paradox" size="64.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="14.0" layoutY="92.0" spacing="10.0">
+                  <VBox layoutX="14.0" layoutY="100.0" spacing="9.0">
                      <children>
                         <Label text="Subtotal">
                            <font>

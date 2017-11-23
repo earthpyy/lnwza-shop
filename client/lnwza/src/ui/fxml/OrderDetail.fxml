@@ -32,7 +32,7 @@
             <VBox layoutX="280.0" layoutY="57.0" spacing="15.0">
                <children>
                   <TextField fx:id="tf_orderno" alignment="CENTER" />
-                  <TextField fx:id="tf_trackno" alignment="CENTER" />
+                  <TextField fx:id="tf_trackno" alignment="CENTER" disable="true" />
                </children>
             </VBox>
             <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #140144;" text="Update" textFill="WHITE" />
