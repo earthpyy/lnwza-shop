@@ -46,7 +46,7 @@ public class OrderUpdateController {
         order.addNextStatus();
         OrderHandler.update(order);
         SceneLoader.closePopup();
-        OrderHandler.load();
+        SceneLoader.setBody("OrderView");
     }
     
     void set(Order od) {

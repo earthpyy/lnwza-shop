@@ -31,7 +31,7 @@ public class SceneLoader {
     private static VBox pcRoot;
     private static Scene mainScene, popScene, loginScene;
     private static Parent mainMenu, mainBody, popBody, loginBody, pcMenu, pcBody;
-    private static FXMLLoader popFXML, pcFXML;
+    private static FXMLLoader bodyFXML, popFXML, pcFXML;
     
     public static void initialize(Stage stage) {
         main = new Stage();
@@ -119,6 +119,10 @@ public class SceneLoader {
         popup(name, "lnwza SHOP");
     }
     
+    public static <T> T getBodyController(Class<T> controller) {
+        return controller.cast(bodyFXML.getController());
+    }
+    
     public static <T> T getPopupController(Class<T> controller) {
         return controller.cast(popFXML.getController());
     }
@@ -148,7 +152,8 @@ public class SceneLoader {
         Parent parent = null;
         System.out.println("[GUI] Loading " + name + "...");
         try {
-            parent = loadFXML(name).load();
+            bodyFXML = loadFXML(name);
+            parent = bodyFXML.load();
         } catch (IOException ex) {
             System.out.println("Cannot load " + name + "!");
             System.exit(0);

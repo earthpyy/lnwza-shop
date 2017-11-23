@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
+import application.Delivery;
 import application.entity.Order;
 import application.entity.OrderStatus;
 
@@ -64,7 +65,8 @@ public class OrderHandler {
             origin.addStatus(order.getLastStatus());
             // TODO: change getLastStatus() to OrderStatus.class
             if (order.getLastStatus().getStatus() == OrderStatus.PACKING) {
-                // TODO: add to delivery
+                System.out.println(Delivery.gainTrackNo());
+                origin.setTrackNo(Delivery.gainTrackNo());
             }
         } else {
             // TODO: next sprint

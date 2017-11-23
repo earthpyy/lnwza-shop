@@ -12,7 +12,6 @@ public class DataLoader {
         ProductTypeHandler.load();
         ProductHandler.load();
         OrderHandler.load();
-        AgentHandler.load();
         TransactionHandler.load();
         UserHandler.load();
     }

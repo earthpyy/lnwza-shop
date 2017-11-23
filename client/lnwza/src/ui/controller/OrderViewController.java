@@ -66,7 +66,7 @@ public class OrderViewController {
                     } else {
                         String text = "";
                         for (BagProduct product : products) {
-                            text += "- " + product.getQuantity() + product.getProductName() + " (" + product.getColorName() + ")\n";
+                            text += "- " + product.getQuantity() + "x " + product.getProductName() + " (" + product.getColorName() + ")\n";
                         }
                         setText(text);
                     }
@@ -95,4 +95,5 @@ public class OrderViewController {
         ObservableList<Order> data = FXCollections.observableArrayList(OrderHandler.getData());
         tableView.setItems(data);
     }
+
 }

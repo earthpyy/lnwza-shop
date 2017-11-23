@@ -1,6 +1,5 @@
 package ui.controller;
 
-import application.handler.AgentHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +8,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import application.entity.Agent;
+import application.handler.UserHandler;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
@@ -39,11 +40,13 @@ public class AgentViewController {
         tb_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         tb_first.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         tb_last.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        tb_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tb_address.setCellValueFactory(value -> {
+            return new SimpleStringProperty(value.getValue().getAddress() + " " + value.getValue().getPostCode());
+        });
         tb_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         
 //        AgentHandler.load();
-        ObservableList<Agent> data = FXCollections.observableArrayList(AgentHandler.getData());
+        ObservableList<Agent> data = FXCollections.observableArrayList(UserHandler.getAgents());
         tableview.setItems(data);
     }
     

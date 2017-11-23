@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
 import application.Session;
+import application.entity.Agent;
 import application.entity.Owner;
 import application.entity.User;
 import java.util.Date;
@@ -21,6 +22,40 @@ public class UserHandler {
     
     public static ArrayList<User> getData() {
         return users;
+    }
+    
+    public static User getUser(String username, String password) {
+        if (Session.isLoggedIn())
+            return null;
+        
+        User result = null;
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.isCorrectPassword(password)) {
+                result = user;
+                break;
+            }
+        }
+        return result;
+    }
+    
+    public static ArrayList<Agent> getAgents() {
+        ArrayList<Agent> result = new ArrayList<>();
+        for (User user : users) {
+            if (!isOwner(user)) {
+                result.add((Agent) user);
+            }
+        }
+        return result;
+    }
+    
+    public static ArrayList<Owner> getOwners() {
+        ArrayList<Owner> result = new ArrayList<>();
+        for (User user : users) {
+            if (isOwner(user)) {
+                result.add((Owner) user);
+            }
+        }
+        return result;
     }
 
     public static void load() {
@@ -37,18 +72,8 @@ public class UserHandler {
         }
     }
     
-    public static User getUser(String username, String password) {
-        if (Session.isLoggedIn())
-            return null;
-        
-        User result = null;
-        for (User user : users) {
-            if (user.getUsername().equals(username) && user.isCorrectPassword(password)) {
-                result = user;
-                break;
-            }
-        }
-        return result;
+    public static boolean isOwner(User user) {
+        return (user instanceof Owner);
     }
     
     public static void add(User user) {
