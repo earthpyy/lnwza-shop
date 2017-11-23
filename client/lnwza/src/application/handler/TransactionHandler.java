@@ -36,6 +36,15 @@ public class TransactionHandler {
     public static ArrayList<Transaction> getDataFromCurrentMonth() {
         return getDataFromMonth(MyDate.getCurrentMonth(), MyDate.getCurrentYear());
     }
+    
+    public static ArrayList<Transaction> getDataFromDate(int day, int month, int year) {
+        ArrayList<Transaction> result = new ArrayList<>();
+        for (Transaction tran : trans) {
+            if (MyDate.getDay(tran.getTranDate()) == day && MyDate.getMonth(tran.getTranDate()) == month && MyDate.getYear(tran.getTranDate()) == year)
+                result.add(tran);
+        }
+        return result;
+    }
 
     public static void load() {
         trans = new ArrayList<>();

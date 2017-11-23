@@ -1,5 +1,6 @@
 package application.entity;
 
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -9,10 +10,20 @@ import javax.persistence.*;
 @Entity
 public class Owner extends User {
     
-    // TODO: add some variable
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastLoggedIn;
 
     public Owner(String firstName, String lastName, String username, String password) {
         super(firstName, lastName, username, password);
+        this.lastLoggedIn = null;
+    }
+
+    public Date getLastLoggedIn() {
+        return lastLoggedIn;
+    }
+
+    public void setLastLoggedIn(Date lastLoggedIn) {
+        this.lastLoggedIn = lastLoggedIn;
     }
 
     @Override

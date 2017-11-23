@@ -51,9 +51,9 @@ public class PurchaseCheckoutController {
         // TODO: make it dynamically
         Payment payment = null;
         if (method.equals("credit")) {
-            payment = new CreditPayment(Payment.SHOP_ID, total);
+            payment = new CreditPayment(total);
         } else if (method.equals("internet")) {
-            payment = new InternetPayment(Payment.SHOP_ID, total);
+            payment = new InternetPayment(total);
         }
         
         toggleButton();

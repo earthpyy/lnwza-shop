@@ -3,3 +3,5 @@ dbPort = 6136
 dbName = lnwzashop
 dbUser = admin
 dbPass = admin
+
+shopId = 1

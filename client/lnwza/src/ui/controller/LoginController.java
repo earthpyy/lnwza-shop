@@ -11,8 +11,10 @@ import javafx.scene.text.Text;
 
 import application.SceneLoader;
 import application.Session;
+import application.entity.Owner;
 import application.entity.User;
 import application.handler.UserHandler;
+import java.util.Date;
 
 /**
  *
@@ -34,6 +36,7 @@ public class LoginController {
     
     @FXML
     protected void initialize() {
+        bt_login.disableProperty().bind(tf_username.textProperty().isEmpty().or(tf_password.textProperty().isEmpty()));
         bt_login.setDefaultButton(true);
     }
     
@@ -42,6 +45,9 @@ public class LoginController {
         User user = UserHandler.getUser(tf_username.getText().trim(), tf_password.getText().trim());
         if (user != null) {
             Session.setCurrentUser(user);
+            if (Session.isOwner()) {
+                UserHandler.updateLoggedIn((Owner) user);
+            }
             SceneLoader.loadMain();
         } else {
             // TODO: show alert!
@@ -50,17 +56,17 @@ public class LoginController {
 
     @FXML
     void forget(MouseEvent event) {
+        // TODO: next sprint
         // TODO: change it to button!
     }
     
-    // TODO: fix it when length = 1
-    @FXML
-    void checkNull(KeyEvent event) {
-        if ((tf_username.getText().trim().isEmpty() || tf_password.getText().trim().isEmpty()) && !bt_login.isDisabled()) {
-            bt_login.setDisable(true);
-        } else if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && bt_login.isDisabled()) {
-            bt_login.setDisable(false);
-        }
-    }
+//    @FXML
+//    void checkNull(KeyEvent event) {
+//        if ((tf_username.getText().trim().isEmpty() || tf_password.getText().trim().isEmpty()) && !bt_login.isDisabled()) {
+//            bt_login.setDisable(true);
+//        } else if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && bt_login.isDisabled()) {
+//            bt_login.setDisable(false);
+//        }
+//    }
     
 }
