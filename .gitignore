@@ -1,9 +1,6 @@
 
 .DS_Store
-#/client/lnwza/nbproject/private/
-#/client/lnwza-Preloader/nbproject/private/
-#/client/lnwza/build/
-#/client/lnwza/dist/
+.vscode
 
 /client/lnwza/*
 !/client/lnwza/src
@@ -12,3 +9,7 @@
 client/lnwza/src/application/resources/config.properties
 client/lnwza/src/ui/controller/StatisticDisplayController.java
 client/lnwza/src/ui/fxml/StatisticDisplay.fxml
+
+website/lnwza/composer.json
+website/lnwza/composer.lock
+website/lnwza/connect.php
