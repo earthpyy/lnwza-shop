@@ -6,18 +6,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-
-import application.entity.BagProduct;
-import application.Bag;
-import application.SceneLoader;
-import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
+
+import application.entity.BagProduct;
+import application.Bag;
+import application.SceneLoader;
 
 /**
  *
@@ -77,7 +75,7 @@ public class PurchaseBagController {
                     if (empty) {
                         setText(null);
                     } else {
-                        BagProduct item = (BagProduct) this.getTableRow().getItem();
+                        BagProduct item = getTableView().getItems().get(getIndex());
                         setText(item.getProductName() + " (" + item.getColorName() + ")");
                     }
                 }
@@ -111,9 +109,11 @@ public class PurchaseBagController {
         tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
         tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
         // TODO: connect with delivery system
-        tf_shipping.setText("฿2.0");
+        tf_shipping.setText("฿40.0");
         // TODO: update shipping rate
         tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(2)));
+        
+        bt_checkout.disableProperty().bind(Bindings.size(Bag.getItems()).isEqualTo(0));
         
 //        ObservableList<BagProduct> data = FXCollections.observableArrayList(Bag.getItems());
         tableView.setItems(Bag.getItems());

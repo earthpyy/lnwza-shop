@@ -17,10 +17,6 @@ public class Transaction {
     private String description;
     @Enumerated
     private TransactionType type;
-    @ManyToOne
-    private ProductDetail product;
-    @OneToOne
-    private Order order;
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date tranDate;
@@ -28,27 +24,25 @@ public class Transaction {
     // temp field (will use when load data)
     private Double total;
     
-    public Transaction(String description, TransactionType type, ProductDetail product, Order order, Double amount, Date tranDate) {
+    public Transaction(String description, TransactionType type, Double amount, Date tranDate) {
         
         this.description = description;
         this.type = type;
-        this.product = product;
-        this.order = order;
         this.amount = amount;
         this.tranDate = tranDate;
         this.total = 0.0;
     }
     
-    public Transaction(String description, TransactionType type, ProductDetail product, Order order, Double amount) {
-        this(description, type, product, order, amount, new Date());
+    public Transaction(String description, TransactionType type, Double amount) {
+        this(description, type, amount, new Date());
     }
     
     public Transaction(ProductDetail product, Double amount) {
-        this(null, TransactionType.STOCK, product, null, amount);
+        this(product.getId().toString(), TransactionType.STOCK, amount);
     }
     
     public Transaction(Order order, Double amount) {
-        this(null, TransactionType.ORDER, null, order, amount);
+        this(order.getId().toString(), TransactionType.ORDER, amount);
     }
     
     public Transaction(Order order) {
@@ -71,13 +65,13 @@ public class Transaction {
         return type;
     }
 
-    public ProductDetail getProduct() {
-        return product;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
+//    public ProductDetail getProduct() {
+//        return product;
+//    }
+//
+//    public Order getOrder() {
+//        return order;
+//    }
 
     public Double getAmount() {
         return amount;
@@ -125,13 +119,13 @@ public class Transaction {
         this.type = type;
     }
 
-    public void setProduct(ProductDetail product) {
-        this.product = product;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//    public void setProduct(ProductDetail product) {
+//        this.product = product;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     public void setAmount(Double amount) {
         this.amount = amount;

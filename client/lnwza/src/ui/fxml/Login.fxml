@@ -38,7 +38,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tf_username" layoutX="24.0" layoutY="106.0" onKeyTyped="#checkNull" prefHeight="25.0" prefWidth="230.0" />
+                  <TextField fx:id="tf_username" layoutX="24.0" layoutY="106.0" prefHeight="25.0" prefWidth="230.0" />
                   <Label layoutX="22.0" layoutY="156.0" text="PASSWORD:" textFill="#140144">
                      <font>
                         <Font size="13.0" />
@@ -46,7 +46,7 @@
                   </Label>
                   <Text fx:id="bt_forget" disable="true" layoutX="73.0" layoutY="300.0" onMousePressed="#forget" strokeType="OUTSIDE" strokeWidth="0.0" text="FORGET PASSWORD?" underline="true" />
                   <Button fx:id="bt_login" disable="true" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: #140144;" text="SIGN IN" textFill="WHITE" />
-                  <PasswordField fx:id="tf_password" layoutX="25.0" layoutY="187.0" onKeyTyped="#checkNull" prefHeight="25.0" prefWidth="230.0" />
+                  <PasswordField fx:id="tf_password" layoutX="25.0" layoutY="187.0" prefHeight="25.0" prefWidth="230.0" />
                </children>
             </AnchorPane>
             <Label layoutX="324.0" layoutY="20.0" prefHeight="53.0" prefWidth="262.0" styleClass="fv" text="Welcome to">

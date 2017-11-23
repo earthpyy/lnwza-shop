@@ -66,10 +66,8 @@ public class SceneLoader {
             setBody(OWNER_HOMEPAGE);
         } else {
             loadPurchase();
-//            setBody(AGENT_HOMEPAGE);
         }
 
-//        scene = new Scene(root, MAIN_WIDTH, MAIN_HEIGHT);
         loadCss(mainScene);
         main.setScene(mainScene);
         main.show();
@@ -143,9 +141,9 @@ public class SceneLoader {
     }
     
     private static Parent load(String name) {
-        if (name.equals("OrderView")) {
-            name += Session.getRole();
-        }
+//        if (name.equals("OrderView")) {
+//            name += Session.getRole();
+//        }
         
         Parent parent = null;
         System.out.println("[GUI] Loading " + name + "...");

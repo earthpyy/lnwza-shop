@@ -9,27 +9,45 @@ import javax.persistence.*;
 @Entity
 public class Agent extends User {
 
-    protected String email;
-    protected String address;
-    protected String tel;
+    private String email;
+    private String address;
+    private String postCode;
+    private String tel;
 
-    public Agent(String firstName, String lastName, String username, String password, String email, String address, String tel) {
+    public Agent(String firstName, String lastName, String username, String password, String email, String address, String postCode, String tel) {
         super(firstName, lastName, username, password);
         this.email = email;
         this.address = address;
+        this.postCode = postCode;
         this.tel = tel;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public String getPostCode() {
+        return postCode;
+    }
+
     public String getTel() {
         return tel;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+    
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public void setTel(String tel) {

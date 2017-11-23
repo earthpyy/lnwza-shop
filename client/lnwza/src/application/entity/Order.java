@@ -1,5 +1,6 @@
 package application.entity;
 
+import application.MyDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -19,6 +20,7 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<BagProduct> products;
     private Double amount;
+    private String trackNo;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
@@ -31,6 +33,7 @@ public class Order {
         this.agent = agent;
         this.products = products;
         this.amount = amount;
+        this.trackNo = null;
         this.orderDate = orderDate;
         this.status = new ArrayList<>(Arrays.asList(new Status(this)));
         // TODO: add transaction when order is completed.
@@ -74,8 +77,16 @@ public class Order {
         return (ArrayList) products;
     }
 
-    public Date getOrderDate() {
+    public Date getDate() {
         return orderDate;
+    }
+    
+    public String getOrderDate() {
+        return MyDate.getFullDate(orderDate);
+    }
+    
+    public String getOrderTime() {
+        return MyDate.getTime(orderDate);
     }
 
     public ArrayList<Status> getStatus() {
@@ -92,6 +103,10 @@ public class Order {
 
     public Double getAmount() {
         return amount;
+    }
+
+    public String getTrackNo() {
+        return trackNo;
     }
 
 //    public Transaction getTransaction() {
@@ -140,6 +155,10 @@ public class Order {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public void setTrackNo(String trackNo) {
+        this.trackNo = trackNo;
     }
 
 //    public void setTransaction(Transaction transaction) {

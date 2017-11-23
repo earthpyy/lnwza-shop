@@ -18,7 +18,6 @@
             <items>
               <MenuItem fx:id="menuStockView" mnemonicParsing="false" onAction="#show" text="View Stock" userData="StockView" />
                   <Menu disable="true" mnemonicParsing="false" text="Filter by..." />
-                  <MenuItem fx:id="menuStockUpdate" mnemonicParsing="false" onAction="#showStage" text="Update" userData="StockUpdate" />
             </items>
           </Menu>
             <Menu fx:id="menuStore" mnemonicParsing="false" style="-fx-background-color: #94cfc9;" text="Store">

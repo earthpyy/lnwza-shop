@@ -7,7 +7,9 @@ import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
 import application.Session;
+import application.entity.Owner;
 import application.entity.User;
+import java.util.Date;
 
 /**
  *
@@ -49,15 +51,21 @@ public class UserHandler {
         return result;
     }
     
-    public static void add(String firstName, String lastName, String username, String password) {
+    public static void add(User user) {
         // TODO: next sprint
     }
     
-    public static void update(Long id, String firstName, String lastName, String username, String password) {
-        // TODO: next sprint
+    public static void updateLoggedIn(Owner user) {
+        EntityManager em = emf.createEntityManager();
+        Owner origin = em.find(Owner.class, user.getId());
+        em.getTransaction().begin();
+
+        origin.setLastLoggedIn(new Date());
+        
+        em.getTransaction().commit();
     }
     
-    public static void delete(Long id) {
+    public static void delete(User user) {
         // TODO: next sprint
     }
 }

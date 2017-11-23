@@ -64,17 +64,26 @@ public class ProductDetailHandler {
             em.close();
         }
     }
-    
-    // recheck these methods
-    public static void add(String colorName, String color, Integer quantity) {
+
+    public static void add(ProductDetail detail) {
         // TODO: next sprint
     }
     
-    public static void update(Long id, String colorName, String color, Integer quantity) {
-        // TODO: next sprint
+    public static void update(ProductDetail detail) {
+        EntityManager em = emf.createEntityManager();
+        ProductDetail origin = em.find(ProductDetail.class, detail.getId());
+        em.getTransaction().begin();
+        
+        if (detail.getQuantity() != origin.getQuantity()) {
+            origin.setQuantity(detail.getQuantity());
+        } else {
+            // TODO: next sprint
+        }
+        
+        em.getTransaction().commit();
     }
     
-    public static void delete(Long id) {
+    public static void delete(ProductDetail detail) {
         // TODO: next sprint
     }
     

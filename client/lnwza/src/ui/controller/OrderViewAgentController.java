@@ -11,10 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 /**
  *
- * @author Naremx
+ * @author SE-lnwza
  */
 public class OrderViewAgentController {
-    
+    // TODO: delete this class!!!
     @FXML
     private TextField tf_search;
     

@@ -15,6 +15,7 @@ public class AppProperties {
     private static String dbName;
     private static String dbUser;
     private static String dbPass;
+    private static Integer shopId;
 
     public static void load() {
         // load from config.properties
@@ -30,6 +31,7 @@ public class AppProperties {
             dbName = prop.getProperty("dbName");
             dbUser = prop.getProperty("dbUser");
             dbPass = prop.getProperty("dbPass");
+            shopId = Integer.valueOf(prop.getProperty("shopId"));
 
         } catch (IOException ex) {
         } finally {
@@ -62,6 +64,10 @@ public class AppProperties {
 
     public static String getDBPass() {
         return dbPass;
+    }
+
+    public static Integer getShopId() {
+        return shopId;
     }
 
 }

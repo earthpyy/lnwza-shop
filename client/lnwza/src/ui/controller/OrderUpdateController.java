@@ -2,8 +2,11 @@ package ui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+
+import application.SceneLoader;
+import application.entity.Order;
+import application.handler.OrderHandler;
 
 /**
  *
@@ -22,9 +25,32 @@ public class OrderUpdateController {
     private TextField tf_date;
 
     @FXML
-    private MenuButton cb_status;
+    private TextField tf_status;
 
     @FXML
     private Button bt_confirm;
+    
+    private Order order;
+    
+    void fill(Order od) {
+        set(od);
+        tf_orderno.setText(order.getId().toString());
+        tf_trackno.setText(order.getTrackNo());
+        // TODO: add time textfield
+        tf_date.setText(order.getOrderDate() + ", " + order.getOrderTime());
+        tf_status.setText(order.getLastStatusName());
+    }
+    
+    @FXML
+    void update() {
+        order.addNextStatus();
+        OrderHandler.update(order);
+        SceneLoader.closePopup();
+        OrderHandler.load();
+    }
+    
+    void set(Order od) {
+        order = od;
+    }
 
 }

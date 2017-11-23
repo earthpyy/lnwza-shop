@@ -8,6 +8,7 @@ public enum OrderStatus {
     
     // normal
     PREPARING,
+    PACKING,
     DELIVERING,
     RECEIVED,
     // abnormal
@@ -20,6 +21,8 @@ public enum OrderStatus {
         switch (this) {
             case PREPARING:
                 return "Preparing order";
+            case PACKING:
+                return "Packing order";
             case DELIVERING:
                 return "Package delivering";
             case RECEIVED:
@@ -36,6 +39,8 @@ public enum OrderStatus {
     public OrderStatus getNext() {
         switch (this) {
             case PREPARING:
+                return PACKING;
+            case PACKING:
                 return DELIVERING;
             case DELIVERING:
                 return RECEIVED;

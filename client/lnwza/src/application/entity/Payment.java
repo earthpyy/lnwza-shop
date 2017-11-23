@@ -1,5 +1,6 @@
 package application.entity;
 
+import application.AppProperties;
 import application.Bag;
 import application.SceneLoader;
 import netscape.javascript.JSObject;
@@ -10,15 +11,13 @@ import ui.controller.WebViewController;
  * @author SE-lnwza
  */
 public abstract class Payment {
-    // TODO: move to AppProperties
-    public static final int SHOP_ID = 1;
     
     private int shopId;
     private double amount;
     private PaymentStatus status;
 
-    public Payment(int shopId, double amount) {
-        this.shopId = shopId;
+    public Payment(double amount) {
+        this.shopId = AppProperties.getShopId();
         this.amount = amount;
         this.status = PaymentStatus.NOTPAY;
     }
@@ -68,14 +67,30 @@ public abstract class Payment {
         window.setMember("app", new WebApp());
     }
     
+    protected void complete() {
+        if (getStatus() == PaymentStatus.NOTPAY) {
+            setStatus(PaymentStatus.PAID);
+            Bag.addToOrder();
+            Bag.reset();
+            SceneLoader.closePopup();
+            SceneLoader.setPCBody("PurchaseHome");
+        }
+    }
+    
+    protected void returnToBag() {
+        SceneLoader.closePopup();
+        SceneLoader.setPCBody("PurchaseBag");
+    }
+    
     public abstract void pay();
     
     public class WebApp {
         public void success() {
-            if (getStatus() == PaymentStatus.NOTPAY) {
-                setStatus(PaymentStatus.PAID);
-                Bag.addToOrder();
-            }
+            complete();
+        }
+        
+        public void fail() {
+            returnToBag();
         }
     }
     

@@ -6,10 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
-import application.entity.BagProduct;
 import application.entity.Order;
-import application.entity.Transaction;
-import application.entity.TransactionType;
+import application.entity.OrderStatus;
 
 /**
  *
@@ -22,6 +20,15 @@ public class OrderHandler {
     
     public static ArrayList<Order> getData() {
         return orders;
+    }
+    
+    public static Order getDataFromId(Long id) {
+        for (Order order : orders) {
+            if (order.getId() == id) {
+                return order;
+            }
+        }
+        return null;
     }
 
     public static void load() {
@@ -46,5 +53,23 @@ public class OrderHandler {
         
         em.getTransaction().commit();
         em.close();
+    }
+    
+    public static void update(Order order) {
+        EntityManager em = emf.createEntityManager();
+        Order origin = em.find(Order.class, order.getId());
+        em.getTransaction().begin();
+        
+        if (order.getLastStatus() != origin.getLastStatus()) {
+            origin.addStatus(order.getLastStatus());
+            // TODO: change getLastStatus() to OrderStatus.class
+            if (order.getLastStatus().getStatus() == OrderStatus.PACKING) {
+                // TODO: add to delivery
+            }
+        } else {
+            // TODO: next sprint
+        }
+        
+        em.getTransaction().commit();
     }
 }

@@ -42,11 +42,13 @@ public class PurchaseAddController {
 
     @FXML
     private Button bt_cancel;
+    
+    private Product product;
 
     @FXML
     void add(ActionEvent event) {
-        ProductDetail product = cb_color.getSelectionModel().getSelectedItem();
-        Bag.add(product, cb_qty.getValue());
+        ProductDetail detail = cb_color.getSelectionModel().getSelectedItem();
+        Bag.add(detail, cb_qty.getValue());
         SceneLoader.closePopup();
     }
 
@@ -55,7 +57,8 @@ public class PurchaseAddController {
         SceneLoader.closePopup();
     }
     
-    void fill(Product product) {
+    void fill(Product pd) {
+        set(pd);
         im_product.setImage(product.getPhoto());
         lb_name.setText(product.getName());
         lb_price.setText("฿" + product.getPrice());
@@ -84,6 +87,10 @@ public class PurchaseAddController {
         ObservableList<Integer> qtyData = FXCollections.observableArrayList(Arrays.asList(1, 2, 3, 4, 5));
         cb_qty.setItems(qtyData);
         cb_qty.getSelectionModel().selectFirst();
+    }
+    
+    void set(Product pd) {
+        product = pd;
     }
     
 }

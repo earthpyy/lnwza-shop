@@ -85,8 +85,13 @@ public class Bag {
         }
         OrderHandler.add(order);
         
-        Transaction tran = new Transaction(null, TransactionType.ORDER, null, order, order.getAmount());
+        Transaction tran = new Transaction(order.getId().toString(), TransactionType.ORDER, order.getAmount());
         TransactionHandler.add(tran);
+    }
+    
+    public static void reset() {
+        items = FXCollections.observableArrayList();
+        payment = null;
     }
     
 }
