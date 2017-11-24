@@ -15,4 +15,7 @@ $db = new Medoo([
     'password' => ''
 ]);
 
+$token = "CHANNEL_ACCESS_TOKEN";
+$secret = "CHANNEL_SECRET";
+
 ?>

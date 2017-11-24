@@ -85,17 +85,21 @@ public class SceneLoader {
     }
     
     public static void setBody(String name) {
-        mainBody = load(name);
+        bodyFXML = loadFXML(name);
+        try {
+            mainBody = bodyFXML.load();
+        } catch (IOException ex) {
+        }
         mainRoot.setCenter(mainBody);
     }
     
-    public static void setPCBody(String name) {
-        pcBody = load(name);
-        pcRoot.getChildren().set(1, pcBody);
-        mainRoot.setCenter(pcRoot);
-    }
+//    public static void setPCBody(String name) {
+//        pcBody = load(name);
+//        pcRoot.getChildren().set(1, pcBody);
+//        mainRoot.setCenter(pcRoot);
+//    }
     
-    public static void setPCBodyWithLoadFXML(String name) {
+    public static void setPCBody(String name) {
         pcFXML = loadFXML(name);
         try {
             pcBody = pcFXML.load();
@@ -155,8 +159,7 @@ public class SceneLoader {
         Parent parent = null;
         System.out.println("[GUI] Loading " + name + "...");
         try {
-            bodyFXML = loadFXML(name);
-            parent = bodyFXML.load();
+            parent = loadFXML(name).load();
         } catch (IOException ex) {
             System.out.println("Cannot load " + name + "!");
             System.exit(0);

@@ -13,3 +13,9 @@ client/lnwza/src/ui/fxml/StatisticDisplay.fxml
 website/lnwza/composer.json
 website/lnwza/composer.lock
 website/lnwza/connect.php
+
+/website/lnwza/vendor/linecorp/line-bot-sdk/devtool
+/website/lnwza/vendor/linecorp/line-bot-sdk/docs
+/website/lnwza/vendor/linecorp/line-bot-sdk/examples
+/website/lnwza/vendor/linecorp/line-bot-sdk/tests
+/website/lnwza/vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny

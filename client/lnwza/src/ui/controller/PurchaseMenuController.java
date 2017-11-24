@@ -69,7 +69,7 @@ public class PurchaseMenuController {
     }
     
     void showCategory(ProductType type) {
-        SceneLoader.setPCBodyWithLoadFXML("PurchaseView");
+        SceneLoader.setPCBody("PurchaseView");
 
         PurchaseViewController ctrl = SceneLoader.getPCController(PurchaseViewController.class);
         ctrl.fill(type);

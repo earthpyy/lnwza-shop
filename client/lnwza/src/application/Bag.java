@@ -78,8 +78,8 @@ public class Bag {
         }
     }
        
-    public static void addToOrder() {
-        Order order = new Order(Session.getCurrentUser().toAgent());
+    public static Long addToOrder() {
+        Order order = new Order(Session.getCurrentUser().toAgent(), getPayment().getAmount());
         for (BagProduct item : items) {
             order.addProduct(item);
         }
@@ -87,6 +87,8 @@ public class Bag {
         
         Transaction tran = new Transaction(order.getId().toString(), TransactionType.ORDER, order.getAmount());
         TransactionHandler.add(tran);
+        
+        return order.getId();
     }
     
     public static void reset() {

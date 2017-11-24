@@ -4,6 +4,7 @@ import application.AppProperties;
 import application.Bag;
 import application.SceneLoader;
 import netscape.javascript.JSObject;
+import ui.controller.PurchaseCompleteController;
 import ui.controller.WebViewController;
 
 /**
@@ -70,10 +71,13 @@ public abstract class Payment {
     protected void complete() {
         if (getStatus() == PaymentStatus.NOTPAY) {
             setStatus(PaymentStatus.PAID);
-            Bag.addToOrder();
+            Long orderId = Bag.addToOrder();
             Bag.reset();
             SceneLoader.closePopup();
-            SceneLoader.setPCBody("PurchaseHome");
+            SceneLoader.setPCBody("PurchaseComplete");
+            
+            PurchaseCompleteController ctrl = SceneLoader.getPCController(PurchaseCompleteController.class);
+            ctrl.fill(orderId);
         }
     }
     

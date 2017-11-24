@@ -44,8 +44,12 @@ public class Order {
         this(agent, products, amount, new Date());
     }
     
+    public Order(Agent agent, Double amount) {
+        this(agent, new ArrayList<>(), amount);
+    }
+    
     public Order(Agent agent) {
-        this(agent, new ArrayList<>(), new Double(0));
+        this(agent, new Double(0));
     }
     
 //    public Double calculateAmount() {
@@ -124,7 +128,7 @@ public class Order {
     public void addProduct(BagProduct products) {
         products.setOrder(this);
         this.products.add(products);
-        amount += products.getTotalPrice();
+//        amount += products.getTotalPrice();
 //        transaction.setAmount(amount);
     }
 
