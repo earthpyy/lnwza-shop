@@ -9,7 +9,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.chart.XYChart;
 import application.MyDate;
+import application.entity.Transaction;
+import application.handler.TransactionHandler;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import javafx.geometry.Side;
 
 /**
  *
@@ -40,7 +46,7 @@ public class HistoryViewController{
     
     //Database Summary cache
     private static XYChart.Series seriesIncome, seriesPayment;
-    private static Double[][] dataCache = new Double[31][2];
+    private static double[][] dataCache = new double[31][2];
     private static Integer oldestEntryYear = 2015;
     
     @FXML
@@ -52,6 +58,7 @@ public class HistoryViewController{
         cb_month.getItems().setAll(Arrays.asList(MyDate.MONTH));
         cb_month.getSelectionModel().select(MyDate.getCurrentMonthIndex());
         
+        lc_graph.setLegendSide(Side.RIGHT);
         lc_graph.setCreateSymbols(false);
         updateGraph();
         
@@ -59,30 +66,21 @@ public class HistoryViewController{
     
     @FXML
     private void updateGraph(){
-        
-        int year, maxDay = 30;
         double income = 0, payment = 0;
-        year = cb_year.getValue();
-        switch(cb_month.getValue()){
-            case "February":
-                if(year % 4 == 0)
-                    maxDay = 29;
-                else
-                    maxDay = 28;
+        int year = cb_year.getValue();
+        int month = 0;
+        for(int i = 0; i < 12; i++){
+            if(cb_month.getValue() == MyDate.MONTH[i]){
+                month = i + 1;
                 break;
-            case "January":
-            case "March":
-            case "May":
-            case "July":
-            case "August":
-            case "October":
-            case "December":
-                maxDay = 31;
-                break;
+            }
         }
-        //refresh data in series
-        fetchData();
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, 1);
+        int maxDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
         
+        //refresh data in series
+        fetchData(month, year);
         lc_graph.setData(FXCollections.observableArrayList());
         
         seriesIncome = new XYChart.Series();
@@ -104,15 +102,28 @@ public class HistoryViewController{
         tf_profit.setText(Double.toString(income - payment));
         lc_graph.getData().add(seriesIncome);
         lc_graph.getData().add(seriesPayment);
-        
-        System.out.println("boop");
     }
     
-    private void fetchData(){
-        //dummy data
+    private void clearCache(){
+        //clear out
         for (int i = 0; i < 31; i++){
-            dataCache[i][0] = 100.0 + 100.0 * i;
-            dataCache[i][1] = 50.0 * i;
+            dataCache[i][0] = 0.0;
+            dataCache[i][1] = 0.0;
+        }
+    }
+    
+    private void fetchData(int month, int year){
+        clearCache();
+        Calendar cal = Calendar.getInstance();
+        int date;
+        ArrayList<Transaction> transaction = TransactionHandler.getDataFromMonth(month, year);
+        for(Transaction entry : transaction){
+            cal.setTime(entry.getTranDate());
+            date = cal.get(Calendar.DAY_OF_MONTH);
+            if(entry.getAmount() >= 0)
+                dataCache[date-1][0] += entry.getAmount();
+            else
+                dataCache[date-1][1] += entry.getAmount();
         }
     }
 }
