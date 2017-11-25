@@ -74,7 +74,7 @@ public class PurchaseViewController {
             txt_price.setFill(Color.RED);
             GridPane.setHalignment(txt_price, HPos.CENTER);
             
-            ImageButton bt_cart = new ImageButton("/ui/resources/images/button/Button.png");
+            ImageButton bt_cart = new ImageButton("/ui/resources/images/button/ButtonAdd.png");
             GridPane.setHalignment(bt_cart, HPos.CENTER);
             bt_cart.setOnAction((event) -> {
                 SceneLoader.popup("PurchaseAdd", product.getName());
