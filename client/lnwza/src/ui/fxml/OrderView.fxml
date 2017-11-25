@@ -22,7 +22,7 @@
       <Separator layoutX="-4.0" layoutY="74.0" prefHeight="20.0" prefWidth="1030.0" />
       <AnchorPane layoutX="2.0" layoutY="84.0" prefHeight="37.0" prefWidth="1024.0">
          <children>
-            <TextField fx:id="tf_search" layoutX="834.0" layoutY="6.0" prefHeight="25.0" prefWidth="163.0" />
+            <TextField fx:id="tf_search" disable="true" layoutX="834.0" layoutY="6.0" prefHeight="25.0" prefWidth="163.0" />
          </children>
       </AnchorPane>
       <Separator layoutY="120.0" prefHeight="8.0" prefWidth="1024.0" />

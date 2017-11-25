@@ -47,6 +47,7 @@
                   <Text fx:id="bt_forget" disable="true" layoutX="73.0" layoutY="300.0" onMousePressed="#forget" strokeType="OUTSIDE" strokeWidth="0.0" text="FORGET PASSWORD?" underline="true" />
                   <Button fx:id="bt_login" disable="true" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: #140144;" text="SIGN IN" textFill="WHITE" />
                   <PasswordField fx:id="tf_password" layoutX="25.0" layoutY="187.0" prefHeight="25.0" prefWidth="230.0" />
+                  <Text fx:id="txt_error" fill="#f60303" layoutX="42.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error : Wrong Username or Password!" />
                </children>
             </AnchorPane>
             <Label layoutX="324.0" layoutY="20.0" prefHeight="53.0" prefWidth="262.0" styleClass="fv" text="Welcome to">
