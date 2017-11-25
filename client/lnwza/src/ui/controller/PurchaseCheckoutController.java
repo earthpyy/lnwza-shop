@@ -56,17 +56,15 @@ public class PurchaseCheckoutController {
             payment = new InternetPayment(total);
         }
         
-        toggleButton();
         Bag.setPayment(payment);
         Bag.getPayment().pay();
     }
     
-    void toggleButton() {
-        boolean value = !bt_credit.disableProperty().get();
-        bt_credit.setDisable(value);
-        bt_internet.setDisable(value);
-        bt_cancel.setDisable(value);
-        // TODO: disable stage instead
-    }
+//    void toggleButton() {
+//        boolean value = !bt_credit.disableProperty().get();
+//        bt_credit.setDisable(value);
+//        bt_internet.setDisable(value);
+//        bt_cancel.setDisable(value);
+//    }
     
 }

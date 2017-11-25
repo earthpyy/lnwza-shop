@@ -22,8 +22,8 @@ import javafx.scene.control.TableCell;
  * @author SE-lnwza
  */
 public class OrderViewController {
-    @FXML
-    private TextField tf_search; // TODO: implement this
+    @FXML // disabled
+    private TextField tf_search;
      
     @FXML
     private TableView<Order> tableView;

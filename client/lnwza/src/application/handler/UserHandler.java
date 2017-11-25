@@ -102,7 +102,7 @@ public class UserHandler {
     
     public static void setLoggedOut(User user) {
         EntityManager em = DatabaseConnection.getEM();
-        User origin = em.find(User.class, user.getId()); // TODO: check if it is useless?
+        User origin = em.find(User.class, user.getId());
         em.getTransaction().begin();
 
         origin.setLoggedIn(false);
@@ -129,8 +129,10 @@ public class UserHandler {
     }
     
     public static void logOut() {
-        setLoggedOut(getCurrentUser());
-        setCurrentUser(null);
+        if (isLoggedIn()) {
+            setLoggedOut(getCurrentUser());
+            setCurrentUser(null);
+        }
     }
     
     public static void delete(User user) {

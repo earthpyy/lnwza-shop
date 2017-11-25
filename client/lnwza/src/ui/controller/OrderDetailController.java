@@ -19,6 +19,9 @@ import application.entity.Status;
 import application.SceneLoader;
 import application.entity.BagProduct;
 import application.handler.UserHandler;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 /**
  *
@@ -65,10 +68,12 @@ public class OrderDetailController {
     private TableColumn<Status, Integer> tb_status;
     
     private Order order;
+    private SimpleIntegerProperty rowSizeProperty, rowStatusSizeProperty;
     
      @FXML
     protected void initialize() {
-        updateTableView();
+        rowSizeProperty = new SimpleIntegerProperty(0);
+        rowStatusSizeProperty = new SimpleIntegerProperty(0);
         
         if (!UserHandler.getCurrentUser().isOwner()) {
             bt_update.setVisible(false);
@@ -94,6 +99,34 @@ public class OrderDetailController {
         tb_date.setCellValueFactory(new PropertyValueFactory<>("obtainedDate"));
         tb_time.setCellValueFactory(new PropertyValueFactory<>("obtainedTime"));
         tb_status.setCellValueFactory(new PropertyValueFactory<>("statusName"));
+        
+        tableview_item.setPlaceholder(new Label("No product found!"));
+        tableview_item.setFixedCellSize(30);
+        tableview_item.prefHeightProperty().bind(tableview_item.fixedCellSizeProperty().multiply(rowSizeProperty.add(1)));
+        tableview_item.minHeightProperty().bind(tableview_item.prefHeightProperty());
+        tableview_item.maxHeightProperty().bind(tableview_item.prefHeightProperty());
+        
+        tableview_item.itemsProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue ov, Object t, Object t1) {
+//                rowSizeProperty.bind(Bindings.size(tableView.getItems()));
+                rowSizeProperty.set(tableview_item.getItems().size());
+            }
+        });
+        
+        tableview_status.setPlaceholder(new Label("No status found!"));
+        tableview_status.setFixedCellSize(30);
+        tableview_status.prefHeightProperty().bind(tableview_status.fixedCellSizeProperty().multiply(rowStatusSizeProperty.add(1)));
+        tableview_status.minHeightProperty().bind(tableview_status.prefHeightProperty());
+        tableview_status.maxHeightProperty().bind(tableview_status.prefHeightProperty());
+        
+        tableview_status.itemsProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue ov, Object t, Object t1) {
+//                rowSizeProperty.bind(Bindings.size(tableView.getItems()));
+                rowStatusSizeProperty.set(tableview_status.getItems().size());
+            }
+        });
     }
     
     @FXML
@@ -108,12 +141,6 @@ public class OrderDetailController {
         ctrl.fill(order);
     }
     
-    void updateTableView() {
-        // TODO: format this
-        tableview_item.setPlaceholder(new Label("No product found!"));
-        tableview_status.setPlaceholder(new Label("No status found!"));
-    }
-    
     void fill(Order od) {
         set(od);
         tf_orderno.setText(order.getId().toString());
@@ -125,9 +152,8 @@ public class OrderDetailController {
         tableview_item.setItems(dataItem);
         tableview_status.setItems(dataStatus);
         
-        bt_update.setDisable(order.getLastStatus().getStatus() != OrderStatus.PREPARING);
-        
-        updateTableView();
+        bt_update.setDisable(order.getLastStatus() != OrderStatus.PREPARING);
+
     }
     
     void set(Order od) {

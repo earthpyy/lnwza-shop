@@ -36,8 +36,6 @@ public class Order {
         this.trackNo = null;
         this.orderDate = orderDate;
         this.status = new ArrayList<>(Arrays.asList(new Status(this)));
-        // TODO: add transaction when order is completed.
-//        this.transaction = new Transaction(null, TransactionType.ORDER, null, this, amount, orderDate);
     }
     
     public Order(Agent agent, List<BagProduct> products, Double amount) {
@@ -51,15 +49,6 @@ public class Order {
     public Order(Agent agent) {
         this(agent, new Double(0));
     }
-    
-//    public Double calculateAmount() {
-//        double sum = 0;
-//        for (int i = 0; i < products.size(); i++) {
-//            sum += products.get(i).getProduct().getPrice() * quantity.get(i);
-//            System.out.println(sum);
-//        }
-//        return sum;
-//    }
 
     public Long getId() {
         return id;
@@ -97,12 +86,12 @@ public class Order {
         return (ArrayList) status;
     }
     
-    public Status getLastStatus() {
-        return status.get(status.size() - 1);
+    public OrderStatus getLastStatus() {
+        return status.get(status.size() - 1).getStatus();
     }
     
     public String getLastStatusName() {
-        return getLastStatus().getStatusName();
+        return getLastStatus().getName();
     }
 
     public Double getAmount() {
@@ -149,11 +138,11 @@ public class Order {
     }
     
     public void addNextStatus() {
-        addStatus(getLastStatus().getStatus().getNext());
+        addStatus(getLastStatus().getNext());
     }
     
     public void addCancelledStatus() {
-        if (getLastStatus().getStatus() != OrderStatus.ERROR && getLastStatus().getStatus() != OrderStatus.CANCELLED)
+        if (getLastStatus() != OrderStatus.ERROR && getLastStatus() != OrderStatus.CANCELLED)
             addStatus(OrderStatus.CANCELLED);
     }
 

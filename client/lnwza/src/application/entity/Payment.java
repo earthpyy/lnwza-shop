@@ -66,6 +66,8 @@ public abstract class Payment {
         
         JSObject window = (JSObject) ctrl.getWebEngine().executeScript("window");
         window.setMember("app", new WebApp());
+        
+        SceneLoader.disablePC();
     }
     
     protected void complete() {
@@ -78,12 +80,16 @@ public abstract class Payment {
             
             PurchaseCompleteController ctrl = SceneLoader.getPCController(PurchaseCompleteController.class);
             ctrl.fill(orderId);
+            
+            SceneLoader.enablePC();
         }
     }
     
     protected void returnToBag() {
         SceneLoader.closePopup();
         SceneLoader.setPCBody("PurchaseBag");
+        
+        SceneLoader.enablePC();
     }
     
     public abstract void pay();

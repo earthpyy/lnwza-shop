@@ -143,6 +143,14 @@ public class SceneLoader {
         pop.close();
     }
     
+    public static void disablePC() {
+        pcBody.setDisable(true);
+    }
+    
+    public static void enablePC() {
+        pcBody.setDisable(false);
+    }
+    
     private static FXMLLoader loadFXML(String name) {
         FXMLLoader fxmlLoader = null;
         try {

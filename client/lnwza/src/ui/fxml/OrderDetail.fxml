@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -31,7 +32,7 @@
             </VBox>
             <VBox layoutX="280.0" layoutY="57.0" spacing="15.0">
                <children>
-                  <TextField fx:id="tf_orderno" alignment="CENTER" />
+                  <TextField fx:id="tf_orderno" alignment="CENTER" disable="true" />
                   <TextField fx:id="tf_trackno" alignment="CENTER" disable="true" />
                </children>
             </VBox>
@@ -42,35 +43,35 @@
       <Accordion prefHeight="251.0" prefWidth="600.0">
         <panes>
           <TitledPane animated="false" text="Item">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tableview_item" prefHeight="200.0" prefWidth="600.0">
-                          <columns>
-                            <TableColumn fx:id="tb_id" prefWidth="102.33331298828125" style="-fx-alignment: center;" text="ID" />
-                            <TableColumn fx:id="tb_name" prefWidth="351.66668701171875" style="-fx-alignment: center-left;" text="Name" />
+               <content>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <TableView fx:id="tableview_item">
+                           <columns>
+                              <TableColumn fx:id="tb_id" prefWidth="97.0" style="-fx-alignment: center;" text="ID" />
+                              <TableColumn fx:id="tb_name" prefWidth="358.0" style="-fx-alignment: center-left;" text="Name" />
                               <TableColumn fx:id="tb_qty" minWidth="0.0" prefWidth="53.6666259765625" style="-fx-alignment: center;" text="Qty" />
-                              <TableColumn fx:id="tb_price" minWidth="0.0" prefWidth="91.0" style="-fx-alignment: center;" text="Price" />
-                          </columns>
+                              <TableColumn fx:id="tb_price" minWidth="0.0" prefWidth="89.0" style="-fx-alignment: center;" text="Price" />
+                           </columns>
                         </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
+                     </content>
+                  </ScrollPane>
+               </content>
           </TitledPane>
           <TitledPane animated="false" text="Status">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tableview_status" prefHeight="200.0" prefWidth="600.0">
-                          <columns>
-                            <TableColumn fx:id="tb_date" prefWidth="115.0" style="-fx-alignment: center;" text="Date" />
+               <content>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <TableView fx:id="tableview_status">
+                           <columns>
+                              <TableColumn fx:id="tb_date" prefWidth="115.0" style="-fx-alignment: center;" text="Date" />
                               <TableColumn fx:id="tb_time" prefWidth="66.6666259765625" style="-fx-alignment: center;" text="Time" />
-                            <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="418.3333740234375" style="-fx-alignment: center-left;" text="Status" />
-                          </columns>
+                              <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="418.3333740234375" style="-fx-alignment: center-left;" text="Status" />
+                           </columns>
                         </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
+                     </content>
+                  </ScrollPane>
+               </content>
           </TitledPane>
         </panes>
       </Accordion>

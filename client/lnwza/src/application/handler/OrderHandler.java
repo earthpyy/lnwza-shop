@@ -72,8 +72,7 @@ public class OrderHandler {
         em.getTransaction().begin();
         
         if (order.getLastStatus() != origin.getLastStatus()) {
-            // TODO: change getLastStatus() to OrderStatus.class
-            if (order.getLastStatus().getStatus() == OrderStatus.PACKING) {
+            if (order.getLastStatus() == OrderStatus.PACKING) {
                 String trackNo = Delivery.gainTrackNo(order.getAgent().getPostCode());
                 if (!trackNo.isEmpty()) {
                     origin.setTrackNo(trackNo);

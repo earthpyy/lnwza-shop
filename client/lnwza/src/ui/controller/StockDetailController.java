@@ -16,6 +16,10 @@ import javafx.collections.ObservableList;
 
 import application.entity.Product;
 import application.entity.ProductDetail;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 /**
  *
@@ -63,29 +67,31 @@ public class StockDetailController {
     private Button bt_update;
 
     private Product product;
+    private SimpleIntegerProperty rowSizeProperty;
     
     @FXML
     protected void initialize() {
-        updateTableView();
+        rowSizeProperty = new SimpleIntegerProperty(0);
         
         tb_no.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(tableView.getItems().indexOf(column.getValue()) + 1));
         tb_color.setCellValueFactory(new PropertyValueFactory<>("colorName"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         
         bt_update.disableProperty().bind(tableView.getSelectionModel().selectedItemProperty().isNull());
-    }
-    
-    // TODO: format this table
-    void updateTableView() {
+
         tableView.setPlaceholder(new Label("No product found!"));
-//        tableView.setFixedCellSize(25);
-//        if (tableView.getItems().isEmpty()) {
-//            tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().add(26));
-//        } else {
-//            tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(1.01)));
-//        }
-//        tableView.minHeightProperty().bind(tableView.prefHeightProperty());
-//        tableView.maxHeightProperty().bind(tableView.prefHeightProperty());
+        tableView.setFixedCellSize(30);
+        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(rowSizeProperty.add(1)));
+        tableView.minHeightProperty().bind(tableView.prefHeightProperty());
+        tableView.maxHeightProperty().bind(tableView.prefHeightProperty());
+        
+        tableView.itemsProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue ov, Object t, Object t1) {
+//                rowSizeProperty.bind(Bindings.size(tableView.getItems()));
+                rowSizeProperty.set(tableView.getItems().size());
+            }
+        });
     }
     
     void fill(Product pd) {
@@ -100,8 +106,6 @@ public class StockDetailController {
 
         ObservableList<ProductDetail> data = FXCollections.observableArrayList(product.getDetail());
         tableView.setItems(data);
-        
-        updateTableView();
     }
     
     void set(Product pd) {

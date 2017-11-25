@@ -1,10 +1,6 @@
 
 package ui.controller;
 
-import application.SceneLoader;
-import application.entity.Product;
-import application.entity.ProductDetail;
-import application.handler.ProductDetailHandler;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -17,6 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 import javafx.util.converter.NumberStringConverter;
+
+import application.SceneLoader;
+import application.entity.Product;
+import application.entity.ProductDetail;
+import application.handler.ProductHandler;
+
 /**
  *
  * @author SE-lnwza
@@ -101,7 +103,7 @@ public class StockUpdateController {
     @FXML
     void update() {
         detail.setQuantity(changeProperty.get() + inStockProperty.get());
-        ProductDetailHandler.update(detail);
+        ProductHandler.updateDetail(detail);
         SceneLoader.closePopup();
     }
 

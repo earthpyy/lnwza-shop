@@ -27,9 +27,10 @@ public class Product {
     private List<ProductDetail> details;
     private String size;
     private Double price;
+    private Boolean recommended;
     
 
-    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price) {
+    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price, Boolean recommended) {
         this.productId = productId;
         this.name = name;
         this.description = description;
@@ -37,6 +38,11 @@ public class Product {
         this.type = type;
         this.size = size;
         this.price = price;
+        this.recommended = recommended;
+    }
+    
+    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price) {
+        this(productId, name, description, photo, type, size, price, false);
     }
 
     public Long getId() {
@@ -113,6 +119,10 @@ public class Product {
         return price;
     }
 
+    public Boolean isRecommended() {
+        return recommended;
+    }
+
     public void setProductId(String productId) {
         this.productId = productId;
     }
@@ -147,6 +157,10 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public void setRecommended(Boolean recommended) {
+        this.recommended = recommended;
     }
     
     @Override

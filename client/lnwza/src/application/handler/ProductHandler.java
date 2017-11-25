@@ -24,10 +24,15 @@ public class ProductHandler {
     
     public static ArrayList<Product> getRecommendData() {
         ArrayList<Product> result = new ArrayList<>();
-        // TODO: check from db
-        result.add(products.get(0));
-        result.add(products.get(1));
-        result.add(products.get(2));
+        for (int i = products.size() - 1; i >= 0; i--) {
+            if (products.get(i).isRecommended()) {
+                result.add(products.get(i));
+            }
+            
+            if (result.size() == 3) {
+                break;
+            }
+        }
         
         return result;
     }
@@ -71,6 +76,21 @@ public class ProductHandler {
     
     public static void update(Product product) {
         // TODO: next sprint
+    }
+    
+    public static void updateDetail(ProductDetail detail) {
+        EntityManager em = DatabaseConnection.getEM();
+        ProductDetail origin = em.find(ProductDetail.class, detail.getId());
+        em.getTransaction().begin();
+        
+        if (detail.getQuantity() != origin.getQuantity()) {
+            origin.setQuantity(detail.getQuantity());
+        } else {
+            // TODO: next sprint
+        }
+        
+        em.getTransaction().commit();
+        em.close();
     }
     
     public static void delete(Product product) {
