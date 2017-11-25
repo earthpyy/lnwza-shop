@@ -1,6 +1,5 @@
 package application;
 
-import application.entity.Agent;
 import application.entity.Payment;
 import application.entity.BagProduct;
 import application.entity.Order;
@@ -9,19 +8,17 @@ import application.entity.Transaction;
 import application.entity.TransactionType;
 import application.handler.OrderHandler;
 import application.handler.TransactionHandler;
+import application.handler.UserHandler;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author SE-lnwza
  */
 public class Bag {
-    
-    private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
     
     private static ObservableList<BagProduct> items = FXCollections.observableArrayList();
     private static Payment payment;
@@ -79,7 +76,7 @@ public class Bag {
     }
        
     public static Long addToOrder() {
-        Order order = new Order(Session.getCurrentUser().toAgent(), getPayment().getAmount());
+        Order order = new Order(UserHandler.getCurrentUser().toAgent(), getPayment().getAmount());
         for (BagProduct item : items) {
             order.addProduct(item);
         }

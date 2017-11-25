@@ -16,7 +16,6 @@ import javax.persistence.TypedQuery;
 public class ProductDetailHandler {
     
     private static ArrayList<ProductDetail> pds;
-    private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
     
     public static ArrayList<ProductDetail> getData() {
         return pds;
@@ -54,7 +53,7 @@ public class ProductDetailHandler {
     public static void load() {
         pds = new ArrayList<>();
         
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         try {
             TypedQuery<ProductDetail> q = em.createQuery("SELECT FROM ProductDetail", ProductDetail.class);
             for (ProductDetail pd : q.getResultList()) {
@@ -70,7 +69,7 @@ public class ProductDetailHandler {
     }
     
     public static void update(ProductDetail detail) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         ProductDetail origin = em.find(ProductDetail.class, detail.getId());
         em.getTransaction().begin();
         

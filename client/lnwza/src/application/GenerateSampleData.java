@@ -23,9 +23,8 @@ public class GenerateSampleData {
     public static void main(String[] args) throws IOException {
         AppProperties.load();
         DatabaseConnection.load();
-        emf = DatabaseConnection.getConnection();
         
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         try {
             em.getTransaction().begin();
             

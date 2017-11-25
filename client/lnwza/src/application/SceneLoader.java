@@ -1,5 +1,6 @@
 package application;
 
+import application.handler.UserHandler;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class SceneLoader {
         main.setTitle("lnwza SHOP");
         mainMenu = load("MenuBar");
         mainRoot.setTop(mainMenu);
-        if (Session.isOwner()) {
+        if (UserHandler.getCurrentUser().isOwner()) {
             setBody(OWNER_HOMEPAGE);
         } else {
             loadPurchase();

@@ -17,7 +17,6 @@ import application.entity.ProductType;
 public class ProductHandler {
     
     private static ArrayList<Product> products;
-    private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
     
     public static ArrayList<Product> getData() {
         return products;
@@ -55,7 +54,7 @@ public class ProductHandler {
     public static void load() {
         products = new ArrayList<>();
         
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         try {
             TypedQuery<Product> q = em.createQuery("SELECT FROM Product", Product.class);
             for (Product product : q.getResultList()) {

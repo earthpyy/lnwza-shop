@@ -21,6 +21,16 @@ public class Owner extends User {
     public Date getLastLoggedIn() {
         return lastLoggedIn;
     }
+    
+    @Override
+    public boolean isOwner() {
+        return true;
+    }
+    
+    @Override
+    public String getRole() {
+        return "Owner";
+    }
 
     public void setLastLoggedIn(Date lastLoggedIn) {
         this.lastLoggedIn = lastLoggedIn;

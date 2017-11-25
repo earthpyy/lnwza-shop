@@ -2,7 +2,7 @@ package ui.controller;
 
 import application.Bag;
 import application.SceneLoader;
-import application.Session;
+import application.handler.UserHandler;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,9 +70,9 @@ public class MenuBarController {
     
     @FXML
     protected void initialize() {
-        loggedName.setText(Session.getFullName());
-        loggedRole.setText(Session.getRole().toUpperCase());
-        if (Session.isOwner()) {
+        loggedName.setText(UserHandler.getCurrentUser().getName());
+        loggedRole.setText(UserHandler.getCurrentUser().getRole().toUpperCase());
+        if (UserHandler.getCurrentUser().isOwner()) {
             loggedRole.setStyle("-fx-text-fill: red;");
             
             menuStore.setVisible(false);
@@ -112,7 +112,7 @@ public class MenuBarController {
     
     @FXML
     void logOut(ActionEvent event) {
-        Session.logOut();
+        UserHandler.logOut();
         SceneLoader.loadLogin();
     }
 }

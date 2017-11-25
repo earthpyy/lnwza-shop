@@ -19,12 +19,14 @@ public class User {
     protected String lastName;
     protected String username;
     protected String password;
+    protected Boolean loggedIn;
 
     public User(String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = hash(password);
+        this.loggedIn = false;
     }
 
     public Long getId() {
@@ -50,6 +52,10 @@ public class User {
     public String getName() {
         return firstName + " " + lastName;
     }
+
+    public Boolean isLoggedIn() {
+        return loggedIn;
+    }
     
     public Agent toAgent() {
         return (Agent) this;
@@ -57,6 +63,14 @@ public class User {
     
     public Owner toOwner() {
         return (Owner) this;
+    }
+    
+    public boolean isOwner() {
+        return false;
+    }
+    
+    public String getRole() {
+        return null;
     }
     
     public void setFirstName(String firstName) {
@@ -73,6 +87,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = hash(password);
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
     
     public static String hash(String password) {

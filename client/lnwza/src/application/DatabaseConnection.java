@@ -1,5 +1,6 @@
 package application;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -9,7 +10,6 @@ import javax.persistence.Persistence;
  */
 public class DatabaseConnection {
     private static EntityManagerFactory emf;
-    // TODO: check with multiuser
     
     public static void load() {
         try {
@@ -19,8 +19,12 @@ public class DatabaseConnection {
         }
     }
     
-    public static EntityManagerFactory getConnection() {
+    public static EntityManagerFactory getEMF() {
         return emf;
+    }
+    
+    public static EntityManager getEM() {
+        return getEMF().createEntityManager();
     }
     
     public static boolean isConnected() {

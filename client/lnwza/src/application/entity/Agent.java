@@ -37,6 +37,16 @@ public class Agent extends User {
     public String getTel() {
         return tel;
     }
+    
+    @Override
+    public boolean isOwner() {
+        return false;
+    }
+    
+    @Override
+    public String getRole() {
+        return "Agent";
+    }
 
     public void setEmail(String email) {
         this.email = email;

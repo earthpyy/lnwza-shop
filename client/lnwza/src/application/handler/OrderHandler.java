@@ -18,7 +18,6 @@ import application.entity.OrderStatus;
 public class OrderHandler {
     
     private static ArrayList<Order> orders;
-    private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
     
     public static ArrayList<Order> getData() {
         return orders;
@@ -46,7 +45,7 @@ public class OrderHandler {
     public static void load() {
         orders = new ArrayList<>();
         
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         try {
             TypedQuery<Order> q = em.createQuery("SELECT FROM Order", Order.class);
             for (Order od : q.getResultList()) {
@@ -58,7 +57,7 @@ public class OrderHandler {
     }
     
     public static void add(Order order) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         em.getTransaction().begin();
         
         em.persist(order);
@@ -68,7 +67,7 @@ public class OrderHandler {
     }
     
     public static void update(Order order) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         Order origin = em.find(Order.class, order.getId());
         em.getTransaction().begin();
         

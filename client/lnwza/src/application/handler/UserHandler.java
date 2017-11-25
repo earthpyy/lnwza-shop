@@ -1,12 +1,10 @@
 package application.handler;
 
 import java.util.ArrayList;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
-import application.Session;
 import application.entity.Agent;
 import application.entity.Owner;
 import application.entity.User;
@@ -18,14 +16,14 @@ import java.util.Date;
  */
 public class UserHandler {
     private static ArrayList<User> users;
-    private static final EntityManagerFactory emf = DatabaseConnection.getConnection();
+    private static User currentUser = null;
     
     public static ArrayList<User> getData() {
         return users;
     }
     
     public static User getUser(String username, String password) {
-        if (Session.isLoggedIn())
+        if (isLoggedIn())
             return null;
         
         User result = null;
@@ -61,7 +59,7 @@ public class UserHandler {
     public static void load() {
         users = new ArrayList<>();
         
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = DatabaseConnection.getEM();
         try {
             TypedQuery<User> q = em.createQuery("SELECT FROM User", User.class);
             for (User user : q.getResultList()) {
@@ -80,8 +78,8 @@ public class UserHandler {
         // TODO: next sprint
     }
     
-    public static void updateLoggedIn(Owner user) {
-        EntityManager em = emf.createEntityManager();
+    public static void updateLastLoggedIn(Owner user) {
+        EntityManager em = DatabaseConnection.getEM();
         Owner origin = em.find(Owner.class, user.getId());
         em.getTransaction().begin();
 
@@ -89,6 +87,50 @@ public class UserHandler {
         
         em.getTransaction().commit();
         em.close();
+    }
+    
+    public static void setLoggedIn(User user) {
+        EntityManager em = DatabaseConnection.getEM();
+        User origin = em.find(User.class, user.getId());
+        em.getTransaction().begin();
+
+        origin.setLoggedIn(true);
+        
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    public static void setLoggedOut(User user) {
+        EntityManager em = DatabaseConnection.getEM();
+        User origin = em.find(User.class, user.getId()); // TODO: check if it is useless?
+        em.getTransaction().begin();
+
+        origin.setLoggedIn(false);
+        
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+    
+    public static boolean isLoggedIn() {
+        return (getCurrentUser() != null);
+    }
+    
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+    
+    public static void logIn(User user) {
+        setLoggedIn(user);
+        setCurrentUser(user);
+    }
+    
+    public static void logOut() {
+        setLoggedOut(getCurrentUser());
+        setCurrentUser(null);
     }
     
     public static void delete(User user) {

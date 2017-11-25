@@ -1,5 +1,6 @@
 package application;
 
+import application.handler.UserHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -29,8 +30,12 @@ public class Main extends Application {
     
     @Override
     public void stop(){
+        if (UserHandler.isLoggedIn()) {
+            System.out.println("Log out session...");
+            UserHandler.logOut();
+        }
         System.out.println("Closing database connection...");
-        DatabaseConnection.getConnection().close();
+        DatabaseConnection.close();
         System.out.println("Database connected is closed!");
     }
 

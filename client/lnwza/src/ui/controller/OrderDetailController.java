@@ -17,8 +17,8 @@ import application.entity.Order;
 import application.entity.OrderStatus;
 import application.entity.Status;
 import application.SceneLoader;
-import application.Session;
 import application.entity.BagProduct;
+import application.handler.UserHandler;
 
 /**
  *
@@ -70,7 +70,7 @@ public class OrderDetailController {
     protected void initialize() {
         updateTableView();
         
-        if (!Session.isOwner()) {
+        if (!UserHandler.getCurrentUser().isOwner()) {
             bt_update.setVisible(false);
         }
         

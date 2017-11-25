@@ -17,7 +17,7 @@ import application.entity.BagProduct;
 import application.Bag;
 import application.Delivery;
 import application.SceneLoader;
-import application.Session;
+import application.handler.UserHandler;
 
 /**
  *
@@ -111,7 +111,7 @@ public class PurchaseBagController {
         tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
         tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
         
-        double shippingRate = Delivery.getCost(Session.getCurrentUser().toAgent().getPostCode());
+        double shippingRate = Delivery.getCost(UserHandler.getCurrentUser().toAgent().getPostCode());
         tf_shipping.setText("฿" + shippingRate);
         tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
         
