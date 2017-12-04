@@ -15,6 +15,11 @@ public class AppProperties {
     private static String dbName;
     private static String dbUser;
     private static String dbPass;
+    private static String sqlIP;
+    private static String sqlPort;
+    private static String sqlName;
+    private static String sqlUser;
+    private static String sqlPass;
     private static Integer shopId;
 
     public static void load() {
@@ -31,6 +36,11 @@ public class AppProperties {
             dbName = prop.getProperty("dbName");
             dbUser = prop.getProperty("dbUser");
             dbPass = prop.getProperty("dbPass");
+            sqlIP = prop.getProperty("sqlIP");
+            sqlPort = prop.getProperty("sqlPort");
+            sqlName = prop.getProperty("sqlName");
+            sqlUser = prop.getProperty("sqlUser");
+            sqlPass = prop.getProperty("sqlPass");
             shopId = Integer.valueOf(prop.getProperty("shopId"));
 
         } catch (IOException ex) {
@@ -64,6 +74,26 @@ public class AppProperties {
 
     public static String getDBPass() {
         return dbPass;
+    }
+
+    public static String getSqlIP() {
+        return sqlIP;
+    }
+
+    public static String getSqlPort() {
+        return sqlPort;
+    }
+
+    public static String getSqlName() {
+        return sqlName;
+    }
+
+    public static String getSqlUser() {
+        return sqlUser;
+    }
+
+    public static String getSqlPass() {
+        return sqlPass;
     }
 
     public static Integer getShopId() {

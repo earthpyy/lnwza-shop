@@ -4,4 +4,10 @@ dbName = lnwzashop
 dbUser = admin
 dbPass = admin
 
+sqlIP = 127.0.0.1
+sqlPort = 3306
+sqlName = lnwza
+sqlUser = root
+sqlPass = 
+
 shopId = 1

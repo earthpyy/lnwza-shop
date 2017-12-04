@@ -1,14 +1,17 @@
 package application.handler;
 
+import application.AppProperties;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 import application.DatabaseConnection;
 import application.entity.Product;
 import application.entity.ProductDetail;
 import application.entity.ProductType;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -72,6 +75,24 @@ public class ProductHandler {
     
     public static void add(Product product) {
         // TODO: next sprint
+    }
+    
+    public static void addAllToSQL() {
+        for (Product product : products) {
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement("INSERT INTO `products` (`shopId`, `productId`, `photo`, `name`, `size`, `color`, `price`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                ps.setInt(1, AppProperties.getShopId());
+                ps.setString(2, product.getProductId());
+                ps.setString(3, "https://lnwza.earthpyy.com/products/" + product.getProductId() + ".jpg");
+                ps.setString(4, product.getName());
+                ps.setString(5, product.getSize());
+                ps.setString(6, product.getAllColorAsString());
+                ps.setDouble(7, product.getPrice());
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+            }
+        }
     }
     
     public static void update(Product product) {

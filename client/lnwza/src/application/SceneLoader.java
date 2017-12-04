@@ -4,12 +4,14 @@ import application.handler.UserHandler;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -125,6 +127,13 @@ public class SceneLoader {
     
     public static void popup(String name) {
         popup(name, "lnwza SHOP");
+    }
+    
+    public static void popupPay() {
+        pop.setOnHiding(event -> {
+            enablePC();
+        });
+        popup("WebView", "Payment - lnwza SHOP");
     }
     
     public static <T> T getBodyController(Class<T> controller) {

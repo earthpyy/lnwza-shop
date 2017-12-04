@@ -1,7 +1,7 @@
 package application.handler;
 
+import application.AppProperties;
 import java.util.ArrayList;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -10,6 +10,10 @@ import application.Delivery;
 import application.entity.Agent;
 import application.entity.Order;
 import application.entity.OrderStatus;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -54,31 +58,64 @@ public class OrderHandler {
         } finally {
             em.close();
         }
+        updateStatus();
+    }
+    
+    public static void updateStatus() {
+        for (Order order : orders) {
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement("SELECT `status` FROM `status` WHERE `orderId` = ? LIMIT 1");
+                ps.setInt(1, order.getId().intValue());
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    String status = rs.getString("status");
+                    if (!order.getLastStatus().name().equals(status)) {
+                        order.addStatus(OrderStatus.valueOf(status));
+                        update(order);
+                    }
+                }
+            } catch (SQLException ex) {
+            }
+        }
     }
     
     public static void add(Order order) {
+        // objectdb
         EntityManager em = DatabaseConnection.getEM();
         em.getTransaction().begin();
-        
+
         em.persist(order);
-        
+
         em.getTransaction().commit();
         em.close();
+            
+        // mysql
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO `status` (`shopId`, `orderId`, `status`) VALUES (?, ?, ?)");
+            ps.setInt(1, AppProperties.getShopId());
+            ps.setInt(2, order.getId().intValue());
+            ps.setString(3, order.getLastStatus().name());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+        }
     }
     
     public static void update(Order order) {
+        // objectdb
         EntityManager em = DatabaseConnection.getEM();
         Order origin = em.find(Order.class, order.getId());
         em.getTransaction().begin();
         
         if (order.getLastStatus() != origin.getLastStatus()) {
+            origin.addStatus(order.getLastStatus());
             if (order.getLastStatus() == OrderStatus.PACKING) {
                 String trackNo = Delivery.gainTrackNo(order.getAgent().getPostCode());
                 if (!trackNo.isEmpty()) {
                     origin.setTrackNo(trackNo);
-                    origin.addStatus(order.getLastStatus());
                 } else {
-                    System.out.println("Error! Cannot gain track number from Delivery Service");
+                    System.out.println("Error! Cannot retrieve track number from Delivery Service");
                 }
             }
         } else {
@@ -87,5 +124,15 @@ public class OrderHandler {
         
         em.getTransaction().commit();
         em.close();
+        
+        // mysql
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("UPDATE `status` SET `status` = ? WHERE `orderId` = ?");
+            ps.setString(1, order.getLastStatus().name());
+            ps.setInt(2, order.getId().intValue());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+        }
     }
 }

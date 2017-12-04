@@ -8,7 +8,7 @@ import application.entity.Payment;
  */
 public class InternetPayment extends Payment {
     
-    private static final String payURL = "https://lnwza.earthpyy.com/bank/";
+    private static final String payURL = "https://lnwza.earthpyy.com/bank/internet.php";
 
     public InternetPayment(double amount) {
         super(amount);

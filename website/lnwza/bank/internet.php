@@ -9,17 +9,16 @@
 <script type="text/javascript">
 function success() {
     app.success();
-    document.getElementById("test").innerHTML = "DONE!";
 }
 
 function fail() {
     app.fail();
-    document.getElementById("test").innerHTML = "FAIL!";
 }
 </script>
 </head>
-<body>
-    <p id="test">HAHAHA</p>
+<body style="text-align: center;">
+    <h2>lnwza SHOP</h2>
+    pay by internet
     <p><b>SHOP ID: </b> <?=$_GET['shopId']?></p>
     <p><b>AMOUNT: </b> <?=$_GET['amount']?></p>
 

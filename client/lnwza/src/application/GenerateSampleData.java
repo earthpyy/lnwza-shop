@@ -1,6 +1,9 @@
 package application;
 
 import application.entity.*;
+import application.handler.OrderHandler;
+import application.handler.ProductHandler;
+import application.handler.TransactionHandler;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -85,7 +88,7 @@ public class GenerateSampleData {
                     arr = buff.readLine().split(",");
                     countD = Integer.parseInt(arr[4]);
                     try {
-                    pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, arr[5], Double.parseDouble(arr[6]));
+                    pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, Double.parseDouble(arr[5]), Double.parseDouble(arr[6]), Double.parseDouble(arr[7]), Double.parseDouble(arr[8]));
                     } catch (NumberFormatException ex) {
                     }
                     em.persist(pd);
@@ -103,32 +106,37 @@ public class GenerateSampleData {
             em.createQuery("DELETE FROM Status").executeUpdate();
             em.getMetamodel().entity(Transaction.class);
             em.createQuery("DELETE FROM Transaction").executeUpdate();
-            
-            // Orders (Agent #1 brought Product #1-#2)
-            Order od;
-            Transaction ta;
             em.getMetamodel().entity(Order.class);
             em.createQuery("DELETE FROM Order").executeUpdate();
-            em.getMetamodel().entity(BagProduct.class);
-            em.createQuery("DELETE FROM BagProduct").executeUpdate();
             
-            em.flush();
-            TypedQuery<Agent> query = em.createQuery("SELECT ag FROM Agent ag ORDER BY ag.id", Agent.class);
-            query.setMaxResults(1);
-            ag = query.getSingleResult();
-
-            od = new Order(ag);
-            
-            TypedQuery<ProductDetail> query2 = em.createQuery("SELECT pd FROM ProductDetail pd ORDER BY pd.id", ProductDetail.class);
-            query2.setMaxResults(2);
-            for (ProductDetail pdd : query2.getResultList()) {
-                od.addProduct(new BagProduct(od, pdd, (int)(Math.random() * 10) + 1));
-            }
-            
-            em.persist(od);
-            em.flush();
-            ta = new Transaction(od);
-            em.persist(ta);
+            // Orders (Agent #1 brought Product #1-#2)
+            // TODO: (NEW) generate many orders using random
+//            Order od;
+//            Transaction ta;
+//            em.getMetamodel().entity(Order.class);
+//            em.createQuery("DELETE FROM Order").executeUpdate();
+//            em.getMetamodel().entity(BagProduct.class);
+//            em.createQuery("DELETE FROM BagProduct").executeUpdate();
+//            
+//            em.flush();
+//            TypedQuery<Agent> query = em.createQuery("SELECT ag FROM Agent ag ORDER BY ag.id", Agent.class);
+//            query.setMaxResults(1);
+//            ag = query.getSingleResult();
+//
+//            od = new Order(ag);
+//            
+//            TypedQuery<ProductDetail> query2 = em.createQuery("SELECT pd FROM ProductDetail pd ORDER BY pd.id", ProductDetail.class);
+//            query2.setMaxResults(2);
+//            for (ProductDetail pdd : query2.getResultList()) {
+//                od.addProduct(new BagProduct(od, pdd, (int)(Math.random() * 10) + 1));
+//            }
+//            
+////            em.persist(od);
+//            OrderHandler.add(od);
+//            em.flush();
+////            ta = new Transaction(od);
+////            em.persist(ta);
+//            TransactionHandler.add(new Transaction(od));
             
             em.getTransaction().commit();
         } finally {
@@ -139,7 +147,8 @@ public class GenerateSampleData {
                 System.out.println("Successful!");
             }
         }
-        
+        ProductHandler.load();
+        ProductHandler.addAllToSQL();
         DatabaseConnection.close();
         System.out.println("Database connection is closed!");
     }

@@ -1,5 +1,10 @@
 package application;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,12 +15,25 @@ import javax.persistence.Persistence;
  */
 public class DatabaseConnection {
     private static EntityManagerFactory emf;
+    private static Connection conn;
     
     public static void load() {
         try {
-            emf = Persistence.createEntityManagerFactory("objectdb://" + AppProperties.getDBIP() + ":" + AppProperties.getDBPort() + "/" + AppProperties.getDBName() + ".odb;user=" + AppProperties.getDBUser() + ";password=" + AppProperties.getDBPass());
+            loadObjectDB();
+            loadMySQL();
         } finally {
             System.out.println("Database connected!");
+        }
+    }
+    
+    private static void loadObjectDB() {
+        emf = Persistence.createEntityManagerFactory("objectdb://" + AppProperties.getDBIP() + ":" + AppProperties.getDBPort() + "/" + AppProperties.getDBName() + ".odb;user=" + AppProperties.getDBUser() + ";password=" + AppProperties.getDBPass());
+    }
+    
+    private static void loadMySQL() {
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://" + AppProperties.getSqlIP() + ":" + AppProperties.getSqlPort() + "/" + AppProperties.getSqlName() + "?useSSL=false", AppProperties.getSqlUser(), AppProperties.getSqlPass());
+        } catch (SQLException ex) {
         }
     }
     
@@ -25,6 +43,10 @@ public class DatabaseConnection {
     
     public static EntityManager getEM() {
         return getEMF().createEntityManager();
+    }
+    
+    public static Connection getConnection() {
+        return conn;
     }
     
     public static boolean isConnected() {

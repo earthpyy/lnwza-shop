@@ -53,7 +53,7 @@ public abstract class Payment {
     
     // TODO: add parameter to web
     protected void open(String url) {
-        SceneLoader.popup("WebView");
+        SceneLoader.popupPay();
         
         WebViewController ctrl = SceneLoader.getPopupController(WebViewController.class);
         ctrl.setURL(url);

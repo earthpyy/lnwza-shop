@@ -25,24 +25,28 @@ public class Product {
     public ProductType type;
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
     private List<ProductDetail> details;
-    private String size;
+    private Double tall;
+    private Double wide;
+    private Double deep;
     private Double price;
     private Boolean recommended;
     
 
-    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price, Boolean recommended) {
+    public Product(String productId, String name, String description, String photo, ProductType type, Double tall, Double wide, Double deep, Double price, Boolean recommended) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.photo = ImageConverter.toByte(photo);
         this.type = type;
-        this.size = size;
+        this.tall = tall;
+        this.wide = wide;
+        this.deep = deep;
         this.price = price;
         this.recommended = recommended;
     }
     
-    public Product(String productId, String name, String description, String photo, ProductType type, String size, Double price) {
-        this(productId, name, description, photo, type, size, price, false);
+    public Product(String productId, String name, String description, String photo, ProductType type, Double tall, Double wide, Double deep, Double price) {
+        this(productId, name, description, photo, type, tall, wide, deep, price, false);
     }
 
     public Long getId() {
@@ -103,6 +107,17 @@ public class Product {
         return (ArrayList) details;
     }
     
+    public String getAllColorAsString() {
+        String result = "";
+        for (ProductDetail detail : details) {
+            if (!result.isEmpty()) {
+                result += ", ";
+            }
+            result += detail.getColorName();
+        }
+        return result;
+    }
+    
     public String getColorName(int index) {
         return details.get(index).getColorName();
     }
@@ -111,8 +126,20 @@ public class Product {
         return details.get(index).getQuantity();
     }
 
+    public Double getTall() {
+        return tall;
+    }
+
+    public Double getWide() {
+        return wide;
+    }
+
+    public Double getDeep() {
+        return deep;
+    }
+    
     public String getSize() {
-        return size;
+        return tall + " x " + wide + (deep == 0 ? "" : " x " + deep) + " cm";
     }
 
     public Double getPrice() {
@@ -151,8 +178,16 @@ public class Product {
         this.details.get(index).setQuantity(quantity);
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setTall(Double tall) {
+        this.tall = tall;
+    }
+
+    public void setWide(Double wide) {
+        this.wide = wide;
+    }
+
+    public void setDeep(Double deep) {
+        this.deep = deep;
     }
 
     public void setPrice(Double price) {

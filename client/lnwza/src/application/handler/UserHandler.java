@@ -1,5 +1,6 @@
 package application.handler;
 
+import application.Bag;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -132,6 +133,7 @@ public class UserHandler {
         if (isLoggedIn()) {
             setLoggedOut(getCurrentUser());
             setCurrentUser(null);
+            Bag.reset();
         }
     }
     
