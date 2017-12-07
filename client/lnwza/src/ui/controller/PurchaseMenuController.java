@@ -58,7 +58,7 @@ public class PurchaseMenuController {
             }
         });
         
-        menuPCBag.textProperty().bind(Bindings.concat("Bag (", Bag.getAmountProperty().asString(), ")"));
+        menuPCBag.textProperty().bind(Bindings.concat("Bag (", Bag.getInstance().getAmountProperty().asString(), ")"));
         
     }
 

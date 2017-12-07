@@ -124,10 +124,10 @@ public class PurchaseBagController {
         tf_shipping.setText("฿" + shippingRate);
         tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
         
-        bt_checkout.disableProperty().bind(Bindings.size(Bag.getItems()).isEqualTo(0));
+        bt_checkout.disableProperty().bind(Bindings.size(Bag.getInstance().getItems()).isEqualTo(0));
         
 //        ObservableList<BagProduct> data = FXCollections.observableArrayList(Bag.getItems());
-        tableView.setItems(Bag.getItems());
+        tableView.setItems(Bag.getInstance().getItems());
     }
     
     

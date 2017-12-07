@@ -83,8 +83,8 @@ public class MenuBarController {
             menuHistory.setVisible(false);
             menuTransactions.setVisible(false);
             menuAgents.setVisible(false);
-            
-            menuStoreBag.textProperty().bind(Bindings.concat("Bag (", Bag.getAmountProperty().asString(), ")"));
+
+            menuStoreBag.textProperty().bind(Bindings.concat("Bag (", Bag.getInstance().getAmountProperty().asString(), ")"));
         }
     }
     

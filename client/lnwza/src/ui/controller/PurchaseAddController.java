@@ -61,7 +61,7 @@ public class PurchaseAddController extends Fillable<Product> {
 
     void add() {
         ProductDetail detail = cb_color.getSelectionModel().getSelectedItem();
-        Bag.add(detail, cb_qty.getValue());
+        Bag.getInstance().add(detail, cb_qty.getValue());
         SceneLoader.closePopup();
     }
 

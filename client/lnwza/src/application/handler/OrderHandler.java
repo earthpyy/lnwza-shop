@@ -8,12 +8,17 @@ import javax.persistence.TypedQuery;
 import application.DatabaseConnection;
 import application.Delivery;
 import application.entity.Agent;
+import application.entity.BagProduct;
 import application.entity.Order;
 import application.entity.OrderStatus;
+import application.entity.Transaction;
+import application.entity.TransactionType;
+import application.payment.Payment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -44,6 +49,11 @@ public class OrderHandler {
             }
         }
         return null;
+    }
+    
+    public static Long getLastId() {
+        ArrayList<Order> orders = getDataFromAgent(UserHandler.getCurrentUser().toAgent());
+        return orders.get(orders.size() - 1).getId();
     }
 
     public static void load() {
@@ -78,6 +88,18 @@ public class OrderHandler {
             } catch (SQLException ex) {
             }
         }
+    }
+    
+    public static void create(Payment payment) {
+        Order order = new Order(UserHandler.getCurrentUser().toAgent(), payment.getAmount());
+        for (BagProduct item : payment.getBag().getItems()) {
+            order.addProduct(item);
+        }
+        add(order);
+        
+        Transaction tran = new Transaction(order.getId().toString(), TransactionType.ORDER, order.getAmount());
+        TransactionHandler.add(tran);
+        load();
     }
     
     public static void add(Order order) {
