@@ -85,8 +85,7 @@ public class OrderViewController {
                     Order rowData = tableView.getSelectionModel().getSelectedItem();
                     SceneLoader.popup("OrderDetail", "Order #" + rowData.getId());
                     
-                    OrderDetailController ctrl = SceneLoader.getPopupController(OrderDetailController.class);
-                    ctrl.fill(rowData);
+                    SceneLoader.getPopupController().fill(rowData);
                 }
             });
             return row;

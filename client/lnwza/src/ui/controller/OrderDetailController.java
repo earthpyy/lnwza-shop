@@ -137,8 +137,7 @@ public class OrderDetailController extends Fillable<Order> {
     @FXML
     void update() {
         SceneLoader.popup("OrderUpdate", "Update Order #" + order.getId());
-        OrderUpdateController ctrl = SceneLoader.getPopupController(OrderUpdateController.class);
-        ctrl.fill(order);
+        SceneLoader.getPopupController().fill(order);
     }
     
     @Override

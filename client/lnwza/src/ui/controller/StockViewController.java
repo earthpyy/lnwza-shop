@@ -78,8 +78,7 @@ public class StockViewController {
                     Product rowData = tableView.getSelectionModel().getSelectedItem();
                     SceneLoader.popup("StockDetail", "Product #" + rowData.getProductId());
 
-                    StockDetailController ctrl = SceneLoader.getPopupController(StockDetailController.class);
-                    ctrl.fill(rowData);
+                    SceneLoader.getPopupController().fill(rowData);
                 }
             });
             return row;
@@ -95,7 +94,6 @@ public class StockViewController {
         Product product = tableView.getSelectionModel().getSelectedItem();
         
         SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId());
-        StockUpdateController ctrl = SceneLoader.getPopupController(StockUpdateController.class);
-        ctrl.fill(product);
+        SceneLoader.getPopupController().fill(product);
     }
 }

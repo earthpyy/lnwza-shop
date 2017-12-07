@@ -64,8 +64,7 @@ public class PurchaseHomeController {
             bt_cart.setOnAction((event) -> {
                 SceneLoader.popup("PurchaseAdd", product.getName());
                 
-                PurchaseAddController ctrl = SceneLoader.getPopupController(PurchaseAddController.class);
-                ctrl.fill(product);
+                SceneLoader.getPopupController().fill(product);
             });
             
             container.add(image, 0, 0);

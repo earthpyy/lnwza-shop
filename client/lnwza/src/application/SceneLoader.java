@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import ui.controller.Fillable;
+import ui.controller.WebViewController;
 
 /**
  *
@@ -139,12 +140,16 @@ public class SceneLoader {
         return controller.cast(bodyFXML.getController());
     }
     
-    public static <T> T getPopupController(Class<T> controller) {
-        return controller.cast(popFXML.getController());
+    public static Fillable getPopupController() {
+        return popFXML.getController();
     }
     
     public static Fillable getPCController() {
         return pcFXML.getController();
+    }
+    
+    public static WebViewController getWebController() {
+        return popFXML.getController();
     }
     
     public static void closePopup() {

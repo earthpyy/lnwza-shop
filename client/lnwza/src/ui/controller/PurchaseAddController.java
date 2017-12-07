@@ -53,11 +53,13 @@ public class PurchaseAddController extends Fillable<Product> {
     @FXML
     protected void initialize() {
         ImageButton bt_add = new ImageButton("/ui/resources/images/button/ButtonAdd.png");
+        bt_add.setOnAction((event) -> {
+            add();
+        });
         HBox.getChildren().add(bt_add);
     }
 
-    @FXML
-    void add(ActionEvent event) {
+    void add() {
         ProductDetail detail = cb_color.getSelectionModel().getSelectedItem();
         Bag.add(detail, cb_qty.getValue());
         SceneLoader.closePopup();

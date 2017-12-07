@@ -56,16 +56,8 @@ public abstract class Payment {
     protected void open(String url) {
         SceneLoader.popupPay();
         
-        WebViewController ctrl = SceneLoader.getPopupController(WebViewController.class);
-        ctrl.setURL(url);
-//        ctrl.getWebEngine().getLoadWorker().stateProperty().addListener((ObservableValue<? extends State> ov, State oldState, State newState) -> {
-//            if (newState == State.SUCCEEDED) {
-//                JSObject win = (JSObject) ctrl.getWebEngine().executeScript("window");
-//                win.setMember("app", new WebApp());
-//            }
-//        });
-        
-        JSObject window = (JSObject) ctrl.getWebEngine().executeScript("window");
+        SceneLoader.getWebController().setURL(url);
+        JSObject window = (JSObject) SceneLoader.getWebController().getWebEngine().executeScript("window");
         window.setMember("app", new WebApp());
         
         SceneLoader.disablePC();
@@ -78,9 +70,6 @@ public abstract class Payment {
             Bag.reset();
             SceneLoader.closePopup();
             SceneLoader.setPCBody("PurchaseComplete");
-            
-//            SceneLoader.getPCController().fill(orderId);
-            
             SceneLoader.enablePC();
         }
     }
