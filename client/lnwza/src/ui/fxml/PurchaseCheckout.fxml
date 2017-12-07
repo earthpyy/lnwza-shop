@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseCheckoutController">
    <children>
-      <ImageView fitHeight="638.0" fitWidth="1024.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true">
+      <ImageView fitHeight="647.0" fitWidth="1032.0" layoutX="-1.0" layoutY="-7.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/images/PCCOBG.gif" />
          </image>

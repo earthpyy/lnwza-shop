@@ -8,14 +8,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseCompleteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseCompleteController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/PCVBG.gif" />
          </image>
       </ImageView>
-      <Label layoutX="238.0" layoutY="226.0" styleClass="fp" text="COMPLETE">
+      <Label layoutX="249.0" layoutY="168.0" styleClass="fp" text="COMPLETE">
          <font>
             <Font name="Paradox" size="72.0" />
          </font>
@@ -29,12 +29,12 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="246.0" layoutY="226.0" styleClass="fp" text="COMPLETE" textFill="WHITE">
+      <Label layoutX="257.0" layoutY="168.0" styleClass="fp" text="COMPLETE" textFill="WHITE">
          <font>
             <Font name="Paradox" size="72.0" />
          </font>
       </Label>
-      <ImageView fitHeight="441.0" fitWidth="629.0" layoutX="209.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="441.0" fitWidth="629.0" layoutX="235.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/PCCPTB.png" />
          </image>
@@ -44,17 +44,17 @@
             <Image url="@../resources/images/PCCP.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="225.0" layoutY="369.0" prefHeight="44.0" prefWidth="520.0" text="Your Order Number is" textFill="#140144">
+      <Label alignment="CENTER" layoutX="251.0" layoutY="323.0" prefHeight="44.0" prefWidth="520.0" text="Your Order Number is" textFill="#140144">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="lb_orderno" alignment="CENTER" layoutX="225.0" layoutY="430.0" prefHeight="44.0" prefWidth="520.0" text="0000000000000000" textAlignment="CENTER">
+      <Label fx:id="lb_orderno" alignment="CENTER" layoutX="251.0" layoutY="384.0" prefHeight="44.0" prefWidth="520.0" text="0000000000000000" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="359.0" layoutY="508.0" styleClass="fv" text="Thank you" textFill="#294264">
+      <Label layoutX="353.0" layoutY="428.0" styleClass="fv" text="Thank you" textFill="#294264">
          <font>
             <Font name="Vacations in Phuket" size="64.0" />
          </font>
