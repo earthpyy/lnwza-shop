@@ -79,6 +79,25 @@ function getStatusName($status) {
     }
 }
 
+function getNextStatus($status) {
+    switch ($status) {
+        case 'PREPARING':
+            return 'PREPARING';
+        case 'PACKING':
+            return 'DELIVERING';
+        case 'DELIVERING':
+            return 'RECEIVED';
+        case 'RECEIVED':
+            return 'RECEIVED';
+        case 'RETURN':
+            return 'RETURN';
+        case 'CANCELLED':
+            return 'CANCELLED';
+        default:
+            return 'ERROR';
+    }
+}
+
 if ($text[0] == 'สถานะ') {
     if ($count == 1) {
         $bot->replyText($token, "Usage: สถานะ [Order ID]");
@@ -111,6 +130,17 @@ if ($text[0] == 'สถานะ') {
             $bot->replyText($token, "ไม่พบ Product ID ดังกล่าว หรือคุณใส่ Product ID ไม่ถูกต้อง!");
         }
     }
+} else if ($text[0] == 'ms') {
+    if ($count == 2) {
+        $orderId = addslashes($text[1]);
+        $datas = $db->select('status', 'status', ['orderId' => $orderId, 'LIMIT' => 1]);
+        $db->update('status', ['status' => getNextStatus($datas[0])], ['orderId' => $orderId]);
+    } else if ($count == 3) {
+        $orderId = addslashes($text[1]);
+        $orderStatus = addslashes($text[2]);
+        $db->update('status', ['status' => $orderStatus], ['orderId' => $orderId]);
+    }
+    $bot->replyText($token, "just done");
 }
 
 ?>
