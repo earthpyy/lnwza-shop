@@ -75,6 +75,7 @@ public abstract class Payment {
             status = PaymentStatus.PAID;
             OrderHandler.create(this);
             Bag.getInstance().reset();
+            
             SceneLoader.closePopup();
             SceneLoader.setPCBody("PurchaseComplete");
             SceneLoader.enablePC();

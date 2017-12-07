@@ -69,6 +69,10 @@ public class ProductDetail {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+    
+    public void decreaseQuantity(Integer quantity) {
+        this.quantity -= quantity;
+    }
 
     @Override
     public int hashCode() {

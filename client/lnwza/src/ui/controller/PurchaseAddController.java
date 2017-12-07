@@ -4,7 +4,7 @@ import application.SceneLoader;
 import application.entity.ImageButton;
 import application.entity.Product;
 import application.entity.ProductDetail;
-import java.util.Arrays;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +15,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 /**
@@ -75,7 +74,7 @@ public class PurchaseAddController extends Fillable<Product> {
         set(pd);
         im_product.setImage(product.getPhoto());
         lb_name.setText(product.getName());
-        lb_price.setText("฿" + product.getPrice());
+        lb_price.setText("$" + product.getPrice());
         
         ObservableList<ProductDetail> colorData = FXCollections.observableArrayList(product.getDetail());
         cb_color.setItems(colorData);
@@ -97,14 +96,22 @@ public class PurchaseAddController extends Fillable<Product> {
         };
         cb_color.setCellFactory(factory);
         cb_color.setButtonCell(factory.call(null));
-        
-        ObservableList<Integer> qtyData = FXCollections.observableArrayList(Arrays.asList(1, 2, 3, 4, 5));
-        cb_qty.setItems(qtyData);
-        cb_qty.getSelectionModel().selectFirst();
+        change();
     }
     
     void set(Product pd) {
         product = pd;
+    }
+    
+    @FXML
+    void change() {
+        int amountLeft = cb_color.getSelectionModel().getSelectedItem().getQuantity();
+        ArrayList<Integer> qtyList = new ArrayList<>();
+        for (int i = 1; i <= amountLeft && i <= 5; i++)
+            qtyList.add(i);
+        ObservableList<Integer> qtyData = FXCollections.observableArrayList(qtyList);
+        cb_qty.setItems(qtyData);
+        cb_qty.getSelectionModel().selectFirst();
     }
     
 }

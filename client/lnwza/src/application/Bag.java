@@ -53,6 +53,14 @@ public class Bag {
         return items.size();
     }
     
+    public Integer getTotalAmount() {
+        Integer result = 0;
+        for (BagProduct item : items) {
+            result += item.getQuantity();
+        }
+        return result;
+    }
+    
     public IntegerBinding getAmountProperty() {
         return Bindings.size(items);
     }

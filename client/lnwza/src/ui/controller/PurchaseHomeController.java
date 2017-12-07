@@ -55,7 +55,7 @@ public class PurchaseHomeController {
             
             Text txt_name = new Text(product.getName());
             GridPane.setHalignment(txt_name, HPos.CENTER);
-            Text txt_price = new Text(new String("฿") + product.getPrice().toString());
+            Text txt_price = new Text(new String("$") + product.getPrice().toString());
             txt_price.setFill(Color.RED);
             GridPane.setHalignment(txt_price, HPos.CENTER);
             

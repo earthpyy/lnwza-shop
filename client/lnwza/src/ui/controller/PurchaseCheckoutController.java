@@ -24,12 +24,6 @@ public class PurchaseCheckoutController extends Fillable<Double> {
 
     @FXML
     private TextField tf_total;
-
-//    @FXML
-//    private Button bt_credit;
-//
-//    @FXML
-//    private Button bt_internet;
     
     @FXML
     private AnchorPane anchorPane;
@@ -67,8 +61,8 @@ public class PurchaseCheckoutController extends Fillable<Double> {
     @Override
     void fill(Double total) {
         this.total = total;
-        tf_qty.setText(Bag.getInstance().getAmount().toString());
-        tf_total.setText("฿" + total.toString());
+        tf_qty.setText(Bag.getInstance().getTotalAmount().toString());
+        tf_total.setText("$" + total.toString());
     }
 
     

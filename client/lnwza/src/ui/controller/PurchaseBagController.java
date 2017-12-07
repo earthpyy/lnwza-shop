@@ -113,12 +113,12 @@ public class PurchaseBagController {
 //            }
 //        );
         
-//        tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
-//        tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
+//        tf_subtotal.textProperty().bind(Bindings.concat("$", subTotal.asString()));
+//        tf_tax.textProperty().bind(Bindings.concat("$", subTotal.multiply(7).divide(100).asString()));
         
         double shippingRate = Delivery.getCost(UserHandler.getCurrentUser().toAgent().getPostCode());
-        tf_shipping.setText("฿" + shippingRate);
-//        tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
+        tf_shipping.setText("$" + shippingRate);
+//        tf_total.textProperty().bind(Bindings.concat("$", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
         
         bt_checkout.disableProperty().bind(Bindings.size(Bag.getInstance().getItems()).isEqualTo(0));
         
