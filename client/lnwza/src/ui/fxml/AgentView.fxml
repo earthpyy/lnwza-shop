@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -24,23 +22,18 @@
       </AnchorPane>
       <Separator layoutY="84.0" prefHeight="0.0" prefWidth="1024.0" />
       <ButtonBar layoutX="6.0" layoutY="87.0" prefHeight="40.0" prefWidth="1024.0">
-         <buttons>
-            <Button fx:id="bt_hello" mnemonicParsing="false" onAction="#hello" text="Hello!" />
-         </buttons>
          <padding>
             <Insets right="10.0" />
          </padding>
       </ButtonBar>
-      <ScrollPane hbarPolicy="NEVER">
-          <TableView fx:id="tableview" layoutY="127.0" prefHeight="684.0" prefWidth="1024.0">
-              <columns>
-                  <TableColumn fx:id="tb_id" prefWidth="51.0" style="-fx-alignment: center;" text="ID" />
-                  <TableColumn fx:id="tb_first" prefWidth="113.0" style="-fx-alignment: center-left;" text="First Name" />
-                  <TableColumn fx:id="tb_last" prefWidth="176.0" style="-fx-alignment: center-left;" text="Last Name" />
-                  <TableColumn fx:id="tb_address" prefWidth="539.0" style="-fx-alignment: center-left;" text="Address" />
-                  <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" style="-fx-alignment: center;" text="Telephone" />
-              </columns>
-          </TableView>
-      </ScrollPane>
+       <TableView fx:id="tableview" layoutY="84.0" prefHeight="684.0" prefWidth="1024.0">
+           <columns>
+               <TableColumn fx:id="tb_id" prefWidth="51.0" style="-fx-alignment: center;" text="ID" />
+               <TableColumn fx:id="tb_first" prefWidth="113.0" style="-fx-alignment: center-left;" text="First Name" />
+               <TableColumn fx:id="tb_last" prefWidth="176.0" style="-fx-alignment: center-left;" text="Last Name" />
+               <TableColumn fx:id="tb_tel" minWidth="0.0" prefWidth="144.0" style="-fx-alignment: center;" text="Telephone" />
+               <TableColumn fx:id="tb_address" prefWidth="539.0" style="-fx-alignment: center-left;" text="Address" />
+           </columns>
+       </TableView>
    </children>
 </AnchorPane>
