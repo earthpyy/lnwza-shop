@@ -1,6 +1,7 @@
 package ui.controller;
 import application.Bag;
 import application.SceneLoader;
+import application.entity.ImageButton;
 import application.entity.Product;
 import application.entity.ProductDetail;
 import java.util.Arrays;
@@ -8,12 +9,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 /**
@@ -37,13 +39,22 @@ public class PurchaseAddController extends Fillable<Product> {
     @FXML
     private ComboBox<Integer> cb_qty;
 
+//    @FXML
+//    private Button bt_add;
+//
+//    @FXML
+//    private Button bt_cancel;
+    
     @FXML
-    private Button bt_add;
-
-    @FXML
-    private Button bt_cancel;
+    private HBox HBox;
     
     private Product product;
+    
+    @FXML
+    protected void initialize() {
+        ImageButton bt_add = new ImageButton("/ui/resources/images/button/ButtonAdd.png");
+        HBox.getChildren().add(bt_add);
+    }
 
     @FXML
     void add(ActionEvent event) {
