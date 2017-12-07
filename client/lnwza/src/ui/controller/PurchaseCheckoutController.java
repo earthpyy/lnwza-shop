@@ -46,7 +46,7 @@ public class PurchaseCheckoutController extends Fillable<Double> {
     protected void initialize() {
         ImageButton bt_credit = new ImageButton("/ui/resources/images/button/ButtonCredit.png");
         bt_credit.setOnAction((event) -> {
-        cancel();
+        payCredit();
       });
         anchorPaneCredit.getChildren().add(bt_credit);
         
@@ -58,7 +58,7 @@ public class PurchaseCheckoutController extends Fillable<Double> {
         
         ImageButton bt_cancel = new ImageButton("/ui/resources/images/button/ButtonCancel.png");
         bt_cancel.setOnAction((event) -> {
-        payCredit();
+        cancel();
       });
         anchorPane.getChildren().add(bt_cancel);
         
