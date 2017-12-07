@@ -20,7 +20,7 @@ import javafx.util.Callback;
  *
  * @author SE-lnwza
  */
-public class PurchaseAddController {
+public class PurchaseAddController extends Fillable<Product> {
     
     @FXML
     private ImageView im_product;
@@ -57,6 +57,7 @@ public class PurchaseAddController {
         SceneLoader.closePopup();
     }
     
+    @Override
     void fill(Product pd) {
         set(pd);
         im_product.setImage(product.getPhoto());
