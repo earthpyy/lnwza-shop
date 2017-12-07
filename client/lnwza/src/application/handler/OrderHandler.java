@@ -42,6 +42,14 @@ public class OrderHandler {
         return result;
     }
     
+    public static ArrayList<Order> getDataFromRole() {
+        if (UserHandler.getCurrentUser().isOwner()) {
+            return getData();
+        } else {
+            return getDataFromAgent(UserHandler.getCurrentUser().toAgent());
+        }
+    }
+    
     public static Order getDataFromId(Long id) {
         for (Order order : orders) {
             if (order.getId() == id) {

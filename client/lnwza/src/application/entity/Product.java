@@ -92,7 +92,7 @@ public class Product {
     }
     
     public ImageView getPhotoStockView() {
-        return getPhotoViewByWidth(283);
+        return getPhotoViewByWidth(140);
     }
     
     public ProductType getType() {

@@ -98,7 +98,7 @@ public class MenuBarController {
     void showStage(ActionEvent event) {
         String scene = (String) ((MenuItem) event.getSource()).getUserData();
         if (scene.equals("OrderUpdate")) {
-            SceneLoader.popup(scene, "Update");
+            SceneLoader.popup(scene, "Update - lnwza SHOP");
         } else {
             SceneLoader.popup(scene);
         }

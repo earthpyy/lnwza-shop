@@ -13,19 +13,19 @@ import netscape.javascript.JSObject;
  */
 public abstract class Payment {
     
-    protected int shopId;
+    protected Integer shopId;
     protected Bag bag;
-    protected double amount;
+    protected Double amount;
     protected PaymentStatus status;
 
-    public Payment(Bag bag, double amount) {
+    public Payment(Bag bag, Double amount) {
         this.shopId = AppProperties.getShopId();
         this.bag = bag;
         this.amount = amount;
         this.status = PaymentStatus.NOTPAY;
     }
 
-    public int getShopId() {
+    public Integer getShopId() {
         return shopId;
     }
 
@@ -33,7 +33,7 @@ public abstract class Payment {
         return bag;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
@@ -41,7 +41,7 @@ public abstract class Payment {
         return status;
     }
 
-    public void setShopId(int shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
 
@@ -49,7 +49,7 @@ public abstract class Payment {
         this.bag = bag;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -61,10 +61,8 @@ public abstract class Payment {
         status = status.getNext();
     }
     
-    // TODO: add parameter to web
     protected void open(String url) {
         SceneLoader.popupPay();
-        
         SceneLoader.getWebController().setURL(url);
         JSObject window = (JSObject) SceneLoader.getWebController().getWebEngine().executeScript("window");
         window.setMember("app", new WebApp());
@@ -92,6 +90,7 @@ public abstract class Payment {
         SceneLoader.enablePC();
     }
     
+    public abstract String genURL(int shopId, double amount);
     public abstract void pay();
     
     public class WebApp {

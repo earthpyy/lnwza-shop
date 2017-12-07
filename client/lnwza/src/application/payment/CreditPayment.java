@@ -17,8 +17,13 @@ public class CreditPayment extends Payment {
     
     @Override
     public void pay() {
-        open(payURL + "?shopId=" + getShopId() + "&amount=" + getAmount());
+        open(genURL(getShopId(), amount));
         status = PaymentStatus.WAITING;
+    }
+    
+    @Override
+    public String genURL(int shopId, double amount) {
+        return payURL + "?shopId=" + shopId + "&amount=" + amount;
     }
     
 }

@@ -76,7 +76,7 @@ public class StockViewController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Product rowData = tableView.getSelectionModel().getSelectedItem();
-                    SceneLoader.popup("StockDetail", "Product #" + rowData.getProductId());
+                    SceneLoader.popup("StockDetail", "Product #" + rowData.getProductId() + " - lnwza SHOP");
 
                     SceneLoader.getPopupController().fill(rowData);
                 }
@@ -93,7 +93,7 @@ public class StockViewController {
     void update() {
         Product product = tableView.getSelectionModel().getSelectedItem();
         
-        SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId());
+        SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId() + " - lnwza SHOP");
         SceneLoader.getPopupController().fill(product);
     }
 }

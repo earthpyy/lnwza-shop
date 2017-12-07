@@ -19,13 +19,10 @@ public class OrderUpdateController extends Fillable<Order> {
     private TextField tf_orderno;
 
     @FXML
-    private TextField tf_trackno;
-
-    @FXML
     private TextField tf_date;
     
-//    @FXML
-//    private TextField tf_time;
+    @FXML
+    private TextField tf_time;
 
     @FXML
     private TextField tf_status;
@@ -39,10 +36,8 @@ public class OrderUpdateController extends Fillable<Order> {
     void fill(Order od) {
         set(od);
         tf_orderno.setText(order.getId().toString());
-        tf_trackno.setText(order.getTrackNo());
-        // TODO: add time textfield
         tf_date.setText(order.getOrderDate());
-//        tf_time.setText(order.getOrderTime());
+        tf_time.setText(order.getOrderTime());
         tf_status.setText(order.getLastStatusName());
     }
     
