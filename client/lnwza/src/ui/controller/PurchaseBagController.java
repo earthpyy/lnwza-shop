@@ -10,14 +10,14 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
-
 import application.entity.BagProduct;
 import application.Bag;
 import application.Delivery;
 import application.SceneLoader;
+import application.entity.ImageButton;
 import application.handler.UserHandler;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -59,12 +59,21 @@ public class PurchaseBagController {
     private TextField tf_total;
     
     @FXML
-    private Button bt_checkout;
+    private AnchorPane anchorPane;
+    
+    //@FXML
+    //private Button bt_checkout;
     
     private DoubleProperty subTotal;
     
     @FXML
     protected void initialize() {
+        ImageButton bt_checkout = new ImageButton("/ui/resources/images/button/ButtonCheckout.png");
+        bt_checkout.setOnAction((event) -> {
+            checkout();
+        });
+        anchorPane.getChildren().add(bt_checkout);
+        
         subTotal = new SimpleDoubleProperty(0);
         
         tb_photo.setCellValueFactory(new PropertyValueFactory<>("productPhoto"));
@@ -121,8 +130,8 @@ public class PurchaseBagController {
         tableView.setItems(Bag.getItems());
     }
     
-    @FXML
-    void checkout(ActionEvent event) {
+    
+    void checkout() {
         SceneLoader.setPCBody("PurchaseCheckout");
         SceneLoader.getPCController().fill(Double.parseDouble(tf_total.getText().substring(1)));
     }
