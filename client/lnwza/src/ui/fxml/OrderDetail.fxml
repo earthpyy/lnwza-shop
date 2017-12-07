@@ -36,8 +36,8 @@
                   <TextField fx:id="tf_trackno" alignment="CENTER" disable="true" />
                </children>
             </VBox>
-            <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #140144;" text="Update" textFill="WHITE" />
-            <Button fx:id="bt_cancel" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #140144;" text="Cancel" textFill="WHITE" />
+            <Button fx:id="bt_update" layoutX="444.0" layoutY="20.0" mnemonicParsing="false" onAction="#update" styleClass="success" text="Update" textFill="WHITE" />
+            <Button fx:id="bt_cancel" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" styleClass="danger" text="Cancel" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Accordion prefHeight="251.0" prefWidth="600.0">
@@ -64,9 +64,9 @@
                      <content>
                         <TableView fx:id="tableview_status">
                            <columns>
-                              <TableColumn fx:id="tb_date" prefWidth="115.0" style="-fx-alignment: center;" text="Date" />
-                              <TableColumn fx:id="tb_time" prefWidth="66.6666259765625" style="-fx-alignment: center;" text="Time" />
-                              <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="418.3333740234375" style="-fx-alignment: center-left;" text="Status" />
+                              <TableColumn fx:id="tb_date" prefWidth="145.0" style="-fx-alignment: center;" text="Date" />
+                              <TableColumn fx:id="tb_time" prefWidth="63.0" style="-fx-alignment: center;" text="Time" />
+                              <TableColumn fx:id="tb_status" minWidth="0.0" prefWidth="393.0" style="-fx-alignment: center-left;" text="Status" />
                            </columns>
                         </TableView>
                      </content>

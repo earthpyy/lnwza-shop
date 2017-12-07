@@ -16,6 +16,7 @@ public class BagProduct {
     private ProductDetail product;
     private Double price;
     private Integer quantity;
+    private Double total;
     
     @ManyToOne
     private Order order;
@@ -25,6 +26,7 @@ public class BagProduct {
         this.product = product;
         this.price = product.getProduct().getPrice();
         this.quantity = quantity;
+        this.total = price * quantity;
     }
     
     public BagProduct(Order order, ProductDetail product) {
@@ -81,6 +83,10 @@ public class BagProduct {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public Double getTotal() {
+        return total;
     }
     
     public void setOrder(Order order) {

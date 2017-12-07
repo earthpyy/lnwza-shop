@@ -23,7 +23,7 @@ public class Bag {
     private static Bag bag;
     
     private ObservableList<BagProduct> items = FXCollections.observableArrayList();
-    private Double total;
+    private Double total = 0.0;
     
     private Bag() {
         // make this private
@@ -72,6 +72,7 @@ public class Bag {
         } else {
             updateQuantity(item, product.getQuantity());
         }
+        total += product.getTotal();
     }
     
     public void add(ProductDetail product, Integer quantity) {
@@ -80,6 +81,7 @@ public class Bag {
     
     public void remove(BagProduct product) {
         items.remove(product);
+        total -= product.getTotal();
     }
     
     public void updateQuantity(BagProduct item, Integer quantity) {

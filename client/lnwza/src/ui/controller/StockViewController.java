@@ -94,6 +94,6 @@ public class StockViewController {
         Product product = tableView.getSelectionModel().getSelectedItem();
         
         SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId() + " - lnwza SHOP");
-        SceneLoader.getPopupController().fill(product);
+        SceneLoader.getPopupController().fill(product.getDetail().get(0));
     }
 }

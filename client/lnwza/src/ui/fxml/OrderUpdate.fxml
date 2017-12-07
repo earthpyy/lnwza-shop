@@ -65,7 +65,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="bt_confirm" layoutX="500.0" layoutY="325.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: #140144;" text="Confirm" textFill="WHITE">
+            <Button fx:id="bt_confirm" layoutX="500.0" layoutY="325.0" mnemonicParsing="false" onAction="#update" styleClass="success" text="Confirm" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

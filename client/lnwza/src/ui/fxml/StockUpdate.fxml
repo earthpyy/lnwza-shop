@@ -6,7 +6,9 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -24,38 +26,58 @@
       <Separator layoutY="55.0" prefHeight="14.0" prefWidth="600.0" style="-fx-background-color: #E8EAF6;" />
       <AnchorPane layoutY="68.0" prefHeight="332.0" prefWidth="600.0" style="-fx-background-color: #E8EAF6;">
          <children>
-            <VBox layoutX="142.0" layoutY="69.0" spacing="30.0">
+            <GridPane layoutX="130.0" layoutY="55.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Instock Amount">
+                  <ComboBox fx:id="cb_color" onAction="#change" prefHeight="27.0" prefWidth="139.0" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Instock amount" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Amount">
+                  <TextField fx:id="tf_instock" alignment="CENTER" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change amount" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Updated Amount" wrappingWidth="122.5625">
+                  <TextField fx:id="tf_change" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Updated amount" wrappingWidth="149.5625" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
+                  <TextField fx:id="tf_update" alignment="CENTER" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price per item" wrappingWidth="149.5625" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total cost" wrappingWidth="149.5625" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="tf_price" alignment="CENTER" layoutX="210.0" layoutY="84.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="tf_total" alignment="CENTER" disable="true" layoutX="210.0" layoutY="121.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
-            </VBox>
-            <VBox layoutX="290.0" layoutY="63.0" spacing="30.0">
-               <children>
-                  <ComboBox fx:id="cb_color" onAction="#change" prefHeight="27.0" prefWidth="167.0" />
-                  <TextField fx:id="tf_instock" alignment="CENTER" disable="true" />
-                  <TextField fx:id="tf_change" alignment="CENTER" />
-                  <TextField fx:id="tf_update" alignment="CENTER" disable="true" />
-               </children>
-            </VBox>
+            </GridPane>
             <Button fx:id="bt_update" layoutX="517.0" layoutY="291.0" mnemonicParsing="false" onAction="#update" styleClass="success" text="Update" />
          </children>
       </AnchorPane>

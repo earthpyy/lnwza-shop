@@ -44,9 +44,6 @@ public class PurchaseBagController {
     private TableColumn<BagProduct, Double> tb_subtotal;
 
     @FXML
-    private TableColumn<BagProduct, ?> tb_remove;
-
-    @FXML
     private TextField tf_subtotal;
 
     @FXML
@@ -64,7 +61,7 @@ public class PurchaseBagController {
     //@FXML
     //private Button bt_checkout;
     
-    private DoubleProperty subTotal;
+    private Double total;
     
     @FXML
     protected void initialize() {
@@ -73,8 +70,6 @@ public class PurchaseBagController {
             checkout();
         });
         anchorPane.getChildren().add(bt_checkout);
-        
-        subTotal = new SimpleDoubleProperty(0);
         
         tb_photo.setCellValueFactory(new PropertyValueFactory<>("productPhoto"));
         
@@ -95,45 +90,52 @@ public class PurchaseBagController {
         
         tb_price.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
         tb_qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        tb_subtotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-        tb_subtotal.setCellFactory((TableColumn<BagProduct, Double> col) ->
-            new TableCell<BagProduct, Double>() {
-                @Override
-                public void updateItem(Double data, boolean empty) {
-                    super.updateItem(data, empty);
-                    if (empty) {
-                        setText(null);
-                    } else {
-                        BagProduct item = (BagProduct) this.getTableRow().getItem();
-                        data = item.getProductPrice() * item.getQuantity();
-                        if (getTableRow().getIndex() == 0) {    // TODO: fix this
-                            subTotal.set(subTotal.add(data / 2.0).doubleValue());
-                        } else {
-                            subTotal.set(subTotal.add(data).doubleValue());
-                        }
-                        setText(data.toString());
-                    }
-                }
-            }
-        );
+//        tb_subtotal.setCellFactory((TableColumn<BagProduct, Double> col) ->
+//            new TableCell<BagProduct, Double>() {
+//                @Override
+//                public void updateItem(Double data, boolean empty) {
+//                    super.updateItem(data, empty);
+//                    if (data == null || empty) {
+////                        setText(null);
+//                    } else {
+////                        BagProduct item = (BagProduct)(this.getTableRow().getItem());
+////                        data = item.getProductPrice() * item.getQuantity();
+//                        if (getTableRow().getIndex() == 0) {    // TODO: fix this
+//                            subTotal.set(subTotal.add(data / 2.0).doubleValue());
+//                        } else {
+//                            subTotal.set(subTotal.add(data).doubleValue());
+//                        }
+////                        setText(data.toString());
+//                    }
+//                }
+//            }
+//        );
         
-        tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
-        tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
+//        tf_subtotal.textProperty().bind(Bindings.concat("฿", subTotal.asString()));
+//        tf_tax.textProperty().bind(Bindings.concat("฿", subTotal.multiply(7).divide(100).asString()));
         
         double shippingRate = Delivery.getCost(UserHandler.getCurrentUser().toAgent().getPostCode());
         tf_shipping.setText("฿" + shippingRate);
-        tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
+//        tf_total.textProperty().bind(Bindings.concat("฿", subTotal.add(subTotal.multiply(7).divide(100)).add(shippingRate)));
         
         bt_checkout.disableProperty().bind(Bindings.size(Bag.getInstance().getItems()).isEqualTo(0));
         
 //        ObservableList<BagProduct> data = FXCollections.observableArrayList(Bag.getItems());
         tableView.setItems(Bag.getInstance().getItems());
+        
+        tf_subtotal.setText(Bag.getInstance().getTotal().toString());
+        Double tax = Bag.getInstance().getTotal() * 7 / 100;
+        tf_tax.setText(tax.toString());
+        total = Bag.getInstance().getTotal() + tax + shippingRate;
+        tf_total.setText(total.toString());
     }
     
     
     void checkout() {
         SceneLoader.setPCBody("PurchaseCheckout");
-        SceneLoader.getPCController().fill(Double.parseDouble(tf_total.getText().substring(1)));
+        SceneLoader.getPCController().fill(total);
     }
     
 }

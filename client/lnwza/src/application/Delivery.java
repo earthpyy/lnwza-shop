@@ -1,10 +1,15 @@
 package application;
 
+import application.entity.Order;
+import application.entity.OrderStatus;
+import static application.handler.OrderHandler.update;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -24,6 +29,21 @@ public class Delivery {
     
     public static Double getCost(String postCode) {
         return Double.valueOf(request(URL + "getcost.php?postCode=" + postCode));
+    }
+    
+    public static String getLastStatus(Order order) {
+        String status = "ERROR";
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT `status` FROM `status` WHERE `orderId` = ? LIMIT 1");
+            ps.setInt(1, order.getId().intValue());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                status = rs.getString("status");
+            }
+        } catch (SQLException ex) {
+        }
+        return status;
     }
     
     public static String request(String url) {

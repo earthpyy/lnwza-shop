@@ -88,7 +88,11 @@ public class GenerateSampleData {
                     arr = buff.readLine().split(",");
                     countD = Integer.parseInt(arr[4]);
                     try {
-                    pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, Double.parseDouble(arr[5]), Double.parseDouble(arr[6]), Double.parseDouble(arr[7]), Double.parseDouble(arr[8]));
+                    if (arr.length == 9) {
+                        pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, Double.parseDouble(arr[5]), Double.parseDouble(arr[6]), Double.parseDouble(arr[7]), Double.parseDouble(arr[8]));
+                    } else if (arr.length == 10) {
+                        pd = new Product(arr[0], arr[1], arr[2], "sample_data/" + arr[3], pdt, Double.parseDouble(arr[5]), Double.parseDouble(arr[6]), Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Boolean.parseBoolean(arr[9]));
+                    }
                     } catch (NumberFormatException ex) {
                     }
                     em.persist(pd);

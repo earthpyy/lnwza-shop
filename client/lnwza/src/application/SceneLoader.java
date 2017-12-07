@@ -152,8 +152,8 @@ public class SceneLoader {
         return web;
     }
     
-    public static <T> T getBodyController(Class<T> controller) {
-        return controller.cast(bodyFXML.getController());
+    public static Fillable getBodyController() {
+        return bodyFXML.getController();
     }
     
     public static Fillable getPopupController() {

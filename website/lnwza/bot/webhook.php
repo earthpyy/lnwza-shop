@@ -83,7 +83,7 @@ if ($text[0] == 'สถานะ') {
     if ($count == 1) {
         $bot->replyText($token, "Usage: สถานะ [Order ID]");
     } else if ($count == 2) {
-        $orderId = (int) $text[1];
+        $orderId = addslashes($text[1]);
         $datas = $db->select('status', 'status', ['orderId' => $orderId, 'LIMIT' => 1]);
         if (count($datas) > 0) {
             $bot->replyText($token, "Order ID: ".$orderId.PHP_EOL."Status: ".getStatusName($datas[0]));
@@ -95,7 +95,7 @@ if ($text[0] == 'สถานะ') {
     if ($count == 1) {
         $bot->replyText($token, "Usage: สินค้า [Product ID]");
     } else if ($count == 2) {
-        $productId = (int) $text[1];
+        $productId = addslashes($text[1]);
         $datas = $db->select('products', '*', ['productId' => $productId, 'LIMIT' => 1]);
         if (count($datas) > 0) {
             $imgUrl = $datas[0]['photo'];
@@ -106,7 +106,7 @@ if ($text[0] == 'สถานะ') {
             "Name: ".$datas[0]['name'].PHP_EOL.
             "Size: ".$datas[0]['name'].PHP_EOL.
             "Color: ".$datas[0]['color'].PHP_EOL.
-            "Price: ฿".$datas[0]['price']);
+            "Price: $".$datas[0]['price']);
         } else {
             $bot->replyText($token, "ไม่พบ Product ID ดังกล่าว หรือคุณใส่ Product ID ไม่ถูกต้อง!");
         }

@@ -84,7 +84,7 @@ public class ProductHandler {
                 PreparedStatement ps = conn.prepareStatement("INSERT INTO `products` (`shopId`, `productId`, `photo`, `name`, `size`, `color`, `price`) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 ps.setInt(1, AppProperties.getShopId());
                 ps.setString(2, product.getProductId());
-                ps.setString(3, "https://lnwza.earthpyy.com/products/" + product.getProductId() + ".jpg");
+                ps.setString(3, "https://lnwza.earthpyy.com/bot/products/" + product.getProductId() + ".jpg");
                 ps.setString(4, product.getName());
                 ps.setString(5, product.getSize());
                 ps.setString(6, product.getAllColorAsString());

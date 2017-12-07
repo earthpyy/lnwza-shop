@@ -81,20 +81,25 @@ public class OrderHandler {
     
     public static void updateStatus() {
         for (Order order : orders) {
-            try {
-                Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT `status` FROM `status` WHERE `orderId` = ? LIMIT 1");
-                ps.setInt(1, order.getId().intValue());
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    String status = rs.getString("status");
-                    if (!order.getLastStatus().name().equals(status)) {
-                        order.addStatus(OrderStatus.valueOf(status));
-                        update(order);
-                    }
-                }
-            } catch (SQLException ex) {
+            String status = Delivery.getLastStatus(order);
+            if (!order.getLastStatus().name().equals(status)) {
+                order.addStatus(OrderStatus.valueOf(status));
+                update(order);
             }
+//            try {
+//                Connection conn = DatabaseConnection.getConnection();
+//                PreparedStatement ps = conn.prepareStatement("SELECT `status` FROM `status` WHERE `orderId` = ? LIMIT 1");
+//                ps.setInt(1, order.getId().intValue());
+//                ResultSet rs = ps.executeQuery();
+//                if (rs.next()) {
+//                    String status = rs.getString("status");
+//                    if (!order.getLastStatus().name().equals(status)) {
+//                        order.addStatus(OrderStatus.valueOf(status));
+//                        update(order);
+//                    }
+//                }
+//            } catch (SQLException ex) {
+//            }
         }
     }
     

@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="82.0" prefWidth="1024.0" style="-fx-background-color: #140144;">
          <children>
-            <Label alignment="CENTER" layoutX="480.0" layoutY="16.0" text="AGENTS" textFill="WHITE">
+            <Label alignment="CENTER" layoutY="16.0" prefHeight="65.0" prefWidth="1024.0" text="AGENTS" textFill="WHITE">
                <font>
                   <Font name="Paradox" size="52.0" />
                </font>

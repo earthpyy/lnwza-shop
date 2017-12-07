@@ -1,3 +1,14 @@
+<?php
+    include("../connect.php");
+
+    function getShopName($id) {
+        global $db;
+        $datas = $db->select('shop', 'shopName', ['id' => $id, 'LIMIT' => 1]);
+        return $datas[0];
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +28,10 @@ function fail() {
 </script>
 </head>
 <body style="text-align: center;">
-    <h2>lnwza SHOP</h2>
+    <h2>lnwza BANK</h2>
     pay by credit card
     <p><b>SHOP ID: </b> <?=$_GET['shopId']?></p>
+    <p><b>SHOP NAME: </b> <?=getShopName($_GET['shopId'])?></p>
     <p><b>AMOUNT: </b> <?=$_GET['amount']?></p>
 
     <input type="button" value="Pay!" onclick="success()">

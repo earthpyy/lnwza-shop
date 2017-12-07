@@ -25,10 +25,10 @@
          <children>
             <ComboBox fx:id="cb_month" disable="true" layoutX="7.0" layoutY="9.0" prefHeight="25.0" prefWidth="122.0" promptText="Month" />
             <ComboBox fx:id="cb_year" disable="true" layoutX="149.0" layoutY="9.0" prefHeight="25.0" prefWidth="89.0" promptText="Year" />
-            <Button fx:id="bt_add" disable="true" layoutX="821.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Add" />
-            <Button fx:id="bt_edit" disable="true" layoutX="890.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Edit" />
-            <Button fx:id="bt_delete" disable="true" layoutX="959.0" layoutY="9.0" mnemonicParsing="false" text="Delete" />
-            <Button fx:id="bt_go" disable="true" layoutX="251.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Go" />
+            <Button fx:id="bt_add" disable="true" layoutX="821.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" styleClass="success" text="Add" />
+            <Button fx:id="bt_edit" disable="true" layoutX="890.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" styleClass="warning" text="Edit" />
+            <Button fx:id="bt_delete" disable="true" layoutX="959.0" layoutY="9.0" mnemonicParsing="false" styleClass="danger" text="Delete" />
+            <Button fx:id="bt_go" disable="true" layoutX="251.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" styleClass="info" text="Go" />
          </children>
       </AnchorPane>
       <Separator layoutY="127.0" prefHeight="15.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
