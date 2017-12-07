@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseCheckoutController">
    <children>
-      <ImageView fitHeight="638.0" fitWidth="1024.0" pickOnBounds="true">
+      <ImageView fitHeight="638.0" fitWidth="1024.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/images/PCCOBG.gif" />
          </image>
@@ -46,8 +45,8 @@
             <TextField fx:id="tf_total" alignment="CENTER" disable="true" prefHeight="25.0" prefWidth="224.0" />
          </children>
       </VBox>
-      <Button fx:id="bt_cancel" layoutX="713.0" layoutY="494.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #abbfde;" text="Cancel" />
-      <Button fx:id="bt_credit" layoutX="353.0" layoutY="382.0" mnemonicParsing="false" onAction="#pay" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Credit/Debit Card" userData="credit" />
-      <Button fx:id="bt_internet" layoutX="525.0" layoutY="382.0" mnemonicParsing="false" onAction="#pay" prefHeight="69.0" prefWidth="147.0" style="-fx-background-color: #abbfde;" text="Internet Banking" userData="internet" />
+      <AnchorPane fx:id="anchorPane" layoutX="713.0" layoutY="494.0" prefHeight="43.0" prefWidth="115.0" />
+      <AnchorPane fx:id="anchorPaneCredit" layoutX="353.0" layoutY="382.0" prefHeight="71.0" prefWidth="147.0" />
+      <AnchorPane fx:id="anchorPaneeInternet" layoutX="525.0" layoutY="382.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

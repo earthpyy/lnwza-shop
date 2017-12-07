@@ -10,8 +10,8 @@ import application.payment.CreditPayment;
 import application.payment.InternetPayment;
 import application.payment.Payment;
 import application.SceneLoader;
-import application.entity.PaymentStatus;
-import application.handler.OrderHandler;
+import application.entity.ImageButton;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -25,16 +25,44 @@ public class PurchaseCheckoutController extends Fillable<Double> {
     @FXML
     private TextField tf_total;
 
+//    @FXML
+//    private Button bt_credit;
+//
+//    @FXML
+//    private Button bt_internet;
+    
     @FXML
-    private Button bt_cancel;
-
+    private AnchorPane anchorPane;
+    
     @FXML
-    private Button bt_credit;
-
+    private AnchorPane anchorPaneCredit;
+    
     @FXML
-    private Button bt_internet;
+    private AnchorPane anchorPaneeInternet;
     
     private double total;
+    
+    @FXML
+    protected void initialize() {
+        ImageButton bt_credit = new ImageButton("/ui/resources/images/button/ButtonCredit.png");
+        bt_credit.setOnAction((event) -> {
+        cancel();
+      });
+        anchorPaneCredit.getChildren().add(bt_credit);
+        
+        ImageButton bt_internet = new ImageButton("/ui/resources/images/button/ButtonInternet.png");
+        bt_internet.setOnAction((event) -> {
+        payInternet();
+      });
+        anchorPaneeInternet.getChildren().add(bt_internet);
+        
+        ImageButton bt_cancel = new ImageButton("/ui/resources/images/button/ButtonCancel.png");
+        bt_cancel.setOnAction((event) -> {
+        payCredit();
+      });
+        anchorPane.getChildren().add(bt_cancel);
+        
+    }
     
     @Override
     void fill(Double total) {
@@ -43,22 +71,18 @@ public class PurchaseCheckoutController extends Fillable<Double> {
         tf_total.setText("฿" + total.toString());
     }
 
-    @FXML
-    void cancel(ActionEvent event) {
+    
+    void cancel() {
         SceneLoader.setPCBody("PurchaseBag");
     }
 
-    @FXML
-    void pay(ActionEvent event) {
-        String method = (String) ((Button) event.getSource()).getUserData();
-        // TODO: make it dynamically
-        Payment payment = null;
-        if (method.equals("credit")) {
-            payment = new CreditPayment(Bag.getInstance(), total);
-        } else if (method.equals("internet")) {
-            payment = new InternetPayment(Bag.getInstance(), total);
-        }
-        
+    void payCredit() {
+        Payment payment = new CreditPayment(Bag.getInstance(), total);
+        payment.pay();
+    }
+
+    void payInternet() {
+        Payment payment = new InternetPayment(Bag.getInstance(), total);
         payment.pay();
     }
     
