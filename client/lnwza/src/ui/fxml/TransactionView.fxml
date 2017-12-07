@@ -34,12 +34,12 @@
       <Separator layoutY="127.0" prefHeight="15.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;" />
       <TableView fx:id="table_view" layoutY="142.0" prefHeight="628.0" prefWidth="1024.0">
          <columns>
-            <TableColumn fx:id="tb_date" prefWidth="131.0" style="-fx-alignment: center;" text="Date" />
-            <TableColumn fx:id="tb_time" prefWidth="73.0" style="-fx-alignment: center;" text="Time" />
-            <TableColumn fx:id="tb_title" prefWidth="444.0" style="-fx-alignment: center-left;" text="Title" />
-            <TableColumn fx:id="tb_income" minWidth="0.0" prefWidth="135.0" style="-fx-alignment: CENTER-RIGHT;" styleClass="income" text="Income" />
-            <TableColumn fx:id="tb_outcome" prefWidth="123.0" style="-fx-alignment: center-right;" styleClass="outcome" text="Outcome" />
-            <TableColumn fx:id="tb_total" minWidth="0.0" prefWidth="116.0" style="-fx-alignment: center-right;" styleClass="total" text="Total" />
+            <TableColumn fx:id="tb_date" prefWidth="153.0" style="-fx-alignment: center;" text="Date" />
+            <TableColumn fx:id="tb_time" prefWidth="94.0" style="-fx-alignment: center;" text="Time" />
+            <TableColumn fx:id="tb_title" prefWidth="371.0" style="-fx-alignment: center-left;" text="Title" />
+            <TableColumn fx:id="tb_income" minWidth="0.0" prefWidth="121.0" style="-fx-alignment: CENTER-RIGHT;" styleClass="income" text="Income" />
+            <TableColumn fx:id="tb_outcome" prefWidth="120.0" style="-fx-alignment: center-right;" styleClass="outcome" text="Outcome" />
+            <TableColumn fx:id="tb_total" minWidth="0.0" prefWidth="163.0" style="-fx-alignment: center-right;" styleClass="total" text="Total" />
          </columns>
       </TableView>
    </children>

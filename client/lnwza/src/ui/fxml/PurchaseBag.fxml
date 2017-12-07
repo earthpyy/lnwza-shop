@@ -10,16 +10,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseBagController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PurchaseBagController">
    <children>
-      <AnchorPane layoutY="17.0" prefHeight="57.0" prefWidth="1024.0" style="-fx-background-color: #bacfd8;">
+      <AnchorPane layoutY="-1.0" prefHeight="93.0" prefWidth="1024.0" style="-fx-background-color: #bacfd8;">
          <children>
-            <Label fx:id="lb_amount" layoutX="209.0" layoutY="-8.0" text="()" textFill="#140144">
+            <Label fx:id="lb_amount" layoutX="222.0" layoutY="15.0" text="()" textFill="#140144">
                <font>
                   <Font name="Paradox" size="58.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="-24.0" prefHeight="95.0" prefWidth="196.0" styleClass="fp" text="MY BAG" textFill="#140144">
+            <Label layoutX="26.0" layoutY="15.0" prefHeight="63.0" prefWidth="196.0" styleClass="fp" text="MY BAG" textFill="WHITE">
+               <font>
+                  <Font name="Paradox" size="58.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="15.0" prefHeight="63.0" prefWidth="196.0" styleClass="fp" text="MY BAG" textFill="#140144">
                <font>
                   <Font name="Paradox" size="58.0" />
                </font>
@@ -27,18 +32,17 @@
          </children>
       </AnchorPane>
       <Separator layoutY="91.0" prefHeight="3.0" prefWidth="1024.0" />
-      <SplitPane dividerPositions="0.5" layoutY="93.0" prefHeight="677.0" prefWidth="1024.0" style="-fx-background-color: #9fc6c2;">
+      <SplitPane dividerPositions="0.5" layoutY="93.0" prefHeight="548.0" prefWidth="1024.0" style="-fx-background-color: #9fc6c2;">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tableView" layoutY="-2.0" prefHeight="677.0" prefWidth="639.0">
+                  <TableView fx:id="tableView" layoutY="-2.0" prefHeight="552.0" prefWidth="639.0">
                     <columns>
                       <TableColumn fx:id="tb_photo" prefWidth="159.0" style="-fx-alignment: center;" text="Photo" />
-                      <TableColumn fx:id="tb_detail" prefWidth="247.66668701171875" style="-fx-alignment: center-left;" text="Detail" />
-                        <TableColumn fx:id="tb_price" prefWidth="65.33331298828125" style="-fx-alignment: center;" text="Price" />
-                        <TableColumn fx:id="tb_qty" prefWidth="36.33331298828125" style="-fx-alignment: center;" text="Qty" />
-                        <TableColumn fx:id="tb_subtotal" prefWidth="74.33331298828125" style="-fx-alignment: center;" text="Subtotal" />
-                        <TableColumn fx:id="tb_remove" prefWidth="63.66668701171875" style="-fx-alignment: center-left;" text="Remove" />
+                      <TableColumn fx:id="tb_detail" prefWidth="271.0" style="-fx-alignment: center-left;" text="Detail" />
+                        <TableColumn fx:id="tb_price" prefWidth="75.0" style="-fx-alignment: center;" text="Price" />
+                        <TableColumn fx:id="tb_qty" prefWidth="53.0" style="-fx-alignment: center;" text="Qty" />
+                        <TableColumn fx:id="tb_subtotal" style="-fx-alignment: center;" text="Subtotal" />
                     </columns>
                   </TableView>
                </children>
