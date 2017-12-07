@@ -20,7 +20,7 @@ import javafx.scene.text.Text;
  *
  * @author SE-lnwza
  */
-public class PurchaseViewController {
+public class PurchaseViewController extends Fillable<ProductType> {
     
     @FXML
     private ScrollPane scrollPane;
@@ -41,6 +41,7 @@ public class PurchaseViewController {
         gridPane.getColumnConstraints().addAll(colCon, colCon);
     }
     
+    @Override
     void fill(ProductType type) {
         products = ProductHandler.getDataFromType(type);
         int i = 0;

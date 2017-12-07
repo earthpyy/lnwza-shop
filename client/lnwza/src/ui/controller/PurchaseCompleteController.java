@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
  *
  * @author SE-lnwza
  */
-public class PurchaseCompleteController {
+public class PurchaseCompleteController extends Fillable<Long> {
 
     @FXML
     private Label lb_orderno;
@@ -16,6 +16,7 @@ public class PurchaseCompleteController {
     @FXML
     private Button bt_ok;
     
+    @Override
     public void fill(Long id) {
         lb_orderno.setText(id.toString());
     }

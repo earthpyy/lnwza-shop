@@ -4,14 +4,13 @@ import application.handler.UserHandler;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import ui.controller.Fillable;
 
 /**
  *
@@ -22,7 +21,7 @@ public class SceneLoader {
     private static final String OWNER_HOMEPAGE = "StockView";
     private static final String AGENT_HOMEPAGE = "PurchaseHome";
     
-    private static final String CSS_PATH = "/ui/resources/";
+    private static final String CSS_PATH = "/ui/resources/styles/";
     private static final String FXML_PATH = "/ui/fxml/";
     private static final int MAIN_WIDTH = 1024;
     private static final int MAIN_HEIGHT = 768;
@@ -144,8 +143,8 @@ public class SceneLoader {
         return controller.cast(popFXML.getController());
     }
     
-    public static <T> T getPCController(Class<T> controller) {
-        return controller.cast(pcFXML.getController());
+    public static Fillable getPCController() {
+        return pcFXML.getController();
     }
     
     public static void closePopup() {

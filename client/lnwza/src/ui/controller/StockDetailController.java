@@ -25,7 +25,7 @@ import javafx.beans.value.ObservableValue;
  *
  * @author SE-lnwza
  */
-public class StockDetailController {
+public class StockDetailController extends Fillable<Product> {
     
     @FXML
     private ScrollPane scroll;
@@ -94,6 +94,7 @@ public class StockDetailController {
         });
     }
     
+    @Override
     void fill(Product pd) {
         set(pd);
         im_product.setImage(product.getPhoto());

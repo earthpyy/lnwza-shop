@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import application.Bag;
-import application.entity.CreditPayment;
-import application.entity.InternetPayment;
-import application.entity.Payment;
+import application.payment.CreditPayment;
+import application.payment.InternetPayment;
+import application.payment.Payment;
 import application.SceneLoader;
 
 /**
@@ -34,9 +34,9 @@ public class PurchaseCheckoutController {
     
     private double total;
     
-    void fill(Integer quantity, Double total) {
+    void fill(Double total) {
         this.total = total;
-        tf_qty.setText(quantity.toString());
+        tf_qty.setText(Bag.getAmount().toString());
         tf_total.setText("฿" + total.toString());
     }
 

@@ -13,7 +13,7 @@ import application.handler.OrderHandler;
  * @author SE-lnwza
  */
 
-public class OrderUpdateController {
+public class OrderUpdateController extends Fillable<Order> {
 
     @FXML
     private TextField tf_orderno;
@@ -35,6 +35,7 @@ public class OrderUpdateController {
     
     private Order order;
     
+    @Override
     void fill(Order od) {
         set(od);
         tf_orderno.setText(order.getId().toString());

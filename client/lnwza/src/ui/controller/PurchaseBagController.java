@@ -124,9 +124,7 @@ public class PurchaseBagController {
     @FXML
     void checkout(ActionEvent event) {
         SceneLoader.setPCBody("PurchaseCheckout");
-        
-        PurchaseCheckoutController ctrl = SceneLoader.getPCController(PurchaseCheckoutController.class);
-        ctrl.fill(Bag.getAmount(), Double.parseDouble(tf_total.getText().substring(1)));
+        SceneLoader.getPCController().fill(Double.parseDouble(tf_total.getText().substring(1)));
     }
     
 }

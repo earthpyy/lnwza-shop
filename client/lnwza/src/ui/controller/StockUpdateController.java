@@ -23,7 +23,7 @@ import application.handler.ProductHandler;
  *
  * @author SE-lnwza
  */
-public class StockUpdateController {
+public class StockUpdateController extends Fillable<ProductDetail> {
     @FXML
     private ComboBox<ProductDetail> cb_color;
 
@@ -79,6 +79,7 @@ public class StockUpdateController {
         fill(pd, pd.getDetail().get(0));
     }
     
+    @Override
     void fill(ProductDetail dt) {
         fill(dt.getProduct(), dt);
         cb_color.getSelectionModel().select(dt);

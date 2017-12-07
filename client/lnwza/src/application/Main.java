@@ -1,6 +1,7 @@
 package application;
 
 import application.handler.UserHandler;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -26,6 +27,7 @@ public class Main extends Application {
         System.out.println("Loading GUI...");
         SceneLoader.initialize(mainStage);
         System.out.println("GUI loaded!");
+
     }
     
     @Override

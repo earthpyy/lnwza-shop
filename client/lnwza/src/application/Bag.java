@@ -1,6 +1,6 @@
 package application;
 
-import application.entity.Payment;
+import application.payment.Payment;
 import application.entity.BagProduct;
 import application.entity.Order;
 import application.entity.ProductDetail;
@@ -22,6 +22,7 @@ public class Bag {
     
     private static ObservableList<BagProduct> items = FXCollections.observableArrayList();
     private static Payment payment;
+    private static Double total;
     
     public static ObservableList<BagProduct> getItems() {
         return items;
@@ -46,6 +47,14 @@ public class Bag {
     
     public static Payment getPayment() {
         return payment;
+    }
+
+    public static Double getTotal() {
+        return total;
+    }
+
+    public static void setTotal(Double total) {
+        Bag.total = total;
     }
     
     public static void setPayment(Payment newPayment) {

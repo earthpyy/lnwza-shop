@@ -27,7 +27,7 @@ import javafx.beans.value.ObservableValue;
  *
  * @author SE-lnwza
  */
-public class OrderDetailController {
+public class OrderDetailController extends Fillable<Order> {
     @FXML
     private TextField tf_orderno;
 
@@ -141,6 +141,7 @@ public class OrderDetailController {
         ctrl.fill(order);
     }
     
+    @Override
     void fill(Order od) {
         set(od);
         tf_orderno.setText(order.getId().toString());

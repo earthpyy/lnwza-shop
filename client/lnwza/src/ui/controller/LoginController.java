@@ -31,9 +31,13 @@ public class LoginController {
     private Text bt_forget;
     
     @FXML
+    private Text txt_error;
+    
+    @FXML
     protected void initialize() {
         bt_login.disableProperty().bind(tf_username.textProperty().isEmpty().or(tf_password.textProperty().isEmpty()));
         bt_login.setDefaultButton(true);
+        txt_error.setVisible(false);
     }
     
     @FXML
@@ -46,13 +50,23 @@ public class LoginController {
                     UserHandler.updateLastLoggedIn(user.toOwner());
                 }
                 SceneLoader.loadMain();
+//                txt_error.setVisible(false);
             } else {
-                // TODO: show alert! (logged in)
+                showLogged();
             }
         } else {
-            // TODO: show alert! (Wrong user or pass)
-            System.out.println(user + "/" + tf_username.getText().trim() + "/" + tf_password.getText().trim());
+            showWrong();
         }
+    }
+    
+    void showWrong() {
+        txt_error.setVisible(true);
+        txt_error.setText("Error : Wrong Username or Password!");
+    }
+    
+    void showLogged() {
+        txt_error.setVisible(true);
+        txt_error.setText("Error : This account already logged in!");
     }
 
     @FXML
@@ -60,14 +74,5 @@ public class LoginController {
         // TODO: next sprint
         // TODO: change it to button!
     }
-    
-//    @FXML
-//    void checkNull(KeyEvent event) {
-//        if ((tf_username.getText().trim().isEmpty() || tf_password.getText().trim().isEmpty()) && !bt_login.isDisabled()) {
-//            bt_login.setDisable(true);
-//        } else if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && bt_login.isDisabled()) {
-//            bt_login.setDisable(false);
-//        }
-//    }
     
 }

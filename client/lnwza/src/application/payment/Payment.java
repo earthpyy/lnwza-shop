@@ -1,8 +1,9 @@
-package application.entity;
+package application.payment;
 
 import application.AppProperties;
 import application.Bag;
 import application.SceneLoader;
+import application.entity.PaymentStatus;
 import netscape.javascript.JSObject;
 import ui.controller.PurchaseCompleteController;
 import ui.controller.WebViewController;
@@ -78,8 +79,7 @@ public abstract class Payment {
             SceneLoader.closePopup();
             SceneLoader.setPCBody("PurchaseComplete");
             
-            PurchaseCompleteController ctrl = SceneLoader.getPCController(PurchaseCompleteController.class);
-            ctrl.fill(orderId);
+//            SceneLoader.getPCController().fill(orderId);
             
             SceneLoader.enablePC();
         }
