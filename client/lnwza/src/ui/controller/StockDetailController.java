@@ -117,7 +117,7 @@ public class StockDetailController extends Fillable<Product> {
     void update() {
         ProductDetail detail = tableView.getSelectionModel().getSelectedItem();
         
-        SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId());
+        SceneLoader.popup("StockUpdate", "Update Product #" + product.getProductId() + " - lnwza SHOP");
         SceneLoader.getPopupController().fill(detail);
     }
 }

@@ -22,8 +22,8 @@ function fail() {
     <p><b>SHOP ID: </b> <?=$_GET['shopId']?></p>
     <p><b>AMOUNT: </b> <?=$_GET['amount']?></p>
 
-    <input type="button" value="Click to success!" onclick="success()">
-    <input type="button" value="Click to fail!" onclick="fail()">
+    <input type="button" value="Pay!" onclick="success()">
+    <input type="button" value="Cancel" onclick="fail()">
 
 </body>
 </html>

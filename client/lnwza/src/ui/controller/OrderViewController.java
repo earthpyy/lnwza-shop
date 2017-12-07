@@ -13,7 +13,6 @@ import application.SceneLoader;
 import application.entity.BagProduct;
 import application.entity.Order;
 import application.handler.OrderHandler;
-import application.handler.UserHandler;
 import java.util.List;
 import javafx.scene.control.TableCell;
 
@@ -22,7 +21,7 @@ import javafx.scene.control.TableCell;
  * @author SE-lnwza
  */
 public class OrderViewController {
-    @FXML // disabled
+    @FXML
     private TextField tf_search;
      
     @FXML
@@ -83,7 +82,7 @@ public class OrderViewController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Order rowData = tableView.getSelectionModel().getSelectedItem();
-                    SceneLoader.popup("OrderDetail", "Order #" + rowData.getId());
+                    SceneLoader.popup("OrderDetail", "Order #" + rowData.getId() + " - lnwza SHOP");
                     
                     SceneLoader.getPopupController().fill(rowData);
                 }
@@ -92,7 +91,7 @@ public class OrderViewController {
         });
         
         OrderHandler.load();
-        ObservableList<Order> data = FXCollections.observableArrayList((UserHandler.getCurrentUser().isOwner() ? OrderHandler.getData() : OrderHandler.getDataFromAgent(UserHandler.getCurrentUser().toAgent())));
+        ObservableList<Order> data = FXCollections.observableArrayList(OrderHandler.getDataFromRole());
         tableView.setItems(data);
     }
 
