@@ -42,8 +42,8 @@
       </VBox>
       <VBox layoutX="442.0" layoutY="276.0" spacing="15.0">
          <children>
-            <TextField fx:id="tf_qty" alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
-            <TextField fx:id="tf_total" alignment="CENTER" prefHeight="25.0" prefWidth="224.0" />
+            <TextField fx:id="tf_qty" alignment="CENTER" disable="true" prefHeight="25.0" prefWidth="224.0" />
+            <TextField fx:id="tf_total" alignment="CENTER" disable="true" prefHeight="25.0" prefWidth="224.0" />
          </children>
       </VBox>
       <Button fx:id="bt_cancel" layoutX="713.0" layoutY="494.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #abbfde;" text="Cancel" />
