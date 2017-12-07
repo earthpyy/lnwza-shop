@@ -10,12 +10,14 @@ import application.payment.CreditPayment;
 import application.payment.InternetPayment;
 import application.payment.Payment;
 import application.SceneLoader;
+import application.entity.PaymentStatus;
+import application.handler.OrderHandler;
 
 /**
  *
  * @author SE-lnwza
  */
-public class PurchaseCheckoutController {
+public class PurchaseCheckoutController extends Fillable<Double> {
     
     @FXML
     private TextField tf_qty;
@@ -34,9 +36,10 @@ public class PurchaseCheckoutController {
     
     private double total;
     
+    @Override
     void fill(Double total) {
         this.total = total;
-        tf_qty.setText(Bag.getAmount().toString());
+        tf_qty.setText(Bag.getInstance().getAmount().toString());
         tf_total.setText("฿" + total.toString());
     }
 
@@ -51,13 +54,12 @@ public class PurchaseCheckoutController {
         // TODO: make it dynamically
         Payment payment = null;
         if (method.equals("credit")) {
-            payment = new CreditPayment(total);
+            payment = new CreditPayment(Bag.getInstance(), total);
         } else if (method.equals("internet")) {
-            payment = new InternetPayment(total);
+            payment = new InternetPayment(Bag.getInstance(), total);
         }
         
-        Bag.setPayment(payment);
-        Bag.getPayment().pay();
+        payment.pay();
     }
     
 //    void toggleButton() {

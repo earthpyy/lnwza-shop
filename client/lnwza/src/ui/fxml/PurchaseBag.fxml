@@ -83,10 +83,10 @@
                   </Button>
                   <VBox layoutX="194.0" layoutY="95.0" spacing="5.0">
                      <children>
-                        <TextField fx:id="tf_subtotal" alignment="CENTER" prefWidth="154.0" />
-                        <TextField fx:id="tf_tax" alignment="CENTER" prefWidth="154.0" />
-                        <TextField fx:id="tf_shipping" alignment="CENTER" prefWidth="154.0" />
-                        <TextField fx:id="tf_total" alignment="CENTER" prefWidth="154.0" />
+                        <TextField fx:id="tf_subtotal" alignment="CENTER" disable="true" prefWidth="154.0" />
+                        <TextField fx:id="tf_tax" alignment="CENTER" disable="true" prefWidth="154.0" />
+                        <TextField fx:id="tf_shipping" alignment="CENTER" disable="true" prefWidth="154.0" />
+                        <TextField fx:id="tf_total" alignment="CENTER" disable="true" prefWidth="154.0" />
                      </children>
                   </VBox>
                </children>

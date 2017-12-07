@@ -133,7 +133,7 @@ public class UserHandler {
         if (isLoggedIn()) {
             setLoggedOut(getCurrentUser());
             setCurrentUser(null);
-            Bag.reset();
+            Bag.getInstance().reset();
         }
     }
     

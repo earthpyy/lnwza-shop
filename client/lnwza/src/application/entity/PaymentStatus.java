@@ -8,6 +8,7 @@ public enum PaymentStatus {
     
     // normal
     NOTPAY,
+    WAITING,
     PAID,
     // error
     ERROR;
@@ -16,6 +17,8 @@ public enum PaymentStatus {
         switch (this) {
             case NOTPAY:
                 return "Not paid yet";
+            case WAITING:
+                return "Waiting for confirm";
             case PAID:
                 return "Paid";
             default:
@@ -26,20 +29,12 @@ public enum PaymentStatus {
     public PaymentStatus getNext() {
         switch (this) {
             case NOTPAY:
+                return WAITING;
+            case WAITING:
                 return PAID;
             default:
                 return ERROR;
         }
     }
-    
-    public static PaymentStatus parseStatus(String value) {
-        if (value.equals("NOTPAY")) {
-            return NOTPAY;
-        } else if (value.equals("PAID")) {
-            return PAID;
-        } else {
-            return ERROR;
-        }
-    }
-}
 
+}

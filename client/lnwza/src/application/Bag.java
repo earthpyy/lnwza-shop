@@ -20,15 +20,27 @@ import javafx.collections.ObservableList;
  */
 public class Bag {
     
-    private static ObservableList<BagProduct> items = FXCollections.observableArrayList();
-    private static Payment payment;
-    private static Double total;
+    private static Bag bag;
     
-    public static ObservableList<BagProduct> getItems() {
+    private ObservableList<BagProduct> items = FXCollections.observableArrayList();
+    private Double total;
+    
+    private Bag() {
+        // make this private
+    }
+    
+    public static Bag getInstance() {
+        if (bag == null) {
+            bag = new Bag();
+        }
+        return bag;
+    }
+    
+    public ObservableList<BagProduct> getItems() {
         return items;
     }
     
-    public static BagProduct getBagProductFromDetail(ProductDetail product) {
+    public BagProduct getBagProductFromDetail(ProductDetail product) {
         for (BagProduct item : items) {
             if (item.getDetail().equals(product)) {
                 return item;
@@ -37,31 +49,23 @@ public class Bag {
         return null;
     }
     
-    public static Integer getAmount() {
+    public Integer getAmount() {
         return items.size();
     }
     
-    public static IntegerBinding getAmountProperty() {
+    public IntegerBinding getAmountProperty() {
         return Bindings.size(items);
     }
-    
-    public static Payment getPayment() {
-        return payment;
-    }
 
-    public static Double getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public static void setTotal(Double total) {
-        Bag.total = total;
+    public void setTotal(Double total) {
+        this.total = total;
     }
     
-    public static void setPayment(Payment newPayment) {
-        payment = newPayment;
-    }
-    
-    public static void add(BagProduct product) {
+    public void add(BagProduct product) {
         BagProduct item = getBagProductFromDetail(product.getDetail());
         if (item == null) {
             items.add(product);
@@ -70,36 +74,23 @@ public class Bag {
         }
     }
     
-    public static void add(ProductDetail product, Integer quantity) {
+    public void add(ProductDetail product, Integer quantity) {
         add(new BagProduct(product, quantity));
     }
     
-    public static void remove(BagProduct product) {
+    public void remove(BagProduct product) {
         items.remove(product);
     }
     
-    public static void updateQuantity(BagProduct item, Integer quantity) {
+    public void updateQuantity(BagProduct item, Integer quantity) {
         if (item != null) {
             item.setQuantity(item.getQuantity() + quantity);
         }
     }
-       
-    public static Long addToOrder() {
-        Order order = new Order(UserHandler.getCurrentUser().toAgent(), getPayment().getAmount());
-        for (BagProduct item : items) {
-            order.addProduct(item);
-        }
-        OrderHandler.add(order);
-        
-        Transaction tran = new Transaction(order.getId().toString(), TransactionType.ORDER, order.getAmount());
-        TransactionHandler.add(tran);
-        
-        return order.getId();
-    }
     
-    public static void reset() {
+    public void reset() {
         items.removeAll(items);
-        payment = null;
+        total = 0.0;
     }
     
 }

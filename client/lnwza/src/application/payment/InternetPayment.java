@@ -1,6 +1,7 @@
 package application.payment;
 
-import application.payment.Payment;
+import application.Bag;
+import application.entity.PaymentStatus;
 
 /**
  *
@@ -10,12 +11,13 @@ public class InternetPayment extends Payment {
     
     private static final String payURL = "https://lnwza.earthpyy.com/bank/internet.php";
 
-    public InternetPayment(double amount) {
-        super(amount);
+    public InternetPayment(Bag bag, double amount) {
+        super(bag, amount);
     }
     
     public void pay() {
-        open(payURL);
+        open(payURL + "?shopId=" + getShopId() + "&amount=" + getAmount());
+        status = PaymentStatus.WAITING;
     }
     
 }

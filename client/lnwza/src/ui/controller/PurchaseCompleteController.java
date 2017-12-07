@@ -1,5 +1,6 @@
 package ui.controller;
 import application.SceneLoader;
+import application.handler.OrderHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +9,7 @@ import javafx.scene.control.Label;
  *
  * @author SE-lnwza
  */
-public class PurchaseCompleteController extends Fillable<Long> {
+public class PurchaseCompleteController {
 
     @FXML
     private Label lb_orderno;
@@ -16,9 +17,9 @@ public class PurchaseCompleteController extends Fillable<Long> {
     @FXML
     private Button bt_ok;
     
-    @Override
-    public void fill(Long id) {
-        lb_orderno.setText(id.toString());
+    @FXML
+    protected void initialize() {
+        lb_orderno.setText(OrderHandler.getLastId().toString());
     }
 
     @FXML

@@ -29,17 +29,18 @@ public class SceneLoader {
     private static final int POPUP_WIDTH = 600;
     private static final int POPUP_HEIGHT = 400;
     
-    private static Stage main, pop, login;
+    private static Stage main, pop, login, web;
     private static BorderPane mainRoot;
     private static VBox pcRoot;
-    private static Scene mainScene, popScene, loginScene;
-    private static Parent mainMenu, mainBody, popBody, loginBody, pcMenu, pcBody;
-    private static FXMLLoader bodyFXML, popFXML, pcFXML;
+    private static Scene mainScene, popScene, loginScene, webScene;
+    private static Parent mainMenu, mainBody, popBody, loginBody, pcMenu, pcBody, webBody;
+    private static FXMLLoader bodyFXML, popFXML, pcFXML, webFXML;
     
     public static void initialize(Stage stage) {
         login = stage;
         main = new Stage();
         pop = new Stage();
+        web = new Stage();
         loadLogin();
     }
     
@@ -53,6 +54,7 @@ public class SceneLoader {
         start();
         main.close();
         pop.close();
+        web.close();
         
         login.setTitle("Login - lnwza SHOP");
         loginBody = load("Login");
@@ -130,10 +132,24 @@ public class SceneLoader {
     }
     
     public static void popupPay() {
-        pop.setOnHiding(event -> {
+        webFXML = loadFXML("WebView");
+        try {
+            webBody = webFXML.load();
+        } catch (IOException ex) {
+        }
+        webScene = new Scene(webBody, POPUP_WIDTH, POPUP_HEIGHT);
+        loadCss(webScene);
+        web.setScene(webScene);
+        web.setTitle("Payment - lnwza SHOP");
+        web.setOnHiding(event -> {
             enablePC();
         });
-        popup("WebView", "Payment - lnwza SHOP");
+        
+        web.show();
+    }
+    
+    public static Stage getWebStage() {
+        return web;
     }
     
     public static <T> T getBodyController(Class<T> controller) {
@@ -149,11 +165,15 @@ public class SceneLoader {
     }
     
     public static WebViewController getWebController() {
-        return popFXML.getController();
+        return webFXML.getController();
     }
     
     public static void closePopup() {
         pop.close();
+    }
+    
+    public static void closeWeb() {
+        web.close();
     }
     
     public static void disablePC() {

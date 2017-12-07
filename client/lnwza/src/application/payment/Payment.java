@@ -4,9 +4,8 @@ import application.AppProperties;
 import application.Bag;
 import application.SceneLoader;
 import application.entity.PaymentStatus;
+import application.handler.OrderHandler;
 import netscape.javascript.JSObject;
-import ui.controller.PurchaseCompleteController;
-import ui.controller.WebViewController;
 
 /**
  *
@@ -14,18 +13,24 @@ import ui.controller.WebViewController;
  */
 public abstract class Payment {
     
-    private int shopId;
-    private double amount;
-    private PaymentStatus status;
+    protected int shopId;
+    protected Bag bag;
+    protected double amount;
+    protected PaymentStatus status;
 
-    public Payment(double amount) {
+    public Payment(Bag bag, double amount) {
         this.shopId = AppProperties.getShopId();
+        this.bag = bag;
         this.amount = amount;
         this.status = PaymentStatus.NOTPAY;
     }
 
     public int getShopId() {
         return shopId;
+    }
+
+    public Bag getBag() {
+        return bag;
     }
 
     public double getAmount() {
@@ -38,6 +43,10 @@ public abstract class Payment {
 
     public void setShopId(int shopId) {
         this.shopId = shopId;
+    }
+
+    public void setBag(Bag bag) {
+        this.bag = bag;
     }
 
     public void setAmount(double amount) {
@@ -64,18 +73,20 @@ public abstract class Payment {
     }
     
     protected void complete() {
-        if (getStatus() == PaymentStatus.NOTPAY) {
-            setStatus(PaymentStatus.PAID);
-            Long orderId = Bag.addToOrder();
-            Bag.reset();
+        if (status == PaymentStatus.WAITING) {
+            status = PaymentStatus.PAID;
+            OrderHandler.create(this);
+            Bag.getInstance().reset();
             SceneLoader.closePopup();
             SceneLoader.setPCBody("PurchaseComplete");
             SceneLoader.enablePC();
         }
+        SceneLoader.closeWeb();
     }
     
     protected void returnToBag() {
-        SceneLoader.closePopup();
+        status = PaymentStatus.NOTPAY;
+        SceneLoader.closeWeb();
         SceneLoader.setPCBody("PurchaseBag");
         
         SceneLoader.enablePC();
