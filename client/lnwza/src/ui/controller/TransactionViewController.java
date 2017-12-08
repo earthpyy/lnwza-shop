@@ -12,9 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import application.entity.Transaction;
 import application.handler.TransactionHandler;
 import application.MyDate;
-import application.entity.TransactionType;
-import application.handler.OrderHandler;
-import application.handler.ProductHandler;
+import java.text.DecimalFormat;
 import javafx.scene.control.TableCell;
 
 /**
@@ -102,6 +100,20 @@ public class TransactionViewController {
         tb_income.setCellValueFactory(new PropertyValueFactory<>("income"));
         tb_outcome.setCellValueFactory(new PropertyValueFactory<>("outcome"));
         tb_total.setCellValueFactory(new PropertyValueFactory<>("total"));
+        tb_total.setCellFactory((TableColumn<Transaction, Double> col) ->
+            new TableCell<Transaction, Double>() {
+                @Override
+                public void updateItem(Double total, boolean empty) {
+                    super.updateItem(total, empty);
+                    if (total == null || empty) {
+                        setText(null);
+                    } else {
+                        total = Math.round(total * 100.0) / 100.0;
+                        setText(total.toString());
+                    }
+                }
+            }
+        );
         
         TransactionHandler.load();
         ObservableList<Transaction> data = FXCollections.observableArrayList(TransactionHandler.getDataFromCurrentMonth());
