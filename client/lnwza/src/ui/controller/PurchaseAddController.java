@@ -76,7 +76,7 @@ public class PurchaseAddController extends Fillable<Product> {
         lb_name.setText(product.getName());
         lb_price.setText("$" + product.getPrice());
         
-        ObservableList<ProductDetail> colorData = FXCollections.observableArrayList(product.getDetail());
+        ObservableList<ProductDetail> colorData = FXCollections.observableArrayList(product.getLeftDetail());
         cb_color.setItems(colorData);
         cb_color.getSelectionModel().selectFirst();
         Callback<ListView<ProductDetail>, ListCell<ProductDetail>> factory = lv -> new ListCell<ProductDetail>() {

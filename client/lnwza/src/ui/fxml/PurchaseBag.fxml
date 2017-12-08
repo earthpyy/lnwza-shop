@@ -14,11 +14,6 @@
    <children>
       <AnchorPane layoutY="-1.0" prefHeight="93.0" prefWidth="1024.0" style="-fx-background-color: #bacfd8;">
          <children>
-            <Label fx:id="lb_amount" layoutX="222.0" layoutY="15.0" text="()" textFill="#140144">
-               <font>
-                  <Font name="Paradox" size="58.0" />
-               </font>
-            </Label>
             <Label layoutX="26.0" layoutY="15.0" prefHeight="63.0" prefWidth="196.0" styleClass="fp" text="MY BAG" textFill="WHITE">
                <font>
                   <Font name="Paradox" size="58.0" />

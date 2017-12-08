@@ -107,6 +107,16 @@ public class Product {
         return (ArrayList) details;
     }
     
+    public ArrayList<ProductDetail> getLeftDetail() {
+        ArrayList<ProductDetail> result = new ArrayList<>();
+        for (ProductDetail detail : details) {
+            if (detail.getQuantity() > 0) {
+                result.add(detail);
+            }
+        }
+        return result;
+    }
+    
     public String getAllColorAsString() {
         String result = "";
         for (ProductDetail detail : details) {

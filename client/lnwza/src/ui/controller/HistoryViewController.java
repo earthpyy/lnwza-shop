@@ -91,12 +91,12 @@ public class HistoryViewController{
         
         for(int i = 0; i < maxDay; i++){
             seriesIncome.getData().add(new XYChart.Data(Integer.toString(i + 1), dataCache[i][0]));
-            seriesPayment.getData().add(new XYChart.Data(Integer.toString(i + 1), dataCache[i][1]));
+            seriesPayment.getData().add(new XYChart.Data(Integer.toString(i + 1), -dataCache[i][1]));
             
             income += dataCache[i][0];
             payment += dataCache[i][1];
         }
-        
+        payment = Math.abs(payment);
         tf_income.setText(Double.toString(income));
         tf_outcome.setText(Double.toString(payment));
         tf_profit.setText(Double.toString(income - payment));

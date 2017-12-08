@@ -28,7 +28,7 @@ public class ProductHandler {
     public static ArrayList<Product> getRecommendData() {
         ArrayList<Product> result = new ArrayList<>();
         for (int i = products.size() - 1; i >= 0; i--) {
-            if (products.get(i).isRecommended()) {
+            if (products.get(i).isRecommended() && isLeft(products.get(i))) {
                 result.add(products.get(i));
             }
             
@@ -52,11 +52,20 @@ public class ProductHandler {
     public static ArrayList<Product> getDataFromType(ProductType type) {
         ArrayList<Product> result = new ArrayList<>();
         for (Product product : products) {
-            if (product.getType().equals(type)) {
+            if (product.getType().equals(type) && isLeft(product)) {
                 result.add(product);
             }
         }
         return result;
+    }
+    
+    private static boolean isLeft(Product product) {
+        for (ProductDetail detail : product.getDetail()) {
+            if (detail.getQuantity() > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void load() {

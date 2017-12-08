@@ -1,9 +1,9 @@
 package application;
 
 import application.handler.UserHandler;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +24,9 @@ public class SceneLoader {
     
     private static final String CSS_PATH = "/ui/resources/styles/";
     private static final String FXML_PATH = "/ui/fxml/";
+    
+    private static final ArrayList<String> CSS_FILES = new ArrayList<>(Arrays.asList("bootstrap3.css", "font.css", "table.css"));
+    
     private static final int MAIN_WIDTH = 1024;
     private static final int MAIN_HEIGHT = 768;
     private static final int POPUP_WIDTH = 600;
@@ -212,23 +215,10 @@ public class SceneLoader {
     
     private static void loadCss(Scene scene) {
         System.out.println("[GUI] Adding CSS...");
-        for (String fileName : getCssFileName()) {
+        for (String fileName : CSS_FILES) {
             scene.getStylesheets().add(CSS_PATH + fileName);
         }
         System.out.println("[GUI] CSS added!");
-    }
-    
-    private static ArrayList<String> getCssFileName() {
-        ArrayList<String> result = new ArrayList<>();
-        File folder = new File("src/" + CSS_PATH);
-        File[] files = folder.listFiles();
-
-        for (File file : files) {
-            if (file.isFile() && file.getName().endsWith(".css")) {
-                result.add(file.getName());
-            }
-        }
-        return result;
     }
     
 }
