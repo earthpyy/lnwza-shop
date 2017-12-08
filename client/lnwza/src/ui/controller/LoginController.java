@@ -50,7 +50,7 @@ public class LoginController {
                     UserHandler.updateLastLoggedIn(user.toOwner());
                 }
                 SceneLoader.loadMain();
-//                txt_error.setVisible(false);
+                txt_error.setVisible(false);
             } else {
                 showLogged();
             }
