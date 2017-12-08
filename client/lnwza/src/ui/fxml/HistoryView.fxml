@@ -42,7 +42,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="tf_income" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
-                        <Label text=" Bath">
+                        <Label text=" Dollars">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -51,13 +51,13 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Label text="Outcome :            ">
+                        <Label text="Cost :            ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField fx:id="tf_outcome" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
-                        <Label text=" Bath">
+                        <Label text=" Dollars">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -66,13 +66,13 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Label text="Profit/Loss :          ">
+                        <Label text="Profit/Loss :         ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField fx:id="tf_profit" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
-                        <Label text=" Bath">
+                        <Label text=" Dollars">
                            <font>
                               <Font size="16.0" />
                            </font>

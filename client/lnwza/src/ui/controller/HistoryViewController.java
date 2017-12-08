@@ -87,7 +87,7 @@ public class HistoryViewController{
         seriesIncome.setName("Income");
         
         seriesPayment = new XYChart.Series();
-        seriesPayment.setName("Payment");
+        seriesPayment.setName("Cost");
         
         for(int i = 0; i < maxDay; i++){
             seriesIncome.getData().add(new XYChart.Data(Integer.toString(i + 1), dataCache[i][0]));
