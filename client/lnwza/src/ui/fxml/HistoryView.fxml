@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -31,30 +32,53 @@
       </AnchorPane>
       <AnchorPane layoutY="135.0" minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="1024.0" style="-fx-background-color: #E8EAF6;">
          <children>
-            <VBox layoutX="408.0" layoutY="20.0" spacing="10.0">
+            <VBox layoutX="404.0" layoutY="20.0" spacing="10.0">
                <children>
-                  <Label text="Income :">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="Outcome :">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="Profit/Loss :">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox layoutX="512.0" layoutY="20.0" spacing="10.0">
-               <children>
-                  <TextField fx:id="tf_income" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
-                  <TextField fx:id="tf_outcome" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
-                  <TextField fx:id="tf_profit" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
+                  <HBox>
+                     <children>
+                        <Label text="Income :               ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_income" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
+                        <Label text=" Bath">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Outcome :            ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_outcome" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
+                        <Label text=" Bath">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Profit/Loss :          ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_profit" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="73.0" />
+                        <Label text=" Bath">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <LineChart fx:id="lc_graph" layoutX="208.0" layoutY="152.0" prefHeight="453.0" prefWidth="566.0">
@@ -66,25 +90,6 @@
                </yAxis>
             </LineChart>
             <Separator layoutX="6.0" layoutY="-1.0" prefHeight="0.0" prefWidth="1024.0" />
-            <VBox layoutX="599.0" layoutY="20.0" spacing="10.0">
-               <children>
-                  <Label text="Bath">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="Bath">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="Bath">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
          </children>
       </AnchorPane>
    </children>
